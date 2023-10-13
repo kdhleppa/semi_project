@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
 	<link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
-	<link rel="stylesheet" href="resources/css/notice_readMore_admin.css">
+	<link rel="stylesheet" href="/resources/css/notice_readMore_admin.css">
     <title>공지사항 글 자세히보기(수정/삭제) (관리자 페이지)</title>
 </head>
 <body>
