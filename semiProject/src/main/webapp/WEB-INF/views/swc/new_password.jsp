@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-                <button id="btnbox">확인</button>
+                <button id="btnbox"> <a href="/link/login" style="color:white; text-decoration:none;">확인</a> </button>
 
                 </form>
             <div class="rightmenu">

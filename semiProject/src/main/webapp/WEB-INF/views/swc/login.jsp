@@ -22,7 +22,7 @@
             <section class="menu">
 
                 <div id="map">
-                   <a href="/link/mapMainLogin">지도</a>
+                   <a href="/link/mapMainNotLogin">지도</a>
                 </div>
 
             </section>

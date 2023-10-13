@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
+    <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
     <link rel="stylesheet" href="/resources/css/sign_up.css">
 </head>
 <body>
@@ -112,7 +113,7 @@
                     <input type="image">
                 </div>
 
-                <button id="btnbox" class="signUpBtn">가입 완료</button>
+                <button id="btnbox" class="signUpEnd"> <a href="/link/login" style="color:white; text-decoration:none;">가입완료</a> </button>
 
                 
             </form>
