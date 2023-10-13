@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관심목록</title>
-    <link rel="stylesheet" href="/src/main/webapp/resources/css/like_list.css">
+    <link rel="stylesheet" href="/resources/css/like_list.css">
     <link rel="stylesheet" href="/resources/css/topbar_atag_black_style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
         <nav>
             <section class="logo">
                 <a href="/">
-                    <img src="/src/main/webapp/resources/images/logo.png">
+                    <img src="/resources/images/logo.png">
                 </a>
             </section>
             <%-- 각 글씨에 링크 걸것 --%>
@@ -45,7 +45,7 @@
             <div id="main-mid">
                <div class="mid-favorite-container">
                     <div class="mid-img-container">
-                        <img src="/src/main/webapp/resources/images/room.jpg" alt="" class="mid-img1">
+                        <img src="/resources/images/room.jpg" alt="" class="mid-img1">
                     </div>
                     <p>원룸</p>
                     <p class="value">전세 1억 8천</p>
@@ -54,7 +54,7 @@
                 </div>    
                 <div class="mid-favorite-container">
                     <div class="mid-img-container">
-                        <img src="/src/main/webapp/resources/images/room.jpg" alt="" class="mid-img1">
+                        <img src="/resources/images/room.jpg" alt="" class="mid-img1">
                     </div>
                     <p>원룸</p>
                     <p class="value">전세 1억 7천</p>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="mid-favorite-container">
                     <div class="mid-img-container">
-                        <img src="/src/main/webapp/resources/images/room.jpg" alt="" class="mid-img1">
+                        <img src="/resources/images/room.jpg" alt="" class="mid-img1">
                     </div>
                     <p>원룸</p>
                     <p class="value">전세 1억 7천</p>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="mid-favorite-container">
                     <div class="mid-img-container">
-                        <img src="/src/main/webapp/resources/images/room.jpg" alt="" class="mid-img1">
+                        <img src="/resources/images/room.jpg" alt="" class="mid-img1">
                     </div>
                     <p>원룸</p>
                     <p class="value">전세 1억 7천</p>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="mid-favorite-container">
                     <div class="mid-img-container">
-                        <img src="/src/main/webapp/resources/images/room.jpg" alt="" class="mid-img1">
+                        <img src="/resources/images/room.jpg" alt="" class="mid-img1">
                     </div>
                     <p>원룸</p>
                     <p class="value">전세 1억 7천</p>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="mid-favorite-container">
                     <div class="mid-img-container">
-                        <img src="/src/main/webapp/resources/images/room.jpg" alt="" class="mid-img1">
+                        <img src="/resources/images/room.jpg" alt="" class="mid-img1">
                     </div>
                     <p>원룸</p>
                     <p class="value">전세 1억 7천</p>
