@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/src/main/webapp/resources/css/community_writing.css">
+
+    <title>자유게시판 글쓰기</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <section class="logo">
+                <a href="http://192.168.120.16:5500/SemiDesign/main.html">
+                    <img src="/src/main/webapp/resources/images/logo.png">
+                </a>
+            </section>
+
+            <section class="menu">
+                <div id="map">
+                    지도
+                </div>
+                <div id="favorites">
+                    관심목록
+                </div>
+                <div id="roomup">
+                    방내놓기
+                </div>
+                <div id="board">
+                    게시판
+                </div>
+                <div id="mypage">
+                    내정보
+                </div>
+            </section>
+        </nav>
+
+        <main>
+            <div class="leftmenu">
+                <div>내가 쓴 글</div>
+            </div>
+            <div class="content">
+                <div class="menutitle">
+                    자유 게시판
+                </div>
+                <div class="main-content">
+                    <div class="main-content-left"></div>
+                    <div class="main-content-main">
+                        <input id="content-title" placeholder="제목을 입력해주세요."></input>
+                        <div id="content-option">
+                             <button type="button">이미지</button>
+                             <button type="button">동영상 url</button>
+                        </div>
+                        <input id="content-text" placeholder="내용을 입력해주세요."></input>                        
+                        <div id="content-modifybutton">
+                            <button id="registerButton">등록하기</button>
+                            <button id="cancelButton">취소</button>
+                        </div>
+                    </div>
+                    <div class="main-content-right"></div> 
+                </div>
+            </div>
+            <div class="right">
+                <button id="bottom-nav-top">위로</button>
+                <button id="bottom-nav-list">목록</button>
+                <img src="/jieun/img/chat_icon_final.png" id="chat-icon">
+            </div>
+        </main>
+    </div>
+    
+</body>
+</html>
