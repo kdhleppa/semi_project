@@ -41,7 +41,7 @@
 
         <main>
         
-            <div>
+            <div class="leftmenu">
             	<a href="/link/communityListMine">내가 쓴 글</a>
             </div>
             

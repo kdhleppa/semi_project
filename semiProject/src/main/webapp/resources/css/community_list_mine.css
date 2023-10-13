@@ -88,11 +88,11 @@ main {
 
 /* main - leftmenu */
 
-.leftmenu > div:first-child {
+.leftmenu {
     margin-top: 180px;
 }
 
-.leftmenu > div {
+.leftmenu > a {
     margin-bottom: 40px;
 }
 
