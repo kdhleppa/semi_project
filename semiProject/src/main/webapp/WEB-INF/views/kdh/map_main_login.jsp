@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map Main</title>
-    <link rel="stylesheet" href="/src/main/webapp/resources/css/map_main.css">
+    <link rel="stylesheet" href="/resources/css/map_main.css">
     <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
     <script src="https://kit.fontawesome.com/75b9a966ac.js" crossorigin="anonymous"></script>
 </head>
@@ -17,7 +17,7 @@
         <nav>
             <section class="logo">
                 <a href="/">
-                    <img src="resources/images/logo.png">
+                    <img src="/resources/images/logo.png">
                 </a>
             </section>
         

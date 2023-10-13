@@ -75,14 +75,25 @@ public class LinkController {
 		return "/cje/notice_list";
 	}
 	
+	@GetMapping("/noticeListUser")
+	public String NoticeListUser() {
+		return "/cje/write_message";
+	}
+	
+	@GetMapping("/noticeListAdmin")
+	public String NoticeListAdmin() {
+		return "/cje/write_message";
+	}
+	
+	
 	@GetMapping("/noticeReadMoreAdmin")
 	public String NoticeReadMoreAdmin() {
 		return "/cje/notice_readMore_admin";
 	}
 	
-	@GetMapping("/noticeReadMoreUser")
-	public String NoticeReadMoreUser() {
-		return "/cje/notice_readMore_user";
+	@GetMapping("/noticeReadMoreUsers")
+	public String NoticeReadMoreUsers() {
+		return "/cje/notice_readMore_users";
 	}
 	
 	@GetMapping("/noticeWriting")
@@ -112,9 +123,9 @@ public class LinkController {
 	
 	
 	// shs 에 들어가는 링크 모음
-	@GetMapping("/declarationList")
-	public String DeclarationList() {
-		return "/shs/declaration_ist";
+	@GetMapping("/declarationListAdmin")
+	public String DeclarationListAdmin() {
+		return "/shs/declaration_ist_admin";
 	}
 	
 	@GetMapping("/editProperty")
@@ -214,6 +225,10 @@ public class LinkController {
 	public String WriteMessage() {
 		return "/swc/write_message";
 	}
+	
+
+	
+	
 	
 	
 }
