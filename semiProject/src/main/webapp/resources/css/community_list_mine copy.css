@@ -1,0 +1,283 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* border: 0.5px solid darkblue; */
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+}
+
+
+/* nav */
+
+.logo {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12vw;
+    height: 80px;
+}
+
+.logo > a > img {
+    height: 65px;
+}
+
+.menu {
+    background-color: #B96BC6;
+    width: 90vw;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-weight: 800;
+    font-size: 22px;
+    height: 80px;
+    color: white;
+    position: sticky;
+    right: 0;
+    min-width: 1000px;
+}
+
+.menu > div {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+nav {
+    background-color: white;
+    display: flex;
+}
+
+
+/* main */
+
+main {
+    display: flex;
+    flex-direction: row;
+    height: 90%;
+}
+
+.leftmenu{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 16%;
+    height: 100%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+
+    width: 68%;
+    height: 100%;
+}
+
+.right{
+    width: 16%;
+    height: 100%;
+}
+
+
+/* main - leftmenu */
+
+.leftmenu > div:first-child {
+    margin-top: 180px;
+}
+
+.leftmenu > div {
+    margin-bottom: 40px;
+}
+
+
+/* main - content */
+
+.menutitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 24px;
+    font-weight: bold;
+
+    height: 10%;
+    padding-top: 18px;
+}
+
+
+/* main - content - main-content */
+
+.main-content{
+    height: 80%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    margin: 50px 150px;
+}
+
+.main-content > div{
+    display: flex;
+    flex-basis: 100%;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: start;
+}
+
+.main-content div{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* .main-content div:first-child{
+    flex-basis: 5%;
+} */
+
+.main-content div:nth-child(1){
+    flex-basis: 15%;
+}
+
+.main-content div:nth-child(2){
+    flex-basis: 60%;
+}
+
+.main-content div:nth-child(3){
+    flex-basis: 20%;
+}
+
+.main-content div:nth-child(4){
+    flex-basis: 20%;
+}
+
+
+#content-number :first-child, #content-title :first-child,
+#content-date :first-child{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#checkbox{
+    width: 5%;
+}
+
+#content-number{
+    width: 10%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content-title{
+    width: 73%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content-date{
+    width: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content-number > div:not(#content-number-title),
+#content-title > div:not(#content-title-title),
+#content-date > div:not(#content-date-title){
+    border: 0.5px solid black;
+    border-radius: 5px;
+    height: 35px;
+    margin: 0 5px 10px 5px;
+}
+
+#checkbox div:first-child{
+    height: 32px;
+}
+
+#checkbox input{
+    width: 20px;
+    height: 20px;
+
+    margin: 0 10px 15px 0;
+}
+
+#content-number > div:not(#content-number-title){
+    width: 100%;
+    background-color: rgba(217, 217, 217, 0.44);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content-title > div:not(#content-title-title){
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 10px;
+}
+
+#content-date > div:not(#content-date-title){
+    width: 100%;
+    background-color: rgba(217, 217, 217, 0.44);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* main-content-bottom */
+.main-content-bottom{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    height: 10%;
+}
+
+.main-content-bottom > button{
+    border: none;
+    border-radius: 10px;
+    height: 35px;
+    width: 70px;
+    background-color: rgba(48, 68, 174, 0.5);
+}
+
+
+/* main-content-right */
+.right{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+
+    margin: 5px 10px;
+}
+
+#bottom-nav-top,
+#bottom-nav-list{
+    background-color: white;
+    border: 0.05px solid black;
+    border-radius: 8px;
+    
+    width: 50px;
+    height: 28px;
+
+    margin: 0 2px;
+}
+
+#chat-icon{
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+}
