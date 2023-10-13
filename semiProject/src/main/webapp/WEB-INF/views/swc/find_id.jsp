@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아이디찾기</title>
     <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
+    <link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
     <link rel="stylesheet" href="/resources/css/find_idpw.css">
 </head>
 <body>
@@ -73,7 +74,7 @@
                     </div>
                 </div>
                     
-                <button id="btnbox"> <a href="#"> 다음 </a> </button>
+                <button id="btnbox"> <a href="/link/newPassword" style="color:white; text-decoration:none;">확인</a> </button>
 
             </form>
 
