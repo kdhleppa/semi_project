@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
-    <link rel="stylesheet" href="/src/main/webapp/resources/css/my_room_up_list.css">
+    <link rel="stylesheet" href="/resources/css/my_room_up_list.css">
 
     <title>내가 올린 매물 목록</title>    
 </head>
@@ -15,8 +15,8 @@
         <div class="container">
             <nav>
                 <section class="logo">
-                    <a href="http://192.168.120.16:5500/SemiDesign/main.html">
-                        <img src="/src/main/webapp/resources/images/logo.png">
+                    <a href="/">
+                        <img src="/resources/images/logo.png">
                     </a>
                 </section>
 
@@ -189,7 +189,7 @@
                 <div class="right">
                     <button id="bottom-nav-top">위로</button>
                     <button id="bottom-nav-list">목록</button>
-                    <img src="/jieun/img/chat_icon_final.png" id="chat-icon">
+                    <img src="/resources/images/chat_icon_final.png" id="chat-icon">
                 </div>
             </main>
         </div>

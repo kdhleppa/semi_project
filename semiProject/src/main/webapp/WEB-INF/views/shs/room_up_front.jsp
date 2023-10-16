@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>방내놓기</title>
     <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
-    <link rel="stylesheet" href="/src/main/webapp/resources/css/room_up_front.css">
+    <link rel="stylesheet" href="/resources/css/room_up_front.css">
     <script src="https://kit.fontawesome.com/75b9a966ac.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <nav>
             <section class="logo">
-                <a href="http://192.168.120.16:5500/SemiDesign/main.html">
-                    <img src="/src/main/webapp/resources/images/logo.png">
+                <a href="/">
+                    <img src="/resources/images/logo.png">
                 </a>
             </section>
             <!-- 각 글씨에 링크 걸것 -->
@@ -57,8 +57,15 @@
  
            <div id="choice">
                 <div id="choice-box">
-                    <div id="choice-one" >원룸</div>
-                    <div id="choice-two" >투룸</div>
+                
+                    <div id="choice-one" >
+                       <a href="/link/roomUp">원룸</a>
+                    </div>
+                    
+                    <div id="choice-two" >
+                     <a href="/link/roomUp(twoRoom)">투룸</a>
+                    </div>
+                    
                 </div>
              
 
@@ -70,22 +77,7 @@
 
            </div>
            
-        <div class="footer">
-
-            <div id="information2">
-
-                ※ 복수의 매물 등록을 원하시는 분들은 <br>
-                   추가 증명자료가 필요합니다.
-
-            </div>
-        
-            <div id="Attachments">
-
-                <button id="attach" aria-setsize="100px">파일 첨부하기 </button>
-
-            </div>
-
-        </div>
+       
          
  
           
