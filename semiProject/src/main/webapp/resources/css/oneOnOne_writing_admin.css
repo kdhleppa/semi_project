@@ -245,6 +245,10 @@ main {
     border-radius: 10px;    
 }
 
+#deleteButton > a{
+	color: black;
+    text-decoration: none;
+}
 
 
 /* main-content-right */

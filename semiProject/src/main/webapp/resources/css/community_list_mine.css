@@ -67,7 +67,6 @@ main {
     align-items: center;
 
     width: 16%;
-    height: 100%;
     font-size: 20px;
     font-weight: bold;
 }
@@ -252,6 +251,13 @@ main {
     height: 28px;
 
     margin: 0 2px;
+}
+
+
+#bottom-nav-top > a,
+#bottom-nav-list > a{
+    text-decoration: none;
+    color: black;
 }
 
 #chat-icon{

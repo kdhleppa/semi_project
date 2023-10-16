@@ -56,7 +56,7 @@
                 	<a href="/link/declarationList">허위매물 신고내역</a>
                 </div>
                 <div>
-                	<a href="#">공지사항</a>
+                	<a href="/link/noticeListUser">공지사항</a>
                 </div>
             </div>
             <div class="content">
@@ -136,7 +136,6 @@
                         <option value="search-content">내용</option>
                     </select>
                     <input id="search-word" placeholder="검색어를 입력해주세요.">
-                    <button id="writing">글쓰기</button>
                 </div>
                 <div class="index">
                     <button><</button>

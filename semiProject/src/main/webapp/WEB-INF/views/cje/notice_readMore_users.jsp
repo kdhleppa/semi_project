@@ -56,7 +56,7 @@
                 	<a href="/link/declarationList">허위매물 신고내역</a>
                 </div>
                 <div>
-                	<a href="#">공지사항</a>
+                	<a href="/link/noticeListUser">공지사항</a>
                 </div>
             </div>
             <div class="content">

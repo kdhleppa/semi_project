@@ -241,12 +241,16 @@ main {
 
     border-radius: 5px;
     background-color: #AC47FC;
-    color: white;
+    
     border: none;
 
-    font-size: 18px;
+    font-size: 16px;
 }
 
+#writing > a{
+	color: white;
+    text-decoration: none;
+}
 
 
 /* main-content-right */
