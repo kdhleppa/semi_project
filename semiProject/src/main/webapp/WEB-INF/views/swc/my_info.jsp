@@ -9,7 +9,7 @@
     <title>내 정보조회</title>
     <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
     <link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
-    <link rel="stylesheet" href="/src/main/webapp/resources/css/my_info.css">
+    <link rel="stylesheet" href="/resources/css/my_info.css">
 </head>
 <body>
     <div class="container">
@@ -49,7 +49,7 @@
                 </div>
                 
                 <div>
-                   <a href="/">채팅함</a>
+                   <a href="/link/messageReceived">채팅함</a>
                 </div>
                 
                 <div>
@@ -65,7 +65,7 @@
                 </div>
                 
                 <div>
-                   <a href="/link/noticeList">공지사항</a>
+                   <a href="/link/noticeListUser">공지사항</a>
                 </div>
                 
             </div>

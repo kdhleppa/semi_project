@@ -165,9 +165,9 @@ public class LinkController {
 	
 	
 	// swc 링크
-	@GetMapping("/detailReciveMessage")
-	public String DetailReciveMessage() {
-		return "/swc/detail_recive_message";
+	@GetMapping("/detailReceiveMessage")
+	public String DetailReceiveMessage() {
+		return "/swc/detail_receive_message";
 	}
 	
 	@GetMapping("/detailsendMessage")
@@ -195,6 +195,10 @@ public class LinkController {
 		return "/swc/message_received";
 	}
 	
+	@GetMapping("/messageSent")
+	public String MessageSent() {
+		return "/swc/message_sent";
+	}
 	
 	@GetMapping("/myInfoUpdate")
 	public String MyInfoUpdate() {

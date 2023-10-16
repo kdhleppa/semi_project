@@ -9,7 +9,7 @@
     <title>정보수정</title>
     <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
     <link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
-    <link rel="stylesheet" href="/src/main/webapp/resources/css/my_info.css">
+    <link rel="stylesheet" href="/resources/css/my_info.css">
 </head>
 <body>
     <div class="container">
@@ -22,13 +22,22 @@
 
             <section class="menu">
 
-                <div id="login">
-                    <a href="/link/login">로그인</a>
-                </div>
-
                 <div id="map">
                     <a href="/link/mapMainLogin">지도</a>
                 </div>
+
+                <div id="favorites">
+                    <a href="/link/interestLogin">관심목록</a>
+                </div>
+
+                <div id="roomup">
+                    <a href="/link/roomUpFront">방내놓기</a>
+                </div>
+
+                <div id="myInfo">
+                    <a href="/link/myInfo">내 정보</a>
+                </div>
+                
             </section>
         </nav>
 
@@ -40,7 +49,7 @@
                 </div>
                 
                 <div>
-                   <a href="/">채팅함</a>
+                   <a href="/link/messageReceived">채팅함</a>
                 </div>
                 
                 <div>
@@ -56,7 +65,7 @@
                 </div>
                 
                 <div>
-                   <a href="/link/noticeList">공지사항</a>
+                   <a href="/link/noticeListUser">공지사항</a>
                 </div>
                 
             </div>

@@ -7,17 +7,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>받은쪽지함</title>
-    <link rel="stylesheet" href="/resources/css/tobbar_atag_white_style.css">
+    <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
     <link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
     <link rel="stylesheet" href="/resources/css/message.css">
-
 </head>
 <body>
     <div class="container">
         <nav>
             <section class="logo">
-                <a href="http://192.168.50.237:5500/semiProject/semiDesign/main.html">
-                    <img src="/src/main/webapp/resources/images/logo.png">
+                <a href="/">
+                    <img src="/resources/images/logo.png">
                 </a>
             </section>
 
