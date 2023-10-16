@@ -65,7 +65,7 @@
                 </div>
                 
                 <div>
-                   <a href="/link/noticeList">공지사항</a>
+                   <a href="/link/noticeListUser">공지사항</a>
                 </div>
 
             </div>
