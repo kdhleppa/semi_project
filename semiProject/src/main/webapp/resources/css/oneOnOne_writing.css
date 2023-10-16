@@ -175,16 +175,22 @@ main {
     display: flex;
 }
 
-#content-option > button{
-    background-color: rgba(217, 217, 217, 0.44);
+#content-option > *{
+    height: 35px;
+    width: 80px;
+	margin: 0 10px;
+    padding: 8px 10px;
+
+	background-color: rgba(217, 217, 217, 0.44);
     border-radius: 5px;
     border: none;
 
-    height: 35px;
-    width: 80px;
-
-    margin: 0 10px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: center;
 }
+
+#imageInput{ display: none;}
 
 /* main - content - main-content - content-text */
 #content-text{
@@ -225,6 +231,10 @@ main {
     border-radius: 10px;    
 }
 
+#cancelButton > a{
+	color: black;
+    text-decoration: none;
+}
 
 /* main-content-right */
 .right{

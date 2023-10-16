@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -53,13 +54,14 @@
                     <div class="main-content-left"></div>
                     <div class="main-content-main">
                         <div id="content-info">
-                            <div>아이디</div>
-                            <div>2023-10-04</div>
-                            <div>조회수 : 108</div>
+                            <div>${memberNickname}</div>
+                            <div>${boardDate}</div>
+                            <div><fmt:formatDate pattern="yyyy-MM-dd" value="${boardDate}"/></div>
+                            <div>"조회수 : " + ${boardCount}</div>
                         </div>
-                        <div id="content-title">제목</div>
-                        <div id="content-text">내용</div>
-                        <div id="content-comments">댓글</div>
+                        <div id="content-title"><c:out value="${boardTitle}"/></div>
+                        <div id="content-text"><c:out value="${boardContent}"/></div>
+                        <div id="content-comments"><c:out value="${boardComment}"/></div>
                         <div id="content-listbutton">
                             <div id="previous">
                                 <button>∧</button>

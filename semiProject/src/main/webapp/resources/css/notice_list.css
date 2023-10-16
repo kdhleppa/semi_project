@@ -264,6 +264,11 @@ main {
     border: none;
 }
 
+#writing > a{
+	text-decoration: none;
+    color: white;
+}
+
 .index > button{
     width: 20px;
     height: 20px;
@@ -282,6 +287,19 @@ main {
 
     font-size: 10px;
 }
+
+.index > button:first-child,
+.index > button:last-child{
+    border: none;
+    background-color: white;
+}
+
+.index > button{
+    background-color: white;
+    border: 0.3px solid black;
+    border-radius: 5px;
+}
+
 
 
 
@@ -305,6 +323,13 @@ main {
 
     margin: 0 2px;
 }
+
+#bottom-nav-top > a,
+#bottom-nav-list > a{
+    text-decoration: none;
+    color: black;
+}
+
 
 #chat-icon{
     width: 50px;

@@ -67,7 +67,6 @@ main {
     align-items: center;
 
     width: 16%;
-    height: 100%;
     font-size: 20px;
     font-weight: bold;
 }
@@ -260,8 +259,12 @@ main {
 
     border-radius: 5px;
     background-color: #AC47FC;
-    color: white;
     border: none;
+}
+
+#writing > a{
+    text-decoration: none;
+    color: white;
 }
 
 .index > button{
@@ -283,6 +286,17 @@ main {
     font-size: 10px;
 }
 
+.index > button:first-child,
+.index > button:last-child{
+    border: none;
+    background-color: white;
+}
+
+.index > button{
+    background-color: white;
+    border: 0.3px solid black;
+    border-radius: 5px;
+}
 
 
 /* main-content-right */
@@ -304,6 +318,12 @@ main {
     height: 28px;
 
     margin: 0 2px;
+}
+
+#bottom-nav-top > a,
+#bottom-nav-list > a{
+    text-decoration: none;
+    color: black;
 }
 
 #chat-icon{
