@@ -8,7 +8,7 @@
     
 	<link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
-    <link rel="stylesheet" href="/src/main/webapp/resources/css/declaration_list_admin.css">
+    <link rel="stylesheet" href="/resources/css/declaration_list_admin.css">
 
     <title>허위매물 신고내역</title>    
 </head>
@@ -17,8 +17,8 @@
         <div class="container">
             <nav>
                 <section class="logo">
-                    <a href="http://192.168.120.16:5500/SemiDesign/main.html">
-                        <img src="/src/main/webapp/resources/images/logo.png">
+                    <a href="/">
+                        <img src="/resources/images/logo.png">
                     </a>
                 </section>
 
@@ -59,7 +59,7 @@
 	                   <a href="/link/roomDetailView">내가 올린 매물</a>
 	                </div>
 	                <div>
-	                   <a href="/link/declarationList">허위매물 신고내역</a>
+	                   <a href="/link/declarationListAdmin">허위매물 신고내역</a>
 	                </div>
 	                <div>
 	                   <a href="#">공지사항</a>
@@ -138,18 +138,7 @@
                                 <button id="delete">삭제</button>
                                 <button id="delete">삭제</button>
                         
-                            <!--
-                            <div>삭제</div>
-                            <div>삭제</div>
-                            <div>삭제</div>
-                            <div>삭제</div>
-                            <div>삭제</div>
-                            <div>삭제</div>
-                            <div>삭제</div>
-                            <div>삭제</div>
-                            <div>삭제</div>
-                            <div>삭제</div> 
-                            -->
+                           
                         </div>
                     </div>
                     <div class="search">
@@ -178,7 +167,7 @@
                 <div class="right">
                     <button id="bottom-nav-top">위로</button>
                     <button id="bottom-nav-list">목록</button>
-                    <img src="/jieun/img/chat_icon_final.png" id="chat-icon">
+                    <img src="/resources/images/chat_icon_final.png" id="chat-icon">
                 </div>
             </main>
         </div>

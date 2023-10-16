@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>투룸 등록한 매물 수정 (매물 수정 투룸)</title>
-    <link rel="stylesheet" href="/src/main/webapp/resources/css/edit_property(two_room).css">
+    <link rel="stylesheet" href="/resources/css/edit_property(two_room).css">
     <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
     <script src="https://kit.fontawesome.com/75b9a966ac.js" crossorigin="anonymous"></script>
 </head>
@@ -15,8 +15,8 @@
         <div class="container">
             <nav>
                 <section class="logo">
-                    <a href="http://192.168.120.16:5500/SemiDesign/main.html">
-                        <img src="/src/main/webapp/resources/images/logo.png">
+                    <a href="/">
+                        <img src="/resources/images/logo.png">
                     </a>
                 </section>
                 <!-- 각 글씨에 링크 걸것 -->
