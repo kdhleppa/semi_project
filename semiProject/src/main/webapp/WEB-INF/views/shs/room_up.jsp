@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>원룸 매물 등록 화면 (방내놓기)</title>
+    <title>매물 등록(방내놓기)</title>
     <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
     <link rel="stylesheet" href="/resources/css/room_up.css">
     <script src="https://kit.fontawesome.com/75b9a966ac.js" crossorigin="anonymous"></script>
 </head>
 <body>
-   <form>
+   
         <div class="container">
             <nav>
                 <section class="logo">
@@ -19,7 +22,7 @@
                         <img src="/resources/images/logo.png">
                     </a>
                 </section>
-                <!-- 각 글씨에 링크 걸것 -->
+               
                 <section class="menu">
 
                    <div id="map">
@@ -49,7 +52,7 @@
 
                 <div id="top-title">
 
-                방내놓기(원룸)
+                방내놓기
 
                 </div>
 
@@ -71,7 +74,7 @@
 
             </div>
 
-    
+		<form action="/product/roomUp" method="POST" name="roomUpFrm" id= "roomUpFrm">    
 
             <div class="main">
             
@@ -81,7 +84,7 @@
 
                 <h4>매물 정보</h4>
 
-                <table class="tg1" style="undefined; table-layout: fixed; width: 1267px">
+                <table class="tg1" >
                     <colgroup>
                     <col style="width: 264px">
                     <col style="width: 1003px">
@@ -89,27 +92,30 @@
 
                 <thead>
                     <tr>
-                      <th class="tg1-0lax">매물 주소</th>
+                      <th class="tg1-0lax" >매물 주소</th>
                       <th class="tg1-0lax">
 
                         주소 검색 <br>
                        
-                        <input type="text" id="input-adress" placeholder="예) 번동 10-1, 강북구 번동">
-                        <button id="adress-btn">검색</button>
-
+                        <input type="text" name="input-adress" id="input-adress" placeholder="예) 번동 10-1, 강북구 번동">
+                        <button type="button" id="adress-btn">검색</button>
+						
+						
                       </th>
                     </tr>
                   </thead>
+                  
                   <tbody>
                     <tr>
-                      <td class="tg1-0lax">원룸 타입</td>
+                      <td class="tg1-0lax">방 타입</td>
                       <td class="tg1-0lax">
 
-                        <input type="checkbox" name="oneroom" value="yyy"> 원룸
+                        <input type="radio"  name="roomType" value="원룸"> 원룸
 
-                        <input type="checkbox" name="Separate oneroom" value="yyy"> 분리형 원룸
+                        <input type="radio"  name="roomType" value="분리형 원룸"> 분리형 원룸
 
-                        <input type="checkbox" name="oneroom + living room" value="yyy"> 원룸 + 거실
+                        <input type="radio"  name="roomType" value="원룸+거실"> 원룸 + 거실
+                        <input type="radio"  name="roomType" value="투룸"> 투룸
 
                       </td>
                     </tr>
@@ -117,7 +123,7 @@
                       <td class="tg1-0lax">매물 크기</td>
                       <td class="tg1-0lax">
 
-                        <input type="text" placeholder="m^2">
+                        <input type="text" name="roomSize" id="roomSize">㎡
 
                       </td>
                     </tr>
@@ -125,12 +131,13 @@
                   </table>
 
             </div>
-    
+    		<div id="mapbox">123</div>
+    		
             <div id="transaction-information">
 
                 <h4>거래 정보 </h4>
 
-                <table class="tg2" style="undefined;table-layout: fixed; width: 1267px">
+                <table class="tg2">
                     <colgroup>
                     <col style="width: 264px">
                     <col style="width: 1003px">
@@ -141,10 +148,10 @@
                       <th class="tg2-0lax">거래 종류</th>
                       <th class="tg2-0lax">
 
-                        <input type="radio" name="charter" value="HTML"> 전세
-
-                        <input type="radio" name="monthly" value="HTML"> 월세
-
+                        <input type="radio" name="productRentType" value="전세" onclick="showFields('전세')"> 전세
+						<input type="radio" name="productRentType" value="월세" onclick="showFields('월세')"> 월세
+						
+						
                       </th>
                     </tr>
                   </thead>
@@ -152,26 +159,27 @@
                     <tr>
                       <td class="tg2-0lax">가격 정보</td>
                       <td class="tg2-0lax">
-
-                        <p>전세가</p> <input type="int" placeholder="만원">
-
+						<p id="rentTypeMessage">전세 또는 월세를 클릭해 주세요.</p>
+                        
+						<label for="productDeposit" id="depositLabel">보증금</label>
+					    <input type="text" name="productDeposit" id="productDeposit" /><span id="depositWon">만원</span>
+					    <br>
+										    
+					    <label for="productMonthlyRent" id="monthlyRentLabel">월세</label>
+					    <input type="text" name="productMonthlyRent" id="productMonthlyRent"/><span id="rentWon">만원</span>
+					            
+					     
                       </td>
                     </tr>
                     <tr>
                       <td class="tg2-0lax">공용관리비</td>
                       <td class="tg2-0lax">
 
-                        <div>
-                            <p>관리비 여부</p>
-
-                            <input type="radio" name="no" value="HTML"> 없음
-
-                            <input type="radio" name="yes" value="HTML"> 있음
-                        </div>    
+                          
 
                             <p>관리비</p>
 
-                            <input type="int" placeholder="원">
+                            <input type="int" >만원
 
                       </td>
                     </tr>
@@ -180,13 +188,13 @@
                         <td class="tg2-0lax">
 
 
-                            <input type="radio" name="no" value="HTML"> 즉시 입주
+                            <input type="radio" name="ent_day" value="N"> 즉시 입주
 
-                            <input type="radio" name="yes" value="HTML"> 일자 선택
+                            <input type="radio" name="ent_day" value="Y"> 일자 선택
 
                             <input type="int" placeholder="예) 20210721">
 
-                            <input type="checkbox" name="discussion" value="yyy"> 협의 가능할 경우
+                            <input type="checkbox" name="enterDateNego" value="Y"> 협의 가능할 경우
 
 
 
@@ -202,7 +210,7 @@
                 <h4>시설 정보 </h4>
 
 
-                <table class="tg3" style="undefined;table-layout: fixed; width: 1267px">
+                <table class="tg3">
                     <colgroup>
                     <col style="width: 264px">
                     <col style="width: 1003px">
@@ -214,9 +222,9 @@
                         <td class="tg3-0lax">
 
                             
-                        <input type="radio" name="central heating" value="HTML"> 중앙 난방
+                        <input type="radio" name="heating" value="중앙난방"> 중앙 난방
 
-                        <input type="radio" name="individual heating" value="HTML"> 개별 난방
+                        <input type="radio" name="heating" value="개별난방"> 개별 난방
                         
 
                         </td>
@@ -228,9 +236,9 @@
                       <th class="tg3-0lax">
 
                         
-                        <input type="radio" name="no" value="HTML"> 없음
+                        <input type="radio" name="air_conditioner" value="N"> 없음
 
-                        <input type="radio" name="yes" value="HTML"> 있음
+                        <input type="radio" name="air_conditioner" value="Y"> 있음
                         
                       </th>
                     </tr>
@@ -238,19 +246,17 @@
                       <td class="tg3-0lax">생활 시설</td>
                       <td class="tg3-0lax">
 
-                        <input type="checkbox" name="all select" value="yyy"> 전체 선택 <br>
+                        <input type="checkbox" name="refrigerator" value="Y"> 냉장고
 
-                        <input type="checkbox" name="refrigerator" value="yyy"> 냉장고
+                        <input type="checkbox" name="washing machine" value="Y"> 세탁기
 
-                        <input type="checkbox" name="washing machine" value="yyy"> 세탁기
+                        <input type="checkbox" name="CCTV" value="Y"> CCTV
 
-                        <input type="checkbox" name="CCTV" value="yyy"> CCTV
+                        <input type="checkbox" name="Entrance security" value="Y"> 현관보안 <br>
 
-                        <input type="checkbox" name="Entrance security" value="yyy"> 현관보안 <br>
+                        <input type="checkbox" name="Gas range" value="Y"> 가스레인지
 
-                        <input type="checkbox" name="Gas range" value="yyy"> 가스레인지
-
-                        <input type="checkbox" name="Microwave" value="yyy"> 전자레인지
+                        <input type="checkbox" name="Microwave" value="Y"> 전자레인지
 
                       </td>
                     </tr>
@@ -264,7 +270,7 @@
                 <h4> 사진 등록 </h4>
 
 
-                <table class="tg4" style="undefined;table-layout: fixed; width: 1267px">
+                <table class="tg4">
                     <colgroup>
                     <col style="width: 264px">
                     <col style="width: 1003px">
@@ -275,7 +281,7 @@
                       <th class="tg4-0lax">일반 사진</th>
                       <th class="tg4-0lax">
 
-                        <button id="photo-add">+ 사진 추가</button>
+                        <button type="button" id="photo-add" onclick="">+ 사진 추가</button>
 
                       </th>
                     </tr>
@@ -302,9 +308,9 @@
                       <th class="tg5-0lax">
 
 
-                        <input type="radio" name="no" value="HTML"> 없음
+                        <input type="radio" name="ev" value="N"> 없음
 
-                        <input type="radio" name="yes" value="HTML"> 있음
+                        <input type="radio" name="ev" value="Y"> 있음
                         
 
                       </th>
@@ -316,13 +322,13 @@
                       <td class="tg5-0lax">
 
 
-                        <input type="radio" name="no" value="HTML"> 불가능
+                        <input type="radio" name="parking" value="N"> 불가능
 
-                        <input type="radio" name="yes" value="HTML"> 가능
+                        <input type="radio" name="parking" value="Y"> 가능
 
          
 
-                        <input type="int" placeholder="총 가능 주차수">
+                        
 
                         
 
@@ -366,9 +372,9 @@
                       <td class="tg6-0lax">상세 설명</td>
 
                       <td class="tg6-0lax">
-
-                        <input id="Description-detail" type="text" placeholder="매물 상세 페이지에 노출되는 문구입니다. 1000자 이내로 작성해 주세요."> <br>
-
+                        
+						<textarea name="message" rows="20" cols="80" placeholder="매물 상세 페이지에 노출되는 문구입니다. 1000자 이내로 작성해 주세요."></textarea>
+						<br>
 
                         - 매물 정보와 관련없는 홍보성 정보는 입력할 수 없습니다. <br>
 
@@ -390,33 +396,33 @@
             
             
 
-            </div>
-
             <div class="footer">
             
                 
                 <div id="checkbox">
     
-                    <input type="checkbox" name="registration-checkbox" value="yyy">  매물 관리 규정을 확인 하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.
+                    <input type="checkbox" name="registration-checkbox" value="Y">  매물 관리 규정을 확인 하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.
     
                 </div>
         
                 
                 <div id="registration">
     
-                    <button id="registration-btn">매물 등록</button>
+                    <button type="submmit" id="registration-btn">매물 등록</button>
     
                 </div>
         
                 </div>
 
+            </div>
             
+		</form>
 
 
             
         </div>
-    </form>        
-
-
+            
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb9b63d71a5408fd96cba9a1674b9d43&libraries=services,clusterer"></script>
+	<script src="/resources/js/room_up.js"></script>
 </body>
 </html>
