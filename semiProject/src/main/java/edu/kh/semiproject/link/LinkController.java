@@ -50,12 +50,12 @@ public class LinkController {
 		return "/cje/community_list";
 	}
 	
-	@GetMapping("/communityreadMoreMine")
+	@GetMapping("/communityReadMoreMine")
 	public String CommunityreadMoreMine() {
 		return "/cje/community_readMore_mine";
 	}
 
-	@GetMapping("/communityreadMoreOthers")
+	@GetMapping("/communityReadMoreOthers")
 	public String CommunityreadMoreOthers() {
 		return "/cje/community_readMore_others";
 	}
@@ -70,19 +70,14 @@ public class LinkController {
 		return "/cje/main_login";
 	}
 	
-	@GetMapping("/noticeList")
-	public String NoticeList() {
-		return "/cje/notice_list";
-	}
-	
 	@GetMapping("/noticeListUser")
 	public String NoticeListUser() {
-		return "/cje/write_message";
+		return "/cje/notice_list_user";
 	}
 	
 	@GetMapping("/noticeListAdmin")
 	public String NoticeListAdmin() {
-		return "/cje/write_message";
+		return "/cje/notice_list_admin";
 	}
 	
 	
@@ -101,24 +96,24 @@ public class LinkController {
 		return "/cje/notice_writing";
 	}
 	
-	@GetMapping("/onoOnOneListAdmin")
-	public String OnoOnOneListAdmin() {
-		return "/cje/onoOnOne_list_admin";
+	@GetMapping("/oneOnOneListAdmin")
+	public String OneOnOneListAdmin() {
+		return "/cje/oneOnOne_list_admin";
 	}
 	
-	@GetMapping("/onoOnOneListUser")
-	public String OnoOnOneListUser() {
-		return "/cje/onoOnOne_list_user";
+	@GetMapping("/oneOnOneListUser")
+	public String OneOnOneListUser() {
+		return "/cje/oneOnOne_list_user";
 	}
 	
-	@GetMapping("/onoOnOneWritingAdmin")
-	public String OnoOnOneWritingAdmin() {
-		return "/cje/onoOnOne_writing_admin";
+	@GetMapping("/oneOnOneWritingAdmin")
+	public String OneOnOneWritingAdmin() {
+		return "/cje/oneOnOne_writing_admin";
 	}
 
-	@GetMapping("/onoOnOneWriting")
-	public String OnoOnOneWriting() {
-		return "/cje/onoOnOne_writing";
+	@GetMapping("/oneOnOneWriting")
+	public String OneOnOneWriting() {
+		return "/cje/oneOnOne_writing";
 	}
 	
 	
@@ -145,7 +140,7 @@ public class LinkController {
 	
 	@GetMapping("/roomUpFront")
 	public String RoomUpFront() {
-		return "/shs/room_up_front";
+		return "/shs/room_up";
 	}
 	
 	@GetMapping("/roomUp")
@@ -153,15 +148,7 @@ public class LinkController {
 		return "/shs/room_up";
 	}
 	
-	@GetMapping("/roomUp(two_room)")
-	public String RoomUp2Room() {
-		return "/shs/room_up(two_room)";
-	}
-	
-	@GetMapping("/underReview")
-	public String UnderReview() {
-		return "/shs/under_review";
-	}
+
 	
 	
 	// swc 링크

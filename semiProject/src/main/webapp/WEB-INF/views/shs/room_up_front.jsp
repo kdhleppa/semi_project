@@ -18,7 +18,7 @@
                     <img src="/resources/images/logo.png">
                 </a>
             </section>
-            <!-- 각 글씨에 링크 걸것 -->
+           
             <section class="menu">
 
                <div id="map">
