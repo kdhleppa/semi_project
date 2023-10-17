@@ -160,14 +160,15 @@
                       <td class="tg2-0lax">가격 정보</td>
                       <td class="tg2-0lax">
 						<p id="rentTypeMessage">전세 또는 월세를 클릭해 주세요.</p>
-                        
-						<label for="productDeposit" id="depositLabel">보증금</label>
-					    <input type="text" name="productDeposit" id="productDeposit" /><span id="depositWon">만원</span>
+                        <span style="display: flex;">
+						<label for="productDeposit" id="depositLabel">보증금&nbsp</label>
+					    <input type="text" name="productDeposit" id="productDeposit" /><span id="depositWon">&nbsp만원</span>
+					    </span>
 					    <br>
-										    
-					    <label for="productMonthlyRent" id="monthlyRentLabel">월세</label>
+						<span style="display: flex;">			    
+					    <label for="productMonthlyRent" id="monthlyRentLabel">월세&nbsp&nbsp&nbsp&nbsp</label>
 					    <input type="text" name="productMonthlyRent" id="productMonthlyRent"/><span id="rentWon">만원</span>
-					            
+					    </span>        
 					     
                       </td>
                     </tr>

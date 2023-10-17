@@ -1,8 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mamMapper">
-  <select id="allAdress">
-  	SELEFT PRODUCT_ADRESS
-  	FROM PRODUCT
-  </select>
+<mapper namespace="mapMapper">
+  
+  <resultMap type="Product" id="product_rm">
+  	
+  	<id property="productNo" column="PRODUCT_NO"/>
+  	  	
+	<result property="memberNo" column="MEMBER_NO" />
+    <result property="managerNo" column="MANAGER_NO" />
+    <result property="productAddress" column="PRODUCT_ADDRESS" />
+    <result property="productAddressHo" column="PRODUCT_ADDRESS_HO" />
+    <result property="productTitle" column="PRODUCT_TITLE" />
+    <result property="productContent" column="PRODUCT_CONTENT" />
+    <result property="roomType" column="ROOM_TYPE" />
+    <result property="roomSize" column="ROOM_SIZE" />
+    <result property="productDeposit" column="PRODUCT_DEPOSIT" />
+    <result property="productMonthlyRent" column="PRODUCT_MONTHLY_RENT" />
+    <result property="productRentType" column="PRODUCT_RENT_TYPE" />
+    <result property="productMaintenace" column="PRODUCT_MAINTENACE" />
+    <result property="enterDate" column="ENTER_DATE" />
+    <result property="enterDateNego" column="ENTER_DATE_NEGO" />
+    <result property="heatType" column="HEAT_TYPE" />
+    <result property="parking" column="PARKING" />
+    <result property="airCon" column="AIR_CON" />
+    <result property="fridge" column="FRIDGE" />
+    <result property="washer" column="WASHER" />
+    <result property="cctv" column="CCTV" />
+    <result property="doorlock" column="DOORLOCK" />
+    <result property="stove" column="STOVE" />
+    <result property="microwave" column="MICROWAVE" />
+    <result property="elevator" column="ELEVATOR" />
+    <result property="registrastionDate" column="REGISTRASTION_DATE" />
+    <result property="productHide" column="PRODUCT_HIDE" />
+</resultMap>
+
+
+<select id="selectAllProduct" resultMap="product_rm">
+	SELECT *
+	FROM PRODUCT
+	WHERE PRODUCT_HIDE = 'N'
+</select>
+
+
+
+
+  	
+  
+  
+  
+  
 </mapper>

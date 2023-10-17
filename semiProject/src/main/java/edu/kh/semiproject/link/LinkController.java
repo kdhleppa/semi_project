@@ -11,8 +11,7 @@ import edu.kh.semiproject.product.model.dto.Product;
 @Controller
 @RequestMapping("/link")
 public class LinkController {
-	//@Autowired
-	//private MapService service; 
+	
 	
 	
 	// kdh 쪽으로 연결하는 링크모음
@@ -28,14 +27,7 @@ public class LinkController {
 	
 	
 	
-	@GetMapping("/mapMainNotLogin")
-	public String MapMainNotLogin() {
-		
-		//Product productAddressList = service.addressList();
-		
-		
-		return "/kdh/map_main_not_login";
-	}
+	
 		
 	@GetMapping("/roomDetailView")
 	public String RoomDetailView() {
@@ -53,29 +45,29 @@ public class LinkController {
 	}
 	
 	// cje 쪽으로 연결하는 링크모음
-	@GetMapping("/communityListMine")
-	public String CommunityListMine() {
-		return "/cje/community_list_mine";
+	@GetMapping("/boardListMine")
+	public String BoardListMine() {
+		return "/cje/board_list_mine";
 	}
 	
-	@GetMapping("/communityList")
-	public String CommunityList() {
-		return "/cje/community_list";
+	@GetMapping("/boardList")
+	public String BoardList() {
+		return "/cje/board_list";
 	}
 	
-	@GetMapping("/communityReadMoreMine")
-	public String CommunityreadMoreMine() {
-		return "/cje/community_readMore_mine";
+	@GetMapping("/boardReadMoreMine")
+	public String BoardreadMoreMine() {
+		return "/cje/board_readMore_mine";
 	}
 
-	@GetMapping("/communityReadMoreOthers")
-	public String CommunityreadMoreOthers() {
-		return "/cje/community_readMore_others";
+	@GetMapping("/boardReadMoreOthers")
+	public String BoardreadMoreOthers() {
+		return "/cje/board_readMore_others";
 	}
 	
-	@GetMapping("/communityWriting")
-	public String CommunityWriting() {
-		return "/cje/community_writing";
+	@GetMapping("/boardWriting")
+	public String BoardWriting() {
+		return "/cje/board_writing";
 	}
 	
 	@GetMapping("/mainLogin")
