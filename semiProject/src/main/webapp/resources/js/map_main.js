@@ -16,25 +16,21 @@ var clusterer = new kakao.maps.MarkerClusterer({
 
 var positions = [
     {
-        title: '안양역', 
+        
         "lat": 37.402707,
         "lng": 126.922044
     },
     {
-        title: '안양역 주위 1', 
+         
         "lat": 37.400707,
         "lng": 126.920044
     },
     {
-        title: '안양역 주위 2', 
+         
         "lat": 37.403007,
         "lng": 126.925044
-    },
-    {
-        title: '안양역 주위 3',
-        "lat": 37.405707,
-        "lng": 126.925044
     }
+    
 ];
 
 

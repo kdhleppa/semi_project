@@ -1,12 +1,19 @@
 package edu.kh.semiproject.link;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.kh.semiproject.map.model.service.MapService;
+import edu.kh.semiproject.product.model.dto.Product;
+
 @Controller
 @RequestMapping("/link")
 public class LinkController {
+	//@Autowired
+	//private MapService service; 
+	
 	
 	// kdh 쪽으로 연결하는 링크모음
 	@GetMapping("/likeList")
@@ -19,8 +26,14 @@ public class LinkController {
 		return "/kdh/map_main_login";
 	}
 	
+	
+	
 	@GetMapping("/mapMainNotLogin")
 	public String MapMainNotLogin() {
+		
+		//Product productAddressList = service.addressList();
+		
+		
 		return "/kdh/map_main_not_login";
 	}
 		
