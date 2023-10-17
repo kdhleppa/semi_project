@@ -105,6 +105,16 @@
                         <p>제목 (상세보기에서꺼네오기)</p>
                     </div>
                 </div>
+                <div id="room-preview1" class = "preview-container">
+                    <div id="preview-img1">방 대표사진자리</div>
+                    <div id="preview-text-container1" >
+                        <p>가격표시 ex) 1000/40</p>
+                        <p>원룸/투룸표시 ex) 원룸</p>
+                        <p>정보 ex) 저층, 48㎡, 관리비 5만</p>
+                        <p>제목 (상세보기에서꺼네오기)</p>
+                    </div>
+                </div>
+                
             </div>
             <%-- 지도에 연결된 기능 이것저것 추가해야함 --%>
             <div id="main-right"><button id="realbtn">실거래가 조회</button></div>
