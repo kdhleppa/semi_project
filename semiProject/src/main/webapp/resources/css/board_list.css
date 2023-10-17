@@ -100,6 +100,7 @@ main {
 
 .menutitle{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     
@@ -110,10 +111,8 @@ main {
     padding-top: 18px;
 }
 
-/* main - content - main-content */
-
 .main-content{
-    height: 70%;
+    height: 80%;
 
     display: flex;
     flex-direction: column;
@@ -123,66 +122,107 @@ main {
     margin: 0 50px;
 }
 
-.main-content > div{
+.pagination-area{
+	height: 10%;
+
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*********************/
+
+.main-content-title{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    width: 100%;
+    height: 10%;
+    
+    margin : 50px;
+}
+
+.main-content-content{
+    width: 100%;
+    height: 90%;
+}
+
+/*********************/
+
+.main-content-title > div{    
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.main-content div{
-    font-size: 16px;
-    margin-bottom: 10px;
+.main-content-title > div:first-child{
+    width: 10%;
+    margin-right: 10px;
+
 }
 
-#content-number :first-child, #content-writer :first-child, #content-title :first-child,
-#content-date :first-child, #content-hits :first-child{
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#content-number{
+.main-content-title > div:nth-child(2){
     width: 10%;
     margin-right: 10px;
 }
 
-#content-writer{
-    width: 10%;
-    margin-right: 10px;
-}
-
-#content-title{
+.main-content-title > div:nth-child(3){
     width: 55%;
     margin-right: 10px;
 }
 
-#content-date{
+.main-content-title > div:nth-child(4){
     width: 12%;
     margin-right: 10px;
 }
 
-#content-hits{
+.main-content-title > div:nth-child(5){
     width: 10%;
 }
 
-#content-number > div:not(#content-number-title),
-#content-writer > div:not(#content-writer-title),
-#content-date > div:not(#content-date-title),
-#content-hits > div:not(#content-hits-title){
+
+/**********************/
+
+.main-content-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.main-content-content div,
+.main-content-content a{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+
+#content-number,
+#content-writer,
+#content-date,
+#content-hits{
     border: none;
     border-radius: 5px;
     height: 35px;
     margin: 0 5px 10px 5px;
 }
 
-#content-title > div:not(#content-title-title){
+#content-title{
     border: 0.5px solid black;
     border-radius: 5px;
     height: 35px;
     margin: 0 5px 10px 5px;
 }
 
-#content-number > div:not(#content-number-title){
+#content-number{
     width: 100%;
     background-color: rgba(217, 217, 217, 0.44);
 
@@ -191,7 +231,7 @@ main {
     justify-content: center;
 }
 
-#content-writer > div:not(#content-writer-title){
+#content-writer{
     width: 100%; 
     background-color: rgba(217, 217, 217, 0.44);
 
@@ -200,7 +240,7 @@ main {
     justify-content: center;
 }
 
-#content-title > div:not(#content-title-title){
+#content-title{
     width: 100%;
 
     display: flex;
@@ -209,7 +249,7 @@ main {
     padding-left: 10px;
 }
 
-#content-date > div:not(#content-date-title){
+#content-date{
     width: 100%;
     background-color: rgba(217, 217, 217, 0.44);
 
@@ -218,7 +258,7 @@ main {
     justify-content: center;
 }
 
-#content-hits > div:not(#content-hits-title){
+#content-hits{
     width: 100%;
     background-color: rgba(217, 217, 217, 0.44);
 
@@ -226,6 +266,7 @@ main {
     align-items: center;
     justify-content: center;
 }
+
 
 /* main - content - search */
 
@@ -276,26 +317,35 @@ main {
 
 /* main - content - index */
 
-.index{
-    height: 10%;
 
+.pagination{
+	list-style: none;
     display: flex;
-    align-items: center;
     justify-content: center;
-
-    font-size: 10px;
+    padding: 10px;
+	height: 10%;
 }
 
-.index > button:first-child,
-.index > button:last-child{
-    border: none;
-    background-color: white;
+.pagination li{
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 12px;   
 }
 
-.index > button{
-    background-color: white;
-    border: 0.3px solid black;
-    border-radius: 5px;
+.pagination a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.current{
+    font-weight: bold;
+    background-color: #455ba8;
+    border-radius: 50%s;
+    color: white !important;
+    letter-spacing: 0 !important;
 }
 
 

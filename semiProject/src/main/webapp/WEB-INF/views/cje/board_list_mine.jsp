@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
 	<link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
-	<link rel="stylesheet" href="/resources/css/community_list_mine.css">
+	<link rel="stylesheet" href="/resources/css/board_list_mine.css">
 	<title>내가 쓴 글 목록</title>
 </head>
 <body>
