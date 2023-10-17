@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
 	<link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">	
-	<link rel="stylesheet" href="/resources/css/community_readMore_mine.css">
+	<link rel="stylesheet" href="/resources/css/board_readMore_mine.css">
     <title>자유게시판 글 자세히보기(남이 쓴 글)</title>
 </head>
 <body>

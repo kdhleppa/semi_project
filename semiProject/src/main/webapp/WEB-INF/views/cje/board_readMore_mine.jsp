@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
+<meta charset="UTF-8">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
 	<link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
-	<link rel="stylesheet" href="/resources/css/community_writing.css">
-    <title>자유게시판 글쓰기</title>
+	<link rel="stylesheet" href="/resources/css/board_readMore_mine.css">
+	<title>커뮤니티 글 자세히보기(본인이 쓴 글)</title>
 </head>
 <body>
 	<div class="container">
@@ -36,7 +38,6 @@
                     <a href="/link/myInfo">내정보</a>
                 </div>
             </section>
-            </section>
         </nav>
 
         <main>
@@ -52,22 +53,35 @@
                 <div class="main-content">
                     <div class="main-content-left"></div>
                     <div class="main-content-main">
-                        <input id="content-title" placeholder="제목을 입력해주세요."></input>
-                        <div id="content-option">
-	                        <label for="imageInput">이미지</label>
-	                        <input type="file" name="profileImage" id="imageInput" accept="image/*">
-                            <button type="button">동영상 url</button>
+                        <div id="content-info">
+                            <div>${memberNickname}</div>
+                            <div>${boardDate}</div>
+                            <div><fmt:formatDate pattern="yyyy-MM-dd" value="${boardDate}"/></div>
+                            <div>"조회수 : " + ${boardCount}</div>
                         </div>
-                        <input id="content-text" placeholder="내용을 입력해주세요."></input>                        
+                        <div id="content-title"><c:out value="${boardTitle}"/></div>
+                        <div id="content-text"><c:out value="${boardContent}"/></div>
+                        <div id="content-comments"><c:out value="${boardComment}"/></div>
+                        <div id="content-listbutton">
+                            <div id="previous">
+                                <button>∧</button>
+                                <div>이전글</div>
+                                <div>글제목</div>
+                            </div>
+                            <div id="next">
+                                <button>∨</button>
+                                <div>다음글</div>
+                                <div>글제목</div>
+                            </div>
+                        </div>
                         <div id="content-modifybutton">
-                            <button id="registerButton">등록하기</button>
-                            <button id="cancelButton">취소</button>
+                            <button id="modifyButton">수정</button>
+                            <button id="deleteButton">삭제</button>
                         </div>
                     </div>
                     <div class="main-content-right"></div> 
                 </div>
             </div>
-
             <div class="right">
                 <button id="bottom-nav-top">
                 	<a href="#">위로</a>
@@ -77,9 +91,8 @@
                 </button>
                 <img src="/resources/images/chat_icon.png" id="chat-icon">
             </div>
-
         </main>
     </div>
-    
+
 </body>
 </html>
