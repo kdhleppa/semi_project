@@ -94,7 +94,12 @@
                     <p class="infobox" style="margin-left: 60px;">&nbsp;&nbsp;&nbsp;&nbsp;닉네임</p>
                     <input id="textbox" type="text"><button>중복확인</button>
                 </div>
-
+                
+                <div>
+                    <p class="infobox">&nbsp;&nbsp;&nbsp;&nbsp;주소</p>
+                    <input id="textbox" type="text">
+                </div>
+                
                 <div>
                     <p class="infobox">&nbsp;&nbsp;&nbsp;&nbsp;Email</p>
                     <input id="textbox" type="text">

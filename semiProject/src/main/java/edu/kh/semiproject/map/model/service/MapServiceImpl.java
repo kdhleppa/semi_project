@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.semiproject.map.model.dao.MapDAO;
+import edu.kh.semiproject.product.model.dto.Product;
 
 @Service
 public class MapServiceImpl implements MapService{
@@ -13,12 +14,15 @@ public class MapServiceImpl implements MapService{
 	
 	@Autowired
 	private MapDAO dao;
-	
-	
-/*
+
 	@Override
-	public List<allAdressList> adressList() {
-		return dao.allAdressList();
+	public List<Product> selectAllProduct() {
+		
+		return dao.selectAllProduct();
 	}
-	*/
+
+	
+	
+	
+
 }

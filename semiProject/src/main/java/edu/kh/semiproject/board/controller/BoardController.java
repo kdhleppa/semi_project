@@ -1,6 +1,10 @@
 package edu.kh.semiproject.board.controller;
 
+
 import java.util.Map;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +21,7 @@ import oracle.jdbc.proxy.annotation.Post;
 @Controller
 public class BoardController {
 	
+
 	private BoardService service;
 	
 	/** 게시글 목록 조회
@@ -43,6 +48,14 @@ public class BoardController {
 		return "board/boardList";
 	}	
 	
+
+	/*@RequestMapping("/post/{boardNo}")
+    public String viewPostDetails(@PathVariable int boardNo, Model model) {
+        Post post = postService.getPostById(boardNo);
+        model.addAttribute("post", post);
+        return "postDetails"; // postDetails.jsp와 같은 뷰를 반환
+    }*/
+
 	
 	
 }
