@@ -33,7 +33,7 @@
                 
             </div>
             
-            <form class="content">        
+            <form class="content" action="/login" method="post" name="login-form" id="loginFrm">        
                 <div class="title">
                     로그인
                 </div>
@@ -41,14 +41,14 @@
                 <div>
                     아이디
                     <div>
-                        &nbsp; <input type="text" id="underline">
+                        &nbsp; <input type="text" id="underline" name="memberId">
                     </div>
                 </div>
 
                 <div>
                     비밀번호
                     <div>
-                        <input type="text" id="underline" style="width: 296px;">
+                        <input type="text" id="underline" name="memberPw" style="width: 296px;">
                     </div>
                 </div>
                     
