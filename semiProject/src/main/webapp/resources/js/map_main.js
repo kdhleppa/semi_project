@@ -1,6 +1,9 @@
 fetch("/link/getProducts")
 .then(res => res.json())
-.then(products => console.log(products))
+.then(data => {
+	console.log(data)	
+});
+
 
 var map = new kakao.maps.Map(document.getElementById('main-right'), { 
     center : new kakao.maps.LatLng(37.402707, 126.922044),
