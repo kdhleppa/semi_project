@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="products" value="${products}" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,11 @@
     <script src="https://kit.fontawesome.com/75b9a966ac.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+
     <div class="container">
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+        <!-- 
         <nav>
             <section class="logo">
                 <a href="/">
@@ -40,7 +46,7 @@
 
             </section>
         </nav>
-
+		 -->
         <div class="mid-top">
             <div id="mid-top-left">
                 <i class="fa-solid fa-magnifying-glass" id="icon1"></i>&nbsp;
@@ -51,7 +57,7 @@
             <div id="mid-top-right">
                 <form id="option" action="">
                     <select name="" id="">
-                        <option class="optionsize" value="default" selected><p></p>원룸, 투룸</option>
+                        <option class="optionsize" value="default" selected>원룸, 투룸</option>
                         <option class="optionsize" value="oneroom">원룸</option>
                         <option class="optionsize" value="tworoom">투룸</option>
                         
@@ -77,45 +83,29 @@
 
         <div class="main">
             <div id="main-left">
-                <p> 디폴트값 ! 앗! 이주변에는 방이 없어요!</p>
-                <div id="room-preview1" class = "preview-container">
-                    <div id="preview-img1">방 대표사진자리</div>
-                    <div id="preview-text-container1" >
-                        <p>가격표시 ex) 1000/40</p>
-                        <p>원룸/투룸표시 ex) 원룸</p>
-                        <p>정보 ex) 저층, 48㎡, 관리비 5만</p>
-                        <p>제목 (상세보기에서꺼네오기)</p>
-                    </div>
-                </div>
-                <div id="room-preview1" class = "preview-container">
-                    <div id="preview-img1">방 대표사진자리</div>
-                    <div id="preview-text-container1" >
-                        <p>가격표시 ex) 1000/40</p>
-                        <p>원룸/투룸표시 ex) 원룸</p>
-                        <p>정보 ex) 저층, 48㎡, 관리비 5만</p>
-                        <p>제목 (상세보기에서꺼네오기)</p>
-                    </div>
-                </div>
-                <div id="room-preview1" class = "preview-container">
-                    <div id="preview-img1">방 대표사진자리</div>
-                    <div id="preview-text-container1" >
-                        <p>가격표시 ex) 1000/40</p>
-                        <p>원룸/투룸표시 ex) 원룸</p>
-                        <p>정보 ex) 저층, 48㎡, 관리비 5만</p>
-                        <p>제목 (상세보기에서꺼네오기)</p>
-                    </div>
-                </div>
-                <div id="room-preview1" class = "preview-container">
-                    <div id="preview-img1">방 대표사진자리</div>
-                    <div id="preview-text-container1" >
-                        <p>가격표시 ex) 1000/40</p>
-                        <p>원룸/투룸표시 ex) 원룸</p>
-                        <p>정보 ex) 저층, 48㎡, 관리비 5만</p>
-                        <p>제목 (상세보기에서꺼네오기)</p>
-                    </div>
-                </div>
-                
+                <c:if test="${empty products}">
+                <p> 앗! 이주변에는 방이 없어요!</p>
+                </c:if>
+                <c:if test="${not empty products}">
+                	<c:forEach items="${products}" var = "products">
+		                <div  class = "preview-container">
+		                    <div class="preview-img">방 대표사진자리</div>
+		                    <div class="preview-text-container" >
+		                    	<p>${products.productRentType}</p>
+		                        <p>보증금 : ${products.productDeposit} 만원</p>
+		                        <c:if test="${products.productMonthlyRent != 0}">
+		                        <p>월세 : ${products.productMonthlyRent} 만원</p>
+		                        </c:if>
+		                        <c:if test="${not empty products.productMaintenace}">
+		                        <p>관리비 : ${products.productMaintenace} 만원</p>
+		                        </c:if>
+	                   	    </div>
+	                   	 </div>
+                	</c:forEach>
+                </c:if>
             </div>
+                
+            
             <%-- 지도에 연결된 기능 이것저것 추가해야함 --%>
             <div id="main-right"><button id="realbtn">실거래가 조회</button></div>
             
@@ -135,7 +125,7 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb9b63d71a5408fd96cba9a1674b9d43&libraries=services,clusterer"></script>
     <script>
     	const products = "${products}"
-    	
+    	console.log(products);
     </script>
     <script src="/resources/js/map_main.js"></script>
 </body>

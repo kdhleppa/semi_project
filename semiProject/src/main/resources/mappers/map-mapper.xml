@@ -16,7 +16,7 @@
     <result property="roomSize" column="ROOM_SIZE" />
     <result property="productDeposit" column="PRODUCT_DEPOSIT" />
     <result property="productMonthlyRent" column="PRODUCT_MONTHLY_RENT" />
-    <result property="productRentType" column="PRODUCT_RENT_TYPE" />
+    <result property="productRentType" column="PRODUCT_RENTTYPE" />
     <result property="productMaintenace" column="PRODUCT_MAINTENACE" />
     <result property="enterDate" column="ENTER_DATE" />
     <result property="enterDateNego" column="ENTER_DATE_NEGO" />
