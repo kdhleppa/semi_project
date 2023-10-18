@@ -26,18 +26,7 @@ public class LinkController {
 	public String MapMainLogin() {
 		return "/kdh/map_main_login";
 	}
-	
-	
-	
-	@GetMapping("/mapMainNotLogin")
-	public String MapMainNotLogin() {
-		
-		//Product productAddressList = service.addressList();
-		
-		
-		return "/kdh/map_main_not_login";
-	}
-		
+			
 	@GetMapping("/roomDetailView")
 	public String RoomDetailView() {
 		return "/kdh/room_detail_view";
@@ -54,29 +43,24 @@ public class LinkController {
 	}
 	
 	// cje 쪽으로 연결하는 링크모음
-	@GetMapping("/communityListMine")
-	public String CommunityListMine() {
-		return "/cje/community_list_mine";
+	@GetMapping("/boardListMine")
+	public String BoardListMine() {
+		return "/cje/board_list_mine";
 	}
 	
-	@GetMapping("/communityList")
-	public String CommunityList() {
-		return "/cje/community_list";
-	}
-	
-	@GetMapping("/communityReadMoreMine")
-	public String CommunityreadMoreMine() {
-		return "/cje/community_readMore_mine";
+	@GetMapping("/boardReadMoreMine")
+	public String BoardreadMoreMine() {
+		return "/cje/board_readMore_mine";
 	}
 
-	@GetMapping("/communityReadMoreOthers")
-	public String CommunityreadMoreOthers() {
-		return "/cje/community_readMore_others";
+	@GetMapping("/boardReadMoreOthers")
+	public String BoardreadMoreOthers() {
+		return "/cje/board_readMore_others";
 	}
 	
-	@GetMapping("/communityWriting")
-	public String CommunityWriting() {
-		return "/cje/community_writing";
+	@GetMapping("/boardWriting")
+	public String BoardWriting() {
+		return "/cje/board_writing";
 	}
 	
 	@GetMapping("/mainLogin")

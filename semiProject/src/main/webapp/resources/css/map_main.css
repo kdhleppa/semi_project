@@ -181,19 +181,19 @@ nav {
 }
 
 /* 왼쪽에 룸 프리뷰 */
-#room-preview1 {
+.preview-container {
     height: 200px;
     width: 480px;
     display: flex;
     justify-content: center;
 }
 
-#preview-img1 {
+.preview-img {
     height: 180px;
     width: 150px;
 }
 
-#preview-text-container1{
+.preview-text-container1{
     height: 180px;
     width: 250px;
     margin-left: 30px;

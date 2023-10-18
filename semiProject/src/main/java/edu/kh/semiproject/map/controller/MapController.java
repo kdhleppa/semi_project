@@ -7,12 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.semiproject.map.model.service.MapService;
 import edu.kh.semiproject.product.model.dto.Product;
 
 @Controller
+@SessionAttributes({"products"})
 public class MapController {
 
 	
@@ -27,7 +28,11 @@ public class MapController {
 	
 	@GetMapping("/link/getProducts")
 	@ResponseBody
-	public List<Product> getProducts() {
-		return service.selectAllProduct();
+	public List<Product> getProducts(Model model) {
+		
+		List<Product> products = service.selectAllProduct();
+		model.addAttribute("products", products);
+		
+		return products;
 	}
 }
