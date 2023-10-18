@@ -30,7 +30,7 @@
                     <a href="/link/roomUpFront">방내놓기</a>
                 </div>
                 <div id="board">
-                    <a href="/link/communityList">게시판</a>
+                    <a href="/link/boardList">게시판</a>
                 </div>
                 <div id="login">
                     <a href="/link/login">로그인</a>

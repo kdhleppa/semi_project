@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+
+<%-- map에 저장된 값들을 각각 변수에 저장 --%>
+<c:set var="pagination" value="${map.pagination}" />
+<c:set var="boardList" value="${map.boardList}" />
     
 <!DOCTYPE html>
 <html>
@@ -31,7 +37,7 @@
                     <a href="/link/roomUpFront">방내놓기</a>
                 </div>
                 <div id="board">
-                    <a href="/link/communityList">게시판</a>
+                    <a href="/link/boardList">게시판</a>
                 </div>
                 <div id="mypage">
                     <a href="/link/myInfo">내정보</a>
@@ -53,7 +59,7 @@
 					<c:choose>
 					
 						<%-- 조회된 게시글 목록이 비어있거나 null인 경우 --%>
-						<c:when test="${not empty boardList}">
+						<c:when test="${empty boardList}">
 							<tr>
 								<th colspan="6">게시글이 존재하지 않습니다.</th>
 							</tr>
@@ -70,11 +76,13 @@
 							
 							<div class="main-content-content">
 								<c:forEach items="${boardList}" var="board" >
-									<div id="content-number">${board.boardNo}</div>
-									<div id="content-writer">${board.memberNickname}</div>
-									<a id="content-title" href="#">${board.boardTitle}</a>
-									<div id="content-date">${board.boardDate}</div>
-									<div id="content-count">${board.boardCount}</div>
+									<div class="main-content-real">
+										<div id="content-number">${board.boardNo}</div>
+										<div id="content-writer">${board.memberNickname}</div>
+										<a id="content-title" href="#">${board.boardTitle}</a>
+										<div id="content-date">${board.boardDate}</div>
+										<div id="content-count">${board.boardCount}</div>
+									</div>
 								</c:forEach>
 							</div>
 							
@@ -95,10 +103,10 @@
                     <ul class="pagination">
                
 	                    <!-- 첫 페이지로 이동 -->
-	                    <li><a href="/board/${boardCode}?cp=1">&lt;&lt;</a></li>
+	                    <li><a href="/link/boardList?cp=1">&lt;&lt;</a></li>
 	
 	                    <!-- 이전 목록 마지막 번호로 이동 -->
-	                    <li><a href="/board/${boardCode}?cp=${pagination.prevPage}">&lt;</a></li>
+	                    <li><a href="/link/boardList?cp=${pagination.prevPage}">&lt;</a></li>
 	
 						
 	                    <!-- 특정 페이지로 이동 -->
@@ -112,17 +120,17 @@
 	                    		
 	                    		<%-- 현재 페이지를 제외한 나머지 페이지 --%>	
 	                    		<c:otherwise>
-	                    			<li><a href="/board/${boardCode}?cp=${i}">${i}</a></li>
+	                    			<li><a href="/link/boardList?cp=${i}">${i}</a></li>
 	                    		</c:otherwise>
 	                    		
 	                    	</c:choose>
 	                    </c:forEach>
 	                    
 	                    <!-- 다음 목록 시작 번호로 이동 -->
-	                    <li><a href="/board/${boardCode}?cp=${pagination.nextPage}">&gt;</a></li>
+	                    <li><a href="/link/boardList?cp=${pagination.nextPage}">&gt;</a></li>
 	
 	                    <!-- 끝 페이지로 이동 -->
-	                    <li><a href="/board/${boardCode}?cp=${pagination.maxPage}">&gt;&gt;</a></li>
+	                    <li><a href="/link/boardList?cp=${pagination.maxPage}">&gt;&gt;</a></li>
 	
 	                </ul>
                 </div>
@@ -139,6 +147,11 @@
             </div>
         </main>
     </div>
+    
+    
+    <script>
+    	console.log("${pagination}");
+    </script>
     
 </body>
 </html>

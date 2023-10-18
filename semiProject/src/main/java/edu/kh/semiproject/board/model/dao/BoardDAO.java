@@ -17,44 +17,36 @@ public class BoardDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	/** 게시판 종류 목록 조회
+	/** 게시글 목록 조회 -> 삭제되지않은 게시글 수 조회
 	 * @return
 	 */
-	public List<Map<String, Object>> selectBoardTypeList() {
+	public int getListCount() {
 		
-		return sqlSession.selectList("boardMapper.selectBoardTypeList");
+		return sqlSession.selectOne("boardMapper.getListCount");
 	}
 
-	/** 게시글 목록 조회 -> 특정 게시판의 삭제되지않은 게시글 수 조회
-	 * @param boardCode
-	 * @return listCount
-	 */
-	public int getListCount(int boardCode) {
-		
-		return sqlSession.selectOne("boardMapper.getListCount", boardCode);
-	}
-
-	/** 특정 게시판에서 현재 페이지에 해당하는 부분에 대한 게시글 목록 조회
+	/** 현재 페이지에 해당하는 부분에 대한 게시글 목록 조회
 	 * @param pagination
-	 * @param boardCode
 	 * @return
 	 */
-	public List<Board> selectBoardList(Pagination pagination, int boardCode) {
-
+	public List<Board> selectBoardList(Pagination pagination) {
 		// RowBounds 객체
 		// - 마이바티스에서 페이징처리를 위해 제공하는 객체
 		// offset 만큼 건너뛰고
 		// 그 다음 지정된 행 개수만큼 조회
 		
 		// 1) offset 계산(페이지 넘기기)
-		int offset 
+		int offset
 			= (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		System.out.println("offset::" + offset);
 		
 		// 2) RowBounds 객체 생성
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
-		// 3) selectList("namespace.id", 파라미터, RowBounds) 호출
-		return sqlSession.selectList("boardMapper.selectBoardList", boardCode, rowBounds);
-		
+		// 3) selectList("namespace.id", RowBounds) 호출
+		return sqlSession.selectList("boardMapper.selectBoardList", 0, rowBounds);	
 	}
+
+	
 }

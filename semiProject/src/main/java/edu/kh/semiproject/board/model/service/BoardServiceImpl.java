@@ -1,5 +1,6 @@
 package edu.kh.semiproject.board.model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,26 +22,29 @@ public class BoardServiceImpl implements BoardService{
 	 *
 	 */
 	@Override
-	public Map<String, Object> selectBoardList(int boardCode, int cp) {
+	public Map<String, Object> selectBoardList(int cp) {
 		
-		// 1. 특정 게시판의 삭제되지않은 게시글 수 조회
-		int listCount = dao.getListCount(boardCode);
+		// 1. 삭제되지않은 게시글 수 조회
+		int listCount = dao.getListCount();
 		
 		// 2. 1번 조회 결과 + cp를 이용해서 Pagination 객체 생성
 		// -> 내부 필드가 모두 게산되어 초기회됨
 		Pagination pagination = new Pagination(listCount, cp);
 		
-		// 3. 특정 게시판에서 현재 페이지에 해당하는 부분에 대한 게시글 목록 조회
-		// 어떤 게시판에서(boardCode) 몇페이지(pagination.currentPage)에 대한 
+		// 3. 현재 페이지에 해당하는 부분에 대한 게시글 목록 조회
+		// 몇페이지(pagination.currentPage)에 대한 
 		// 몇개(pagination.limit)인지 조회		
-		List<Board> boardList = dao.selectBoardList(pagination, boardCode);
+		List<Board> boardList = dao.selectBoardList(pagination);
 		
 		// 4. pagination, boardList를 Map에 담아서 반환
-//		Map<String, Object> map = new HashMap()<String, Object>();
-//		map.put("pagination", pagination);
-//		map.put("boardList", boardList);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
 		
-		return null; // return map;
+		System.out.println(pagination);
+		
+		return map;
+		
 	}
 	
 }
