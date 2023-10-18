@@ -33,7 +33,8 @@
                 
             </div>
 
-            <form class="content">
+            <form class="content" action="/signUp" method="POST" name="signUpFrm" id="signUpFrm">
+            
                 <div class="title">
                     회원가입
                 </div>
@@ -69,48 +70,81 @@
                         </div>
                         <br>
                 </section>
-
-                <div>
-                    <p class="infobox" style="margin-left: 60px;">&nbsp;&nbsp;&nbsp;&nbsp;아이디</p>
-                    <input id="textbox" type="text"><button>중복확인</button>
+				
+				<!-- 아이디 입력 -->
+				
+				<div class="signUp-input-area">
+                    <input type="text" name="memberId" id="memberId" placeholder="아이디" maxlength="10" >
                 </div>
 
-                <div>
-                    <p class="infobox">&nbsp;&nbsp;&nbsp;&nbsp;비밀번호</p>
-                    <input id="textbox" type="text">
+                <span class="signUp-message" id="idMessage">한글,영어,숫자로만 2~10글자</span>
+				
+				
+                <!-- 비밀번호/비밀번호 확인 입력 -->
+                
+                <div class="signUp-input-area">
+                    <input type="password" name="memberPw" id="memberPw" 
+                    placeholder="비밀번호" maxlength="20" >
                 </div>
+                
+                <div class="signUp-input-area">
+                    <input type="password" name="memberPwConfirm" id="memberPwConfirm" 
+                    placeholder="비밀번호 확인" maxlength="20" >
+                </div>
+
+                <span class="signUp-message" id="pwMessage">영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</span>
+				
+				<!-- 이름 입력 -->
+				<div class="signUp-input-area">
+                    <input type="text" name="memberName" id="memberName" placeholder="이름" maxlength="10" >
+                </div>
+
+                <span class="signUp-message" id="nameMessage"></span>
+				
+                <!-- 닉네임 입력 -->
+                
+                <div class="signUp-input-area">
+                    <input type="text" name="memberNickname" id="memberNickname" placeholder="닉네임" maxlength="10" >
+                </div>
+
+                <span class="signUp-message" id="nickMessage">한글,영어,숫자로만 2~10글자</span>
+
+
+				<!-- 주소 입력 -->
+                
+                <div class="signUp-input-area">
+                    <input type="text" name="memberAddress" id="sample6_postcode" placeholder="우편번호" maxlength="6">
                     
-                <div>
-                    <p class="infobox">&nbsp;&nbsp;&nbsp;&nbsp;비밀번호확인</p>
-                    <input id="textbox" type="text">
+                    <button type="button" onclick="sample6_execDaumPostcode()">검색</button>
                 </div>
 
-                <div>
-                    <p class="infobox">&nbsp;&nbsp;&nbsp;&nbsp;이름</p>
-                    <input id="textbox" type="text">
+                <div class="signUp-input-area">
+                    <input type="text" name="memberAddress" id="sample6_address" placeholder="도로명/지번 주소">
                 </div>
 
-                <div>
-                    <p class="infobox" style="margin-left: 60px;">&nbsp;&nbsp;&nbsp;&nbsp;닉네임</p>
-                    <input id="textbox" type="text"><button>중복확인</button>
+                <div class="signUp-input-area">
+                    <input type="text" name="memberAddress" id="sample6_detailAddress" placeholder="상세 주소">
                 </div>
+
+				<br>
+				<!-- 이메일 입력 -->
                 
-                <div>
-                    <p class="infobox">&nbsp;&nbsp;&nbsp;&nbsp;주소</p>
-                    <input id="textbox" type="text">
+                <div class="signUp-input-area">
+                    <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일" maxlength="11">
                 </div>
+
+                <span class="signUp-message" id="emailMessage"></span>
+				
+                <!-- 전화번호 입력 -->
                 
-                <div>
-                    <p class="infobox">&nbsp;&nbsp;&nbsp;&nbsp;Email</p>
-                    <input id="textbox" type="text">
+                <div class="signUp-input-area">
+                    <input type="text" name="memberTel" id="memberTel" placeholder="휴대폰 번호(- 없이 숫자만 입력)" maxlength="11">
                 </div>
 
-                <div>
-                    <p class="infobox" style="margin-left: 60px;">&nbsp;&nbsp;&nbsp;&nbsp;휴대폰</p>
-                    <input id="textbox" type="text"> 인증하기
-                </div>
+                <span class="signUp-message" id="telMessage"></span>
 
-                <div style="font-size: 25px; margin-right: 300px;">
+
+				<div style="font-size: 25px; margin-right: 300px;">
                     프로필 사진 등록
                 </div>
 
@@ -130,5 +164,31 @@
         </div>
 
     </div>
+    
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+	    function sample6_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                var addr = ''; // 주소 변수
+	
+	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                    addr = data.roadAddress;
+	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                    addr = data.jibunAddress;
+	                }
+	
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById('sample6_postcode').value = data.zonecode;
+	                document.getElementById("sample6_address").value = addr;
+	                // 커서를 상세주소 필드로 이동한다.
+	                document.getElementById("sample6_detailAddress").focus();
+	            }
+	        }).open();
+	    }
+	</script>
+    
+    <script src="/resources/js/signUp.js"></script>
 </body>
 </html>

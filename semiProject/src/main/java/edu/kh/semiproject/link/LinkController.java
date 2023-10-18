@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import edu.kh.semiproject.map.model.service.MapService;
 import edu.kh.semiproject.product.model.dto.Product;
@@ -11,7 +12,8 @@ import edu.kh.semiproject.product.model.dto.Product;
 @Controller
 @RequestMapping("/link")
 public class LinkController {
-	
+	//@Autowired
+	//private MapService service; 
 	
 	
 	// kdh 쪽으로 연결하는 링크모음
@@ -27,7 +29,14 @@ public class LinkController {
 	
 	
 	
-	
+	@GetMapping("/mapMainNotLogin")
+	public String MapMainNotLogin() {
+		
+		//Product productAddressList = service.addressList();
+		
+		
+		return "/kdh/map_main_not_login";
+	}
 		
 	@GetMapping("/roomDetailView")
 	public String RoomDetailView() {
@@ -45,29 +54,29 @@ public class LinkController {
 	}
 	
 	// cje 쪽으로 연결하는 링크모음
-	@GetMapping("/boardListMine")
-	public String BoardListMine() {
-		return "/cje/board_list_mine";
+	@GetMapping("/communityListMine")
+	public String CommunityListMine() {
+		return "/cje/community_list_mine";
 	}
 	
-	@GetMapping("/boardList")
-	public String BoardList() {
-		return "/cje/board_list";
+	@GetMapping("/communityList")
+	public String CommunityList() {
+		return "/cje/community_list";
 	}
 	
-	@GetMapping("/boardReadMoreMine")
-	public String BoardreadMoreMine() {
-		return "/cje/board_readMore_mine";
+	@GetMapping("/communityReadMoreMine")
+	public String CommunityreadMoreMine() {
+		return "/cje/community_readMore_mine";
 	}
 
-	@GetMapping("/boardReadMoreOthers")
-	public String BoardreadMoreOthers() {
-		return "/cje/board_readMore_others";
+	@GetMapping("/communityReadMoreOthers")
+	public String CommunityreadMoreOthers() {
+		return "/cje/community_readMore_others";
 	}
 	
-	@GetMapping("/boardWriting")
-	public String BoardWriting() {
-		return "/cje/board_writing";
+	@GetMapping("/communityWriting")
+	public String CommunityWriting() {
+		return "/cje/community_writing";
 	}
 	
 	@GetMapping("/mainLogin")
@@ -180,6 +189,14 @@ public class LinkController {
 	@GetMapping("/login")
 	public String Login() {
 		return "/swc/login";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(SessionStatus status) {
+		
+		status.setComplete();
+		
+		return "redirect:/";
 	}
 	
 	@GetMapping("/messageReceived")

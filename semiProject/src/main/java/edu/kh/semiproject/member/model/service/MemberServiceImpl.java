@@ -8,33 +8,33 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.kh.semiproject.member.model.dao.MemberDAO;
 import edu.kh.semiproject.member.model.dto.Member;
 
-/*
+
 @Service
 public class MemberServiceImpl implements MemberService {
 
-	
 	@Autowired
 	private MemberDAO dao;
 	
-	@Autowired
-	private BCryptPasswordEncoder bcrypt;
+	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	
 	
 	@Override
 	public Member login(Member inputMember) {
 		
 		Member loginMember = dao.login(inputMember);
 		
-		if(loginMember != null) { 
+		String encPw = encoder.encode(loginMember.getMemberPw());
+		
+		loginMember.setMemberPw(encPw);
+		
+		if(encoder.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
 			
-			if(bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
-				
-				loginMember.setMemberPw(null);
+			loginMember.setMemberPw(null);
 			
-			} else {
-				loginMember = null;
-			}
+		} else {
 			
-		} 
+			loginMember = null;
+		}
 		
 		return loginMember;
 	}
@@ -45,13 +45,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int signUp(Member inputMember) {
 			
-		String encPw = bcrypt.encode(inputMember.getMemberPw());
+		String encPw = encoder.encode(inputMember.getMemberPw());
 		inputMember.setMemberPw(encPw);
 			
 		return dao.signUp(inputMember);
 	}
 	
-	
+
 }
 
-*/
+

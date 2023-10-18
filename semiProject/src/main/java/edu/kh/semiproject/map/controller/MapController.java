@@ -19,11 +19,11 @@ public class MapController {
 	@Autowired
 	private MapService service;
 	
-	@GetMapping("/link/mapMainNotLogin")
+	/*@GetMapping("/link/mapMainNotLogin")
 	public String MapMainNotLogin() {
 		
 		return "/kdh/map_main_login";
-	}
+	}*/
 	
 	@GetMapping("/link/getProducts")
 	@ResponseBody
