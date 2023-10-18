@@ -1,12 +1,5 @@
-fetch("/link/getProducts")
-.then(res => res.json())
-.then(data => {
-	console.log(data)	
-});
-
-
 var map = new kakao.maps.Map(document.getElementById('main-right'), { 
-    center : new kakao.maps.LatLng(37.402707, 126.922044),
+    center : new kakao.maps.LatLng(37.484165, 126.929452),
     level : 3 
 });
 
@@ -21,35 +14,38 @@ var clusterer = new kakao.maps.MarkerClusterer({
 
 var markers = [];
 
-// products는 서버로부터 받아온 주소 데이터 배열
-products.forEach(product => {
-    var address = product.productAddress;
+async function fetchProductsAndAddMarkers() {
+    try {
+        // 백엔드에서 물건 정보 가져오기
+        let response = await fetch("/link/getProducts");
+        let products = await response.json();
 
-    // 주소로 좌표를 검색
-    geocoder.addressSearch(address, function(result, status) {
-        if (status === kakao.maps.services.Status.OK) {
-            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        // 주소를 좌표로 변환하고 마커 클러스터러에 추가
+        products.forEach(product => {
+            let address = product.productAddress;
 
-            // 검색된 좌표로 마커 생성
-            var marker = new kakao.maps.Marker({
-                position: coords
+            geocoder.addressSearch(address, function(result, status) {
+                if (status === kakao.maps.services.Status.OK) {
+                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                    var marker = new kakao.maps.Marker({
+                        position: coords
+                    });
+                    clusterer.addMarker(marker);
+                } else {
+                    console.error("Failed to get coords for address:", address);
+                }
             });
+        });
 
-            markers.push(marker);
-        } else {
-            console.error("주소로 좌표 변환 실패:", address);
-        }
-    });
-});
+    } catch (error) {
+        console.error("Error fetching products:", error);
+    }
+}
 
-// 마커들을 클러스터러에 추가
-clusterer.addMarkers(markers);	
-
-
+// 함수 호출
+fetchProductsAndAddMarkers();
 
 	
-	
-
 
 
 
