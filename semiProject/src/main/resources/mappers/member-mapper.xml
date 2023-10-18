@@ -13,7 +13,7 @@
 		<result property="memberPw" column="MEMBER_PW" />
 		<result property="memberName" column="MEMBER_NAME" />
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
-		<result property="memberAddress" column="MEMBER_ADDR" />
+		<result property="memberAddress" column="MEMBER_ADDRESS" />
 		<result property="memberEmail" column="MEMBER_EMAIL" />
 		<result property="memberPhoneNum" column="MEMBER_PHONENUM" />
 		<result property="profileImage" column="MEMBER_PROFILE_IMG" />
@@ -23,7 +23,7 @@
 	
 	<select id="login" parameterType="Member" resultMap="member_rm">
   		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME,
-			MEMBER_ADDR, MEMBER_EMAIL, MEMBER_PHONENUM, MEMBER_PROFILE_IMG, MEMBER_SECESSION
+			MEMBER_ADDRESS, MEMBER_EMAIL, MEMBER_PHONENUM, MEMBER_PROFILE_IMG, MEMBER_SECESSION
 		FROM "MEMBER"
 		WHERE MEMBER_SECESSION = 'N'
 		AND MEMBER_ID = #{memberId}

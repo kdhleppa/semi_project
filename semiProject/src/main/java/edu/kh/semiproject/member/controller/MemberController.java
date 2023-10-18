@@ -19,12 +19,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.semiproject.member.model.dto.Member;
 import edu.kh.semiproject.member.model.service.MemberService;
 
-/*
+
 @Controller
 public class MemberController {
 
+	
 	@Autowired
 	private MemberService service;
+	
 	
 	@PostMapping("/login")
 	public String login(Member inputMember, Model model, 
@@ -36,11 +38,14 @@ public class MemberController {
 		Member loginMember = service.login(inputMember);
 		
 		String path = "redirect:";
+		String message = null;
 		
 		if(loginMember != null) {
-			path += "/";
+			path += "/link/mainLogin";
 			
 			model.addAttribute("loginMember", loginMember);
+			
+			System.out.println("loginMember" + loginMember);
 			
 		} else {
 			
@@ -48,11 +53,14 @@ public class MemberController {
 			
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			
+			System.out.println("아디비번틀림");
+			
 		}
 		
 		return path;
 		
 	}
+	
 	
 	
 	// 회원 가입 진행
@@ -97,4 +105,3 @@ public class MemberController {
 	
 	
 }
-*/

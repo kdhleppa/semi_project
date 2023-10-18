@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import edu.kh.semiproject.map.model.service.MapService;
 import edu.kh.semiproject.product.model.dto.Product;
@@ -11,7 +12,8 @@ import edu.kh.semiproject.product.model.dto.Product;
 @Controller
 @RequestMapping("/link")
 public class LinkController {
-	
+	//@Autowired
+	//private MapService service; 
 	
 	
 	// kdh 쪽으로 연결하는 링크모음
@@ -24,11 +26,7 @@ public class LinkController {
 	public String MapMainLogin() {
 		return "/kdh/map_main_login";
 	}
-	
-	
-	
-	
-		
+			
 	@GetMapping("/roomDetailView")
 	public String RoomDetailView() {
 		return "/kdh/room_detail_view";
@@ -175,6 +173,14 @@ public class LinkController {
 	@GetMapping("/login")
 	public String Login() {
 		return "/swc/login";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(SessionStatus status) {
+		
+		status.setComplete();
+		
+		return "redirect:/";
 	}
 	
 	@GetMapping("/messageReceived")

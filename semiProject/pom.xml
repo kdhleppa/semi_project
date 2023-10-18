@@ -47,9 +47,6 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		
-		
-		
-		
 		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 -->
 		<dependency>
 		    <groupId>com.oracle.database.jdbc</groupId>

@@ -48,7 +48,7 @@
                 <div>
                     비밀번호
                     <div>
-                        <input type="text" id="underline" name="memberPw" style="width: 296px;">
+                        <input type="password" id="underline" name="memberPw" style="width: 296px;">
                     </div>
                 </div>
                     
@@ -63,7 +63,9 @@
                 </div>
                     
                 <button id="btnbox" class="login">로그인</button>
-
+				
+			
+			
                 <button id="kakaologinbox" class="kakaologin">
                     <img src="/resources/images/kakao.png" style="margin-right: 20px;">
                     카카오로 3초 만에 바로 시작
@@ -83,5 +85,7 @@
         </div>
 
     </div>
+    
+    <script src="/resources/js/login.js"></script>
 </body>
 </html>

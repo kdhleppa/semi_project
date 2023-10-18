@@ -1,10 +1,13 @@
 
 const checkObj = {
-    "memberEmail" : false,
+    "memberId" : false,
     "memberPw" : false,
     "memberPwConfirm" : false,
+    "memberName" : false,
     "memberNickname" : false,
-    "memberTel" : false,
+    "memberAddress" : false,
+    "memberEmail" : false,
+    "memberPhoneNum" : false,
     "authKey" : false
 };
 
@@ -376,8 +379,8 @@ document.getElementById("signUpFrm").addEventListener("submit", e=>{
                             // false인 경우 == 유효하지 않다!
 
             switch(key){
-            case "memberEmail": 
-                alert("이메일이 유효하지 않습니다"); break;
+            case "memberId": 
+                alert("아이디가 유효하지 않습니다"); break;
 
             case "memberPw": 
                 alert("비밀번호가 유효하지 않습니다"); break;

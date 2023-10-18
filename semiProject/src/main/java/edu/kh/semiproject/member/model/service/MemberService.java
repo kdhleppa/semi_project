@@ -2,6 +2,7 @@ package edu.kh.semiproject.member.model.service;
 
 import edu.kh.semiproject.member.model.dto.Member;
 
+
 public interface MemberService {
 
 	
