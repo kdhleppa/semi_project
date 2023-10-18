@@ -50,11 +50,6 @@ public class LinkController {
 		return "/cje/board_list_mine";
 	}
 	
-	@GetMapping("/boardList")
-	public String BoardList() {
-		return "/cje/board_list";
-	}
-	
 	@GetMapping("/boardReadMoreMine")
 	public String BoardreadMoreMine() {
 		return "/cje/board_readMore_mine";
