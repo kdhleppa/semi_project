@@ -96,7 +96,7 @@
 				
 				<!-- 이름 입력 -->
 				<div class="signUp-input-area">
-                    <input type="text" name="memberName" id="memberName" placeholder="이름" maxlength="10" >
+                    <input type="text" name="memberName" id="memberName" placeholder="이름" maxlength="20" >
                 </div>
 
                 <span class="signUp-message" id="nameMessage"></span>
@@ -113,7 +113,7 @@
 				<!-- 주소 입력 -->
                 
                 <div class="signUp-input-area">
-                    <input type="text" name="memberAddress" id="sample6_postcode" placeholder="우편번호" maxlength="6">
+                    <input type="text" name="memberAddress" id="sample6_postcode" placeholder="우편번호" maxlength="10">
                     
                     <button type="button" onclick="sample6_execDaumPostcode()">검색</button>
                 </div>
@@ -130,7 +130,7 @@
 				<!-- 이메일 입력 -->
                 
                 <div class="signUp-input-area">
-                    <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일" maxlength="11">
+                    <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일" maxlength="40">
                 </div>
 
                 <span class="signUp-message" id="emailMessage"></span>
