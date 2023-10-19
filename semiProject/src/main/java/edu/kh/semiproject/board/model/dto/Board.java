@@ -21,8 +21,9 @@ public class Board {
 	private String boardDate;
 	private String memberNickname;
 	private int boardCount;
+	private String boardHide;	
+
 	private String boardVideoUrl;
-	private String boardHide;
 		
 	// 서브쿼리
     private int commentCount; // 댓글 수

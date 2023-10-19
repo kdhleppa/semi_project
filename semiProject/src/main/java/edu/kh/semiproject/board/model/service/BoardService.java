@@ -15,4 +15,11 @@ public interface BoardService {
 	 */
 	Map<String, Object> selectBoardList(int cp);
 
+
+	/** 게시글 상세 조회(내가 쓴 글)
+	 * @param boardNo
+	 * @return
+	 */
+	List<Map<String, Object>> boardDetailMine(int boardNo);
+
 }
