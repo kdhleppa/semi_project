@@ -7,8 +7,8 @@ import edu.kh.semiproject.product.model.dto.Product;
 public interface MapService{
 
 	List<Product> selectAllProduct();
-
-	
-
+/*
+	List<Product> selectProductsInBounds(double southWestLat, double southWestLng, double northEastLat, double northEastLng);
+*/
 	
 }

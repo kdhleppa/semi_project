@@ -124,7 +124,9 @@
     
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb9b63d71a5408fd96cba9a1674b9d43&libraries=services,clusterer"></script>
     <script>
-    	const products = "${products}"
+    	
+    	"${products}".forEach(product => {
+                let address = product.productAddress;
     	console.log(products);
     </script>
     <script src="/resources/js/map_main.js"></script>
