@@ -12,6 +12,9 @@ const checkObj = {
 };
 
 
+// **** 아이디, 닉네임 중복 검사 할 것 **** 
+
+
 // 아이디 유효성 검사
 const memberId = document.getElementById("memberId");
 const idMessage = document.getElementById('idMessage');
@@ -74,7 +77,7 @@ memberEmail.addEventListener("input", () => {
     if(memberEmail.value.trim().length == 0){
         memberEmail.value = ""; 
 
-        emailMessage.innerText = "메일을 받을 수 있는 이메일을 입력해주세요.";
+        emailMessage.innerText = "메일을 받을 수 있는 이메일을 입력해주세요";
 
         // confirm, error 클래스 삭제해서 검정 글씨로 만들기
         emailMessage.classList.remove("confirm", "error");
@@ -101,12 +104,12 @@ memberEmail.addEventListener("input", () => {
 			
 			//count : 중복되면 1, 중복 아니면 0
 			if(count == 0) {
-			 	emailMessage.innerText = "사용 가능한 이메일입니다.";
+			 	emailMessage.innerText = "사용 가능한 이메일입니다";
         		emailMessage.classList.add("confirm"); // .confirm 스타일 적용
         		emailMessage.classList.remove("error"); // .error 스타일 제거
         		checkObj.memberEmail = true;
 			}else {
-				emailMessage.innerText = "이미 사용중인 이메일입니다.";
+				emailMessage.innerText = "이미 사용중인 이메일입니다";
         		emailMessage.classList.add("error"); // .error 스타일 적용
         		emailMessage.classList.remove("confirm"); // .confirm 스타일 제거
         		checkObj.memberEmail = false;
@@ -139,7 +142,7 @@ memberPw.addEventListener("input", () => {
     if(memberPw.value.trim().length == 0){
         memberPw.value = ""; // 띄어쓰지 못넣게 하기
 
-        pwMessage.innerText = "영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.";
+        pwMessage.innerText = "영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요";
         pwMessage.classList.remove("confirm", "error"); // 검정 글씨
 
         checkObj.memberPw = false; // 빈칸 == 유효 X
@@ -237,19 +240,21 @@ memberName.addEventListener("input", ()=>{
     }
 
     // 정규표현식으로 유효성 검사
-    const regEx = /^[가-힣]{2,5}$/;
+    const regEx = /^[가-힣]{2,6}$/;
 
     if(regEx.test(memberName.value)){// 유효
-    
-                nameMessage.innerText = "사용 가능한 이름 입니다";
-
+    	nameMessage.innerText = "사용 가능한 이름입니다";
+    	nameMessage.classList.add("confirm");
+        nameMessage.classList.remove("error");
+        checkObj.memberName = true;
+    	
     } else{
         nameMessage.innerText = "이름 형식이 유효하지 않습니다";
         nameMessage.classList.add("error");
         nameMessage.classList.remove("confirm");
         checkObj.memberName = false;
     }
-
+    
 });
 
 
@@ -307,35 +312,35 @@ memberNickname.addEventListener("input", ()=>{
 
 
 // 전화번호 유효성 검사
-const memberTel = document.getElementById("memberTel");
-const telMessage = document.getElementById("telMessage");
+const memberPhoneNum = document.getElementById("memberPhoneNum");
+const phoneMessage = document.getElementById("phoneMessage");
 
 // 전화번호가 입력 되었을 때
-memberTel.addEventListener("input", ()=>{
+memberPhoneNum.addEventListener("input", ()=>{
 
     // 전화번호가 입력이 되지 않은 경우
-    if(memberTel.value.trim() == ''){
-        telMessage.innerText = "전화번호를 입력해주세요.(- 제외)";
-        telMessage.classList.remove("confirm", "error");
-        checkObj.memberTel = false;
-        memberTel.value = ""; 
+    if(memberPhoneNum.value.trim() == ''){
+        phoneMessage.innerText = "전화번호를 입력해주세요.(- 제외)";
+        phoneMessage.classList.remove("confirm", "error");
+        checkObj.memberPhoneNum = false;
+        memberPhoneNum.value = ""; 
         return;
     }
 
     // 정규표현식으로 유효성 검사
     const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
 
-    if(regEx.test(memberTel.value)){// 유효
-        telMessage.innerText = "유효한 전화번호 형식입니다";
-        telMessage.classList.add("confirm");
-        telMessage.classList.remove("error");
-        checkObj.memberTel = true;
+    if(regEx.test(memberPhoneNum.value)){// 유효
+        phoneMessage.innerText = "유효한 전화번호 형식입니다";
+        phoneMessage.classList.add("confirm");
+        phoneMessage.classList.remove("error");
+        checkObj.memberPhoneNum = true;
         
     } else{ // 무효
-        telMessage.innerText = "전화번호 형식이 유효하지 않습니다";
-        telMessage.classList.add("error");
-        telMessage.classList.remove("confirm");
-        checkObj.memberTel = false;
+        phoneMessage.innerText = "전화번호 형식이 유효하지 않습니다";
+        phoneMessage.classList.add("error");
+        phoneMessage.classList.remove("confirm");
+        checkObj.memberPhoneNum = false;
     }
 
 
@@ -355,7 +360,9 @@ let authSec = 59;
 let tempEmail;
 
 sendAuthKeyBtn.addEventListener("click", function(){
-
+	
+	console.log("test");
+	
     authMin = 4;
     authSec = 59;
 
@@ -472,6 +479,9 @@ document.getElementById("signUpFrm").addEventListener("submit", e=>{
             case "memberPwConfirm":
                 alert("비밀번호가 확인되지 않았습니다"); break;
             
+            case "memberName":
+            	alert("이름이 유효하지 않습니다"); break;
+            
             case "memberNickname" : 
                 alert("닉네임이 유효하지 않습니다"); break;
             }
@@ -482,6 +492,10 @@ document.getElementById("signUpFrm").addEventListener("submit", e=>{
 
             e.preventDefault(); // form 태그 기본 이벤트 제거
             return; // 함수 종료
+            
         }
-    }
+        
+    }	
+    
+    	
 });

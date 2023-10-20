@@ -33,7 +33,7 @@
 	<insert id="signUp" parameterType="Member">
 		INSERT INTO "MEMBER"
 		VALUES(SEQ_MEMBER_NO.NEXTVAL
-			, #{managerNo}
+			, DEFAULT
 			, #{memberId}
 			, #{memberPw}
 			, #{memberName}
@@ -41,7 +41,7 @@
 			, #{memberAddress}
 			, #{memberEmail}
 			, #{memberPhoneNum}
-			, #{memberProfileImage}
+			, DEFAULT
 			, DEFAULT)
 	</insert>
 	

@@ -12,6 +12,7 @@ import edu.kh.semiproject.member.model.dto.Member;
 @Service
 public class MemberServiceImpl implements MemberService {
 
+	
 	@Autowired
 	private MemberDAO dao;
 	
@@ -20,6 +21,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public Member login(Member inputMember) {
+		
+		System.out.println("암호화 확인 1:" +  bcrypt.encode( inputMember.getMemberPw() )  );
 		
 		Member loginMember = dao.login(inputMember);
 		
