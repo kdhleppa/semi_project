@@ -15,25 +15,25 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO dao;
 	
-	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-	
+	@Autowired
+	private BCryptPasswordEncoder bcrypt;
 	
 	@Override
 	public Member login(Member inputMember) {
 		
 		Member loginMember = dao.login(inputMember);
 		
-		String encPw = encoder.encode(loginMember.getMemberPw());
-		
-		loginMember.setMemberPw(encPw);
-		
-		if(encoder.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
+		if(loginMember != null) {
 			
-			loginMember.setMemberPw(null);
+			if(bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
 			
-		} else {
+				loginMember.setMemberPw(null);
 			
-			loginMember = null;
+			} else {
+				
+				loginMember = null;
+			}
+			
 		}
 		
 		return loginMember;
@@ -45,7 +45,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int signUp(Member inputMember) {
 			
-		String encPw = encoder.encode(inputMember.getMemberPw());
+		String encPw = bcrypt.encode(inputMember.getMemberPw());
 		inputMember.setMemberPw(encPw);
 			
 		return dao.signUp(inputMember);

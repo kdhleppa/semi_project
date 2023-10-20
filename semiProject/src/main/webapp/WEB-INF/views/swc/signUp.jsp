@@ -33,7 +33,7 @@
                 
             </div>
 
-            <form class="content" action="/signUp" method="POST" name="signUpFrm" id="signUpFrm">
+            <form class="content" action="/link/signUp" method="POST" name="signUpFrm" id="signUpFrm">
             
                 <div class="title">
                     회원가입
@@ -132,8 +132,20 @@
                 <div class="signUp-input-area">
                     <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일" maxlength="40">
                 </div>
+                
+                <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
 
                 <span class="signUp-message" id="emailMessage"></span>
+                
+                <!-- 인증번호 입력 -->
+
+                <div class="signUp-input-area">
+                    <input type="text" name="authKey" id="authKey" s placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
+                    
+                    <button id="checkAuthKeyBtn" type="button">인증확인</button>
+                </div>
+                <span class="signUp-message" id="authKeyMessage"></span>
+                                <!-- 인증번호가 일치하지 않습니다 -->
 				
                 <!-- 전화번호 입력 -->
                 

@@ -12,14 +12,14 @@ const checkObj = {
 };
 
 
-// 닉네임 유효성 검사
+// 아이디 유효성 검사
 const memberId = document.getElementById("memberId");
 const idMessage = document.getElementById('idMessage');
 
-// 닉네임이 입력이 되었을 때
+// 아이디가 입력이 되었을 때
 memberId.addEventListener("input", ()=>{
 
-    // 닉네임 입력이 되지 않은 경우
+    // 아이디 입력이 되지 않은 경우
     if(memberId.value.trim() == ''){
         idMessage.innerText = "한글,영어,숫자로만 2~10글자";
         idMessage.classList.remove("confirm", "error");
@@ -51,9 +51,6 @@ memberId.addEventListener("input", ()=>{
             }
         })
         .catch(err => console.log(err));
-
-        
-
 
     } else{ // 무효
         idMessage.innerText = "아이디 형식이 유효하지 않습니다";
@@ -221,24 +218,40 @@ memberPwConfirm.addEventListener('input', ()=>{
     }
 });
 
+
+
 // 이름 유효성 검사
 const memberName = document.getElementById("memberName");
 const nameMessage = document.getElementById('nameMessage');
 
-memberName.addEventListener("input", () => {
-	if(memberName.value ==''){
-            alert("이름을 입력해주세요.");
-            return false;
+// 이름이 입력이 되었을 때
+memberName.addEventListener("input", ()=>{
+
+    // 이름 입력이 되지 않은 경우
+    if(memberName.value.trim() == ''){
+        nameMessage.innerText = "한글만 2~6글자";
+        nameMessage.classList.remove("confirm", "error");
+        checkObj.memberName = false;
+        memberName.value = ""; 
+        return;
     }
+
+    // 정규표현식으로 유효성 검사
+    const regEx = /^[가-힣]{2,5}$/;
+
+    if(regEx.test(memberName.value)){// 유효
     
-    const regEx = /^[가-힣\w\d]$/;
-    
-    if(regEx.test(memberName.value)){
-            alert("특수문자,숫자는 사용할수 없습니다. 한글과 영어만 입력하여주세요.");
-            return false;
+                nameMessage.innerText = "사용 가능한 이름 입니다";
+
+    } else{
+        nameMessage.innerText = "이름 형식이 유효하지 않습니다";
+        nameMessage.classList.add("error");
+        nameMessage.classList.remove("confirm");
+        checkObj.memberName = false;
     }
-    
+
 });
+
 
 // 닉네임 유효성 검사
 const memberNickname = document.getElementById("memberNickname");
@@ -352,7 +365,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
 
         /* fetch() API 방식 ajax */
-        fetch("/sendEmail/signUp?email="+memberEmail.value)
+        fetch("/sendEmail/signUpNum?email="+memberEmail.value)
         .then(resp => resp.text())
         .then(result => {
             if(result > 0){
