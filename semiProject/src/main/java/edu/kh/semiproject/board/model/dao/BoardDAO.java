@@ -45,7 +45,25 @@ public class BoardDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		// 3) selectList("namespace.id", RowBounds) 호출
-		return sqlSession.selectList("boardMapper.selectBoardList", 0, rowBounds);	
+		return sqlSession.selectList("boardMapper.selectBoardList", 0, rowBounds);
+	}
+
+	/** 게시글 상세 조회(내가 쓴 글)
+	 * @param boardNo
+	 * @return
+	 */
+	public Board boardDetailMine(int boardNo) {
+		
+		return sqlSession.selectOne("boardMapper.selectBoardDetail", boardNo);
+	}
+
+	/** 이전 다음 게시글 번호 조회 dao
+	 * @param boardNo
+	 * @return
+	 */
+	public List<Map<String, Object>> selectPrevNextBoardNo(int boardNo) {
+	
+		return sqlSession.selectList("boardMapper.selectPrevNextBoardNo", boardNo);
 	}
 
 	

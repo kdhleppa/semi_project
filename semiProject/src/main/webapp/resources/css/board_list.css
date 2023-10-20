@@ -144,7 +144,7 @@ main {
     width: 100%;
     height: 10%;
     
-    margin : 50px;
+    margin : 30px 50px 0 50px;
 }
 
 .main-content-content{
@@ -201,20 +201,26 @@ main {
 .main-content-real{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    
+    height: 100%;
+    width: 100%;
 }
 
-.main-content-content div,
-.main-content-content a{
+.main-content-real div,
+.main-content-real a{
     font-size: 16px;
     margin-bottom: 10px;
-}
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #content-number,
 #content-writer,
 #content-date,
-#content-hits{
+#content-count{
     border: none;
     border-radius: 5px;
     height: 35px;
@@ -229,48 +235,37 @@ main {
 }
 
 #content-number{
-    width: 100%;
     background-color: rgba(217, 217, 217, 0.44);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-basis: 10%;
 }
 
 #content-writer{
-    width: 100%; 
     background-color: rgba(217, 217, 217, 0.44);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-basis: 10%;
 }
 
 #content-title{
-    width: 100%;
+    padding-left: 20px;
 
-    display: flex;
-    align-items: center;
+    flex-basis: 55%;
 
-    padding-left: 10px;
+    justify-content: start;
+    text-decoration: none;
+    color : black;
 }
 
 #content-date{
-    width: 100%;
     background-color: rgba(217, 217, 217, 0.44);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    
+    flex-basis: 12%;
 }
 
-#content-hits{
-    width: 100%;
+#content-count{
     background-color: rgba(217, 217, 217, 0.44);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-basis: 10%;
 }
 
 
@@ -284,6 +279,8 @@ main {
     justify-content: center;
 
     font-size: 12px;
+
+    margin-top: 20px;
 }
 
 #search-type{
@@ -325,7 +322,6 @@ main {
 
 
 .pagination{
-	list-style: none;
     display: flex;
     justify-content: center;
     padding: 10px;
@@ -337,7 +333,13 @@ main {
     height: 20px;
     margin: 0 5px;
     text-align: center;
-    font-size: 12px;   
+    font-size: 12px;
+    
+	list-style: none;
+}
+
+.pagination a {
+    text-decoration: none;
 }
 
 .pagination a{

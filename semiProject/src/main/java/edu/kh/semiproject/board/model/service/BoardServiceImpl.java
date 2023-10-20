@@ -46,5 +46,30 @@ public class BoardServiceImpl implements BoardService{
 		return map;
 		
 	}
+
+	/** 게시글 상세 조회(내가 쓴 글)
+ 	 * 
+	 */
+	@Override
+	public List<Map<String, Object>> boardDetailMine(int boardNo) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		Board board = dao.boardDetailMine(boardNo);
+		
+		System.out.println("board::"  + board);
+		
+		List<Map<String, Object>> list = null;
+		
+		if(board != null) {
+			list = dao.selectPrevNextBoardNo(boardNo); 
+			
+			System.out.println("map::"  + list);
+			map.put("board", board);
+			
+			list.add(map);
+		}
+		
+		return list;
+	}
 	
 }

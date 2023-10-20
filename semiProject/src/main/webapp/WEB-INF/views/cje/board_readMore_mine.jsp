@@ -21,7 +21,7 @@
                 </a>
             </section>
 
-            <section class="menu">
+			<section class="menu">
                 <div id="map">
                     <a href="/link/mapMainNotLogin">지도</a>
                 </div>
@@ -32,12 +32,12 @@
                     <a href="/link/roomUpFront">방내놓기</a>
                 </div>
                 <div id="board">
-                    <a href="/link/communityList">게시판</a>
+                    <a href="/link/boardList">게시판</a>
                 </div>
                 <div id="mypage">
                     <a href="/link/myInfo">내정보</a>
                 </div>
-            </section>
+            </section>   
         </nav>
 
         <main>
@@ -51,27 +51,27 @@
                     자유 게시판
                 </div>
                 <div class="main-content">
+                
                     <div class="main-content-left"></div>
                     <div class="main-content-main">
                         <div id="content-info">
-                            <div>${memberNickname}</div>
-                            <div>${boardDate}</div>
-                            <div><fmt:formatDate pattern="yyyy-MM-dd" value="${boardDate}"/></div>
-                            <div>"조회수 : " + ${boardCount}</div>
+                            <div>${board.memberNickname}</div>
+                            <div>${board.boardDate}</div>
+                            <div>조회수 : ${board.boardCount}</div>
                         </div>
-                        <div id="content-title"><c:out value="${boardTitle}"/></div>
-                        <div id="content-text"><c:out value="${boardContent}"/></div>
+                        <div id="content-title"><c:out value="${board.boardTitle}"/></div>
+                        <div id="content-text"><c:out value="${board.boardContent}"/></div>
                         <div id="content-comments"><c:out value="${boardComment}"/></div>
                         <div id="content-listbutton">
                             <div id="previous">
                                 <button>∧</button>
                                 <div>이전글</div>
-                                <div>글제목</div>
+                                <div>${board.boardNo}-1.${board.boardTitle}</div>
                             </div>
                             <div id="next">
                                 <button>∨</button>
                                 <div>다음글</div>
-                                <div>글제목</div>
+                                <div></div>
                             </div>
                         </div>
                         <div id="content-modifybutton">
