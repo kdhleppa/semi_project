@@ -12,6 +12,57 @@ const checkObj = {
 };
 
 
+// 아이디 유효성 검사
+const memberId = document.getElementById("memberId");
+const idMessage = document.getElementById('idMessage');
+
+// 아이디가 입력이 되었을 때
+memberId.addEventListener("input", ()=>{
+
+    // 아이디 입력이 되지 않은 경우
+    if(memberId.value.trim() == ''){
+        idMessage.innerText = "한글,영어,숫자로만 2~10글자";
+        idMessage.classList.remove("confirm", "error");
+        checkObj.memberId = false;
+        memberId.value = ""; 
+        return;
+    }
+
+    // 정규표현식으로 유효성 검사
+    const regEx = /^[가-힣\w\d]{2,10}$/;
+
+    if(regEx.test(memberId.value)){// 유효
+
+        fetch("/dupCheck/id?id="+memberId.value)
+        .then(resp => resp.text()) // 응답 객체를 text로 파싱(변환)
+        .then(count => {
+
+            if(count == 0){ // 중복 아닌 경우
+                idMessage.innerText = "사용 가능한 아이디 입니다";
+                idMessage.classList.add("confirm");
+                idMessage.classList.remove("error");
+                checkObj.memberId = true;
+                
+            }else{ // 중복인 경우
+                idMessage.innerText = "이미 사용중인 아이디 입니다";
+                idMessage.classList.add("error");
+                idMessage.classList.remove("confirm");
+                checkObj.memberId = false;
+            }
+        })
+        .catch(err => console.log(err));
+
+    } else{ // 무효
+        idMessage.innerText = "아이디 형식이 유효하지 않습니다";
+        idMessage.classList.add("error");
+        idMessage.classList.remove("confirm");
+        checkObj.memberId = false;
+    }
+
+});
+
+
+
 // 이메일 유효성 검사
 const memberEmail = document.getElementById("memberEmail");
 const emailMessage = document.getElementById("emailMessage");
@@ -169,6 +220,39 @@ memberPwConfirm.addEventListener('input', ()=>{
 
 
 
+// 이름 유효성 검사
+const memberName = document.getElementById("memberName");
+const nameMessage = document.getElementById('nameMessage');
+
+// 이름이 입력이 되었을 때
+memberName.addEventListener("input", ()=>{
+
+    // 이름 입력이 되지 않은 경우
+    if(memberName.value.trim() == ''){
+        nameMessage.innerText = "한글만 2~6글자";
+        nameMessage.classList.remove("confirm", "error");
+        checkObj.memberName = false;
+        memberName.value = ""; 
+        return;
+    }
+
+    // 정규표현식으로 유효성 검사
+    const regEx = /^[가-힣]{2,5}$/;
+
+    if(regEx.test(memberName.value)){// 유효
+    
+                nameMessage.innerText = "사용 가능한 이름 입니다";
+
+    } else{
+        nameMessage.innerText = "이름 형식이 유효하지 않습니다";
+        nameMessage.classList.add("error");
+        nameMessage.classList.remove("confirm");
+        checkObj.memberName = false;
+    }
+
+});
+
+
 // 닉네임 유효성 검사
 const memberNickname = document.getElementById("memberNickname");
 const nickMessage = document.getElementById('nickMessage');
@@ -281,7 +365,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
 
         /* fetch() API 방식 ajax */
-        fetch("/sendEmail/signUp?email="+memberEmail.value)
+        fetch("/sendEmail/signUpNum?email="+memberEmail.value)
         .then(resp => resp.text())
         .then(result => {
             if(result > 0){

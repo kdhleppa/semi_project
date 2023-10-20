@@ -191,7 +191,7 @@ main {
 
 /* input 태그를 감싸고 있는 div 태그 */
 .signUp-input-area{
-    width: 400px;
+    width: 350px;
     height: 50px;
 
     margin-bottom: 10px;

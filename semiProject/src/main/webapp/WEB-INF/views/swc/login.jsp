@@ -33,7 +33,7 @@
                 
             </div>
             
-            <form class="content" action="/login" method="post" name="login-form" id="loginFrm">        
+            <form class="content" action="/link/login" method="post" name="login-form" id="loginFrm">        
                 <div class="title">
                     로그인
                 </div>
@@ -85,6 +85,14 @@
         </div>
 
     </div>
+    
+    <c:if test="${not empty message}">
+	
+	<script>
+		
+		alert('${message}') // ${message}
+	</script>
+	</c:if>
     
     <script src="/resources/js/login.js"></script>
 </body>

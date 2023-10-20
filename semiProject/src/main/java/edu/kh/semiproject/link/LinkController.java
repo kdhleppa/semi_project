@@ -225,8 +225,6 @@ public class LinkController {
 		return "/swc/write_message";
 	}
 	
-
-	
 	
 	
 	

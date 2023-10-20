@@ -28,7 +28,7 @@ public class MemberController {
 	private MemberService service;
 	
 	
-	@PostMapping("/login")
+	@PostMapping("/link/login")
 	public String login(Member inputMember, Model model, 
 						@RequestHeader("referer") String referer,
 						RedirectAttributes ra,
@@ -38,7 +38,6 @@ public class MemberController {
 		Member loginMember = service.login(inputMember);
 		
 		String path = "redirect:";
-		String message = null;
 		
 		if(loginMember != null) {
 			path += "/link/mainLogin";
@@ -53,7 +52,6 @@ public class MemberController {
 			
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			
-			System.out.println("아디비번틀림");
 			
 		}
 		
@@ -62,9 +60,8 @@ public class MemberController {
 	}
 	
 	
-	
 	// 회원 가입 진행
-	@PostMapping("/signUp")
+	@PostMapping("/link/signUp")
 	public String signUp(Member inputMember, 
 						String[] memberAddress,
 						RedirectAttributes ra ) {
@@ -101,6 +98,17 @@ public class MemberController {
 		
 		return path;
 		
+	}
+	
+	public String exceptionHandler(Exception e, Model model) {
+		
+		
+		e.printStackTrace();
+		
+		model.addAttribute("e", e);
+		
+		
+		return "common/error";
 	}
 	
 	
