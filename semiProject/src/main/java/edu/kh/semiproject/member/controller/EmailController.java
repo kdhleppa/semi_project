@@ -21,11 +21,13 @@ public class EmailController {
 	private EmailService service;
 	
 	@GetMapping("/signUpNum")
+	@ResponseBody
 	public int signUp(String email) {
 		return service.signUpNum(email, "회원 가입");
 	}
 	
 	@GetMapping("/checkAuthKey")
+	@ResponseBody
 	public int checkAuthKey(@RequestParam Map<String, Object> paramMap){
 
     	System.out.println(paramMap);

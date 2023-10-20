@@ -135,12 +135,12 @@
                 
                 <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
 
-                <span class="signUp-message" id="emailMessage"></span>
+                <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요</span>
                 
                 <!-- 인증번호 입력 -->
 
                 <div class="signUp-input-area">
-                    <input type="text" name="authKey" id="authKey" s placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
+                    <input type="text" name="authKey" id="authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
                     
                     <button id="checkAuthKeyBtn" type="button">인증확인</button>
                 </div>
@@ -150,10 +150,10 @@
                 <!-- 전화번호 입력 -->
                 
                 <div class="signUp-input-area">
-                    <input type="text" name="memberTel" id="memberTel" placeholder="휴대폰 번호(- 없이 숫자만 입력)" maxlength="11">
+                    <input type="text" name="memberPhoneNum" id="memberPhoneNum" placeholder="휴대폰 번호(- 없이 숫자만 입력)" maxlength="11">
                 </div>
 
-                <span class="signUp-message" id="telMessage"></span>
+                <span class="signUp-message" id="phoneMessage"></span>
 
 
 				<div style="font-size: 25px; margin-right: 300px;">
@@ -164,7 +164,7 @@
                     <input type="image">
                 </div>
 
-                <button id="btnbox" class="signUpEnd"> <a href="/link/login" style="color:white; text-decoration:none;">가입완료</a> </button>
+                <button id="btnbox" class="signUpEnd">가입완료</a> </button>
 
                 
             </form>
@@ -202,5 +202,6 @@
 	</script>
     
     <script src="/resources/js/signUp.js"></script>
+    
 </body>
 </html>

@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.kh.semiproject.member.model.dao.EmailDAO;
 
 
-
 @Service
 public class EmailServiceImpl implements EmailService{
 
