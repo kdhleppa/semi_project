@@ -83,26 +83,7 @@
 
         <div class="main">
             <div id="main-left">
-                <c:if test="${empty products}">
-                <p> 앗! 이주변에는 방이 없어요!</p>
-                </c:if>
-                <c:if test="${not empty products}">
-                	<c:forEach items="${products}" var = "products">
-		                <div  class = "preview-container">
-		                    <div class="preview-img">방 대표사진자리</div>
-		                    <div class="preview-text-container" >
-		                    	<p>${products.productRentType}</p>
-		                        <p>보증금 : ${products.productDeposit} 만원</p>
-		                        <c:if test="${products.productMonthlyRent != 0}">
-		                        <p>월세 : ${products.productMonthlyRent} 만원</p>
-		                        </c:if>
-		                        <c:if test="${not empty products.productMaintenace}">
-		                        <p>관리비 : ${products.productMaintenace} 만원</p>
-		                        </c:if>
-	                   	    </div>
-	                   	 </div>
-                	</c:forEach>
-                </c:if>
+                
             </div>
                 
             
