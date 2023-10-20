@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,29 +56,37 @@
                     <div class="main-content-left"></div>
                     <div class="main-content-main">
                         <div id="content-info">
-                            <div>${board.memberNickname}</div>
-                            <div>${board.boardDate}</div>
-                            <div>조회수 : ${board.boardCount}</div>
+                            <div>${current.memberNickname}</div>
+                            <div>${current.boardDate}</div>
+                            <div>조회수 : ${current.boardCount}</div>
                         </div>
-                        <div id="content-title"><c:out value="${board.boardTitle}"/></div>
-                        <div id="content-text"><c:out value="${board.boardContent}"/></div>
-                        <div id="content-comments"><c:out value="${boardComment}"/></div>
+                        <div id="content-title">${current.boardTitle}</div>
+                        <div id="content-text">${current.boardContent}</div>
+                        <div id="content-comments"></div>
                         <div id="content-listbutton">
-                            <div id="previous">
-                                <button>∧</button>
-                                <div>이전글</div>
-                                <div>${board.boardNo}-1.${board.boardTitle}</div>
-                            </div>
-                            <div id="next">
-                                <button>∨</button>
-                                <div>다음글</div>
-                                <div></div>
-                            </div>
+                        
+                        	<c:if test="${not empty prev}">
+	                            <div id="previous">
+	                                <button>∧</button>
+	                                <div>이전글</div>
+	                                <a href="/link/boardReadMoreMine/${prev.BOARD_NO}">${prev.BOARD_TITLE}</a>
+	                            </div>
+                        	</c:if>
+                        	
+                        	<c:if test="${not empty next}">
+	                            <div id="next">
+	                                <button>∨</button>
+	                                <div>다음글</div>
+	                                <a href="/link/boardReadMoreMine/${next.BOARD_NO}">${next.BOARD_TITLE}</a>
+	                            </div>
+                            </c:if>
                         </div>
-                        <div id="content-modifybutton">
-                            <button id="modifyButton">수정</button>
-                            <button id="deleteButton">삭제</button>
-                        </div>
+                        <c:if>
+	                        <div id="content-modifybutton">
+	                            <button id="modifyButton">수정</button>
+	                            <button id="deleteButton">삭제</button>
+	                        </div>
+						</c:if>
                     </div>
                     <div class="main-content-right"></div> 
                 </div>
