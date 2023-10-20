@@ -79,7 +79,7 @@
 									<div class="main-content-real">
 										<div id="content-number">${board.boardNo}</div>
 										<div id="content-writer">${board.memberNickname}</div>
-										<a id="content-title" href="/link/boardReadMoreMine/${board.boardNo}">${board.boardTitle}</a>
+										<a href="/link/boardReadMoreMine/${board.boardNo}" id="content-title">${board.boardTitle}</a>
 										<div id="content-date">${board.boardDate}</div>
 										<div id="content-count">${board.boardCount}</div>
 									</div>
@@ -152,6 +152,6 @@
     <script>
     	console.log("${pagination}");
     </script>
-    
+        
 </body>
 </html>
