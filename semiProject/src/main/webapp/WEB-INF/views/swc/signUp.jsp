@@ -131,9 +131,9 @@
                 
                 <div class="signUp-input-area">
                     <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일" maxlength="40">
+                    
+                    <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
                 </div>
-                
-                <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
 
                 <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요</span>
                 
@@ -155,14 +155,6 @@
 
                 <span class="signUp-message" id="phoneMessage"></span>
 
-
-				<div style="font-size: 25px; margin-right: 300px;">
-                    프로필 사진 등록
-                </div>
-
-                <div class="profileimg" style="border-image: round;">
-                    <input type="image">
-                </div>
 
                 <button id="btnbox" class="signUpEnd">가입완료</a> </button>
 

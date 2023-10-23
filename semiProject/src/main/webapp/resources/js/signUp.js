@@ -12,9 +12,6 @@ const checkObj = {
 };
 
 
-// **** 아이디, 닉네임 중복 검사 할 것 **** 
-
-
 // 아이디 유효성 검사
 const memberId = document.getElementById("memberId");
 const idMessage = document.getElementById('idMessage');

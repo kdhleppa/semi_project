@@ -36,8 +36,8 @@
                 <div id="logout">
                     <a href="/link/logout">로그아웃</a>
                 </div>
-                <div id="myPage">
-                    <a href="/link/myPage">내정보</a>
+                <div id="myInfo">
+                    <a href="/link/myInfo">내정보</a>
                 </div>
                 
             </section>
