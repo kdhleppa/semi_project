@@ -2,6 +2,7 @@ package edu.kh.semiproject.map.model.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,19 @@ public class MapDAO {
 	public List<Product> selectAllProduct() {
 		return sqlSession.selectList("mapMapper.selectAllProduct");
 	}
+
+
+	public List<Product> conditionSearch(Map<String, Object> map) {
+		
+		
+		
+		
+		
+		return sqlSession.selectList("mapMapper.conditionSearch", map);
+	}
+
+
+	
 
 	
 	

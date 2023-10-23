@@ -1,12 +1,14 @@
 package edu.kh.semiproject.map.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -29,24 +31,31 @@ public class MapController {
 	
 	@GetMapping("/link/getProducts")
 	@ResponseBody
-	public List<Product> getProducts(Model model) {
+	public List<Product> getProducts(
+			Model model,
+			String roomType,
+			String productRentType,
+			Integer productDeposit,
+			Integer productMonthlyRent
+			) {
 		
-		List<Product> products = service.selectAllProduct();
-		model.addAttribute("products", products);
+		List<Product> products = new ArrayList<Product>();
 		
+		if (roomType !=null || productRentType != null) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("roomType", roomType);
+			map.put("productRentType", productRentType);
+			map.put("productDeposit", productDeposit);
+			map.put("productMonthlyRent", productMonthlyRent);
+			products = service.conditionSearch(map);
+			model.addAttribute("products", products);
+		} else {
+			products = service.selectAllProduct();
+			model.addAttribute("products", products);
+		}
 		return products;
 	}
-	/*
-	@GetMapping("/link/getProductsInBounds")
-	@ResponseBody
-	public List<Product> getProductsInBounds(
-        @RequestParam double southWestLat, @RequestParam double southWestLng,
-        @RequestParam double northEastLat, @RequestParam double northEastLng, Model model) {
-		
-		List<Product> products = service.selectAllProduct();
-		model.addAttribute("products", products);
-		
-		return products;
-	}
-	*/
+
+	
+	
 }

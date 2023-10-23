@@ -101,97 +101,7 @@ function displayMarkersWithinBounds(products) {
     }, 300);
 }
 
-/*
-function displayMarkersWithinBounds(products) {
-    if (debounceTimer) {
-        clearTimeout(debounceTimer);
-    }
 
-    debounceTimer = setTimeout(() => {
-        // 현재 지도의 범위를 가져옴
-        var bounds = map.getBounds();
-		const moveProducts = [];
-        // 마커 클러스터러에 추가된 마커들을 모두 제거
-        clusterer.clear();
-		
-        products.forEach(product => {
-            let address = product.productAddress;
-            geocoder.addressSearch(address, function(result, status) {
-                if (status === kakao.maps.services.Status.OK) {
-                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-                    // 좌표가 현재 지도 범위 안에 있는지 확인
-                    if (bounds.contain(coords)) {
-                        var marker = new kakao.maps.Marker({
-                            position: coords
-                        });
-                        clusterer.addMarker(marker);
-                        console.log("프로덕트", product);
-                        console.log("범위안의주소", address);
-                        
-                        moveProducts.push(product);
-                        
-                        console.log("범위안의주소의프로덕트", moveProducts);
-                        
-                        
-                    } else {
-                    	moveProducts.length = 0;
-                    	console.log("범위안의주소의프로덕트", moveProducts);
-                    }
-                } else {
-                    console.error("Failed to get coords for address:", address);
-                    
-                }
-            });
-        });
-       var mainLeftElem = document.getElementById("main-left");
-        mainLeftElem.innerHTML = '';  // 기존 내용 초기화
-
-        if (moveProducts.length != 0) {
-			moveProducts.forEach(product => {
-                var productContainer = document.createElement("div");
-                productContainer.className = "preview-container";
-                
-                var productImgElem = document.createElement("div");
-                productImgElem.className = "preview-img";
-                productImgElem.textContent = "방 대표사진자리";
-                productContainer.appendChild(productImgElem);
-
-                var productTextContainer = document.createElement("div");
-                productTextContainer.className = "preview-text-container";
-
-                var rentTypeElem = document.createElement("p");
-                rentTypeElem.textContent = product.productRentType;
-                productTextContainer.appendChild(rentTypeElem);
-
-                var depositElem = document.createElement("p");
-                depositElem.textContent = "보증금 : " + product.productDeposit + " 만원";
-                productTextContainer.appendChild(depositElem);
-
-                if (product.productMonthlyRent != 0) {
-                    var monthlyRentElem = document.createElement("p");
-                    monthlyRentElem.textContent = "월세 : " + product.productMonthlyRent + " 만원";
-                    productTextContainer.appendChild(monthlyRentElem);
-                }
-
-                if (product.productMaintenace) {
-                    var maintenanceElem = document.createElement("p");
-                    maintenanceElem.textContent = "관리비 : " + product.productMaintenace + " 만원";
-                    productTextContainer.appendChild(maintenanceElem);
-                }
-
-                productContainer.appendChild(productTextContainer);
-                mainLeftElem.appendChild(productContainer);
-            });
-        } else {
-            var emptyMsgElem = document.createElement("p");
-            emptyMsgElem.textContent = "앗! 이 주변에는 방이 없어요!";
-            mainLeftElem.appendChild(emptyMsgElem);
-            
-        }
-    }, 300); // 300ms 딜레이
-}
-*/
 // 지도의 범위 변경 이벤트에 대한 리스너 추가
 kakao.maps.event.addListener(map, 'bounds_changed', function() {
     fetch("/link/getProducts")
@@ -216,125 +126,7 @@ fetch("/link/getProducts")
         console.error("Error in fetchMapCluster:", error);
     });
 
-/*
-    fetch("/link/getProducts")
-    	, {
-     	method : "POST",
-        headers : {"Content-Type" : "application/json"},
-        body : JSON.stringify(data)
-    	})
-       
-    .then(response => response.json())
-    .then(products => {
-    	
-        products.forEach(product => {
-        	console.log("product:", product);
-            let address = product.productAddress;
-			console.log("address:", address);
-            geocoder.addressSearch(address, function(result, status) {
-                if (status === kakao.maps.services.Status.OK) {
-                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                    var marker = new kakao.maps.Marker({
-                        position: coords
-                    });
-                    clusterer.addMarker(marker);
-                } else {
-                    console.error("Failed to get coords for address:", address);
-                }
-            });
-        });
-    })
-    .catch(error => {
-        console.error("Error in fetchMapCluster:", error);
-    });
 
-*/	   
-	   
-	
-	
-
-
-/*
-async function fetchProductsAndAddMarkers() {
-    try {
-        // 백엔드에서 물건 정보 가져오기
-        let response = await fetch("/link/getProducts");
-        let products = await response.json();
-
-        // 주소를 좌표로 변환하고 마커 클러스터러에 추가
-        products.forEach(product => {
-            let address = product.productAddress;
-
-            geocoder.addressSearch(address, function(result, status) {
-                if (status === kakao.maps.services.Status.OK) {
-                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                    var marker = new kakao.maps.Marker({
-                        position: coords
-                    });
-                    clusterer.addMarker(marker);
-                } else {
-                    console.error("Failed to get coords for address:", address);
-                }
-            });
-        });
-
-    } catch (error) {
-        console.error("Error fetching products:", error);
-    }
-}
-*/
-/*
-async function fetchProductsAndAddMarkers() {
-    try {
-        // 백엔드에서 물건 정보 가져오기
-        let response = await fetch("/link/getProducts");
-        let products = await response.json();
-
-        // 지도의 현재 보이는 영역 가져오기
-        let bounds = map.getBounds();
-        
-        // 주소를 좌표로 변환하고 마커 클러스터러에 추가
-        products.forEach(product => {
-            let address = product.productAddress;
-
-            geocoder.addressSearch(address, function(result, status) {
-                if (status === kakao.maps.services.Status.OK) {
-                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                    
-                    // 좌표가 지도의 현재 보이는 영역 내에 있는지 확인
-                    if (bounds.hasLatLng(coords)) {
-                        var marker = new kakao.maps.Marker({
-                            position: coords
-                        });
-                        clusterer.addMarker(marker);
-                    }
-                } else {
-                    console.error("Failed to get coords for address:", address);
-                }
-            });
-        });
-
-    } catch (error) {
-        console.error("Error fetching products:", error);
-    }
-}
-*/
-/*
-// 함수 호출
-fetchProductsAndAddMarkers();
-*/
-/*
-// 추가
-// Event listener for map bounds change
-kakao.maps.event.addListener(map, 'bounds_changed', function() {
-    fetchProductsAndAddMarkers();
-});
-
-// Event listener for map zoom change
-kakao.maps.event.addListener(map, 'zoom_changed', function() {
-    fetchProductsAndAddMarkers();
-});	
-*/
 
 
 var previousMarker = null;
@@ -395,9 +187,53 @@ function removePreviousMarker() {
 }
 
 
+window.onload = function() {
+        // 보증금, 월세, 월세 라벨 숨김
+        var productDepositField = document.getElementById('productDeposit');
+        var productDepositLabel = document.getElementById('depositLabel');
+        var monthlyRentField = document.getElementById('productMonthlyRent');
+        var monthlyRentLabel = document.getElementById('monthlyRentLabel');
+        var depositWon = document.getElementById('depositWon');
+        var rentWon = document.getElementById('rentWon');
+        
+        
+        productDepositField.style.display = 'none';
+        productDepositLabel.style.display = 'none';
+        monthlyRentField.style.display = 'none';
+        monthlyRentLabel.style.display = 'none';
+        depositWon.style.display = 'none';
+        rentWon.style.display = 'none';
+       
+    };
 
-
-
-
-
-
+    function showFields(rentType) {
+        var productDepositField = document.getElementById('productDeposit');
+        var productDepositLabel = document.getElementById('depositLabel');
+        var monthlyRentField = document.getElementById('productMonthlyRent');
+        var monthlyRentLabel = document.getElementById('monthlyRentLabel');
+		
+		
+		
+        if (rentType.value === '전세') {
+            productDepositField.style.display = 'block';
+            productDepositLabel.style.display = 'block';
+            depositWon.style.display = 'block';
+            monthlyRentField.style.display = 'none';
+            monthlyRentLabel.style.display = 'none';
+            rentWon.style.display = 'none';
+        } else if (rentType.value === '월세') {
+            productDepositField.style.display = 'block';
+            productDepositLabel.style.display = 'block';
+            depositWon.style.display = 'block';
+            monthlyRentField.style.display = 'block';
+            monthlyRentLabel.style.display = 'block';
+            rentWon.style.display = 'block';
+        } else {
+            productDepositField.style.display = 'none';
+            productDepositLabel.style.display = 'none';
+            monthlyRentField.style.display = 'none';
+            monthlyRentLabel.style.display = 'none';
+            rentWon.style.display = 'none';
+            depositWon.style.display = 'none';
+        }
+    }
