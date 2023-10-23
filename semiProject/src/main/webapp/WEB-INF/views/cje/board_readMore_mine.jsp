@@ -81,7 +81,7 @@
 	                            </div>
                             </c:if>
                         </div>
-                        <c:if>
+                        <c:if test="${not empty loginMember}">
 	                        <div id="content-modifybutton">
 	                            <button id="modifyButton">수정</button>
 	                            <button id="deleteButton">삭제</button>
