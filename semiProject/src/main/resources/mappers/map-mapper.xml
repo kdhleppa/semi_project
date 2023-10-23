@@ -42,6 +42,42 @@
 </select>
 
 
+<select id="conditionSearch" resultMap="product_rm">
+	SELECT *
+	FROM PRODUCT
+	WHERE PRODUCT_HIDE = 'N'
+	<choose>
+		<when test="roomType == '원룸'">
+		AND ROOM_TYPE = #{roomType}
+		</when>
+		<when test="roomType == '투룸'">
+		AND ROOM_TYPE = #{roomType}
+		</when>
+		<otherwise>
+		AND (ROOM_TYPE = '원룸' OR ROOM_TYPE= '투룸')
+		</otherwise>
+	</choose>
+	<choose>
+		<when test="productRentType == '전세'">
+		AND PRODUCT_RENT_TYPE = #{productRentType}
+		<![CDATA[
+		AND PRODUCT_DEPOSIT <= #{productDeposit}
+		]]>
+		</when>
+		<when test="productRentType == '월세'">
+		AND PRODUCT_RENT_TYPE = #{productRentType}
+		<![CDATA[
+		AND PRODUCT_DEPOSIT <= #{productDeposit}
+		AND PRODUCT_MONTHLY_RENT <= #{productMonthlyRent}
+		]]>
+		</when>
+		<otherwise>
+		AND (PRODUCT_RENT_TYPE = '전세' OR PRODUCT_RENT_TYPE = '월세')
+		</otherwise>
+	</choose>
+</select>
+
+
 
 
   	
