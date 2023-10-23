@@ -30,7 +30,7 @@
                     <a href="/link/roomUpFront">방내놓기</a>
                 </div>
                 <div id="board">
-                    <a href="/link/communityList">게시판</a>
+                    <a href="/link/boardList">게시판</a>
                 </div>
                 <div id="mypage">
                     <a href="/link/myInfo">내정보</a>
@@ -42,7 +42,7 @@
         <main>
         
             <div class="leftmenu">
-            	<a href="/link/communityListMine">내가 쓴 글</a>
+            	<a href="/link/boardListMine">내가 쓴 글</a>
             </div>
             
             <div class="content">
@@ -51,19 +51,23 @@
                 </div>
                 <div class="main-content">
                     <div class="main-content-left"></div>
-                    <div class="main-content-main">
-                        <input id="content-title" placeholder="제목을 입력해주세요."></input>
-                        <div id="content-option">
-	                        <label for="imageInput">이미지</label>
-	                        <input type="file" name="profileImage" id="imageInput" accept="image/*">
-                            <button type="button">동영상 url</button>
-                        </div>
-                        <input id="content-text" placeholder="내용을 입력해주세요."></input>                        
-                        <div id="content-modifybutton">
-                            <button id="registerButton">등록하기</button>
-                            <button id="cancelButton">취소</button>
-                        </div>
-                    </div>
+                    
+                    <form action="/board2/insert" method="POST" id="boardWriteFrm">
+	                    <div class="main-content-main">
+	                        <input id="content-title" placeholder="제목을 입력해주세요."></input>
+	                        <div id="content-option">
+		                        <label for="imageInput">이미지</label>
+		                        <input type="file" name="profileImage" id="imageInput" accept="image/*">
+	                            <button type="button">동영상 url</button>
+	                        </div>
+	                        <input id="content-text" placeholder="내용을 입력해주세요."></input>                        
+	                        <div id="content-modifybutton">
+	                            <button id="registerButton">등록하기</button>
+	                            <button id="cancelButton">취소</button>
+	                        </div>
+	                    </div>
+	                </form>                    
+                    
                     <div class="main-content-right"></div> 
                 </div>
             </div>
@@ -73,7 +77,7 @@
                 	<a href="#">위로</a>
                 </button>
                 <button id="bottom-nav-list">
-                	<a href="/link/communityList">목록</a>
+                	<a href="/link/boardList">목록</a>
                 </button>
                 <img src="/resources/images/chat_icon.png" id="chat-icon">
             </div>

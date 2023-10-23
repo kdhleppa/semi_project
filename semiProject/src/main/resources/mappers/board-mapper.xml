@@ -38,7 +38,7 @@
 	</select>
 	
 	<select id="selectBoardDetail" resultMap="board_rm">
-		SELECT BOARD_NO, MEMBER_NICKNAME, 
+		SELECT BOARD_NO, MEMBER_NO, MEMBER_NICKNAME, 
 				TO_CHAR(BOARD_DATE, 'YYYY/MM/DD') AS "BOARD_DATE", 
 				BOARD_COUNT, BOARD_TITLE, BOARD_CONTENT
 		FROM BOARD
@@ -55,5 +55,11 @@
 		FROM BOARD
 		WHERE BOARD_NO = #{boardNo} + 1
 	</select>
+	
+	<update id="updateReadCount">
+		UPDATE BOARD SET 
+		BOARD_COUNT = BOARD_COUNT + 1
+		WHERE BOARD_NO = #{boardNo}
+	</update>
 	
 </mapper>
