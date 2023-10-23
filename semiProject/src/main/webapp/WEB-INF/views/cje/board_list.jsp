@@ -48,7 +48,7 @@
         <main>
         
             <div class="leftmenu">
-            	<a href="/link/communityListMine">내가 쓴 글</a>
+            	<a href="/link/boardListMine">내가 쓴 글</a>
             </div>
             
             <div class="content">
@@ -93,7 +93,7 @@
 			                    </select>
 			                    <input id="search-word" placeholder="검색어를 입력해주세요.">
 			                    <button id="writing">
-			                    	<a href="communityWriting">글쓰기</a>
+			                    	<a href="boardWriting">글쓰기</a>
 			                    </button>
 			                </div>
 						</c:otherwise>						
@@ -137,12 +137,6 @@
                 
             </div>
             <div class="right">
-                <button id="bottom-nav-top">
-                	<a href="#">위로</a>
-				</button>
-                <button id="bottom-nav-list">
-                	<a href="#">목록</a>
-                </button>
                 <img src="/resources/images/chat_icon.png" id="chat-icon">
             </div>
         </main>

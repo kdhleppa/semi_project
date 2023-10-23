@@ -44,7 +44,7 @@
         <main>
         
             <div class="leftmenu">
-            	<a href="/link/communityListMine">내가 쓴 글</a>
+            	<a href="/link/boardListMine">내가 쓴 글</a>
             </div>
             
             <div class="content">
@@ -81,7 +81,8 @@
 	                            </div>
                             </c:if>
                         </div>
-                        <c:if test="${not empty loginMember}">
+
+                        <c:if test="${loginMember.memberNo == board.memberNo}">
 	                        <div id="content-modifybutton">
 	                            <button id="modifyButton">수정</button>
 	                            <button id="deleteButton">삭제</button>
@@ -96,7 +97,7 @@
                 	<a href="#">위로</a>
                 </button>
                 <button id="bottom-nav-list">
-                	<a href="/link/communityList">목록</a>
+                	<a href="/link/boardList">목록</a>
                 </button>
                 <img src="/resources/images/chat_icon.png" id="chat-icon">
             </div>

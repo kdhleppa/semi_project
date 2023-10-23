@@ -71,5 +71,14 @@ public class BoardServiceImpl implements BoardService{
 		
 		return list;
 	}
+
+	/** 조회수 증가 처리 서비스
+	 *
+	 */
+	@Override
+	public int updateReadCount(int boardNo) {
+
+		return dao.updateReadCount(boardNo);
+	}
 	
 }

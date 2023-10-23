@@ -57,13 +57,22 @@ public class BoardDAO {
 		return sqlSession.selectOne("boardMapper.selectBoardDetail", boardNo);
 	}
 
-	/** 이전 다음 게시글 번호 조회 dao
+	/** 이전 다음 게시글 번호 조회 DAO
 	 * @param boardNo
 	 * @return
 	 */
 	public List<Map<String, Object>> selectPrevNextBoardNo(int boardNo) {
 	
 		return sqlSession.selectList("boardMapper.selectPrevNextBoardNo", boardNo);
+	}
+
+	/** 조회수 증가 처리 DAO
+	 * @param boardNo
+	 * @return
+	 */
+	public int updateReadCount(int boardNo) {
+		
+		return sqlSession.update("boardMapper.updateReadCount", boardNo);
 	}
 
 	

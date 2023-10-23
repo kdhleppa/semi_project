@@ -22,4 +22,7 @@ public interface BoardService {
 	 */
 	List<Map<String, Object>> boardDetailMine(int boardNo);
 
+
+	int updateReadCount(int boardNo);
+
 }
