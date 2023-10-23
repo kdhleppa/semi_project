@@ -153,3 +153,15 @@ main {
     border-top-width: 0;
     border-bottom-width: 1px;
 }
+
+
+.profile-btn-area > button {
+	width: 30%;
+    height: 70%;
+    background-color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+
+

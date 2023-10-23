@@ -55,26 +55,33 @@
                 <%-- 폼테그 제출하면 연결되게끔 할것 --%>
             </div>
             <div id="mid-top-right">
-                <form id="option" action="">
-                    <select name="" id="">
-                        <option class="optionsize" value="default" selected>원룸, 투룸</option>
-                        <option class="optionsize" value="oneroom">원룸</option>
-                        <option class="optionsize" value="tworoom">투룸</option>
+                <form id="option" action="/link/getProducts" method="get">
+                    <select name="roomType" id="">
+                        <option class="optionsize" value="all" selected>원룸, 투룸</option>
+                        <option class="optionsize" value="원룸">원룸</option>
+                        <option class="optionsize" value="투룸">투룸</option>
                         
                     </select>
 
-                    <select name="" id="">
-                        <option value="default" selected>전세, 월세</option>
-                        <option value="yearpee">전세</option>
-                        <option value="mpnthpee">월세</option>
+                    <select name="productRentType" id=""  onchange="showFields(this)">
+                        <option value="all" selected>전세, 월세</option>
+                        <option value="전세" >전세</option>
+                        <option value="월세" >월세</option>
 
                     </select>
-                    <p>보증금&nbsp;</p>
-                    <input type="text" placeholder="보증금~까지"><p>만원</p>
-                    <p>월세&nbsp;</p>
-                    <input type="text" placeholder="월세~까지"><p>만원</p>
-                    <button id="optionbtn">검색</button>
-
+                    <label for="productDeposit" id="depositLabel">보증금&nbsp</label>
+					    <input type="text" name="productDeposit" id="productDeposit" placeholder="보증금~까지"/><span id="depositWon">&nbsp만원&nbsp&nbsp&nbsp&nbsp</span>
+                    <label for="productMonthlyRent" id="monthlyRentLabel">월세&nbsp</label>
+					    <input type="text" name="productMonthlyRent" id="productMonthlyRent" placeholder="월세~까지"/><span id="rentWon" >&nbsp만원</span>
+                    <button id="optionbtn" type="submit">검색</button>
+				<%--
+				처리해야할것
+				원룸,투룸 선택시 -> 원룸 투룸 결과값 모두 선택 where ROOM_TYPE=*
+				전세,월세 선택시 -> where RENT_TYPE=*
+				나머지 각각의 값 전송해서 검색한후
+				현재 products 리셋후 새로넣는다!!
+				
+				 --%>
 
 
                 </form>

@@ -70,7 +70,7 @@
                 
             </div>
 
-            <form class="content">
+            <form class="content" action="/link/myInfoUpdate" method="POST" name="myPageFrm" id="updateInfo">
                 <div class="title">
                     정보수정
                 </div>
@@ -109,15 +109,8 @@
                     <p class="infobox" style="margin-left: 63px;">&nbsp;&nbsp;&nbsp;&nbsp;휴대폰</p>
                     <input id="textbox" type="text"> 인증하기
                 </div>
-
-                <div style="font-size: 25px; margin-right: 300px;">
-                    프로필 사진 등록
-                </div>
-
-                <div class="profileimg" style="border-image: round;">
-                    <input type="image">
-                </div>
-
+                
+				
                 <button id="btnbox" class="infoUpdate">수정 완료</button>
 
             </form>

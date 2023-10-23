@@ -81,6 +81,7 @@
 	                            </div>
                             </c:if>
                         </div>
+
                         <c:if test="${loginMember.memberNo == board.memberNo}">
 	                        <div id="content-modifybutton">
 	                            <button id="modifyButton">수정</button>

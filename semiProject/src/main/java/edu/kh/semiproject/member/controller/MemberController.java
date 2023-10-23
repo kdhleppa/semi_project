@@ -21,6 +21,7 @@ import edu.kh.semiproject.member.model.service.MemberService;
 
 
 @Controller
+@SessionAttributes({"loginMember"})
 public class MemberController {
 
 	
@@ -44,7 +45,7 @@ public class MemberController {
 			
 			model.addAttribute("loginMember", loginMember);
 			
-			System.out.println("loginMember" + loginMember);
+			System.out.println("loginMember::" + loginMember);
 			
 		} else {
 			

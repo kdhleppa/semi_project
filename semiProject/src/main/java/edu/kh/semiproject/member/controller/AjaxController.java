@@ -29,7 +29,7 @@ public class AjaxController {
 	@GetMapping("/dupCheck/id")
 	@ResponseBody
 	public int checkId(String id) {
-		return service.checkEmail(id);
+		return service.checkId(id);
 	}
 	
 	

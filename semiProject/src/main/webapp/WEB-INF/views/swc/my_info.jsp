@@ -70,34 +70,59 @@
                 
             </div>
 
-            <form class="content">
-                <div class="title">
+                
+				<form class= "content" action="/link/myInfo" method="POST" name="myInfoFrm" id="profileFrm" enctype="multipart/form-data">
+				
+				<div class="title">
                     내 정보
                 </div>
 
-                <div class="profileimg" style="border-image: round;">
-                    <input type="image">
+				<div style="font-size: 25px; margin-right: 300px;">
+                    프로필 사진 등록
                 </div>
 
-                <div>
-                    이름
-                    <div>
-                        <input type="text" id="underline">
+                <div class="profile-image-area">
+                    
+                    	<%-- 프로필 이미지가 없으면 기본 이미지 --%>
+						<c:if test="${empty loginMember.profileImage}">
+	                        <img style="width: 100px;" src="/resources/images/user.png" id="profileImage">
+						</c:if>
+						
+						<%-- 프로필 이미지가 있으면 저장된 이미지 --%>
+						<c:if test="${not empty loginMember.profileImage}">
+	                        <img src="${loginMember.profileImage}" id="profileImage">
+						</c:if>
+						
+						
+						<span style="margin-left: 10px; margin-bottom: 100px;" id="deleteImage">x</span>
+                </div>
+                    
+                
+                <div class="profile-btn-area">
+                        <label for="imageInput"></label>
+                        <input style="margin-left: 10px; background-color: white;" type="file" name="profileImage" id="imageInput" accept="image/*">
+                        <button>변경하기</button>
                     </div>
+                
+                <div class="myInfo-row">
+                        <label>이메일</label>
+                        <input type="text" name="memberEmail"  maxlength="20"
+                        	value="${loginMember.memberEmail}" id="memberEmail"
+                        >
                 </div>
 
-                <div>
-                    닉네임
-                    <div>
-                        <input type="text" id="underline">
-                    </div>
+                <div class="myInfo-row">
+                        <label>닉네임</label>
+                        <input type="text" name="memberNickname"  maxlength="10"
+                        	value="${loginMember.memberNickname}" id="memberNickname"
+                        >
                 </div>
 
-                <div>
-                    휴대폰
-                    <div>
-                        <input type="text" id="underline">
-                    </div>
+                <div class="myInfo-row">
+                        <label>휴대폰</label>
+                        <input type="text" name="memberPhoneNum"  maxlength="11" id="memberPhoneNum"
+                        	value="${loginMember.memberPhoneNum}"
+                        >
                 </div>
 
                 <br>
@@ -113,5 +138,8 @@
         </div>
 
     </div>
+    
+    <script src="/resources/js/myInfo.js"></script>
+    
 </body>
 </html>
