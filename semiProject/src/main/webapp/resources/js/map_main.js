@@ -17,6 +17,27 @@ var markers = [];
 
 
 var debounceTimer;
+
+var searchParams;
+
+document.getElementById("option").addEventListener("submit", function(event) {
+    event.preventDefault(); // 폼의 기본 제출 행동을 막습니다.
+
+    const formData = new FormData(event.target); // 폼의 데이터를 가져옵니다.
+    searchParams = new URLSearchParams(formData).toString(); // 폼의 데이터를 URL 파라미터 형식으로 변환합니다.
+
+    // AJAX 요청을 사용하여 데이터를 가져옵니다.
+    fetch("/link/getProducts?" + searchParams)
+        .then(response => response.json())
+        .then(products => {
+            displayMarkersWithinBounds(products);
+        })
+        .catch(error => {
+            console.error("Error in fetch:", error);
+        });
+});
+
+
 function displayMarkersWithinBounds(products) {
     if (debounceTimer) {
         clearTimeout(debounceTimer);
@@ -27,7 +48,8 @@ function displayMarkersWithinBounds(products) {
         const moveProducts = [];
         
         clusterer.clear();
-
+		
+		
         // 각 주소 검색에 대한 Promise를 저장할 배열
         let promises = products.map(product => {
             return new Promise((resolve, reject) => {
@@ -104,7 +126,7 @@ function displayMarkersWithinBounds(products) {
 
 // 지도의 범위 변경 이벤트에 대한 리스너 추가
 kakao.maps.event.addListener(map, 'bounds_changed', function() {
-    fetch("/link/getProducts")
+    fetch("/link/getProducts?" + searchParams)
         .then(response => response.json())
         .then(products => {
             displayMarkersWithinBounds(products);

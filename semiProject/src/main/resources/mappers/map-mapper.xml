@@ -59,20 +59,26 @@
 	</choose>
 	<choose>
 		<when test="productRentType == '전세'">
-		AND PRODUCT_RENT_TYPE = #{productRentType}
-		<![CDATA[
-		AND PRODUCT_DEPOSIT <= #{productDeposit}
-		]]>
+			AND PRODUCT_RENTTYPE = #{productRentType}
+			<![CDATA[
+			AND PRODUCT_DEPOSIT <= #{productDeposit}
+			]]>
 		</when>
 		<when test="productRentType == '월세'">
-		AND PRODUCT_RENT_TYPE = #{productRentType}
-		<![CDATA[
-		AND PRODUCT_DEPOSIT <= #{productDeposit}
-		AND PRODUCT_MONTHLY_RENT <= #{productMonthlyRent}
-		]]>
+			AND PRODUCT_RENTTYPE = #{productRentType}
+			<if test="productDeposit !=null">
+				<![CDATA[
+				AND PRODUCT_DEPOSIT <= #{productDeposit}
+				]]>
+			</if>
+			<if test="productMonthlyRent != null">
+				<![CDATA[
+	        	AND PRODUCT_MONTHLY_RENT <= #{productMonthlyRent}
+	        	]]>
+    		</if>
 		</when>
 		<otherwise>
-		AND (PRODUCT_RENT_TYPE = '전세' OR PRODUCT_RENT_TYPE = '월세')
+		AND (PRODUCT_RENTTYPE = '전세' OR PRODUCT_RENTTYPE = '월세')
 		</otherwise>
 	</choose>
 </select>
