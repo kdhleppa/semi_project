@@ -70,12 +70,14 @@
 
             </div>
 
-            <form class="content">
+            <form class="content" action="withdrawal" method="POST" name="withdrawalFrm">
+                 
                 <div class="title">
                     회원탈퇴
                 </div>
 
                 <br><br><br>
+                
 
                 <div class="delguide">
                     <p style="font-size: 19px; color: blue;">회원탈퇴를 신청하기 전에 아래 안내 사항을 한번 더 확인해주세요.</p><br>
@@ -88,20 +90,27 @@
                     </ul>
                 </div>
 
-                <br><br><br><br>
+                <br><br><br>
+                
+                <div class="pwCheck">
+                        <label>비밀번호 입력</label>
+                        <input type="password" name="memberPw" id="memberPw" maxlength="30">              
+                </div>
+                
+                <br><br><br>
 
                 <div>
                     <select class="delreason" id="menu" name="menu" required style="margin-top: -30px; font-size: 30px; width: 680px; height: 70px;">
                         <option value="" disabled selected>탈퇴 사유를 선택해주세요</option>
-                        <option value="boong">붕어빵</option>
-                        <option value="tako">타코야키</option>
-                        <option value="ddang">땅콩과자</option>
-                        <option value="other">그 외 간식</option>
+                        <option value="unuse">자주 사용하지 않아요</option>
+                        <option value="duplicate">중복 계정이 있어요</option>
+                        <option value="apperror">앱 오류가 있어요</option>
+                        <option value="other">기타</option>
                     </select>
                 </div>
 
                 <div>
-                    <textarea style="margin-top: 70px; font-size: 20px; width: 680px; height: 300px;">다른 사유가 있다면 입력해주세요.</textarea>
+                    <textarea style="margin-top: 70px; font-size: 20px; width: 680px; height: 300px;">기타 사유가 있다면 입력해주세요.</textarea>
                 </div>
 
                 <div style="margin-top: 20px;">
@@ -120,5 +129,14 @@
         </div>
 
     </div>
+    
+    <c:if test="${not empty message}">
+	
+	<script>
+		
+		alert('${message}') // ${message}
+	</script>
+	</c:if>
+    
 </body>
 </html>

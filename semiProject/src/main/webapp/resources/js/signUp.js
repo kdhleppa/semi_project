@@ -325,7 +325,7 @@ memberPhoneNum.addEventListener("input", ()=>{
     }
 
     // 정규표현식으로 유효성 검사
-    const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
+    const regEx = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/;
 
     if(regEx.test(memberPhoneNum.value)){// 유효
         phoneMessage.innerText = "유효한 전화번호 형식입니다";

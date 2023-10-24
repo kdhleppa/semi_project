@@ -1,14 +1,18 @@
 package edu.kh.semiproject.mypage.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,14 +26,6 @@ public class MyInfoController {
 	@Autowired
 	private MyInfoService service;
 	
-	
-	// 프로필 페이지 이동
-	@GetMapping("/profile")
-	public String profile() {
-		return "my_info";
-	}
-		
-	
 	// 탈퇴 페이지 이동
 	@GetMapping("/withdrawal")
 	public String withdrawal() {
@@ -38,7 +34,7 @@ public class MyInfoController {
 	
 	
 	// 회원 정보 수정
-	@PostMapping("/link/myInfo")
+	@PostMapping("/link/myInfoUpdate")
 	public String updateInfo(@SessionAttribute("loginMember") Member loginMember,
 							Member updateMember,
 							String[] memberAddress,
@@ -58,6 +54,7 @@ public class MyInfoController {
 				updateMember.setMemberNo( loginMember.getMemberNo() );
 				
 				
+				
 				// DB 회원 정보 수정 (update) 서비스 호출
 				int result = service.updateInfo(updateMember);
 				
@@ -66,9 +63,14 @@ public class MyInfoController {
 				// 결과값으로 성공
 				if(result > 0) {
 					// -> 성공 시 Session에 로그인된 회원 정보도 수정(동기화)
+					
+					loginMember.setMemberPw( updateMember.getMemberPw() );
+					loginMember.setMemberName( updateMember.getMemberName() );
 					loginMember.setMemberNickname( updateMember.getMemberNickname() );
-					loginMember.setMemberPhoneNum( updateMember.getMemberPhoneNum() );
 					loginMember.setMemberAddress( updateMember.getMemberAddress() );
+					loginMember.setMemberEmail( updateMember.getMemberEmail() );
+					loginMember.setMemberPhoneNum( updateMember.getMemberPhoneNum() );
+					
 					
 					message = "회원 정보 수정 성공";
 					
@@ -82,12 +84,12 @@ public class MyInfoController {
 				
 				ra.addFlashAttribute("message", message);
 				
-				return "redirect:info"; // 상대경로 (/myPage/info)
+				return "redirect:myInfo";
 			}
 	
 	
 	// 프로필 이미지 수정
-	@PostMapping("/profile")
+	@PostMapping("/link/myInfo")
 	public String updateProfile(
 			@RequestParam("profileImage") MultipartFile profileImage // 업로드 파일
 			, HttpSession session // 세션 객체
@@ -100,7 +102,7 @@ public class MyInfoController {
 		
 		// 실제로 이미지 파일이 저장되어야하는 서버컴퓨터 경로
 		String filePath = session.getServletContext().getRealPath(webPath);
-		// C:\workspace\6_Framework\boardProject\src\main\webapp\resources\images\member
+		// C:\workspace\6_Framework\boardProject\src\main\webapp\resources\images
 		
 		
 		// 프로필 이미지 수정 서비스 호출
@@ -113,8 +115,70 @@ public class MyInfoController {
 		
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:profile";
+		return "redirect:myInfo";
 	}
+	
+	
+	// 회원 탈퇴
+		@PostMapping("/link/withdrawal")
+		public String withdrawal(String memberPw
+				,@SessionAttribute("loginMember") Member loginMember
+				,SessionStatus status
+				,HttpServletResponse resp
+				,RedirectAttributes ra) {
+			
+			// String memberPw : 입력한 비밀번호
+			// SessionStatus status : 세션 관리 객체
+			// HttpServletResponse resp : 서버 -> 클라이언트 응답하는 방법 제공 객체
+			// RedirectAttributes ra : 리다이렉트 시 request로 값 전달하는 객체
+			
+			// 1. 로그인한 회원의 회원 번호 얻어오기
+			// @SessionAttribute("loginMember") Member loginMember
+			int memberNo = loginMember.getMemberNo();
+			
+			// 2. 회원 탈퇴 서비스 호출
+			//	- 비밀번호가 일치하면 MEMBER_DEL_FL -> 'Y'로 바꾸고 1 반환
+			//  - 비밀번호가 일치하지 않으면 -> 0 반환
+			int result = service.withdrawal(memberPw, memberNo);
+			
+			String path = "redirect:";
+			String message = null;
+			
+			// 3. 탈퇴 성공 시
+			if(result > 0) {
+				// - message : 탈퇴 되었습니다
+				message = "탈퇴 되었습니다";
+				
+				// - 메인 페이지로 리다이렉트
+				path += "/";
+				
+				// - 로그아웃 
+				status.setComplete();
+				
+				// + 쿠키 삭제
+				Cookie cookie = new Cookie("saveId", ""); 
+				// 같은 쿠기가 이미 존재하면 덮어쓰기된다
+				
+				cookie.setMaxAge(0); // 0초 생존 -> 삭제
+				cookie.setPath("/"); // 요청 시 쿠기가 첨부되는 경로
+				resp.addCookie(cookie); // 요청 객체를 통해서 클라이언트에게 전달
+										// -> 클라이언트 컴퓨터에 파일로 생성
+				
+			}
+			
+			// 4. 탈퇴 실패 시
+			else {
+				// - message : 현재 비밀번호가 일치하지 않습니다
+				message = "현재 비밀번호가 일치하지 않습니다";
+				
+				// - 회원 탈퇴 페이지로 리다이렉트
+				path += "withdrawal";
+			}
+			
+			ra.addFlashAttribute("message",message);
+			
+			return path;
+		}
 	
 	
 }

@@ -3,6 +3,7 @@ package edu.kh.semiproject.mypage.model.service;
 import java.io.File;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,9 +18,16 @@ public class MyInfoServiceImpl implements MyInfoService{
 	@Autowired
 	private MyInfoDAO dao;
 	
-	@Transactional
+	@Autowired
+	private BCryptPasswordEncoder bcrypt;
+	
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int updateInfo(Member updateMember) {
+		
+		String encPw = bcrypt.encode(updateMember.getMemberPw());
+		updateMember.setMemberPw(encPw);
+		
 		return dao.updateInfo(updateMember);
 	}
 	
@@ -51,7 +59,7 @@ public class MyInfoServiceImpl implements MyInfoService{
 		
 		
 		// 프로필 이미지 수정 DAO 메서드 호출
-		int result = dao.updateProfileImage(loginMember);
+		int result = dao.updateProfile(loginMember);
 		
 		
 		if(result > 0) { // DB에 이미지 경로 업데이트 성공했다면
@@ -77,6 +85,22 @@ public class MyInfoServiceImpl implements MyInfoService{
 		
 		
 	}
+
+	@Override
+	public int withdrawal(String memberPw, int memberNo) {
 		
+		// 1. 회원 번호가 일치하는 회원의 비밀번호 조회
+		String encPw = dao.selectEncPw(memberNo);
+		
+		// 2.비밀번호가 일치하면 
+		if(bcrypt.matches(memberPw, encPw)) {
+			// MEMBER_DEL_FL -> 'Y'로 바꾸고 1 반환
+			return dao.withdrawal(memberNo);
+		}
+		
+		//  3. 비밀번호가 일치하지 않으면 -> 0 반환
+		return 0;
+	}
+	
 		
 }

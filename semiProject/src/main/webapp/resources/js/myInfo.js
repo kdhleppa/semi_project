@@ -1,157 +1,3 @@
-// 내 정보(수정) 페이지
-
-const memberNickname = document.getElementById("memberNickname");
-const memberPhoneNum = document.getElementById("memberPhoneNum");
-const updateInfo = document.getElementById("updateInfo");
-
-// 내 정보 수정 form태그가 존재할 때 (내 정보 페이지)
-if(updateInfo != null){
-    // 전역변수로 수정 전 닉네임/전화번호를 저장
-    initNickname = memberNickname.value;
-    initPhoneNum = memberPhoneNum.value;
-
-    // 닉네임 유효성 검사
-    memberNickname.addEventListener("input", () => {
-
-        // 변경 전 닉네임과 입력 값이 같을 경우
-        if(memberNickname.value == initNickname){ 
-            memberNickname.removeAttribute("style");
-            return;
-        }
-
-        // 정규 표현식으로 유효성 검사
-        const regEx = /^[가-힣\w\d]{2,10}$/;
-
-        if(regEx.test(memberNickname.value)){ // 유효
-            memberNickname.style.color = "green";
-
-        }else{ // 무효
-            memberNickname.style.color = "red";
-        }
-    });
-
-
-    // 전화번호 유효성 검사
-    memberPhoneNum.addEventListener("input", () => {
-
-        // 변경 전 전화번호와 입력 값이 같을 경우
-        if(memberPhoneNum.value == initTel){ 
-            memberPhoneNum.removeAttribute("style");
-            return;
-        }
-
-        // 정규 표현식으로 유효성 검사
-        const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
-
-        if(regEx.test(memberPhoneNum.value)){ // 유효
-            memberPhoneNum.style.color = "green";
-
-        }else{ // 무효
-            memberPhoneNum.style.color = "red";
-        }
-    });
-
-    
-    // form태그 제출 시 유효하지 않은 값이 있으면 제출 X
-    updateInfo.addEventListener("submit", e => {
-
-        // 닉네임이 유효하지 않을 경우
-        if(memberNickname.style.color == "red"){
-            alert("닉네임이 유효하지 않습니다.");
-            memberNickname.focus(); // 포커스 이동
-            e.preventDefault(); // 기본 이벤트 제거
-            return;
-        }
-
-        // 전화번호가 유효하지 않을 경우
-        if(memberPhoneNum.style.color == "red"){
-            alert("전화번호가 유효하지 않습니다.");
-            memberPhoneNum.focus(); // 포커스 이동
-            e.preventDefault(); // 기본 이벤트 제거
-            return;
-        }
-    });
-} // if end
-
-
-
-// 비밀번호 변경 제출 시
-const changePwFrm = document.getElementById("changePwFrm");
-const currentPw = document.getElementById("currentPw");
-const newPw = document.getElementById("newPw");
-const newPwConfirm = document.getElementById("newPwConfirm");
-
-
-if(changePwFrm != null){ // 비밀번호 변경 페이지인 경우
-
-    changePwFrm.addEventListener("submit", e => {
-        
-        // 현재 비밀번호 미작성 시
-        if(currentPw.value.trim() == ""){
-            alert("현재 비밀번호를 입력해주세요");
-            e.preventDefault();
-            currentPw.focus();
-            return;
-        }
-
-        // 비밀번호 유효성 검사
-        const regEx = /^[a-zA-Z0-9\!\@\#\-\_]{6,20}$/;
-        if(!regEx.test(newPw.value)){
-            alert("비밀번호가 유효하지 않습니다");
-            e.preventDefault();
-            newPw.focus();
-            return;
-        }
-
-        // 비밀번호 == 비밀번호 확인
-        if(newPw.value != newPwConfirm.value){
-            alert("비밀번호가 일치하지 않습니다");
-            e.preventDefault();
-            newPwConfirm.focus();
-            return;
-        }
-    });
-}
-
-
-
-const secessionFrm = document.getElementById("secessionFrm");
-
-if(secessionFrm != null){ // 탈퇴 페이지인 경우
-
-    const memberPw = document.getElementById("memberPw");
-    const agree = document.getElementById("agree");
-
-    secessionFrm.addEventListener("submit", e => {
-
-        if(memberPw.value.trim() == ""){ // 비밀번호 미작성
-            alert("비밀번호를 작성해주세요");
-            e.preventDefault();
-            memberPw.focus();
-            return;
-        }
-
-        if(!agree.checked){ // 동의 체크가 되지 않은 경우
-            alert("약관 동의 후 탈퇴 버튼을 눌러주세요");
-            e.preventDefault();
-            agree.focus();
-            return;
-        }
-
-        if(!confirm("정말 탈퇴 하시겠습니까?")){ // 취소 클릭 시
-            alert("탈퇴 취소");
-            e.preventDefault();
-            return;
-        }
-    });
-
-
-
-}
-
-
-
-//----------------------------------------------------
 
 // 프로필 이미지 추가/변경/삭제
 const profileImage = document.getElementById("profileImage"); // img 태그
@@ -169,7 +15,11 @@ let deleteCheck = -1;
 
 let originalImage; // 초기 프로필 이미지 파일 경로 저장
 
+console.log("망가짐?");
+
 if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안해도 되긴 함 ) 
+	
+	console.log("image::" , imageInput);
 
     // 프로필 이미지가 출력되는 img태그의 src 속성을 저장
     originalImage = profileImage.getAttribute("src"); 
@@ -194,6 +44,8 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
     //      이전 값과 다르면 change 이벤트 발생
 
     imageInput.addEventListener("change", e => {
+    
+    	console.log("test!!!");
 
         // 2MB로 최대 크기 제한 
         const maxSize = 1 * 1024 * 1024 * 2; // 파일 최대 크기 지정(바이트 단위)

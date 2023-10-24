@@ -153,3 +153,29 @@ main {
 .title {
     margin-top: 50px;
 }
+
+.pwCheck {
+    width: 350px;
+    height: 50px;
+
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+    align-items: center;
+}
+
+.pwCheck > input{
+    width: 70%;
+    height: 100%;
+
+    padding : 15px 5px;
+    font-size: 16px;
+    font-weight: bold;
+
+    border : none;
+    outline: none;
+}
+
+
+

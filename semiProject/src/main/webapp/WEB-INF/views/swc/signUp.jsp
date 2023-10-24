@@ -192,6 +192,16 @@
 	        }).open();
 	    }
 	</script>
+	
+	
+	<c:if test="${not empty message}">
+	
+	<script>
+		
+		alert('${message}') // ${message}
+	</script>
+	</c:if>
+	
     
     <script src="/resources/js/signUp.js"></script>
     

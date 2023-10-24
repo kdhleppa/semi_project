@@ -10,5 +10,7 @@ public interface MyInfoService {
 	
 	int updateProfile(MultipartFile profileImage, String webPath, String filePath, Member loginMember) throws Exception;
 
+	int withdrawal(String memberPw, int memberNo);
+
 	
 }

@@ -18,8 +18,16 @@ public class MyInfoDAO {
 		return sqlSession.update("myInfoMapper.updateInfo", updateMember);
 	}
 	
-	public int updateProfileImage(Member loginMember) {
-		return sqlSession.update("myInfoMapper.updateProfileImage", loginMember);
+	public int updateProfile(Member loginMember) {
+		return sqlSession.update("myInfoMapper.updateProfile", loginMember);
+	}
+
+	public String selectEncPw(int memberNo) {
+		return sqlSession.selectOne("myInfoMapper.selectEncPw", memberNo);
+	}
+
+	public int withdrawal(int memberNo) {
+		return sqlSession.update("myInfoMapper.withdrawal", memberNo );
 	}
 
 }
