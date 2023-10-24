@@ -36,7 +36,6 @@
                     <a href="/link/myInfo">내정보</a>
                 </div>
             </section>
-            </section>
         </nav>
 
         <main>
@@ -54,19 +53,18 @@
                     
                     <form action="/board2/insert" method="POST" id="boardWriteFrm">
 	                    <div class="main-content-main">
-	                        <input id="content-title" placeholder="제목을 입력해주세요."></input>
+	                        <input id="content-title" placeholder="제목을 입력해주세요." name="boardTitle"></input>
 	                        <div id="content-option">
 		                        <label for="imageInput">이미지</label>
-		                        <input type="file" name="profileImage" id="imageInput" accept="image/*">
-	                            <button type="button">동영상 url</button>
+		                        <input type="file" name="boardImage" id="imageInput" accept="image/*">
 	                        </div>
-	                        <input id="content-text" placeholder="내용을 입력해주세요."></input>                        
+	                        <input id="content-text" placeholder="내용을 입력해주세요." name="boardContent"></input>                        
 	                        <div id="content-modifybutton">
-	                            <button id="registerButton">등록하기</button>
-	                            <button id="cancelButton">취소</button>
+	                            <button type="submit" id="registerButton">등록하기</button>
+	                            <button type="button" id="cancelButton" onClick="history.back(); return false;">취소</button>
 	                        </div>
 	                    </div>
-	                </form>                    
+	                </form>        
                     
                     <div class="main-content-right"></div> 
                 </div>

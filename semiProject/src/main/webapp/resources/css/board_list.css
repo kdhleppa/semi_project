@@ -304,10 +304,6 @@ main {
     border-radius: 5px;
     background-color: #AC47FC;
     border: none;
-}
-
-#writing > a{
-    text-decoration: none;
     color: white;
 }
 
