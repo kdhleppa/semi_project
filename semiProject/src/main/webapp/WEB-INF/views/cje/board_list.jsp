@@ -92,9 +92,9 @@
 			                        <option value="search-content">내용</option>
 			                    </select>
 			                    <input id="search-word" placeholder="검색어를 입력해주세요.">
-			                    <button id="writing">
-			                    	<a href="boardWriting">글쓰기</a>
-			                    </button>
+		                    	<c:if test="${not empty loginMember}">
+				                    <button id="writing">글쓰기</button>
+			                    </c:if>
 			                </div>
 						</c:otherwise>						
 					</c:choose>
@@ -143,9 +143,7 @@
     </div>
     
     
-    <script>
-    	console.log("${pagination}");
-    </script>
+    <script src="/resources/js/board_list.js"></script>
         
 </body>
 </html>

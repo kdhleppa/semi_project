@@ -55,15 +55,18 @@ public class LinkController {
 //		return "/cje/board_readMore_mine";
 //	}
 
-	@GetMapping("/boardReadMoreOthers")
-	public String BoardreadMoreOthers() {
-		return "/cje/board_readMore_others";
-	}
 	
-	@GetMapping("/boardWriting")
-	public String BoardWriting() {
-		return "/cje/board_writing";
-	}
+// boardReadMoreMine 과 한페이지로 만듬
+//	@GetMapping("/boardReadMoreOthers")
+//	public String BoardreadMoreOthers() {
+//		return "/cje/board_readMore_others";
+//	}
+	
+// BoardController2에서 사용
+//	@GetMapping("/boardWriting")
+//	public String BoardWriting() {
+//		return "/cje/board_writing";
+//	}
 	
 	@GetMapping("/mainLogin")
 	public String MainLogin() {

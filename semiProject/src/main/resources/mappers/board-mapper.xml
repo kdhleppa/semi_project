@@ -62,4 +62,31 @@
 		WHERE BOARD_NO = #{boardNo}
 	</update>
 	
+	
+	
+	
+	<!--   board2  -->
+	
+	<!-- 게시글 삽입 -->
+	<insert id="boardInsert" parameterType="Board" useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+			INSERT INTO BOARD
+			VALUES ( #{boardNo},
+					#{memberNo},
+					DEFAULT,
+					#{boardTitle},
+					#{boardContent},
+					DEFAULT, 
+					#{memberNickname},
+					DEFAULT, DEFAULT )
+	</insert>
+	
+	<!-- 이미지 삽입 -->
+	<insert id="insertImage">
+		INSERT INTO "BOARD_IMG"
+	</insert>
+	
+	
 </mapper>
