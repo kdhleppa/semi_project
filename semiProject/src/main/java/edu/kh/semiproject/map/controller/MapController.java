@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,10 +39,12 @@ public class MapController {
 			String roomType,
 			String productRentType,
 			Integer productDeposit,
-			Integer productMonthlyRent
+			Integer productMonthlyRent,
+			HttpServletRequest request
 			) {
 		
 		List<Product> products = new ArrayList<Product>();
+		HttpSession session = request.getSession();
 		
 		if (roomType !=null || productRentType != null) {
 			Map<String, Object> map = new HashMap<String, Object>();

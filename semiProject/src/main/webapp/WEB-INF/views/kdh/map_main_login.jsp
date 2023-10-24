@@ -55,7 +55,7 @@
                 <%-- 폼테그 제출하면 연결되게끔 할것 --%>
             </div>
             <div id="mid-top-right">
-                <form id="option" action="/link/getProducts" method="get">
+                <form id="option" action="/link/getProducts" method="get" onsubmit="return handleFormSubmit(event)">
                     <select name="roomType" id="">
                         <option class="optionsize" value="all" selected>원룸, 투룸</option>
                         <option class="optionsize" value="원룸">원룸</option>
@@ -74,14 +74,7 @@
                     <label for="productMonthlyRent" id="monthlyRentLabel">월세&nbsp</label>
 					    <input type="text" name="productMonthlyRent" id="productMonthlyRent" placeholder="월세~까지"/><span id="rentWon" >&nbsp만원</span>
                     <button id="optionbtn" type="submit">검색</button>
-				<%--
-				처리해야할것
-				원룸,투룸 선택시 -> 원룸 투룸 결과값 모두 선택 where ROOM_TYPE=*
-				전세,월세 선택시 -> where RENT_TYPE=*
-				나머지 각각의 값 전송해서 검색한후
-				현재 products 리셋후 새로넣는다!!
-				
-				 --%>
+			
 
 
                 </form>
@@ -111,12 +104,15 @@
 
     
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb9b63d71a5408fd96cba9a1674b9d43&libraries=services,clusterer"></script>
+    <%--
     <script>
     	
     	"${products}".forEach(product => {
                 let address = product.productAddress;
     	console.log(products);
+    	})
     </script>
+     --%>
     <script src="/resources/js/map_main.js"></script>
 </body>
 </html>
