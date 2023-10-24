@@ -90,9 +90,8 @@
 						
 						<%-- 프로필 이미지가 있으면 저장된 이미지 --%>
 						<c:if test="${not empty loginMember.profileImage}">
-	                        <img src="${loginMember.profileImage}" id="profileImage">
+	                        <img style="width: 100px;" src="${loginMember.profileImage}" id="profileImage">
 						</c:if>
-						
 						
 						<span style="margin-left: 10px; margin-bottom: 100px;" id="deleteImage">x</span>
                 </div>
@@ -105,23 +104,23 @@
                     </div>
                 
                 <div class="myInfo-row">
-                        <label>이메일</label>
+                        <label>이메일 : </label>
                         <input type="text" name="memberEmail"  maxlength="20"
-                        	value="${loginMember.memberEmail}" id="memberEmail"
+                        	value="${loginMember.memberEmail}" id="memberEmail" readonly
                         >
                 </div>
 
                 <div class="myInfo-row">
-                        <label>닉네임</label>
+                        <label>닉네임 : </label>
                         <input type="text" name="memberNickname"  maxlength="10"
-                        	value="${loginMember.memberNickname}" id="memberNickname"
+                        	value="${loginMember.memberNickname}" id="memberNickname" readonly
                         >
                 </div>
 
                 <div class="myInfo-row">
-                        <label>휴대폰</label>
-                        <input type="text" name="memberPhoneNum"  maxlength="11" id="memberPhoneNum"
-                        	value="${loginMember.memberPhoneNum}"
+                        <label>휴대폰 : </label>
+                        <input type="text" name="memberPhoneNum"  maxlength="11"
+                        	value="${loginMember.memberPhoneNum}" id="memberPhoneNum" readonly
                         >
                 </div>
 
@@ -138,6 +137,14 @@
         </div>
 
     </div>
+    
+    <c:if test="${not empty message}">
+	
+	<script>
+		
+		alert('${message}') // ${message}
+	</script>
+	</c:if>
     
     <script src="/resources/js/myInfo.js"></script>
     

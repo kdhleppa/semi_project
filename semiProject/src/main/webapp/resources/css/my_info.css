@@ -164,4 +164,80 @@ main {
 }
 
 
+.myInfo-row > input{
+    width: 70%;
+    height: 100%;
+
+    padding : 15px 10px 5px;
+    font-size: 16px;
+    font-weight: bold;
+
+    border : none;
+    outline: none;
+    margin-left: 20px;
+    margin-bottom: 8px;
+}
+
+/* input 태그를 감싸고 있는 div 태그 */
+.myInfoUpdate-input-area{
+    width: 350px;
+    height: 50px;
+
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+    align-items: center;
+}
+
+.myInfoUpdate-input-area > input{
+    width: 70%;
+    height: 100%;
+
+    padding : 15px 10px 5px;
+    font-size: 16px;
+    font-weight: bold;
+
+    border : none;
+    outline: none;
+}
+
+.myInfoUpdate-input-area > button{
+    width: 30%;
+    height: 70%;
+    background-color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+
+/* :focus-within : 내부 input 요소에 포커스가 맞춰졌을 때 */
+.myInfoUpdate-input-area:focus-within{
+    border-bottom-color: #ff80ff;
+}
+
+
+/* 입력 관련 메세지 */
+.myInfoUpdate-message{
+    font-size: 14px;
+    letter-spacing: -1px;
+}
+
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }
+
+#btnbox {
+	margin-top: 60px;
+}
+
+
+#profileImage {
+	width: 100px;
+}
+
+#deleteImage {
+	cursor: pointer;
+}
+
 
