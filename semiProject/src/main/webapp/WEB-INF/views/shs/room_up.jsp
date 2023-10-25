@@ -93,12 +93,14 @@
                 <thead>
                     <tr>
                       <th class="tg1-0lax" >매물 주소</th>
-                      <th class="tg1-0lax">
+                      <th class="tg1-0lax" id="productSerchBox">
 
                         주소 검색 <br>
-                       
-                        <input type="text" name="input-adress" id="input-adress" placeholder="예) 번동 10-1, 강북구 번동">
+						<div class="serchDiv">                       
+                        <input type="text" name="productAddress" id="productAddress" placeholder="예) 번동 10-1, 강북구 번동">
                         <button type="button" id="adress-btn">검색</button>
+                        </div>
+                        <input type="text" name="productAddressHo" id="productAddressHo" placeholder="예) 101호">
 						
 						
                       </th>

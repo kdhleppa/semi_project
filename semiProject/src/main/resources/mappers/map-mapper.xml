@@ -60,9 +60,12 @@
 	<choose>
 		<when test="productRentType == '전세'">
 			AND PRODUCT_RENTTYPE = #{productRentType}
-			<![CDATA[
-			AND PRODUCT_DEPOSIT <= #{productDeposit}
-			]]>
+			
+			<if test="productDeposit !=null">
+				<![CDATA[
+					AND PRODUCT_DEPOSIT <= #{productDeposit}
+				]]>
+			</if>
 		</when>
 		<when test="productRentType == '월세'">
 			AND PRODUCT_RENTTYPE = #{productRentType}
