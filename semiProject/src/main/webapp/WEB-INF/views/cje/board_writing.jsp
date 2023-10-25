@@ -53,11 +53,13 @@
                     
                     <form action="/board2/insert" method="POST" id="boardWriteFrm">
 	                    <div class="main-content-main">
-	                        <input id="content-ti
-	                        tle" placeholder="제목을 입력해주세요." name="boardTitle"></input>
+	                        <input id="content-title" placeholder="제목을 입력해주세요." name="boardTitle"></input>
 	                        <div id="content-option">
-		                        <label for="imageInput">이미지</label>
-		                        <input type="file" name="boardImage" id="imageInput" accept="image/*">
+			                    <label for="img1">
+			                        <img class="preview" src="${img1}">
+			                    </label>
+			                    <input type="file" name="image" class="inputImage" id="img1" accept="image/*">
+			                    <span class="delete-image">&times;</span>
 	                        </div>
 	                        <input id="content-text" placeholder="내용을 입력해주세요." name="boardContent"></input>                        
 	                        <div id="content-modifybutton">
@@ -83,6 +85,12 @@
 
         </main>
     </div>
+    
+    <c:if test="${not empty message}">
+	    <script>
+			alert('${message}')
+		</script>
+	</c:if>
     
 </body>
 </html>

@@ -2,26 +2,25 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-
 <%-- map에 저장된 값들을 각각 변수에 저장 --%>
 <c:set var="pagination" value="${map.pagination}" />
-<c:set var="boardList" value="${map.boardList}" />
-    
+<c:set var="noticeList" value="${map.noticeList}" />
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
 	<link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
-	<link rel="stylesheet" href="/resources/css/board_list.css">
-	<title>자유게시판 리스트</title>
+    <link rel="stylesheet" href="/resources/css/notice_list.css">
+    <title>공지사항 리스트</title>    
 </head>
 <body>
 	<div class="container">
         <nav>
             <section class="logo">
                 <a href="/">
+                    <a href="/">
                     <img src="/resources/images/logo.png">
                 </a>
             </section>
@@ -46,20 +45,34 @@
         </nav>
 
         <main>
-        
             <div class="leftmenu">
-            	<a href="/link/boardList">내가 쓴 글</a>
+                <div>
+                	<a href="/link/myInfoUpdate">정보수정</a>
+                </div>
+                <div>
+                	<a href="/">채팅함</a>
+                </div>
+                <div>
+                	<a href="/link/oneOnOneListUser">1:1 문의 내역</a>
+                </div>
+                <div>
+                	<a href="/link/roomDetailView">내가 올린 매물 목록</a>
+                </div>
+                <div>
+                	<a href="/link/declarationList">허위매물 신고내역</a>
+                </div>
+                <div>
+                	<a href="/link/noticeList">공지사항</a>
+                </div>
             </div>
-            
             <div class="content">
                 <div class="menutitle">
-                    자유 게시판
+                    공지사항
                 </div>
                 <div class="main-content">
-					<c:choose>
-					
+                    <c:choose>					
 						<%-- 조회된 게시글 목록이 비어있거나 null인 경우 --%>
-						<c:when test="${empty boardList}">
+						<c:when test="${empty noticeList}">
 							<tr>
 								<th colspan="6">게시글이 존재하지 않습니다.</th>
 							</tr>
@@ -75,13 +88,13 @@
 							</div>
 							
 							<div class="main-content-content">
-								<c:forEach items="${boardList}" var="board" >
+								<c:forEach items="${noticeList}" var="notice" >
 									<div class="main-content-real">
-										<div id="content-number">${board.boardNo}</div>
-										<div id="content-writer">${board.memberNickname}</div>
-										<a href="/link/boardReadMore/${board.boardNo}" id="content-title">${board.boardTitle}</a>
-										<div id="content-date">${board.boardDate}</div>
-										<div id="content-count">${board.boardCount}</div>
+										<div id="content-number">${notice.boardNo}</div>
+										<div id="content-writer">${notice.boardNickname}</div>
+										<a href="/link/noticeReadMore/${notice.boardNo}" id="content-title">${board.boardTitle}</a>
+										<div id="content-date">${notice.boardDate}</div>
+										<div id="content-count">${notice.boardCount}</div>
 									</div>
 								</c:forEach>
 							</div>
@@ -99,8 +112,8 @@
 						</c:otherwise>						
 					</c:choose>
                 </div>
-               	
-               	<div class="pagination-area">
+
+                <div class="pagination-area">
                     <ul class="pagination">
                
 	                    <!-- 첫 페이지로 이동 -->
@@ -143,8 +156,5 @@
         </main>
     </div>
     
-    
-    <script src="/resources/js/board_list.js"></script>
-        
 </body>
 </html>

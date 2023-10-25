@@ -48,7 +48,6 @@ public class BoardServiceImpl2 implements BoardService2{
 		// 업로드된 이미지가 있다면 BOARD_IMG 테이블에 삽입하는 dao호출
 		if(boardNo > 0) {
 			
-			
 			if(boardImage != null) { // 업로드된 파일이 있다면
 				
 				BoardImage img = new BoardImage();
@@ -71,13 +70,13 @@ public class BoardServiceImpl2 implements BoardService2{
 					
 					boardImage.transferTo(new File(filePath + rename));
 					
-				}
-				
-			}else { // 일부 또는 전체 insert 실패
+				}else { // 일부 또는 전체 insert 실패
 					
-				// rollback 필요 -> 예외발생시켜 rollback하기
-				throw new FileUploadException();						
-			}			
+					// rollback 필요 -> 예외발생시켜 rollback하기
+					throw new FileUploadException();						
+				}		
+				
+			}	
 		}
 		
 		return boardNo;

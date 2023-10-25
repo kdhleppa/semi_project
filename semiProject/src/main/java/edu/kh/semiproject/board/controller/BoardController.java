@@ -55,7 +55,7 @@ public class BoardController {
 	 * @param boardNo
 	 * @return
 	 */
-	@GetMapping("/link/boardReadMoreMine/{boardNo}")
+	@GetMapping("/link/boardReadMore/{boardNo}")
 	public String boardDetailMine(@PathVariable("boardNo") int boardNo,
 								Model model,
 								RedirectAttributes ra,
@@ -76,7 +76,7 @@ public class BoardController {
 		
 		if( prevNextBoard != null ) {
 			
-			path = "cje/board_readMore_mine";			
+			path = "cje/board_readMore";			
 			
 			Map<String, Object> prev = null;
 			Map<String, Object> next = null;

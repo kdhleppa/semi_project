@@ -30,14 +30,11 @@ public class BoardController2 { // 삽입, 수정, 삭제 구현
 	@Autowired
 	private BoardService2 service;
 	
-	@Autowired
-	private BoardService boardService;
-
 	// 게시글 작성 화면 전환
 	@GetMapping("/insert")
 	public String boardInsert() {
 		
-		return "cje/board_writing";		
+		return "cje/board_writing";
 	}
 	
 	/** 게시글 insert
@@ -79,13 +76,14 @@ public class BoardController2 { // 삽입, 수정, 삭제 구현
 		
 		if(boardNo > 0) {
 			message = "게시글이 등록되었습니다.";
-			path += "/board/" + boardNo;
+			path += "/link/boardReadMore/" + boardNo;
+			
 		}else {
 			message = "게시글 등록 실패...";
 			path += "insert";
 		}
-
-		ra.addFlashAttribute("message", message);		
+		
+		ra.addFlashAttribute("message", message);
 		
 		return path;
 	}
