@@ -33,6 +33,7 @@ public class MemberController {
 	public String login(Member inputMember, Model model, 
 						@RequestHeader("referer") String referer,
 						RedirectAttributes ra,
+						@RequestParam(value="saveId", required = false) String saveId,
 						HttpServletResponse resp
 						) {
 		
