@@ -34,11 +34,11 @@
                     </div>
 
                     <div id="roomup">
-                         <a href="/link/roomUpFront">방내놓기</a> 
+                         <a href="/link/roomUp">방내놓기</a> 
                     </div>
 
                     <div id="board">
-                            <a href="/link/communityList">게시판</a> 
+                            <a href="/link/boardList">게시판</a> 
                     </div>
                     <div id="mypage">
                         <a href="/link/myInfo">내정보</a>  
@@ -191,11 +191,11 @@
                         <td class="tg2-0lax">
 
 
-                            <input type="radio" name="ent_day" value="N"> 즉시 입주
+                            <input type="radio" name="enterDate" id="immediateMoveIn" onclick="toggleInputVisibility()"> 즉시 입주
 
-                            <input type="radio" name="ent_day" value="Y"> 일자 선택
+                            <input type="radio" name="enterDate" id="dateSelection" onclick="toggleInputVisibility()"> 일자 선택
 
-                            <input type="int" placeholder="예) 20210721">
+                            <input type="text" name="enterDateText" id="enterDateText" placeholder="예) 20210721" onchange="validateDate()" oninput="updateRadioValue()" style="display: none;">
 
                             <input type="checkbox" name="enterDateNego" value="Y"> 협의 가능할 경우
 
@@ -225,9 +225,9 @@
                         <td class="tg3-0lax">
 
                             
-                        <input type="radio" name="heating" value="중앙난방"> 중앙 난방
+                        <input type="radio" name="heatType" value="중앙난방"> 중앙 난방
 
-                        <input type="radio" name="heating" value="개별난방"> 개별 난방
+                        <input type="radio" name="heatType" value="개별난방"> 개별 난방
                         
 
                         </td>
@@ -239,9 +239,9 @@
                       <th class="tg3-0lax">
 
                         
-                        <input type="radio" name="air_conditioner" value="N"> 없음
+                        <input type="radio" name="airCon" value="N"> 없음
 
-                        <input type="radio" name="air_conditioner" value="Y"> 있음
+                        <input type="radio" name="airCon" value="Y"> 있음
                         
                       </th>
                     </tr>
@@ -249,17 +249,17 @@
                       <td class="tg3-0lax">생활 시설</td>
                       <td class="tg3-0lax">
 
-                        <input type="checkbox" name="refrigerator" value="Y"> 냉장고
+                        <input type="checkbox" name="fridge" value="Y"> 냉장고
 
-                        <input type="checkbox" name="washing machine" value="Y"> 세탁기
+                        <input type="checkbox" name="washer" value="Y"> 세탁기
 
-                        <input type="checkbox" name="CCTV" value="Y"> CCTV
+                        <input type="checkbox" name="cctv" value="Y"> CCTV
 
-                        <input type="checkbox" name="Entrance security" value="Y"> 현관보안 <br>
+                        <input type="checkbox" name="doorlock" value="Y"> 도어락 <br>
 
-                        <input type="checkbox" name="Gas range" value="Y"> 가스레인지
+                        <input type="checkbox" name="stove" value="Y"> 가스레인지
 
-                        <input type="checkbox" name="Microwave" value="Y"> 전자레인지
+                        <input type="checkbox" name="microwave" value="Y"> 전자레인지
 
                       </td>
                     </tr>
@@ -281,10 +281,48 @@
 
                 <thead>
                     <tr>
-                      <th class="tg4-0lax">일반 사진</th>
+                      <th class="tg4-0lax">방 사진(5장 모두 올려주세요)</th>
                       <th class="tg4-0lax">
+							
 
-                        <button type="button" id="photo-add" onclick="">+ 사진 추가</button>
+				            <div class="img-box">
+				
+				                <div class="boardImg">
+				                    
+				                    <img class="preview" src="">
+				                    
+				                    <span class="delete-image">&times;</span>
+				                </div>
+				                <div class="boardImg">
+				                    
+				                    <img class="preview" src="">
+				                    
+				                    <span class="delete-image">&times;</span>
+				                </div>
+				                <div class="boardImg">
+				                    
+				                    <img class="preview" src="">
+				                    
+				                    <span class="delete-image">&times;</span>
+				                </div>
+				                <div class="boardImg">
+				                    
+				                    <img class="preview" src="">
+				                    
+				                    <span class="delete-image">&times;</span>
+				                </div>
+				                <div class="boardImg">
+				                    
+				                    <img class="preview" src="">
+				                    
+				                    <span class="delete-image">&times;</span>
+				                </div>
+				               
+							 <input type="file" id="fileInput" name="images" accept="image/*" multiple style="display: block;">
+				
+				               
+				            </div>
+                        
 
                       </th>
                     </tr>
@@ -311,9 +349,9 @@
                       <th class="tg5-0lax">
 
 
-                        <input type="radio" name="ev" value="N"> 없음
+                        <input type="radio" name="elevator" value="N"> 없음
 
-                        <input type="radio" name="ev" value="Y"> 있음
+                        <input type="radio" name="elevator" value="Y"> 있음
                         
 
                       </th>
