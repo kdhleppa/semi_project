@@ -184,7 +184,7 @@
 
                 </div>
 
-                <button id="btnbox"> <a href="/link/writeMessage">쪽지보내기</a> </button>
+                <button id="btnbox"> <a href="/link/writeMessage" style="text-decoration: none; color: white;">쪽지보내기</a> </button>
             
                 <div class="index">
                     <button><</button>
