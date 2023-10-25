@@ -1,5 +1,8 @@
 package edu.kh.semiproject.link;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
 import edu.kh.semiproject.map.model.service.MapService;
+import edu.kh.semiproject.member.model.dto.Member;
 import edu.kh.semiproject.product.model.dto.Product;
 
 @Controller
@@ -150,8 +154,6 @@ public class LinkController {
 	public String RoomUp() {
 		return "/shs/room_up";
 	}
-	
-
 	
 	
 	// swc 링크

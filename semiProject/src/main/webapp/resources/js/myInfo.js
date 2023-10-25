@@ -15,11 +15,9 @@ let deleteCheck = -1;
 
 let originalImage; // 초기 프로필 이미지 파일 경로 저장
 
-console.log("망가짐?");
 
 if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안해도 되긴 함 ) 
 	
-	console.log("image::" , imageInput);
 
     // 프로필 이미지가 출력되는 img태그의 src 속성을 저장
     originalImage = profileImage.getAttribute("src"); 
@@ -35,8 +33,6 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
     }
     
 
-
-
     // change 이벤트 : 값이 변했을 때
     // - input type="file", "checkbox", "radio" 에서 많이 사용
     // - text/number 형식 사용 가능
@@ -45,7 +41,6 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
 
     imageInput.addEventListener("change", e => {
     
-    	console.log("test!!!");
 
         // 2MB로 최대 크기 제한 
         const maxSize = 1 * 1024 * 1024 * 2; // 파일 최대 크기 지정(바이트 단위)
