@@ -49,14 +49,13 @@ public class BoardServiceImpl2 implements BoardService2{
 		if(boardNo > 0) {
 			
 			
-			if(boardImage != null) {
+			if(boardImage != null) { // 업로드된 파일이 있다면
 				
 				BoardImage img = new BoardImage();
 				
 				// img에 파일 정보를 담아서 uploadList에 추가
 				img.setImagePath(webPath); // 웹 접근 경로
 				img.setBoardNo(boardNo); // 게시글 번호
-				img.setImageOrder(0); // 이미지 순서
 				
 				// 파일 원본명
 				String fileName = boardImage.getOriginalFilename();
@@ -66,30 +65,19 @@ public class BoardServiceImpl2 implements BoardService2{
 				
 				int result = dao.insertImage(img);
 				
-			}
-			
-//			// uploadList가 비어있지 않은 경우
-//			if(uploadList != null) {
-//				
-//				// BOARD_IMG 테이블에 insert하는 doa 호출
-//				int result = dao.insertImage(uploadList);
-//				
-//				// 삽입 성공 시
-//				if(result > 0) {
-//					
-//					// 서버에 파일을 저장(transferTO)
-//					int index = uploadList.getImageOrder();
-//					
-//					String rename = uploadList.getImageReName();
-//					
-//					boardImage.transferTo( new File(filePath + rename) );
-//					
-//				}else { // 일부 또는 전체 insert 실패
-//					
-//					// rollback 필요 -> 예외발생시켜 rollback하기
-//					throw new FileUploadException();					
-//				}				
-//			}			
+				if(result == 1) { // insert 성공했다면
+					
+					String rename = img.getImageReName();
+					
+					boardImage.transferTo(new File(filePath + rename));
+					
+				}
+				
+			}else { // 일부 또는 전체 insert 실패
+					
+				// rollback 필요 -> 예외발생시켜 rollback하기
+				throw new FileUploadException();						
+			}			
 		}
 		
 		return boardNo;
