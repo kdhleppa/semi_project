@@ -77,26 +77,28 @@ public class LinkController {
 		return "/cje/main_login";
 	}
 	
-	@GetMapping("/noticeListUser")
-	public String NoticeListUser() {
-		return "/cje/notice_list_user";
+//	noticeList로 통일
+//	@GetMapping("/noticeListUser")
+//	public String NoticeListUser() {
+//		return "/cje/notice_list_user";
+//	}
+	
+	@GetMapping("/noticeList")
+	public String NoticeList() {
+		return "/cje/notice_list";
 	}
 	
-	@GetMapping("/noticeListAdmin")
-	public String NoticeListAdmin() {
-		return "/cje/notice_list_admin";
+	
+	@GetMapping("/noticeReadMore")
+	public String NoticeReadMore() {
+		return "/cje/notice_readMore";
 	}
 	
-	
-	@GetMapping("/noticeReadMoreAdmin")
-	public String NoticeReadMoreAdmin() {
-		return "/cje/notice_readMore_admin";
-	}
-	
-	@GetMapping("/noticeReadMoreUsers")
-	public String NoticeReadMoreUsers() {
-		return "/cje/notice_readMore_users";
-	}
+//	noticeReadMore로 통일
+//	@GetMapping("/noticeReadMoreUsers")
+//	public String NoticeReadMoreUsers() {
+//		return "/cje/notice_readMore_users";
+//	}
 	
 	@GetMapping("/noticeWriting")
 	public String NoticeWriting() {

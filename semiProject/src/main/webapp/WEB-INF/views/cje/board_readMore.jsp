@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
 	<link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
-	<link rel="stylesheet" href="/resources/css/board_readMore_mine.css">
+	<link rel="stylesheet" href="/resources/css/board_readMore.css">
 	<title>커뮤니티 글 자세히보기(본인이 쓴 글)</title>
 </head>
 <body>
@@ -82,7 +82,7 @@
                             </c:if>
                         </div>
 
-                        <c:if test="${loginMember.memberNo == board.memberNo}">
+                        <c:if test="${loginMember.memberNo == current.memberNo}">
 	                        <div id="content-modifybutton">
 	                            <button id="modifyButton">수정</button>
 	                            <button id="deleteButton">삭제</button>
