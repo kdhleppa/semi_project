@@ -192,10 +192,27 @@ nav {
 
 }
 
+.serchDiv {
+	margin-bottom: 10px;
+}
 
+#productSerchBox{
+	display: flex;
+    flex-direction: column;
+}
 
-#input-adress {
+#productAddress {
     width: 300px;
+    height: 30px;
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding-left: 10px;
+}
+
+#productAddressHo {
+	width: 300px;
     height: 30px;
     border-right: 1px solid grey;
     border-left: 1px solid grey;
