@@ -18,6 +18,16 @@
 		<result property="boardVideoUrl" column="BOARD_VIDEO_URL" />
 	</resultMap>
 
+	<!-- BoardImage resultMap -->
+	<resultMap type="BoardImage" id="boardImage_rm">
+		<id property="imageNo" column="IMG_NO"/>
+		
+		<result property="imagePath" column="IMG_PATH"/>
+		<result property="imageReName" column="IMG_RENAME"/>
+		<result property="imageOriginal" column="IMG_ORIGINAL"/>
+		<result property="imageOrder" column="IMG_ORDER"/>
+		<result property="boardNo" column="BOARD_NO"/>
+	</resultMap>
 
 
 	<!-- 삭제되지않은 게시글 수 조회 -->
@@ -65,20 +75,20 @@
 	
 	
 	
-	<!--   board2  -->
+	<!--  board2  -->
 	
 	<!-- 게시글 삽입 -->
 	<insert id="boardInsert" parameterType="Board" useGeneratedKeys="true">
 		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
 			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
 		</selectKey>
-			INSERT INTO BOARD
+			INSERT INTO "BOARD"
 			VALUES ( #{boardNo},
 					#{memberNo},
 					DEFAULT,
 					#{boardTitle},
 					#{boardContent},
-					DEFAULT, 
+					DEFAULT,
 					#{memberNickname},
 					DEFAULT, DEFAULT )
 	</insert>
@@ -86,6 +96,12 @@
 	<!-- 이미지 삽입 -->
 	<insert id="insertImage">
 		INSERT INTO "BOARD_IMG"
+		VALUES( SEQ_IMG_NO.NEXTVAL,
+				#{imagePath},
+				#{imageReName},
+				#{imageOriginal},
+				#{imageOrder},
+				#{boardNo} )
 	</insert>
 	
 	

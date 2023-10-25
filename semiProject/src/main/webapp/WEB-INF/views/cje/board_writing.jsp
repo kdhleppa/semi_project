@@ -53,7 +53,8 @@
                     
                     <form action="/board2/insert" method="POST" id="boardWriteFrm">
 	                    <div class="main-content-main">
-	                        <input id="content-title" placeholder="제목을 입력해주세요." name="boardTitle"></input>
+	                        <input id="content-ti
+	                        tle" placeholder="제목을 입력해주세요." name="boardTitle"></input>
 	                        <div id="content-option">
 		                        <label for="imageInput">이미지</label>
 		                        <input type="file" name="boardImage" id="imageInput" accept="image/*">

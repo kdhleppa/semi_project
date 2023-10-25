@@ -22,17 +22,7 @@ public class Board {
 	private String memberNickname;
 	private int boardCount;
 	private String boardHide;	
-
-	private String boardVideoUrl;
 		
-	// 서브쿼리
-    private int commentCount; // 댓글 수
-
-    // BOARD_IMG 테이블 join
-    private String thumbnail;
-    
-    // 이미지 목록
-    private List<BoardImage> imageList;
     
     // 댓글 목록
     private List<Comment> commentList;
