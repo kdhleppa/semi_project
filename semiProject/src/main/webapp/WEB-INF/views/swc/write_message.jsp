@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <form class="content">
+            <form class="content" action="/link/writeMessage" method="post" name="writeMessageFrm" id="messageWrite">
                     <div class="title">
                         쪽지쓰기
                     </div>
@@ -63,7 +63,9 @@
                         <p class="msgtitle" style="margin-left: 20px; margin-right: 20px;">제목</p>
                         
                         <div>
-                            <input type="text" style="font-size: 18px; width: 550px; height: 40px;" placeholder="제목을 입력해주세요.">
+                            <input id="msgTitle" type="text" style="font-size: 18px; width: 550px; height: 40px;" placeholder="제목을 입력해주세요"
+                            name="dmTitle"
+                      		>
                         </div>
                     </div>
 
@@ -71,7 +73,9 @@
                         <p class="msgtitle" style="margin-left: -325px; margin-right: 20px;">받는사람</p>
                         
                         <div>
-                            <input type="text" style="font-size: 18px; width: 150px; height: 40px;" placeholder="아이디">
+                            <input id="memberNickname" type="text" style="font-size: 18px; width: 150px; height: 40px;" placeholder="닉네임"
+                            name="receiveNick"
+                            >
                         </div>
                     </div>
 
@@ -102,13 +106,15 @@
                         <p class="msgtitle" style="margin-right: 20px;">글내용</p>
                         
                         <div>
-                            <textarea style="font-size: 20px; width: 550px; height: 350px;">내용을 입력해주세요.</textarea>
+                            <textarea id="msgcontent" style="font-size: 20px; width: 550px; height: 350px;"
+                            name="msgcontent"
+                            >내용을 입력해주세요</textarea>
                         </div>
                     </div>
 
                     <div>
-                        <button id="btnbox" style="border: none; margin-top: 30px; font-size: 17px; margin-bottom: 80px;">보내기</button>
-                        <button id="btnbox" style="border: none; margin-top: 30px; font-size: 17px; margin-bottom: 80px; margin-left: 20px;">취소</button>
+                        <button type="submit" id="btnbox" style="border: none; margin-top: 30px; font-size: 17px; margin-bottom: 80px;">보내기</button>
+                        <button type="cancel" id="btnbox" style="border: none; margin-top: 30px; font-size: 17px; margin-bottom: 80px; margin-left: 20px;">취소</button>
                     </div>
 
             </form>
