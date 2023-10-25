@@ -19,7 +19,7 @@
 			<typeAlias type="edu.kh.semiproject.board.model.dto.Board" alias="Board"/>
 			<typeAlias type="edu.kh.semiproject.product.model.dto.Product" alias="Product"/>
 			<typeAlias type="edu.kh.semiproject.board.model.dto.BoardImage" alias="BoardImage"/>
-			
+
 		</typeAliases>
 		
 		

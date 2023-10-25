@@ -62,7 +62,7 @@
 	                   <a href="/link/declarationListAdmin">허위매물 신고내역</a>
 	                </div>
 	                <div>
-	                   <a href="/link/noticeListUser">공지사항</a>
+	                   <a href="/link/noticeList">공지사항</a>
 	                </div>
             	</div>
                 <div class="content">
