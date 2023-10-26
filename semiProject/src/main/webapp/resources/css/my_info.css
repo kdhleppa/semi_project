@@ -240,4 +240,12 @@ main {
 	cursor: pointer;
 }
 
+#chattingicon{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+}
+
 

@@ -111,7 +111,7 @@ memberEmail.addEventListener("input", () => {
 		.then(count => {
 			
 			//count : 중복되면 1, 중복 아니면 0
-			if(count == 0 && initEmail == memberEmail ) {
+			if(count == 0 || initEmail == memberEmail ) {
 			 	emailMessage.innerText = "사용 가능한 이메일입니다";
         		emailMessage.classList.add("confirm"); // .confirm 스타일 적용
         		emailMessage.classList.remove("error"); // .error 스타일 제거

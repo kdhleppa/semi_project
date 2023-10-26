@@ -20,9 +20,14 @@
       
 			<typeAlias type="edu.kh.semiproject.board.model.dto.Board" alias="Board"/>
 			<typeAlias type="edu.kh.semiproject.board.model.dto.BoardImage" alias="BoardImage"/>
+
+			<typeAlias type="edu.kh.semiproject.chatting.model.dto.ChattingRoom" alias="ChattingRoom"/>
+			<typeAlias type="edu.kh.semiproject.chatting.model.dto.Message" alias="Message"/>
+
 			<typeAlias type="edu.kh.semiproject.notice.model.dto.Notice" alias="Notice"/>
 
 			<typeAlias type="edu.kh.semiproject.product.model.dto.RoomImg" alias="RoomImg"/>
+
 
 		</typeAliases>
 		
@@ -36,7 +41,11 @@
 			<mapper resource="/mappers/board-mapper.xml"/>
 			<mapper resource="/mappers/notice-mapper.xml"/>
 			<mapper resource="/mappers/myInfo-mapper.xml"/>
+
+			<mapper resource="/mappers/chatting-mapper.xml"/>
+
 			<mapper resource="/mappers/product-mapper.xml"/>
+
 		</mappers>	
 
 </configuration>

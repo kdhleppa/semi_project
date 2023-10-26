@@ -50,22 +50,6 @@ nav {
     display: flex;
 }
 
-/* main */
-
-main {
-    display: flex;
-    flex-direction: row;
-    height: 90%;
-}
-
-.content{
-    display: flex;
-    flex-direction: column;
-
-    width: 68%;
-    height: 100%;
-}
-
 .leftmenu {
     width: 16%;
 }
@@ -76,6 +60,7 @@ main {
     justify-content: center;
     align-items: center;
     width: 68%;
+    height: 100%;
 }
 
 .rightmenu {
@@ -151,4 +136,41 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* input 태그를 감싸고 있는 div 태그 */
+.signUp-input-area{
+    width: 350px;
+    height: 50px;
+
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+    align-items: center;
+}
+
+.signUp-input-area > input{
+    width: 270px;
+    height: 100%;
+
+    padding : 15px 10px 5px;
+    font-size: 16px;
+    font-weight: bold;
+
+    border : none;
+    outline: none;
+}
+
+.signUp-input-area > button{
+    width: 120px;
+    height: 70%;
+    background-color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+/* :focus-within : 내부 input 요소에 포커스가 맞춰졌을 때 */
+.signUp-input-area:focus-within{
+    border-bottom-color: #ff80ff;
 }

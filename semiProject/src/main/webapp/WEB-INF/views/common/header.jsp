@@ -28,7 +28,10 @@
         <div id="myInfo">
             <a href="/link/myInfo">내정보</a>
         </div>
-
+		
     </section>
 </nav>
+
+
+
 
