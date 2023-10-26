@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="productMapper">
+
+
+	<resultMap type="Product" id="product_rm">
+	  	
+	  	<id property="productNo" column="PRODUCT_NO"/>
+	  	  	
+		<result property="memberNo" column="MEMBER_NO" />
+	    <result property="productAddress" column="PRODUCT_ADDRESS" />
+	    <result property="productAddressHo" column="PRODUCT_ADDRESS_HO" />
+	    <result property="productTitle" column="PRODUCT_TITLE" />
+	    <result property="productContent" column="PRODUCT_CONTENT" />
+	    <result property="roomType" column="ROOM_TYPE" />
+	    <result property="roomSize" column="ROOM_SIZE" />
+	    <result property="productDeposit" column="PRODUCT_DEPOSIT" />
+	    <result property="productMonthlyRent" column="PRODUCT_MONTHLY_RENT" />
+	    <result property="productRentType" column="PRODUCT_RENTTYPE" />
+	    <result property="productMaintenace" column="PRODUCT_MAINTENACE" />
+	    <result property="enterDate" column="ENTER_DATE" />
+	    <result property="enterDateNego" column="ENTER_DATE_NEGO" />
+	    <result property="heatType" column="HEAT_TYPE" />
+	    <result property="parking" column="PARKING" />
+	    <result property="airCon" column="AIR_CON" />
+	    <result property="fridge" column="FRIDGE" />
+	    <result property="washer" column="WASHER" />
+	    <result property="cctv" column="CCTV" />
+	    <result property="doorlock" column="DOORLOCK" />
+	    <result property="stove" column="STOVE" />
+	    <result property="microwave" column="MICROWAVE" />
+	    <result property="elevator" column="ELEVATOR" />
+	    <result property="registrastionDate" column="REGISTRASTION_DATE" />
+	    <result property="productHide" column="PRODUCT_HIDE" />
+	</resultMap>
+	
+	<resultMap type="RoomImg" id="roomImg_rm">
+		<id property="imgNo" column="IMG_NO"/>
+		
+		<result property="productNo" column="PRODUCT_NO" />
+		<result property="imgPath" column="IMG_PATH" />
+		<result property="imgRename" column="IMG_RENAME" />
+		<result property="imgOriginal" column="IMG_ORIGINAL"/>
+		<result property="imgOrder" column="IMG_ORDER" />
+	
+	</resultMap>
+	
+	<!-- 물건 삽입 -->
+	<insert id="roomUp" parameterType="Product" useGeneratedKeys="true">
+  	 	<selectKey order="BEFORE" resultType="_int" keyProperty="productNo">
+  	 		SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+  	 	</selectKey>
+  	 	INSERT INTO BOARD
+  	 	VALUES( #{boardNo},
+  	 			#{boardTitle},
+  	 			#{boardContent},
+  	 			DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+  	 			#{memberNo},
+  	 			#{boardCode})
+  	 </insert>
+	<!-- 이미지 리스트(여러개)삽입 -->
+  	  <insert id ="insertImageList" parameterType="list">
+  	  	INSERT INTO "ROOM_IMG"
+  	  	SELECT SEQ_IMG_NO.NEXTVAL, A.*
+  	  	FROM (
+  	  		<foreach collection="list" item="img" separator=" UNION ALL ">
+  	  			SELECT #{img.imagePath} IMG_PATH,
+  	  				#{img.imageReName} IMG_RENAME,
+  	  				#{img.imageOriginal} IMG_ORIGINAL,
+  	  				#{img.imageOrder} IMG_ORDER,
+  	  				#{img.productNo} PRODUCT_NO
+  	  			FROM DUAL
+  	  		</foreach>
+  	  	) A
+  	  </insert>
+</mapper>

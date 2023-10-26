@@ -13,7 +13,6 @@ public class Product {
 	
 	private int productNo;
 	private int memberNo;
-	private int managerNo;
 	private String productAddress;
 	private String productAddressHo;
 	private String productTitle;

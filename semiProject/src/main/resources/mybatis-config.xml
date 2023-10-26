@@ -19,7 +19,7 @@
 			<typeAlias type="edu.kh.semiproject.board.model.dto.Board" alias="Board"/>
 			<typeAlias type="edu.kh.semiproject.product.model.dto.Product" alias="Product"/>
 			<typeAlias type="edu.kh.semiproject.board.model.dto.BoardImage" alias="BoardImage"/>
-
+			<typeAlias type="edu.kh.semiproject.product.model.dto.RoomImg" alias="RoomImg"/>
 		</typeAliases>
 		
 		
@@ -31,6 +31,7 @@
 			<mapper resource="/mappers/map-mapper.xml"/>
 			<mapper resource="/mappers/board-mapper.xml"/>
 			<mapper resource="/mappers/myInfo-mapper.xml"/>
+			<mapper resource="/mappers/product-mapper.xml"/>
 		</mappers>	
 
 </configuration>
