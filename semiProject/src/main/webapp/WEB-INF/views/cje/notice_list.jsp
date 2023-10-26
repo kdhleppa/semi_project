@@ -90,11 +90,11 @@
 							<div class="main-content-content">
 								<c:forEach items="${noticeList}" var="notice" >
 									<div class="main-content-real">
-										<div id="content-number">${notice.boardNo}</div>
-										<div id="content-writer">${notice.boardNickname}</div>
-										<a href="/link/noticeReadMore/${notice.boardNo}" id="content-title">${board.boardTitle}</a>
-										<div id="content-date">${notice.boardDate}</div>
-										<div id="content-count">${notice.boardCount}</div>
+										<div id="content-number">${notice.noticeNo}</div>
+										<div id="content-writer">${notice.managerNickname}</div>
+										<a href="/link/noticeReadMore/${notice.noticeNo}" id="content-title">${notice.noticeTitle}</a>
+										<div id="content-date">${notice.noticeDate}</div>
+										<div id="content-count">${notice.noticeCount}</div>
 									</div>
 								</c:forEach>
 							</div>
@@ -105,7 +105,7 @@
 			                        <option value="search-content">내용</option>
 			                    </select>
 			                    <input id="search-word" placeholder="검색어를 입력해주세요.">
-		                    	<c:if test="${not empty loginMember}">
+		                    	<c:if test="${loginMember.managerFl == Y}">
 				                    <button id="writing">글쓰기</button>
 			                    </c:if>
 			                </div>
@@ -117,10 +117,10 @@
                     <ul class="pagination">
                
 	                    <!-- 첫 페이지로 이동 -->
-	                    <li><a href="/link/boardList?cp=1">&lt;&lt;</a></li>
+	                    <li><a href="/link/noticeList?cp=1">&lt;&lt;</a></li>
 	
 	                    <!-- 이전 목록 마지막 번호로 이동 -->
-	                    <li><a href="/link/boardList?cp=${pagination.prevPage}">&lt;</a></li>
+	                    <li><a href="/link/noticeList?cp=${pagination.prevPage}">&lt;</a></li>
 	
 						
 	                    <!-- 특정 페이지로 이동 -->
@@ -134,17 +134,17 @@
 	                    		
 	                    		<%-- 현재 페이지를 제외한 나머지 페이지 --%>	
 	                    		<c:otherwise>
-	                    			<li><a href="/link/boardList?cp=${i}">${i}</a></li>
+	                    			<li><a href="/link/noticeList?cp=${i}">${i}</a></li>
 	                    		</c:otherwise>
 	                    		
 	                    	</c:choose>
 	                    </c:forEach>
 	                    
 	                    <!-- 다음 목록 시작 번호로 이동 -->
-	                    <li><a href="/link/boardList?cp=${pagination.nextPage}">&gt;</a></li>
+	                    <li><a href="/link/noticeList?cp=${pagination.nextPage}">&gt;</a></li>
 	
 	                    <!-- 끝 페이지로 이동 -->
-	                    <li><a href="/link/boardList?cp=${pagination.maxPage}">&gt;&gt;</a></li>
+	                    <li><a href="/link/noticeList?cp=${pagination.maxPage}">&gt;&gt;</a></li>
 	
 	                </ul>
                 </div>

@@ -344,6 +344,10 @@ main {
     height: 100%;
 }
 
+.pagination > li > a{
+	color : black;
+}
+
 .current{
     font-weight: bold;
     background-color: #455ba8;
