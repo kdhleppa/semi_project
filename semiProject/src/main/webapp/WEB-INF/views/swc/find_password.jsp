@@ -47,30 +47,29 @@
                     </div>
                 </div>
 
-                <div style="margin-right: 80px;">
-                    아이디
-                    <div>
-                        <input type="text" id="underline">
-                    </div>
+				<!-- 아이디 입력 -->
+				
+				<div class="signUp-input-area">
+                    <input type="text" name="memberId" id="memberId" placeholder="아이디" maxlength="10" >
                 </div>
+			
+                <!-- 이메일 입력 -->
+                
+                <div class="signUp-input-area">
+                    <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일" maxlength="40">
+                    
+                    <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
+                </div>
+                
+                <!-- 인증번호 입력 -->
 
-                <div style="margin-right: 80px;">
-                    이름
-                    <div>
-                        <input type="text" id="underline">
-                    </div>
+                <div class="signUp-input-area">
+                    <input type="text" name="authKey" id="authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
+                    
+                    <button id="checkAuthKeyBtn" type="button">인증확인</button>
                 </div>
-
-                <div>
-                    휴대폰
-                    <div>
-                        <input type="text" id="underline"> 인증번호받기
-                    </div>
-                </div>
-
-                <div id="signNum">
-                    &nbsp;&nbsp;&nbsp;&nbsp;인증번호 6자리 숫자 입력<input type="text" style="border: none; background: transparent;">
-                </div>
+                <span class="signUp-message" id="authKeyMessage"></span>
+                                <!-- 인증번호가 일치하지 않습니다 -->
                     
                 <div class="signUpFind">
                     <div>

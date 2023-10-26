@@ -127,6 +127,7 @@
                 </div>
 
 				<br>
+				
 				<!-- 이메일 입력 -->
                 
                 <div class="signUp-input-area">

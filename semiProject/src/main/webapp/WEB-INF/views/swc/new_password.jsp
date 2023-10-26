@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>비밀번호수정</title>
+    <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
     <link rel="stylesheet" href="/resources/css/new_password.css">
 </head>
 <body>
@@ -45,19 +46,19 @@
                     </div>
                 </div>
 
-                <div style="margin-right: 80px;">
-                    새 비밀번호
-                    <div>
-                        <input type="text" id="underline">
-                    </div>
+                <!-- 새 비밀번호/비밀번호 확인 입력 -->
+                
+                <div class="signUp-input-area">
+                    <input type="password" name="memberPw" id="memberPw" 
+                    placeholder="새 비밀번호" maxlength="20" >
+                </div>
+                
+                <div class="signUp-input-area">
+                    <input type="password" name="memberPwConfirm" id="memberPwConfirm" 
+                    placeholder="새 비밀번호 확인" maxlength="20" >
                 </div>
 
-                <div style="margin-right: 120px;">
-                    새 비밀번호 확인
-                    <div>
-                        <input type="text" id="underline">
-                    </div>
-                </div>
+                <span class="signUp-message" id="pwMessage">영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</span>
 
                 <button id="btnbox"> <a href="/link/login" style="color:white; text-decoration:none;">확인</a> </button>
 
@@ -69,5 +70,17 @@
         </div>
 
     </div>
+    
+    <c:if test="${not empty message}">
+	
+	<script>
+		
+		alert('${message}') // ${message}
+	</script>
+	</c:if>
+	
+	
+	<script src="/resources/js/signUp.js"></script>
+	
 </body>
 </html>

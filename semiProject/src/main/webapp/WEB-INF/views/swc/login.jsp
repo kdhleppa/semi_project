@@ -38,18 +38,17 @@
                     로그인
                 </div>
                     
-                <div>
-                    아이디
-                    <div>
-                        &nbsp; <input type="text" id="underline" name="memberId">
-                    </div>
+                <!-- 아이디 입력 -->
+				
+				<div class="signUp-input-area">
+                    <input type="text" name="memberId" id="memberId" placeholder="아이디" maxlength="10" >
                 </div>
 
-                <div>
-                    비밀번호
-                    <div>
-                        <input type="password" id="underline" name="memberPw" style="width: 296px;">
-                    </div>
+                <!-- 비밀번호/비밀번호 확인 입력 -->
+                
+                <div class="signUp-input-area">
+                    <input type="password" name="memberPw" id="memberPw" 
+                    placeholder="비밀번호" maxlength="20" >
                 </div>
                     
                 <div class="signUpFind">

@@ -117,7 +117,9 @@
                     </a>
                 </div>
             </div>
-            <div class="content-right"></div>
+            <div class="content-right">
+            	
+            </div>
         </div>
 
         <div class="bottom">
@@ -138,9 +140,18 @@
             </div>
             <div class="bottom-right">
             </div>            
-        </div>
-    </div>    
+        </div> 
+    </div>   
     
+    	<%-- 로그인 했을 때 채팅 보여짐 --%>
+        <c:if test="${not empty loginMember}" >
+        	<div id="chattingicon">
+	            <a href="/chatting">
+	            	<img src="/resources/images/채팅아이콘.png">
+	        	</a>
+        	</div>
+        </c:if>
     
 </body>
+	
 </html>

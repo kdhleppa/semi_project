@@ -24,6 +24,7 @@ public class Member {
 		private String memberPhoneNum;
 		private String profileImage;
 		private String memberSecession;
+		private String managerFl;
 		
 
 }

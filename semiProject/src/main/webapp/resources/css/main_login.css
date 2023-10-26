@@ -8,6 +8,7 @@
 .container{
     width: 100vw;
     height: 100vh;
+    position: relative;
 }
 
 /* nav */
@@ -226,9 +227,12 @@ nav {
     right: 5px; bottom: 10px;
 }
 
-#chat-icon{
-    width: 50px;
-    height: 50px;
-    margin: 0 10px;
+
+#chattingicon{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
 }
 

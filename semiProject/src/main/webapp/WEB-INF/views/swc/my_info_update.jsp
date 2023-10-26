@@ -49,10 +49,6 @@
                 </div>
                 
                 <div>
-                   <a href="/link/messageReceived">채팅함</a>
-                </div>
-                
-                <div>
                    <a href="/link/oneOnOneListUser">1:1 문의 내역</a>
                 </div>
                 
@@ -215,6 +211,14 @@
 	</script>
 	</c:if>
 	
+	<%-- 로그인 했을 때 채팅 보여짐 --%>
+        <c:if test="${not empty loginMember}" >
+        	<div id="chattingicon">
+	            <a href="/chatting">
+	            	<img src="/resources/images/채팅아이콘.png">
+	        	</a>
+        	</div>
+        </c:if>
     
     <script src="/resources/js/myInfoUpdate.js"></script>
     

@@ -18,12 +18,13 @@
 		<result property="memberPhoneNum" column="MEMBER_PHONENUM" />
 		<result property="profileImage" column="MEMBER_PROFILE_IMG" />
 		<result property="memberSecession" column="MEMBER_SECESSION" />
+		<result property="managerFl" column="MANAGER_FL" />
 	</resultMap>
 	
 	
 	<select id="login" parameterType="Member" resultMap="member_rm">
   		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME,
-			MEMBER_ADDRESS, MEMBER_EMAIL, MEMBER_PHONENUM, MEMBER_PROFILE_IMG, MEMBER_SECESSION
+			MEMBER_ADDRESS, MEMBER_EMAIL, MEMBER_PHONENUM, MEMBER_PROFILE_IMG, MEMBER_SECESSION, MANAGER_FL
 		FROM "MEMBER"
 		WHERE MEMBER_SECESSION = 'N'
 		AND MEMBER_ID = #{memberId}
@@ -41,6 +42,7 @@
 			, #{memberAddress}
 			, #{memberEmail}
 			, #{memberPhoneNum}
+			, DEFAULT
 			, DEFAULT
 			, DEFAULT)
 	</insert>
