@@ -114,9 +114,6 @@
 
                         <input type="radio"  name="roomType" value="원룸"> 원룸
 
-                        <input type="radio"  name="roomType" value="분리형 원룸"> 분리형 원룸
-
-                        <input type="radio"  name="roomType" value="원룸+거실"> 원룸 + 거실
                         <input type="radio"  name="roomType" value="투룸"> 투룸
 
                       </td>
@@ -397,7 +394,7 @@
                       <th class="tg6-0lax">제목</th>
                       <th class="tg6-0lax">
 
-                        <input id="Description-title" type="text" placeholder="리스트에 노출되는 문구입니다. 40자 이내로 작성해주세요."> <br>
+                        <input id="Description-title" name = "productTitle" type="text" placeholder="리스트에 노출되는 문구입니다. 40자 이내로 작성해주세요."> <br>
 
                       
 
@@ -414,7 +411,7 @@
 
                       <td class="tg6-0lax">
                         
-						<textarea name="message" rows="20" cols="80" placeholder="매물 상세 페이지에 노출되는 문구입니다. 1000자 이내로 작성해 주세요."></textarea>
+						<textarea name="productContent" rows="20" cols="80" placeholder="매물 상세 페이지에 노출되는 문구입니다. 1000자 이내로 작성해 주세요."></textarea>
 						<br>
 
                         - 매물 정보와 관련없는 홍보성 정보는 입력할 수 없습니다. <br>
@@ -463,6 +460,24 @@
             
         </div>
             
+    <c:if test="${not empty message}">
+    	<script>
+    		// EL/JSTL 구문이 먼저 해석
+    		// 문자열의 경우 따옴표가 없는 상태이니 옆에 붙여줘야함.
+    	
+    		alert('${message}') // ${message}
+    	
+    	
+    	</script>
+    	<%--
+    		session에 message를 추가하면
+    		브라우저 종료 또는 만료 전까지 계속 메시지가 출력된다
+    		
+    		-> 1회 출력 후 session에서 message 삭제	
+    	 
+    	 <c:remove var="message" scope="session"/>
+    	 --%>
+    </c:if>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb9b63d71a5408fd96cba9a1674b9d43&libraries=services,clusterer"></script>
 	<script src="/resources/js/room_up.js"></script>
 </body>
