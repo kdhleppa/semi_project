@@ -1,0 +1,17 @@
+package edu.kh.semiproject.notice.model.service;
+
+import java.util.List;
+import java.util.Map;
+
+public interface NoticeService {
+
+	// 게시글 목록 조회 service
+	Map<String, Object> selectNoticeList(int cp);
+
+	// 게시글 상세 조회 service
+	List<Map<String, Object>> noticeDetail(int noticeNo);
+
+	// 조회수 증가 처리
+	int updateReadCount(int noticeNo);
+
+}

@@ -82,17 +82,19 @@ public class LinkController {
 //	public String NoticeListUser() {
 //		return "/cje/notice_list_user";
 //	}
+
+//	NoticeController에서 사용
+//	@GetMapping("/noticeList")
+//	public String NoticeList() {
+//		return "/cje/notice_list";
+//	}
 	
-	@GetMapping("/noticeList")
-	public String NoticeList() {
-		return "/cje/notice_list";
-	}
-	
-	
-	@GetMapping("/noticeReadMore")
-	public String NoticeReadMore() {
-		return "/cje/notice_readMore";
-	}
+
+//	NoticeController에서 사용
+//	@GetMapping("/noticeReadMore")
+//	public String NoticeReadMore() {
+//		return "/cje/notice_readMore";
+//	}
 	
 //	noticeReadMore로 통일
 //	@GetMapping("/noticeReadMoreUsers")

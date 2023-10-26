@@ -67,11 +67,15 @@
                     <div class="main-content-left"></div>
                     <div class="main-content-main">
                         <input id="content-title" placeholder="제목을 입력해주세요."></input>
-                        <div id="content-option">
-                            <label for="imageInput">이미지</label>
-	                        <input type="file" name="profileImage" id="imageInput" accept="image/*">
-                            <button type="button">동영상 url</button>
+                        
+                        <div class="boardImg">
+                            <label for="img">이미지
+		                        <img class="preview" src="">
+		                    </label>
+		                    <input type="file" name="image" class="inputImage" id="img" accept="image/*">
+		                    <span class="delete-image">&times;</span>
                         </div>
+                        
                         <input id="content-text" placeholder="내용을 입력해주세요."></input>                        
                         <div id="content-modifybutton">
                             <button id="registerButton">등록하기</button>
