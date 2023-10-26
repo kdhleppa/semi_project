@@ -114,7 +114,7 @@ var previousInfowindow = null;
 
 
 document.getElementById("adress-btn").addEventListener("click", function(){
-    const textbox = document.getElementById("input-adress")
+    const textbox = document.getElementById("productAddress")
 
 	// 주소로 좌표를 검색합니다
 	geocoder.addressSearch(textbox.value, function(result, status) {
