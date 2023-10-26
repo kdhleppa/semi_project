@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.semiproject.map.model.service.MapService;
 import edu.kh.semiproject.product.model.dto.Product;
+import oracle.jdbc.proxy.annotation.GetProxy;
 
 @Controller
 @SessionAttributes({"products"})
@@ -31,6 +32,8 @@ public class MapController {
 		
 		return "/kdh/map_main_login";
 	}
+	
+	
 	
 	@GetMapping("/link/getProducts")
 	@ResponseBody

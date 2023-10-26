@@ -1,5 +1,4 @@
-package edu.kh.semiproject.board.controller;
-
+package edu.kh.semiproject.notice.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -9,75 +8,68 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.kh.semiproject.board.model.dto.Board;
-import edu.kh.semiproject.board.model.service.BoardService;
 import edu.kh.semiproject.member.model.dto.Member;
-import oracle.jdbc.proxy.annotation.Post;
+import edu.kh.semiproject.notice.model.dto.Notice;
+import edu.kh.semiproject.notice.model.service.NoticeService;
 
 @SessionAttributes({"loginMember"})
 @Controller
-public class BoardController {	
+public class NoticeController {
 
 	@Autowired
-	private BoardService service;
-		
-	/** 게시글 목록 조회
-	 * @param boardCode
-	 * @param cp
-	 * @return
-	 */
-	@GetMapping("/link/boardList")
-	public String selectBoardList(@RequestParam(value="cp", required= false, defaultValue="1") int cp,
+	private NoticeService service;
+	
+	
+	// 게시글 목록 조회
+	@GetMapping("/link/noticeList")
+	public String selectNoticeList(@RequestParam(value="cp", required= false, defaultValue="1") int cp,
 								Model model
 							) {
 				
 		// 게시글 목록 조회 서비스
-		Map<String, Object> map = service.selectBoardList(cp);
+		Map<String, Object> map = service.selectNoticeList(cp);
 		
 		// 조회 결과를 request scope에 세팅 후 forward
 		model.addAttribute("map", map);
 		
-		return "cje/board_list";
+		return "cje/notice_list";
 	}
 	
-	/** 게시글 상세 조회(내가 쓴 글)
-	 * @param boardNo
-	 * @return
-	 */
-	@GetMapping("/link/boardReadMore/{boardNo}")
-	public String boardDetailMine(@PathVariable("boardNo") int boardNo,
-								Model model,
-								RedirectAttributes ra,
-								@SessionAttribute(value="loginMember", required=false) Member loginMember,
-								// 세션에서 loginMemebr를 얻어오는데, 없으면 null 있으면 회원정보 저장
-								
-								// 쿠키를 이용하여 조회수 증가에 사용
-								HttpServletRequest req,
-								HttpServletResponse resp) {
+	
+	// 게시글 상세 조회 
+	@GetMapping("/link/noticeReadMore/{noticeNo}")
+	public String noticeDetail(
+			@PathVariable("noticeNo") int noticeNo,
+			Model model,
+			RedirectAttributes ra,
+			@SessionAttribute(value="loginMember", required = false) Member loginMember,
+			
+			HttpServletRequest req,
+			HttpServletResponse resp
+			) {
 		
 		// 게시글 상세 조회 서비스 호출
-		List<Map<String, Object>> prevNextBoard = service.boardDetailMine(boardNo);
+		List<Map<String, Object>> prevNextBoard = service.noticeDetail(noticeNo);
 		
+		System.out.println(noticeNo);
 		System.out.println("prevNextBoard::" + prevNextBoard);
 		
 		String path = null;		
-		Board board = null;
+		Notice board = null;
 		
 		if( prevNextBoard != null ) {
 			
-			path = "cje/board_readMore";			
-			
+			path = "cje/notice_readMore";		
+		
 			Map<String, Object> prev = null;
 			Map<String, Object> next = null;
 			Map<String, Object> current = null;
@@ -91,26 +83,25 @@ public class BoardController {
 				next = prevNextBoard.get(1);
 				current = prevNextBoard.get(2);
 				
-				board = (Board) current.get("board");
-				
+				board = (Notice) current.get("board");
+		
 				model.addAttribute("prev", prev);
 				model.addAttribute("next", next);
 				model.addAttribute("current", board);
 				
 				
 			} else if(prevNextBoard.size() == 2) {
-				
-				
+		
 				Map<String, Object> prevOrNext = prevNextBoard.get(0);
 				
 				current = prevNextBoard.get(1);
 				
-				board = (Board) current.get("board");
+				board = (Notice) current.get("board");
 				model.addAttribute("current", board);
 				
-				int currentNo = ((Board)current.get("board")).getBoardNo();
+				int currentNo = ((Notice)current.get("board")).getNoticeNo();
 		
-				int prevOrNextNo = Integer.parseInt( String.valueOf(prevOrNext.get("BOARD_NO")) ) ;
+				int prevOrNextNo = Integer.parseInt( String.valueOf(prevOrNext.get("NOTICE_NO")) ) ;
 				
 				System.out.println("이전글인가 다음글인가?"+ prevOrNextNo );
 				
@@ -126,7 +117,7 @@ public class BoardController {
 			}else {
 				// 현재글
 				current = prevNextBoard.get(0);
-				board = (Board) current.get("board");
+				board = (Notice) current.get("board");
 				model.addAttribute("current", board);
 			}
 			
@@ -135,10 +126,10 @@ public class BoardController {
 			// 쿠키를 이용한 조회수 증가 처리
 			
 			// 1) 비회원(비로그인)이거나 로그인한 회원의 글이 아닌 경우에만 조회수 증가 처리
-			if(loginMember == null ||
-					loginMember.getMemberNo() != board.getMemberNo()) {
-				
-				System.out.println("loginMember::" + loginMember);				
+//			if(loginMember == null ||
+//					loginMember.getMemberNo() != board.getManagerNo()) {
+//				
+//				System.out.println("loginMember::" + loginMember);				
 				
 				// 2) 쿠키를 얻어온다
 				Cookie c = null;
@@ -165,40 +156,35 @@ public class BoardController {
 				
 				if(c == null) { // 쿠키가 없으므로 새로 생성해줘야함
 					
-					c = new Cookie("readBoardNo", "|" + "boardNo" + "|");
+					c = new Cookie("readBoardNo", "|" + "noticeNo" + "|");
 					
 					// 조회수 증가 서비스 호출
-					result = service.updateReadCount(boardNo);
+					result = service.updateReadCount(noticeNo);
 					
 				}else { // 해당 게시물을 본적 없음
 					
 					// 현재 게시글 번호가 쿠키에 있는지 확인
-					if(c.getValue().indexOf("|" + boardNo + "|") == -1) { // 현재 게시글 번호가 쿠키에 없다면
+					if(c.getValue().indexOf("|" + noticeNo + "|") == -1) { // 현재 게시글 번호가 쿠키에 없다면
 						
 						// 기존값에 현재 게시글 번호 추가
-						c.setValue(c.getValue() + "|" + boardNo + "|");
+						c.setValue(c.getValue() + "|" + noticeNo + "|");
 						
 						// 조회수 증가 서비스 호출
-						result = service.updateReadCount(boardNo);
+						result = service.updateReadCount(noticeNo);
 					}
 				}
-			}
+//			}
 			
 			//------------------------------ 종료 ------------------------------
-						
+			
 		}else { // 조회결과가 없을 경우 게시판 첫페이지로 이동
 			
-			path = "redirect:/link/boardList";
+			path = "redirect:/link/noticeList";
 			
-			ra.addFlashAttribute("message", "해당 게시글이 존재하지 않습니다.");
+			ra.addFlashAttribute("message", "해당 게시글이 존재하지 않습니다.");		
+		}
 		
-		}		
-		
-		return path;		
-		
+		return path;
 	}
-	
-
-	
 	
 }

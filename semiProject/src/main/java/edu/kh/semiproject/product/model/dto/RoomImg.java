@@ -13,7 +13,8 @@ public class RoomImg {
 	private int imgNo;
 	private int productNo;
 	private String imgPath;
-	private String ImgRename;
-	private String ImgOriginal;
+	private String imgRename;
+	private String imgOriginal;
+	private int imgOrder;
 
 }

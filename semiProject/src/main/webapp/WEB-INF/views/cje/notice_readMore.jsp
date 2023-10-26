@@ -8,8 +8,8 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
 	<link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
-	<link rel="stylesheet" href="/resources/css/notice_readMore_admin.css">
-    <title>공지사항 글 자세히보기(수정/삭제) (관리자 페이지)</title>
+	<link rel="stylesheet" href="/resources/css/notice_readMore.css">
+    <title>공지사항 글 자세히보기/(관리자 페이지)</title>
 </head>
 <body>
 	<div class="container">
@@ -31,7 +31,7 @@
                     <a href="/link/roomUpFront">방내놓기</a>
                 </div>
                 <div id="board">
-                    <a href="/link/communityList">게시판</a>
+                    <a href="/link/boardList">게시판</a>
                 </div>
                 <div id="mypage">
                     <a href="/link/myInfo">내정보</a>
@@ -57,7 +57,7 @@
                 	<a href="/link/declarationList">허위매물 신고내역</a>
                 </div>
                 <div>
-                	<a href="/link/noticeListUser">공지사항</a>
+                	<a href="/link/noticeList">공지사항</a>
                 </div>
             </div>
             <div class="content">
@@ -65,31 +65,42 @@
                     공지사항
                 </div>
                 <div class="main-content">
+                
                     <div class="main-content-left"></div>
                     <div class="main-content-main">
                         <div id="content-info">
-                            <div>아이디</div>
-                            <div>2023-10-04</div>
-                            <div>조회수 : 108</div>
+                            <div>${current.managerNickname}</div>
+                            <div>${current.noticeDate}</div>
+                            <div>조회수 : ${current.noticeCount}</div>
                         </div>
-                        <div id="content-title">제목</div>
-                        <div id="content-text">내용</div>
+                        <div id="content-title">${current.noticeTitle}</div>
+                        <div id="content-text">${current.noticeContent}</div>
                         <div id="content-listbutton">
-                            <div id="previous">
-                                <button>∧</button>
-                                <div>이전글</div>
-                                <div>글제목</div>
-                            </div>
-                            <div id="next">
-                                <button>∨</button>
-                                <div>다음글</div>
-                                <div>글제목</div>
-                            </div>
+                        
+                        	<c:if test="${not empty prev}">
+	                            <div id="previous">
+	                                <button>∧</button>
+	                                <div>이전글</div>
+	                                <a href="/link/noticeReadMore/${prev.NOTICE_NO}">${prev.NOTICE_TITLE}</a>
+	                            </div>
+                        	</c:if>
+                        	
+                        	<c:if test="${not empty next}">
+	                            <div id="next">
+	                                <button>∨</button>
+	                                <div>다음글</div>
+	                                <a href="/link/noticeReadMore/${next.NOTICE_NO}">${next.NOTICE_TITLE}</a>
+	                            </div>
+                            </c:if>
                         </div>
-                        <div id="content-modifybutton">
-                            <button id="modifyButton">수정</button>
-                            <button id="deleteButton">삭제</button>
-                        </div>
+                        
+                        <c:if test="${loginMember.memberNo == current.managerNo}">
+	                        <div id="content-modifybutton">
+	                            <button id="modifyButton">수정</button>
+	                            <button id="deleteButton">삭제</button>
+	                        </div>
+						</c:if>
+						
                     </div>
                     <div class="main-content-right"></div> 
                 </div>
@@ -99,7 +110,7 @@
                 	<a href="#">위로</a>
                 </button>
                 <button id="bottom-nav-list">
-                	<a href="/link/noticeListAdmin">목록</a>
+                	<a href="/link/noticeList">목록</a>
                 </button>
                 <img src="/resources/images/chat_icon.png" id="chat-icon">
             </div>

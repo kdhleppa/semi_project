@@ -54,13 +54,15 @@
                     <form action="/board2/insert" method="POST" id="boardWriteFrm">
 	                    <div class="main-content-main">
 	                        <input id="content-title" placeholder="제목을 입력해주세요." name="boardTitle"></input>
-	                        <div id="content-option">
-			                    <label for="img1">
-			                        <img class="preview" src="${img1}">
+	                        
+	                        <div class="boardImg">
+	                            <label for="img">이미지
+			                        <img class="preview" src="">
 			                    </label>
-			                    <input type="file" name="image" class="inputImage" id="img1" accept="image/*">
+			                    <input type="file" name="image" class="inputImage" id="img" accept="image/*">
 			                    <span class="delete-image">&times;</span>
 	                        </div>
+
 	                        <input id="content-text" placeholder="내용을 입력해주세요." name="boardContent"></input>                        
 	                        <div id="content-modifybutton">
 	                            <button type="submit" id="registerButton">등록하기</button>
@@ -92,5 +94,6 @@
 		</script>
 	</c:if>
     
+    <script src="/resources/js/boardWrite.js"></script>
 </body>
 </html>
