@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
     <link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
     <link rel="stylesheet" href="/resources/css/find_idpw.css">
+    
 </head>
 <body>
+	
     <div class="container">
         <nav>
             <section class="logo">
@@ -34,11 +36,11 @@
                 
             </div>
 
-            <form class="content">  
+            <div class="content">  
 
                 <div class="title" style="font-weight: 500; margin-bottom: 40px;">
                     <div id="findId">
-                        <a href="#" style="font-weight: 1000; text-decoration: none;">아이디 찾기</a>
+                        <a href="/link/findId" style="font-weight: 1000; text-decoration: none;">아이디 찾기</a>
                     </div>
                     
                     <div id="findPw" style="margin-left: 70px;">
@@ -46,37 +48,35 @@
                     </div>
                 </div>
 
-                <!-- 이메일 입력 -->
-                
-                <div class="signUp-input-area">
-                    <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일" maxlength="40">
-                    
-                    <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
-                </div>
-                
-                <!-- 인증번호 입력 -->
-
-                <div class="signUp-input-area">
-                    <input type="text" name="authKey" id="authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
-                    
-                    <button id="checkAuthKeyBtn" type="button">인증확인</button>
-                </div>
-                <span class="signUp-message" id="authKeyMessage"></span>
-                                <!-- 인증번호가 일치하지 않습니다 -->
-                    
+				<div class="signUp-input-area">
+          		
+            	<input type="text" id="inputName" placeholder="이름">
+            	
+            	</div>
+            	
+            	<div class="signUp-input-area">
+            	
+            	<input type="text" id="inputPhoneNum" placeholder="휴대폰 번호">
+            	
+            	</div>
+            	
+            	<button id="btn1">조회</button>
+            	
+            	
                 <div class="signUpFind">
                     <div>
                         <a href="/link/signUp">회원가입</a>
                     </div>
                     
                     <div style="margin-left: 50px;">
-                        <a href="#">ID</a> / <a href="/link/findPassword">PW찾기</a>
+                        <a href="/link/login">로그인</a>
                     </div>
                 </div>
-                    
-                <button id="btnbox"> <a href="/link/newPassword" style="color:white; text-decoration:none;">확인</a> </button>
+                
+                <br><br>
+                <p>아이디 : </p> <h1 id="result1"></h1>
 
-            </form>
+            </div>
 
             <div class="rightmenu">
                 
@@ -85,5 +85,7 @@
         </div>
 
     </div>
+    
+    <script src="/resources/js/findId.js"></script>
 </body>
 </html>

@@ -171,6 +171,7 @@ public class LinkController {
 		return "/swc/detail_send_message";
 	}
 	
+ 
 	@GetMapping("/findId")
 	public String FindId() {
 		return "/swc/find_id";
