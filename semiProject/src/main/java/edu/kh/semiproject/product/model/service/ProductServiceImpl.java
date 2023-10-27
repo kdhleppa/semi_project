@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.fileupload.FileUploadException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,7 +18,7 @@ import edu.kh.semiproject.product.model.dto.RoomImg;
 @Service
 public class ProductServiceImpl implements ProductService{
 
-	
+	@Autowired
 	private ProductDAO dao;
 	/** 방 내놓기
 	 * @throws FileUploadException 
