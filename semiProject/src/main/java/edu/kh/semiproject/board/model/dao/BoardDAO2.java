@@ -21,13 +21,14 @@ public class BoardDAO2 {
 
 		int result = sqlSession.insert("boardMapper.boardInsert", board);
 		
+		// 삽입 성공 시
 		if(result > 0) result = board.getBoardNo();
 		
 		return result;
 	}
 
 	/** 이미지 insert DAO
-	 * @param uploadList
+	 * @param 
 	 * @return
 	 */
 	public int insertImage(BoardImage img) {

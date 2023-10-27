@@ -79,5 +79,33 @@ public class BoardServiceImpl implements BoardService{
 
 		return dao.updateReadCount(boardNo);
 	}
+
+	/** 검색 기능으로 게시글 목록 조회
+	 *
+	 */
+	@Override
+	public Map<String, Object> selectBoardList(Map<String, Object> paramMap, int cp) {
+		
+		// 1. 삭제되지않았고 검색조건이 일치하는 게시글 수 조회
+		int listCount = dao.getListCount(paramMap);
+		
+		// 2. 1번 조회 결과 + cp를 이용해서 Pagination 객체 생성
+		// -> 내부 필드가 모두 게산되어 초기회됨
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		// 3. 조건 검색 시 현재 페이지에 해당하는 부분에 대한 게시글 목록 조회
+		// 몇페이지(pagination.currentPage)에 대한 
+		// 몇개(pagination.limit)인지 조회		
+		List<Board> boardList = dao.selectBoardList(pagination, paramMap);
+		
+		// 4. pagination, boardList를 Map에 담아서 반환
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+		System.out.println(pagination);
+		
+		return map;		
+	}
 	
 }

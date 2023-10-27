@@ -39,14 +39,24 @@ public class BoardController {
 	 */
 	@GetMapping("/link/boardList")
 	public String selectBoardList(@RequestParam(value="cp", required= false, defaultValue="1") int cp,
-								Model model
+								Model model,
+								@RequestParam Map<String, Object> paramMap  // 파라미터가 전부 담겨있음(검색 시)
 							) {
 				
-		// 게시글 목록 조회 서비스
-		Map<String, Object> map = service.selectBoardList(cp);
-		
-		// 조회 결과를 request scope에 세팅 후 forward
-		model.addAttribute("map", map);
+		if(paramMap.get("key") == null) { // 검색어가 없을 때
+			
+			// 게시글 목록 조회 서비스
+			Map<String, Object> map = service.selectBoardList(cp);
+			
+			// 조회 결과를 request scope에 세팅 후 forward
+			model.addAttribute("map", map);
+			
+		}else { // 검색어가 있을 때
+			
+			Map<String, Object> map = service.selectBoardList(paramMap, cp); // 오버로딩 적용
+			
+			model.addAttribute("map", map);
+		}
 		
 		return "cje/board_list";
 	}

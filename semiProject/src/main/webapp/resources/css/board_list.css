@@ -122,6 +122,20 @@ main {
     margin: 0 50px;
 }
 
+.main-content-bottom{
+	display: flex;
+	align-items: center;
+    justify-content: center;
+    
+    margin-top: 20px;
+}
+
+.main-content-bottom > form{
+	display: flex;
+	align-items: center;
+
+}
+
 .pagination-area{
 	height: 10%;
 
@@ -279,8 +293,6 @@ main {
     justify-content: center;
 
     font-size: 12px;
-
-    margin-top: 20px;
 }
 
 #search-type{

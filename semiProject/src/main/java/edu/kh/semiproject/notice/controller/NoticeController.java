@@ -32,14 +32,24 @@ public class NoticeController {
 	// 게시글 목록 조회
 	@GetMapping("/link/noticeList")
 	public String selectNoticeList(@RequestParam(value="cp", required= false, defaultValue="1") int cp,
-								Model model
+								Model model,
+								@RequestParam Map<String, Object> paramMap
 							) {
 				
-		// 게시글 목록 조회 서비스
-		Map<String, Object> map = service.selectNoticeList(cp);
-		
-		// 조회 결과를 request scope에 세팅 후 forward
-		model.addAttribute("map", map);
+		if(paramMap.get("key") == null ) {
+			
+			// 게시글 목록 조회 서비스
+			Map<String, Object> map = service.selectNoticeList(cp);
+			
+			// 조회 결과를 request scope에 세팅 후 forward
+			model.addAttribute("map", map);
+			
+		}else {
+			
+			Map<String, Object> map = service.selectNoticeList(paramMap, cp);
+			
+			model.addAttribute("map", map);
+		}
 		
 		return "cje/notice_list";
 	}

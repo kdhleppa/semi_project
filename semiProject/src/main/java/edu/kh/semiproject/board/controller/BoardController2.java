@@ -59,17 +59,19 @@ public class BoardController2 { // 삽입, 수정, 삭제 구현
 		// 1. 로그인한 회원 번호를 얻어와 board에 셋팅
 		board.setMemberNo(loginMember.getMemberNo());
 		board.setMemberNickname(loginMember.getMemberNickname());
-		
+
 		// 2. 업로드된 이미지가 서버에 실제로 저장되는 경로 
 		//		+ 웹에서 요청 시 이미지를 볼 수 있는 경로(웹 접근 경로)
-		String webPath = "/resources/images/board";
+		String webPath = "/resources/images/board/";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
 		// 게시글 삽입 서비스 호출 후 삽입된 게시글 번호 반환 받기
 		int boardNo = service.boardInsert(board, boardImage, webPath, filePath);
 		
+		System.out.println("boardNo contro::"+boardNo);
+		
 		// 게시글 삽입 성공 시 방금 삽입한 게시글의 상세조회 페이지로 리다이렉트
-		// -> /board/{boardNo}
+		// -> /link/boardReadMore/{boardNo}
 		
 		String message = null;
 		String path = "redirect:";
