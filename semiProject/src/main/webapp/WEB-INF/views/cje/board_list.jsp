@@ -45,8 +45,7 @@
             </section>   
         </nav>
 
-        <main>
-        
+        <main>              
             <div class="leftmenu">
             	<a href="/link/boardList">내가 쓴 글</a>
             </div>
@@ -85,29 +84,40 @@
 									</div>
 								</c:forEach>
 							</div>
-							
-							<div class="search">
-			                    <select id="search-type">
-			                        <option value="search-title">제목</option>
-			                        <option value="search-content">내용</option>
-			                    </select>
-			                    <input id="search-word" placeholder="검색어를 입력해주세요.">
-		                    	<c:if test="${not empty loginMember}">
-				                    <button id="writing">글쓰기</button>
-			                    </c:if>
-			                </div>
-						</c:otherwise>						
+						</c:otherwise>
+											
 					</c:choose>
+					
+					<div class="main-content-bottom">
+						<form action="/link/boardList" method="get" id="boardSearch">	
+							<div class="search">
+			                    <select name="key" id="search-type">
+			                        <option value="t">제목</option>
+					                <option value="c">내용</option>
+					                <option value="tc">제목+내용</option>
+					                <option value="w">작성자</option>
+			                    </select>
+			                    <input type="text" name="query" id="search-word" placeholder="검색어를 입력해주세요.">
+			                </div>
+						</form>
+	                   	<c:if test="${not empty loginMember}">
+		                    <button id="writing">글쓰기</button>
+	                    </c:if>
+                    </div>
                 </div>
+                
+                <c:if test="${not empty param.key}">
+					<c:set var="kq" value="&key=${param.key}&query=${param.query}" />
+				</c:if>
                	
                	<div class="pagination-area">
                     <ul class="pagination">
                
 	                    <!-- 첫 페이지로 이동 -->
-	                    <li><a href="/link/boardList?cp=1">&lt;&lt;</a></li>
+	                    <li><a href="/link/boardList?cp=1${kq}">&lt;&lt;</a></li>
 	
 	                    <!-- 이전 목록 마지막 번호로 이동 -->
-	                    <li><a href="/link/boardList?cp=${pagination.prevPage}">&lt;</a></li>
+	                    <li><a href="/link/boardList?cp=${pagination.prevPage}${kq}">&lt;</a></li>
 	
 						
 	                    <!-- 특정 페이지로 이동 -->
@@ -121,17 +131,17 @@
 	                    		
 	                    		<%-- 현재 페이지를 제외한 나머지 페이지 --%>	
 	                    		<c:otherwise>
-	                    			<li><a href="/link/boardList?cp=${i}">${i}</a></li>
+	                    			<li><a href="/link/boardList?cp=${i}${kq}">${i}</a></li>
 	                    		</c:otherwise>
 	                    		
 	                    	</c:choose>
 	                    </c:forEach>
 	                    
 	                    <!-- 다음 목록 시작 번호로 이동 -->
-	                    <li><a href="/link/boardList?cp=${pagination.nextPage}">&gt;</a></li>
+	                    <li><a href="/link/boardList?cp=${pagination.nextPage}${kq}">&gt;</a></li>
 	
 	                    <!-- 끝 페이지로 이동 -->
-	                    <li><a href="/link/boardList?cp=${pagination.maxPage}">&gt;&gt;</a></li>
+	                    <li><a href="/link/boardList?cp=${pagination.maxPage}${kq}">&gt;&gt;</a></li>
 	
 	                </ul>
                 </div>

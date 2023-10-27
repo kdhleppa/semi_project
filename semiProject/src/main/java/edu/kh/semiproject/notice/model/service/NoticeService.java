@@ -14,4 +14,7 @@ public interface NoticeService {
 	// 조회수 증가 처리
 	int updateReadCount(int noticeNo);
 
+	// 게시글 목록 조회 (검색)
+	Map<String, Object> selectNoticeList(Map<String, Object> paramMap, int cp);
+
 }

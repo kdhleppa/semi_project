@@ -51,16 +51,14 @@
                 <div class="main-content">
                     <div class="main-content-left"></div>
                     
-                    <form action="/board2/insert" method="POST" id="boardWriteFrm">
+                    <form action="/board2/insert" method="POST" id="boardWriteFrm" enctype="multipart/form-data">
 	                    <div class="main-content-main">
 	                        <input id="content-title" placeholder="제목을 입력해주세요." name="boardTitle"></input>
 	                        
 	                        <div class="boardImg">
-	                            <label for="img">이미지
-			                        <img class="preview" src="">
-			                    </label>
-			                    <input type="file" name="image" class="inputImage" id="img" accept="image/*">
-			                    <span class="delete-image">&times;</span>
+			                    <button type="button" id="imageButton">이미지</button>
+								<input type="file" id="imageInput" name="boardImage" style="display:none;" accept="image/*">
+								<div id="selectedImageName"></div>
 	                        </div>
 
 	                        <input id="content-text" placeholder="내용을 입력해주세요." name="boardContent"></input>                        
