@@ -54,7 +54,6 @@ public class MyInfoController {
 				updateMember.setMemberNo( loginMember.getMemberNo() );
 				
 				
-				
 				// DB 회원 정보 수정 (update) 서비스 호출
 				int result = service.updateInfo(updateMember);
 				

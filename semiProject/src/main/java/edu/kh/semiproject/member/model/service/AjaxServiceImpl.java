@@ -1,9 +1,12 @@
 package edu.kh.semiproject.member.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.semiproject.member.model.dao.AjaxDAO;
+import edu.kh.semiproject.member.model.dto.Member;
 
 @Service
 public class AjaxServiceImpl implements AjaxService {
@@ -30,6 +33,8 @@ public class AjaxServiceImpl implements AjaxService {
 			
 			return dao.checkId(id);
 		}
-	
-	
-}
+
+		@Override
+		public String selectMemberId(Map<String, Object> map) {
+			return dao.selectMemberId(map);
+		}}
