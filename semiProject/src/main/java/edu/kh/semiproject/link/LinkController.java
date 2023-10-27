@@ -26,7 +26,7 @@ public class LinkController {
 		return "/kdh/like_list";
 	}
 	
-	@GetMapping("/mapMainLogin")
+	@GetMapping("/link/mapMainLogin")
 	public String MapMainLogin() {
 		return "/kdh/map_main_login";
 	}
