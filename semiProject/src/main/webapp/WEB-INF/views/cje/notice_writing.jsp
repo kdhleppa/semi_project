@@ -65,25 +65,25 @@
                 </div>
                 <div class="main-content">
                     <div class="main-content-left"></div>
-                    <div class="main-content-main">
-                        <input id="content-title" placeholder="제목을 입력해주세요."></input>
-                        
-                        <div class="boardImg">
-                            <label for="img">이미지
-		                        <img class="preview" src="">
-		                    </label>
-		                    <input type="file" name="image" class="inputImage" id="img" accept="image/*">
-		                    <span class="delete-image">&times;</span>
-                        </div>
-                        
-                        <input id="content-text" placeholder="내용을 입력해주세요."></input>                        
-                        <div id="content-modifybutton">
-                            <button id="registerButton">등록하기</button>
-                            <button id="cancelButton">
-                            	<a href="/link/noticeListAdmin">취소</a>
-                            </button>
-                        </div>
-                    </div>
+                    
+                    <form action="/notice2/insert" method="POST" id="noticeWriteFrm" enctype="multipart/form-data">
+	                    <div class="main-content-main">
+	                        <input id="content-title" placeholder="제목을 입력해주세요." name="noticeTitle"></input>
+	                        
+	                        <div class="boardImg">
+			                    <button type="button" id="imageButton">이미지</button>
+								<input type="file" id="imageInput" name="noticeImage" style="display:none;" accept="image/*">
+								<div id="selectedImageName"></div>
+	                        </div>
+	                        
+	                        <input id="content-text" placeholder="내용을 입력해주세요." name="noticeContent"></input>                        
+	                        <div id="content-modifybutton">
+	                            <button type="submit" id="registerButton">등록하기</button>
+	                            <button type="button" id="cancelButton" onClick="history.back(); return false;">취소</button>
+	                        </div>
+	                    </div>
+                    </form>
+                    
                     <div class="main-content-right"></div>
                 </div>
             </div>
@@ -92,11 +92,19 @@
                 	<a href="#">위로</a>
                 </button>
                 <button id="bottom-nav-list">
-                	<a href="/link/noticeListAdmin">목록</a>
+                	<a href="/link/noticeList">목록</a>
                 </button>
                 <img src="/resources/images/chat_icon.png" id="chat-icon">
             </div>
         </main>
     </div>
+    
+    <c:if test="${not empty message}">
+	    <script>
+			alert('${message}')
+		</script>
+	</c:if>
+    
+    <script src="/resources/js/noticeWrite.js"></script>
 </body>
 </html>

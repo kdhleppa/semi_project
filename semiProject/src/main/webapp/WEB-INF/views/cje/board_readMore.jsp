@@ -61,7 +61,19 @@
                             <div>조회수 : ${current.boardCount}</div>
                         </div>
                         <div id="content-title">${current.boardTitle}</div>
-                        <div id="content-text">${current.boardContent}</div>
+                        
+                        <div id="content-text">${current.boardContent}
+                        	<c:if test="${not empty current.imageList}">
+                        		<br>
+                        		<div class="img-box">                        		
+                        			<c:set var="path"
+					            	 	value="${current.imageList[0].imagePath}${current.imageList[0].imageReName}" />
+				                    <img src="${path}" style="max-width: 300px; max-height: 300px;">   
+                        		</div>
+                        		<br>
+                        	</c:if>
+                        </div>
+                        
                         <div id="content-comments"></div>
                         <div id="content-listbutton">
                         
@@ -69,7 +81,7 @@
 	                            <div id="previous">
 	                                <button>∧</button>
 	                                <div>이전글</div>
-	                                <a href="/link/boardReadMoreMine/${prev.BOARD_NO}">${prev.BOARD_TITLE}</a>
+	                                <a href="/link/boardReadMore/${prev.BOARD_NO}">${prev.BOARD_TITLE}</a>
 	                            </div>
                         	</c:if>
                         	
@@ -77,7 +89,7 @@
 	                            <div id="next">
 	                                <button>∨</button>
 	                                <div>다음글</div>
-	                                <a href="/link/boardReadMoreMine/${next.BOARD_NO}">${next.BOARD_TITLE}</a>
+	                                <a href="/link/boardReadMore/${next.BOARD_NO}">${next.BOARD_TITLE}</a>
 	                            </div>
                             </c:if>
                         </div>
@@ -103,6 +115,15 @@
             </div>
         </main>
     </div>
+    
+    <c:if test="${not empty message}">
+	    <script>
+			alert('${message}')
+		</script>
+	</c:if>
+    
+    
+    <script src="/resources/js/board_readMore.js"></script>
 
 </body>
 </html>

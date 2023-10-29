@@ -162,6 +162,8 @@ main {
     padding: 5px;
     border: 0.5px solid #CECECE;
     border-radius: 10px;
+    display : flex;
+    flex-direction : column;
 }
 
 #content-comments{
@@ -215,8 +217,13 @@ main {
     padding: 20px;
 
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+}
+
+.img-box{
+	
+	margin : 10px 0 10px 0;
 }
 
 /* main - content - main-content - content-comments */

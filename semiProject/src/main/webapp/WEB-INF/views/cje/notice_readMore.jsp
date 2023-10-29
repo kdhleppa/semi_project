@@ -74,7 +74,19 @@
                             <div>조회수 : ${current.noticeCount}</div>
                         </div>
                         <div id="content-title">${current.noticeTitle}</div>
-                        <div id="content-text">${current.noticeContent}</div>
+                        
+                        <div id="content-text">${current.noticeContent}
+                        	<c:if test="${not empty current.imageList}">
+                        		<br>
+                        		<div class="img-box">		
+                        			<c:set var="path"
+					            	 	value="${current.imageList[0].imagePath}${current.imageList[0].imageReName}" />
+				                    <img src="${path}" style="max-width: 300px; max-height: 300px;">   
+                        		</div>
+                        		<br>
+                        	</c:if>
+                        </div>
+                        
                         <div id="content-listbutton">
                         
                         	<c:if test="${not empty prev}">
@@ -116,6 +128,15 @@
             </div>
         </main>
     </div>
+    
+    <c:if test="${not empty message}">
+	    <script>
+			alert('${message}')
+		</script>
+	</c:if>
+    
+    
+    <script src="/resources/js/notice_readMore.js"></script>     
     
 </body>
 </html>

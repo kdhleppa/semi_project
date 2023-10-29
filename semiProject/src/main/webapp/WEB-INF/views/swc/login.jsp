@@ -33,52 +33,49 @@
                 
             </div>
             
-            <div class="content">
-	            <form class="content" action="/link/login" method="post" name="login-form" id="loginFrm">        
-	                <div class="title">
-	                    로그인
-	                </div>
-	                    
-	                <!-- 아이디 입력 -->
-					
-					<div class="signUp-input-area">
-	                    <input type="text" name="memberId" id="memberId" placeholder="아이디" maxlength="10" >
-	                </div>
-	
-	                <!-- 비밀번호/비밀번호 확인 입력 -->
-	                
-	                <div class="signUp-input-area">
-	                    <input type="password" name="memberPw" id="memberPw" 
-	                    placeholder="비밀번호" maxlength="20" >
-	                </div>
-	                    
-	                
-	                <button id="btnbox" class="login">로그인</button>
-					
-					<div class="signUpFind">
-	                    <div>
-	                        <a href="/link/signUp">회원가입</a>
-	                    </div>
-	                
-	                    
-	                    <div style="margin-left: 50px;">
-	                        <a href="/link/findId">ID</button> / <a href="/link/findPassword">PW찾기</a>
-	                    </div>
-	                </div>
-					
-					
-				</form>
+            <form class="content" action="/link/login" method="post" name="login-form" id="loginFrm">        
+                <div class="title">
+                    로그인
+                </div>
+                    
+                <!-- 아이디 입력 -->
 				
-	                <button id="kakaologinbox" class="kakaologin">
-	                    <img src="/resources/images/kakao.png" style="margin-right: 20px;">
-	                    카카오로 3초 만에 바로 시작
-	                </button>
-	
-	                <button id="googleloginbox" class="googlelogin">
-	                    <img src="/resources/images/google.png" style="margin-right: 20px;">
-	                    구글 계정으로 로그인
-	                </button>
-            </div>
+				<div class="signUp-input-area">
+                    <input type="text" name="memberId" id="memberId" placeholder="아이디" maxlength="10" >
+                </div>
+
+                <!-- 비밀번호/비밀번호 확인 입력 -->
+                
+                <div class="signUp-input-area">
+                    <input type="password" name="memberPw" id="memberPw" 
+                    placeholder="비밀번호" maxlength="20" >
+                </div>
+                    
+                <div class="signUpFind">
+                    <div>
+                        <a href="/link/signUp">회원가입</a>
+                    </div>
+                    
+                    <div style="margin-left: 50px;">
+                        <a href="/link/findId">ID</a> / <a href="/link/findPassword">PW찾기</a>
+                    </div>
+                </div>
+                    
+                <button id="btnbox" class="login">로그인</button>
+				
+			
+			
+                <button id="kakaologinbox" class="kakaologin">
+                    <img src="/resources/images/kakao.png" style="margin-right: 20px;">
+                    카카오로 3초 만에 바로 시작
+                </button>
+
+                <button id="googleloginbox" class="googlelogin">
+                    <img src="/resources/images/google.png" style="margin-right: 20px;">
+                    구글 계정으로 로그인
+                </button>
+                
+            </form>
             
             <div class="rightmenu">
                 

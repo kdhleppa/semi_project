@@ -1,5 +1,7 @@
 package edu.kh.semiproject.board.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,6 +35,15 @@ public class BoardDAO2 {
 	 */
 	public int insertImage(BoardImage img) {
 		return sqlSession.insert("boardMapper.insertImage", img);
+	}
+
+	/** 게시글 삭제
+	 * @param map
+	 * @return
+	 */
+	public int boardDelete(Map<String, Object> map) {
+		
+		return sqlSession.update("boardMapper.boardDelete", map);
 	}
 	
 	

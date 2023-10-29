@@ -22,7 +22,7 @@ public class EmailController {
 	
 	@GetMapping("/signUpNum")
 	@ResponseBody
-	public int signUpNum(String email) {
+	public int signUp(String email) {
 		return service.signUpNum(email, "회원 가입");
 	}
 	
