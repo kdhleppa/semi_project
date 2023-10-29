@@ -1,6 +1,8 @@
 package edu.kh.semiproject.board.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -91,6 +93,35 @@ public class BoardController2 { // 삽입, 수정, 삭제 구현
 	}
 	
 	
+	// 게시글 삭제
+	// /board2/boardReadMore/70/delete
+	@GetMapping("/boardReadMore/{boardNo}/delete")
+	public String boardDelete(
+			@PathVariable("boardNo") int boardNo,
+			RedirectAttributes ra) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("boardNo", boardNo);
+		
+		int result = service.boardDelete(map);
+		
+		String path = "redirect:";
+		String message = null;
+		
+		if(result > 0) {
+			
+			message = "게시글이 삭제되었습니다";
+			path += "/link/boardList";
+		}else {
+			
+			message = "삭제 실패";
+			path += "/link/boardReadMore/" + boardNo;
+		}
+		
+		ra.addFlashAttribute("message", message);
+
+		return path;
+	}
 	
 	
 	

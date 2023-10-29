@@ -8,8 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +21,7 @@ import edu.kh.semiproject.product.model.dto.Product;
 import edu.kh.semiproject.product.model.service.ProductService;
 
 @Controller
+@RequestMapping("/product")
 @SessionAttributes({"loginMember"})
 public class ProductController {
 	
@@ -30,18 +29,16 @@ public class ProductController {
 	private ProductService service;
 	
 	
-	
-	@PostMapping("/product/roomUp")
+	@PostMapping("/roomUp")
 	public String productUpload (@SessionAttribute("loginMember") Member loginMember,
-							Model model,
 							@RequestParam(value="images", required = false) List<MultipartFile> images,
 							Product product,
 							HttpSession session,
 							RedirectAttributes ra
 			) throws IllegalStateException, FileUploadException, IOException {
-		System.out.println("product loginmember : " + loginMember.getMemberNo());
+		
 		product.setMemberNo(loginMember.getMemberNo());
-		System.out.println(product);
+		
 		String webPath="/resources/images/product/";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
@@ -54,7 +51,6 @@ public class ProductController {
 		if(productNo>0) {
 			message = "등록되었습니다.";
 			path += "/link/mapMainLogin";
-			model.addAttribute("centerAddress", product.getProductAddress());
 		} else {
 			message = "등록 실패....";
 			path += "link/roomUp";

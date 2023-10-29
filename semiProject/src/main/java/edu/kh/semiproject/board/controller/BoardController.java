@@ -61,7 +61,7 @@ public class BoardController {
 		return "cje/board_list";
 	}
 	
-	/** 게시글 상세 조회(내가 쓴 글)
+	/** 게시글 상세 조회
 	 * @param boardNo
 	 * @return
 	 */

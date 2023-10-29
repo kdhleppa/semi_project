@@ -179,30 +179,24 @@ main {
 }
 
 /* main - content - main-content - boardImg */
+
 .boardImg{
     display: flex;
 }
 
-.boardImg > label{
+#imageButton{
     height: 35px;
     width: 80px;
-	margin: 0 10px;
+    margin: 0 10px;
     padding: 8px 10px;
-
-	background-color: rgba(217, 217, 217, 0.44);
+    background-color: rgba(217, 217, 217, 0.44);
     border-radius: 5px;
     border: none;
-
     font-size: 13px;
     cursor: pointer;
     text-align: center;
 }
 
-/*
-.imageInput{
-	display: none;
-}
-*/
 
 /* main - content - main-content - content-text */
 #content-text{

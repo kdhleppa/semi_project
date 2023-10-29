@@ -107,7 +107,7 @@ main {
     width: 16%;
 }
 
-#btn1, #btnbox {
+#btnbox {
     color: white;
     background-color: #AC47FC;
     width: 140px;
@@ -180,5 +180,3 @@ main {
 .signUp-input-area:focus-within{
     border-bottom-color: #ff80ff;
 }
-
-

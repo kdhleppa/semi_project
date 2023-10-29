@@ -34,7 +34,7 @@
                 
             </div>
 
-            <form class="content" action="/link/findPw" method="POST" name="findPwFrm">
+            <form class="content">  
 
                 <div class="title" style="font-weight: 500; margin-bottom: 40px;">
                     <div id="findId">
@@ -47,7 +47,12 @@
                     </div>
                 </div>
 
+				<!-- 아이디 입력 -->
 				
+				<div class="signUp-input-area">
+                    <input type="text" name="memberId" id="memberId" placeholder="아이디" maxlength="10" >
+                </div>
+			
                 <!-- 이메일 입력 -->
                 
                 <div class="signUp-input-area">
@@ -55,7 +60,6 @@
                     
                     <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
                 </div>
-                
                 
                 <!-- 인증번호 입력 -->
 
@@ -67,21 +71,19 @@
                 <span class="signUp-message" id="authKeyMessage"></span>
                                 <!-- 인증번호가 일치하지 않습니다 -->
                     
-                
-                <button id="btnbox"> <a href="/link/newPassword" style="color:white; text-decoration:none;">다음</a> </button>
-
-				<div class="signUpFind">
+                <div class="signUpFind">
                     <div>
                         <a href="/link/signUp">회원가입</a>
                     </div>
                     
                     <div style="margin-left: 50px;">
-                        <a href="/link/login">로그인</a>
+                        <a href="/link/findId">ID</a> / <a href="#">PW찾기</a>
                     </div>
                 </div>
+                    
+                <button id="btnbox"> <a href="/link/newPassword" style="color:white; text-decoration:none;">다음</a> </button>
 
                 </form>
-                
             <div class="rightmenu">
                 
             </div>
@@ -89,16 +91,5 @@
         </div>
 
     </div>
-    
-    <c:if test="${not empty message}">
-	
-	<script>
-		
-		alert('${message}') // ${message}
-	</script>
-	</c:if>
-    
-    <script src="/resources/js/findPw.js"></script>
-    
 </body>
 </html>

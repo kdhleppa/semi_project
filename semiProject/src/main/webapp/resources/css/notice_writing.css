@@ -123,7 +123,7 @@ main {
     flex-basis: 27%;
 }
 
-.main-content-main{
+.main-content > form{
     flex-basis: 46%;
 
     display: flex;
@@ -132,6 +132,15 @@ main {
 
 
 /********************/
+
+.main-content-main{
+	flex-basis: 100%;
+
+    display: flex;
+    flex-direction: column;
+	
+}
+
 #content-title{
     flex-basis: 6%;
     margin: 5px;
@@ -160,40 +169,6 @@ main {
     padding: 5px;
 }
 
-/* 이미지를 감싸는 div */
-.boardImg{
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    text-align: center;
-
-    position: relative;
-}
-
-.boardImg > label{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc;
-    cursor: pointer;
-}
-
-.inputImage{
-    display: none;
-}
-
-
-/* 이미지 */
-.boardImg img{
-    max-width: 100%;
-    max-height: 100%;
-}
-
-
-
-
 /* main - content - main-content - content-title */
 #content-title{
     font-size: 15px;
@@ -204,27 +179,25 @@ main {
     justify-content: center;
 }
 
-/* main - content - main-content - content-option */
+/* main - content - main-content - boardImg */
+
 .boardImg{
     display: flex;
 }
 
-.boardImg > *{
+#imageButton{
     height: 35px;
     width: 80px;
-	margin: 0 10px;
+    margin: 0 10px;
     padding: 8px 10px;
-
-	background-color: rgba(217, 217, 217, 0.44);
+    background-color: rgba(217, 217, 217, 0.44);
     border-radius: 5px;
     border: none;
-
     font-size: 13px;
     cursor: pointer;
     text-align: center;
 }
 
-#img{ display: none;}
 
 /* main - content - main-content - content-text */
 #content-text{
@@ -265,11 +238,6 @@ main {
     border-radius: 10px;    
 }
 
-#cancelButton > a{
-    text-decoration: none;
-    color : black;
-}
-
 /* main-content-right */
 .right{
     display: flex;
@@ -291,7 +259,6 @@ main {
     margin: 0 2px;
 }
 
-
 #bottom-nav-top > a,
 #bottom-nav-list > a{
     text-decoration: none;
@@ -303,3 +270,4 @@ main {
     height: 50px;
     margin: 0 10px;
 }
+

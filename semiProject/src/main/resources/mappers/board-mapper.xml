@@ -14,7 +14,32 @@
 		<result property="memberNickname" column="MEMBER_NICKNAME" />
 		<result property="boardCount" column="BOARD_COUNT" />
 		<result property="boardHide" column="BOARD_HIDE" />
-
+		
+		<!-- collection 태그
+			select로 조회된 결과를 컬렉션(List)에 담아
+			지정된 필드에 세팅
+			
+			property : List를 담을 DTO의 필드명
+			select : 실행할 select의 id
+			column : 조회 결과 중 지정된 컬럼의 값을 파라미터로 전달
+			javaType : List(컬렉션)의 타입을 지정
+			ofType : List(컬렉션)의 제네릭(타입 제한) 지정
+		 -->
+		<collection property="imageList"
+					select="selectImageList"
+					column="BOARD_NO"
+					javaType="java.util.ArrayList"
+					ofType="BoardImage"
+		 />
+		 <!-- 
+		 <collection property="commentList"
+					select="selectCommentList"
+					column="BOARD_NO"
+					javaType="java.util.ArrayList"
+					ofType="Comment"
+		 />
+		-->
+		
 	</resultMap>
 
 	<!-- BoardImage resultMap -->
@@ -65,6 +90,15 @@
 		FROM BOARD
 		WHERE BOARD_NO = #{boardNo} + 1
 	</select>
+	
+	<!-- 특정 게시글 이미지 조회 -->
+  	<select id="selectImageList" resultMap="boardImage_rm">
+  		SELECT * FROM BOARD_IMG
+		WHERE BOARD_NO = #{boardNo}
+  	</select>
+  	
+  	<!-- 특정 게시글 댓글 조회(바뀔 예정) -->
+  	
 	
 	<update id="updateReadCount">
 		UPDATE BOARD SET 
@@ -155,6 +189,13 @@
 				DEFAULT,
 				#{boardNo} )
 	</insert>
+	
+	<!-- 게시글 삭제 -->
+	<update id="boardDelete">
+		UPDATE "BOARD" SET
+		BOARD_HIDE = 'Y'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
 	
 	
 

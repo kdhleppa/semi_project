@@ -2,6 +2,7 @@ package edu.kh.semiproject.board.model.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,6 @@ public class BoardServiceImpl2 implements BoardService2{
 		if(boardNo > 0) {
 			
 			BoardImage img = new BoardImage(); // 실제업로드된 파일정보 기록할 곳
-			System.out.println("img::"+img);
 
 			if(boardImage != null) { // 업로드된 파일이 있다면	
 				
@@ -78,16 +78,26 @@ public class BoardServiceImpl2 implements BoardService2{
 					boardImage.transferTo(new File(filePath + rename));
 					
 					System.out.println("boardImage::" + boardImage);
+					System.out.println("img::"+img);
 
 				}else { // 일부 또는 전체 insert 실패
 					
 					// rollback 필요 -> 예외발생시켜 rollback하기
-					throw new FileUploadException();						
+					throw new FileUploadException();
 				}				
 			}	
 		}
 		
 		return boardNo;
+	}
+
+	/** 게시글 삭제 dao
+	 *
+	 */
+	@Override
+	public int boardDelete(Map<String, Object> map) {
+		
+		return dao.boardDelete(map);
 	}
 
 }

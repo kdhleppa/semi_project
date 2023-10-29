@@ -166,5 +166,8 @@
         </main>
     </div>
     
+    
+    <script src="/resources/js/notice_list.js"></script>
+    
 </body>
 </html>

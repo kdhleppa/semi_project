@@ -1,6 +1,5 @@
 package edu.kh.semiproject.member.model.dao;
 
-import org.apache.ibatis.annotations.Select;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,6 +31,5 @@ public class MemberDAO {
 		
 		return sqlSession.insert("memberMapper.signUp", inputMember);
 	}
-
 	
 }

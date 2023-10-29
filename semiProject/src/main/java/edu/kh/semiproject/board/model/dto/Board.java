@@ -22,7 +22,9 @@ public class Board {
 	private String memberNickname;
 	private int boardCount;
 	private String boardHide;	
-		
+
+    // 이미지 목록
+    private List<BoardImage> imageList;
     
     // 댓글 목록
     private List<Comment> commentList;

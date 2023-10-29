@@ -26,7 +26,7 @@ public class LinkController {
 		return "/kdh/like_list";
 	}
 	
-	@GetMapping("/link/mapMainLogin")
+	@GetMapping("/mapMainLogin")
 	public String MapMainLogin() {
 		return "/kdh/map_main_login";
 	}
@@ -171,7 +171,6 @@ public class LinkController {
 		return "/swc/detail_send_message";
 	}
 	
- 
 	@GetMapping("/findId")
 	public String FindId() {
 		return "/swc/find_id";

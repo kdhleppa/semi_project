@@ -1,7 +1,5 @@
 package edu.kh.semiproject.member.model.service;
 
-import java.util.Map;
-
 public interface AjaxService {
 	
 	/** 이메일 중복검사
@@ -21,12 +19,5 @@ public interface AjaxService {
 	 * @return count
 	 */
 	int checkId(String id);
-
-	/** 이름으로 아이디 조회
-	 * @param name
-	 * @return
-	 */
-	String selectMemberId(Map<String, Object> map);
-
 	
 }
