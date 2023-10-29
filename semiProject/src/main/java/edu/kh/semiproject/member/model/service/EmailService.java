@@ -9,5 +9,5 @@ public interface EmailService {
 	int signUpNum(String email, String string);
 	
 	int checkAuthKey(Map<String, Object> paramMap);
-
+ 
 }
