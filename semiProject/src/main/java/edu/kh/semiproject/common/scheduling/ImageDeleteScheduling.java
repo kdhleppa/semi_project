@@ -1,6 +1,7 @@
 package edu.kh.semiproject.common.scheduling;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import edu.kh.semiproject.board.model.service.BoardService;
+import edu.kh.semiproject.mypage.model.service.MyInfoService;
 import edu.kh.semiproject.notice.model.service.NoticeService;
 
 // 스프링이 일정 시간마다 해당 객체를 이용해서 코드를 수행
@@ -29,6 +31,9 @@ public class ImageDeleteScheduling {
 	
 	@Autowired
 	private NoticeService noticeService;
+	
+	@Autowired
+	private MyInfoService myInfoService;
 
 	// @Scheduled(fixedDelay = 10000) // ms단위
 	// 일(1초) -> 대기(10초) -> 일(1초) -> 대기(10초)
@@ -38,8 +43,8 @@ public class ImageDeleteScheduling {
 	// 대기(10초)
 	
 	//cron="초 분 시 일 월 요일 [년도]" - 요일 : 1(SUN) ~ 7(SAT) 
-	// @Scheduled(cron = "0,30 * * * * *") // 매분 0초, 30초 마다 수행
-	@Scheduled(cron = "0 0 * * * *") // 매 정시(*시 0분 0초)
+	@Scheduled(cron = "0,30 * * * * *") // 매분 0초, 30초 마다 수행
+	//@Scheduled(cron = "0 0 * * * *") // 매 정시(*시 0분 0초)
 	public void boardDbImageList() {
 		// System.out.println("스케줄러가 일정 시간마다 자동으로 출력");
 		
@@ -156,6 +161,71 @@ public class ImageDeleteScheduling {
 			}
 		}
 	}
+	
+	
+	// cron="초 분 시 일 월 요일 [년도]" - 요일 : 1(SUN) ~ 7(SAT)
+		@Scheduled(cron = "0,30 * * * * *") // 매 분 0초, 30초마다 수행
+		//@Scheduled(cron = "0 0 * * * *")// 매 정시 (*시 0분 0초)
+		public void memberDbImageList() {
+//			System.out.println("스케줄러가 일정 시간마다 자동으로 출력");
+			
+			System.out.println("------------MEMBER DB, 서버 불일치 파일 제거------------");
+			
+			
+			// 1) 서버에 저장된 파일 목록 조회
+			String filePath = servletContext.getRealPath("/resources/images/profile");
+			// C:\7_FrameWork\boardProject\src\main\webapp\resources\images\profile
+			
+			// 2) filePath에 저장된 모든 파일 목록 읽어오기
+			File path = new File(filePath);
+			File[] imageArr = path.listFiles();
+			
+			// 배열 -> List로 변환
+			List<File> serverImageList = Arrays.asList(imageArr);
+			
+			// 3) DB파일 목록 조회
+			List<String> dbImageList = myInfoService.selectImageList();
+		
+			List<String> newDBImageList = new ArrayList<String>();
+	
+			for( String dbs : dbImageList) {
+				
+				if(dbs != null) {
+					if(dbs.split("/").length == 5) {
+						
+						newDBImageList.add(dbs.split("/")[4]);
+					}
+				}
+				
+			}
+			
+			
+			// 4) 서버에 파일 목록이 있을 경우에 비교를 시작
+			if( !serverImageList.isEmpty() ) {
+				
+				// 5) 서버 파일 목록을 순차 접근
+				for(File server : serverImageList) {
+					
+					// 6) 서버에 존재하는 파일이
+					// DB(dbImageList)에 없다면 삭제
+					
+					// server.toString();
+					// C:\7_FrameWork\boardProject\src\main\webapp\resources\images\이미지명
+					
+					// List.indexOf(객체) = 객체가 List에 있으면 해당 인덱스반환, 없으면 -1반환
+					if( newDBImageList.indexOf(server.getName()) == -1 ) {
+						//db파일목록				서버 파일 이름 == -1 (없음)
+						
+						System.out.println(server.getName() + "삭제");
+						server.delete(); // File.delete() : 파일 삭제
+						
+					}
+					
+				}
+				
+			}
+			
+		}
 	
 	
 	

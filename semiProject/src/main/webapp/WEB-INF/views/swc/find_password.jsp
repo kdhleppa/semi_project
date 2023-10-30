@@ -34,7 +34,7 @@
                 
             </div>
 
-            <form class="content" action="/link/findPw" method="POST" name="findPwFrm">
+            <form class="content" action="/sendEmail" method="POST" name="findPwFrm">
 
                 <div class="title" style="font-weight: 500; margin-bottom: 40px;">
                     <div id="findId">

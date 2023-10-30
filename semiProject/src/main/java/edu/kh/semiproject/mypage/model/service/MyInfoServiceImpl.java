@@ -1,6 +1,7 @@
 package edu.kh.semiproject.mypage.model.service;
 
 import java.io.File;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -49,7 +50,7 @@ public class MyInfoServiceImpl implements MyInfoService{
 			// 2) 바뀐 이름 loginMember에 세팅
 			loginMember.setProfileImage(webPath + rename);
 			
-			
+			System.out.println("loginMember::"  + loginMember);
 			
 		} else { // 업로드된 이미지가 없는 경우 (x버튼) 
 			
@@ -61,6 +62,7 @@ public class MyInfoServiceImpl implements MyInfoService{
 		// 프로필 이미지 수정 DAO 메서드 호출
 		int result = dao.updateProfile(loginMember);
 		
+		System.out.println("result::" + result);
 		
 		if(result > 0) { // DB에 이미지 경로 업데이트 성공했다면
 			
@@ -81,7 +83,8 @@ public class MyInfoServiceImpl implements MyInfoService{
 		}
 		
 		
-		return result;
+		//System.out.println("result::" + result);
+		return result; 
 		
 		
 	}
@@ -100,6 +103,11 @@ public class MyInfoServiceImpl implements MyInfoService{
 		
 		//  3. 비밀번호가 일치하지 않으면 -> 0 반환
 		return 0;
+	}
+
+	@Override
+	public List<String> selectImageList() {
+		return dao.selectImageList();
 	}
 	
 		

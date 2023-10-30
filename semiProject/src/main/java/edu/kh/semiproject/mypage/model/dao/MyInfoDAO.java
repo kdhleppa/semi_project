@@ -1,5 +1,7 @@
 package edu.kh.semiproject.mypage.model.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,7 +21,11 @@ public class MyInfoDAO {
 	}
 	
 	public int updateProfile(Member loginMember) {
-		return sqlSession.update("myInfoMapper.updateProfile", loginMember);
+
+		int result = sqlSession.update("myInfoMapper.updateProfile", loginMember);
+		
+		System.out.println("result dao::"+result);
+		return result;
 	}
 
 	public String selectEncPw(int memberNo) {
@@ -28,6 +34,10 @@ public class MyInfoDAO {
 
 	public int withdrawal(int memberNo) {
 		return sqlSession.update("myInfoMapper.withdrawal", memberNo );
+	}
+
+	public List<String> selectImageList() {
+		return sqlSession.selectList("myInfoMapper.selectImageList");
 	}
 
 }
