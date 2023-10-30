@@ -1,5 +1,7 @@
 package edu.kh.semiproject.product.model.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,8 +39,9 @@ public class Product {
 	private String elevator;
 	private String registrastionDate;
 	private String productHide;
+	/*
+	private List<RoomImg> uploadList;
+	*/
 	
-	
-	
-	
+	private List<RoomImg> imageList;
 }

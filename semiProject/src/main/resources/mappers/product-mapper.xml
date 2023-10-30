@@ -32,6 +32,8 @@
 	    <result property="elevator" column="ELEVATOR" />
 	    <result property="registrastionDate" column="REGISTRASTION_DATE" />
 	    <result property="productHide" column="PRODUCT_HIDE" />
+	    
+	    
 	</resultMap>
 	
 	<resultMap type="RoomImg" id="roomImg_rm">
@@ -78,11 +80,11 @@
   	  	SELECT SEQ_IMG_NO.NEXTVAL, A.*
   	  	FROM (
   	  		<foreach collection="list" item="img" separator=" UNION ALL ">
-  	  			SELECT #{img.imagePath} IMG_PATH,
-  	  				#{img.imageReName} IMG_RENAME,
-  	  				#{img.imageOriginal} IMG_ORIGINAL,
-  	  				#{img.imageOrder} IMG_ORDER,
-  	  				#{img.productNo} PRODUCT_NO
+  	  			SELECT #{img.productNo} PRODUCT_NO, 
+  	  				#{img.imgPath} IMG_PATH,
+  	  				#{img.imgRename} IMG_RENAME,
+  	  				#{img.imgOriginal} IMG_ORIGINAL,
+  	  				#{img.imgOrder} IMG_ORDER
   	  			FROM DUAL
   	  		</foreach>
   	  	) A

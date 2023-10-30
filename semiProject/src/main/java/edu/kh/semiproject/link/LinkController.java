@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.semiproject.map.model.service.MapService;
 import edu.kh.semiproject.member.model.dto.Member;
@@ -15,6 +18,7 @@ import edu.kh.semiproject.product.model.dto.Product;
 
 @Controller
 @RequestMapping("/link")
+@SessionAttributes({"loginMember"})
 public class LinkController {
 	//@Autowired
 	//private MapService service; 
@@ -149,14 +153,21 @@ public class LinkController {
 		return "/shs/my_room_up_list";
 	}
 	
-	@GetMapping("/roomUpFront")
-	public String RoomUpFront() {
-		return "/shs/room_up";
-	}
+	
 	
 	@GetMapping("/roomUp")
-	public String RoomUp() {
-		return "/shs/room_up";
+	public String RoomUp(@SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra) {
+		String message = null;
+		
+		
+		if(loginMember == null) {
+			message = "로그인이 필요합니다.";
+			return "/link/login";
+			
+		} else {
+			return "/kdh/room_up";
+		}
 	}
 	
 	

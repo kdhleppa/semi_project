@@ -30,7 +30,7 @@ public class MapController {
 	@GetMapping("/link/mapMainNotLogin")
 	public String MapMainNotLogin() {
 		
-		return "/kdh/map_main_login";
+		return "/kdh/map_main_not_login";
 	}
 	
 	

@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="products" value="${products}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +37,7 @@
             </section>
         </nav>
 
-        <div class="mid-top">
+       <div class="mid-top">
             <div id="mid-top-left">
                 <i class="fa-solid fa-magnifying-glass" id="icon1"></i>&nbsp;
                 <input type="text" id="input-adress" placeholder="검색할 지역이나 주소를 입력해 주세요">
@@ -43,26 +45,26 @@
                 <%-- 폼테그 제출하면 연결되게끔 할것 --%>
             </div>
             <div id="mid-top-right">
-                <form id="option" action="">
-                    <select name="" id="">
-                        <option class="optionsize" value="default" selected><p></p>원룸, 투룸</option>
-                        <option class="optionsize" value="oneroom">원룸</option>
-                        <option class="optionsize" value="tworoom">투룸</option>
+                <form id="option" action="/link/getProducts" method="get" onsubmit="return handleFormSubmit(event)">
+                    <select name="roomType" id="">
+                        <option class="optionsize" value="all" selected>원룸, 투룸</option>
+                        <option class="optionsize" value="원룸">원룸</option>
+                        <option class="optionsize" value="투룸">투룸</option>
                         
                     </select>
 
-                    <select name="" id="">
-                        <option value="default" selected>전세, 월세</option>
-                        <option value="yearpee">전세</option>
-                        <option value="mpnthpee">월세</option>
+                    <select name="productRentType" id=""  onchange="showFields(this)">
+                        <option value="all" selected>전세, 월세</option>
+                        <option value="전세" >전세</option>
+                        <option value="월세" >월세</option>
 
                     </select>
-                    <p>보증금&nbsp;</p>
-                    <input type="text" placeholder="보증금~까지"><p>만원</p>
-                    <p>월세&nbsp;</p>
-                    <input type="text" placeholder="월세~까지"><p>만원</p>
-                    <button id="optionbtn">검색</button>
-
+                    <label for="productDeposit" id="depositLabel">보증금&nbsp</label>
+					    <input type="text" name="productDeposit" id="productDeposit" placeholder="보증금~까지"/><span id="depositWon">&nbsp만원&nbsp&nbsp&nbsp&nbsp</span>
+                    <label for="productMonthlyRent" id="monthlyRentLabel">월세&nbsp</label>
+					    <input type="text" name="productMonthlyRent" id="productMonthlyRent" placeholder="월세~까지"/><span id="rentWon" >&nbsp만원</span>
+                    <button id="optionbtn" type="submit">검색</button>
+			
 
 
                 </form>
@@ -71,12 +73,11 @@
 
         <div class="main">
             <div id="main-left">
-                <p> 디폴트값 ! 앗! 이주변에는 방이 없어요!</p>
-                <p>js 로 불러온 데이터값 여기안에 만들어질 div생성하면서 div안에 대표사진, 링크등등 닮긴 jsp연결</p>
-                <p>22일에 했던 검색결과창 늘어나는과정 참고</p>
             </div>
-            <%-- 지도에 연결된 기능 이것저것 추가해야함 --%>
-            <div id="main-right"><button id="realbtn">실거래가 조회</button></div>
+                
+               <div id="main-right"></div> 
+            
+            
             
         </div>
 

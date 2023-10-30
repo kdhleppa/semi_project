@@ -28,7 +28,7 @@
                     <a href="/link/mapMainLogin">지도</a>
                 </div>
                 <div id="roomup">
-                    <a href="/link/roomUpFront">방내놓기</a>
+                    <a href="/link/roomUp">방내놓기</a>
                 </div>
                 <div id="board">
                     <a href="/link/boardList">게시판</a>
