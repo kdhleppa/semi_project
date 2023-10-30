@@ -16,7 +16,7 @@ public interface BoardService {
 	Map<String, Object> selectBoardList(int cp);
 
 
-	/** 게시글 상세 조회(내가 쓴 글)
+	/** 게시글 상세 조회(이전/다음글 조회 같이)
 	 * @param boardNo
 	 * @return
 	 */
@@ -38,5 +38,12 @@ public interface BoardService {
 	 * @return
 	 */
 	List<String> selectImageList();
+
+
+	/** 수정을 위해 게시글 단순 상세 조회
+	 * @param map
+	 * @return
+	 */
+	Board selectBoard(Map<String, Object> map);
 
 }

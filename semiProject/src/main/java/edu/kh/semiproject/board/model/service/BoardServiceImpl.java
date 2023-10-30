@@ -70,6 +70,17 @@ public class BoardServiceImpl implements BoardService{
 		
 		return list;
 	}
+	
+
+	/** 수정을 위해 게시글 단순 상세 조회
+	 *
+	 */
+	@Override
+	public Board selectBoard(Map<String, Object> map) {
+		
+		return dao.selectBoard(map);
+	}
+	
 
 	/** 조회수 증가 처리 서비스
 	 *
@@ -116,5 +127,5 @@ public class BoardServiceImpl implements BoardService{
 		
 		return dao.selectImageList();
 	}
-	
+
 }

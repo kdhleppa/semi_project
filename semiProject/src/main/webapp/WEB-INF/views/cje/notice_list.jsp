@@ -19,7 +19,7 @@
 	<div class="container">
         <nav>
             <section class="logo">
-                <a href="/">
+                <a href="/link/mainLogin">
                     <a href="/">
                     <img src="/resources/images/logo.png">
                 </a>
