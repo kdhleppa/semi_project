@@ -42,7 +42,14 @@
 		AND MEMBER_SECESSION = 'N'
 	</select>
 
-
+	<!-- 이름과 휴대폰 번호로 아이디 조회 -->
+	<select id="selectMemberId" resultType="string">
+		SELECT MEMBER_ID
+		FROM "MEMBER"
+		WHERE MEMBER_NAME = #{name}
+		AND MEMBER_PHONENUM = #{phoneNum}
+		AND MEMBER_SECESSION = 'N'
+	</select>
 
 
 
