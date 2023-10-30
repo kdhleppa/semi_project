@@ -26,8 +26,6 @@
 
 			<typeAlias type="edu.kh.semiproject.notice.model.dto.Notice" alias="Notice"/>
 			<typeAlias type="edu.kh.semiproject.notice.model.dto.NoticeImage" alias="NoticeImage"/>
-
-
 			
 			<typeAlias type="edu.kh.semiproject.product.model.dto.RoomImg" alias="RoomImg"/>
 

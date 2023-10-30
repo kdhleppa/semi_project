@@ -113,7 +113,6 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
 
     // #profileFrm이 제출 되었을 때
     document.getElementById("profileFrm").addEventListener("submit", e => {
-
         // initCheck
         // 초기 프로필 이미지 상태를 저장하는 변수
         // false == 기본 이미지,  true == 이전 업로드 이미지

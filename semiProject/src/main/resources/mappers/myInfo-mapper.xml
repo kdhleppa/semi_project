@@ -34,5 +34,10 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+	<!-- 이미지 목록 조회 -->
+  	<select id="selectImageList" resultType="string">
+  		SELECT MEMBER_PROFILE_IMG FROM "MEMBER"
+  	</select>
+	
   
 </mapper>

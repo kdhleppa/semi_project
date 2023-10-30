@@ -35,14 +35,14 @@
             
             <div class="content">
 	            <form class="content" action="/link/login" method="post" name="login-form" id="loginFrm">        
-	                <div class="title">
+	                <div class="title" style="margin-bottom: 40px;">
 	                    로그인
 	                </div>
 	                    
 	                <!-- 아이디 입력 -->
 					
 					<div class="signUp-input-area">
-	                    <input type="text" name="memberId" id="memberId" placeholder="아이디" maxlength="10" >
+	                    <input type="text" name="memberId" id="memberId" placeholder="아이디" maxlength="10">
 	                </div>
 	
 	                <!-- 비밀번호/비밀번호 확인 입력 -->
