@@ -109,5 +109,13 @@ public class BoardDAO {
 		return sqlSession.selectList("boardMapper.selectBoardList_search", paramMap, rowBounds);
 	}
 
+	/** db 이미지 목록 조회
+	 * @return
+	 */
+	public List<String> selectImageList() {
+		
+		return sqlSession.selectList("boardMapper.selectImageListAll");
+	}
+
 	
 }
