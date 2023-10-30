@@ -54,7 +54,7 @@ public class ProductController {
 			model.addAttribute("centerAddress", product.getProductAddress());
 		} else {
 			message = "등록 실패....";
-			path += "link/roomUp";
+			path += "/link/roomUp";
 		}
 		
 		ra.addFlashAttribute("message", message);

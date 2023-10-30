@@ -19,8 +19,11 @@ public class ProductDAO {
 	 * @return
 	 */
 	public int roomUp(Product product) {
-
-		return sqlSession.insert("productMapper.roomUp", product);
+		int result = sqlSession.insert("productMapper.roomUp", product); 
+		System.out.println("result1 : " + result);
+		if(result > 0) result = product.getProductNo();
+		System.out.println("result2 : " + result);
+		return result;
 	}
 
 	/** img 넣기

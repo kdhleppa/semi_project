@@ -88,7 +88,7 @@
                 
             
             <%-- 지도에 연결된 기능 이것저것 추가해야함 --%>
-            <div id="main-right"><button id="realbtn">실거래가 조회</button></div>
+            <div id="main-right"></div>
             
         </div>
 
