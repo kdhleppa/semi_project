@@ -74,7 +74,7 @@
 
             </div>
 
-		<form action="/product/roomUp" method="POST" name="roomUpFrm" id= "roomUpFrm">    
+		<form action="/product/roomUp" method="POST" name="roomUpFrm" id= "roomUpFrm" enctype="multipart/form-data">    
 
             <div class="main">
             
@@ -179,7 +179,7 @@
 
                             <p>관리비</p>
 
-                            <input type="int" >만원
+                            <input type="int" name="productMaintenace">만원
 
                       </td>
                     </tr>
@@ -439,7 +439,7 @@
                 
                 <div id="checkbox">
     
-                    <input type="checkbox" name="registration-checkbox" value="Y">  매물 관리 규정을 확인 하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.
+                    <input type="checkbox" name="registration-checkbox"  id="registration-checkbox" value="Y">  매물 관리 규정을 확인 하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.
     
                 </div>
         
@@ -478,6 +478,12 @@
     	 <c:remove var="message" scope="session"/>
     	 --%>
     </c:if>
+    
+     <script>
+		const centerAddress = "${centerAddress}";
+		console.log(centerAddress);
+		
+	</script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb9b63d71a5408fd96cba9a1674b9d43&libraries=services,clusterer"></script>
 	<script src="/resources/js/room_up.js"></script>
 </body>

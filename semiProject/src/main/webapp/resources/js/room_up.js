@@ -1,39 +1,36 @@
-// 현재 선택된 파일들을 저장하는 배열
 var selectedFiles = [];
 
 document.getElementById('fileInput').addEventListener('change', function(event) {
-    var newFiles = Array.from(event.target.files); // 새로 선택된 파일들
+    var files = event.target.files;
+    var maxFiles = 5;
 
-    if (selectedFiles.length + newFiles.length > 5) {
-        alert("사진은 5장까지만 올려주세요");
-        event.target.value = ""; // input 필드 초기화
-        return;
+    // 새로 선택된 파일들을 selectedFiles 배열로 임시 저장
+    var tempSelectedFiles = [];
+    for (var i = 0; i < files.length; i++) {
+        tempSelectedFiles.push(files[i]);
     }
 
-    // 선택된 파일과 현재 선택된 파일을 합칩니다.
-    selectedFiles = selectedFiles.concat(newFiles);
-
-    updatePreviews();
-    event.target.value = ""; // input 필드 초기화
-});
-
-var deleteButtons = document.querySelectorAll('.delete-image');
-deleteButtons.forEach(function(btn, index) {
-    btn.addEventListener('click', function() {
-        selectedFiles.splice(index, 1); // 선택된 파일에서 해당 파일 제거
+    // 선택된 파일의 총 개수가 5개일 경우
+    if (tempSelectedFiles.length === maxFiles) {
+        selectedFiles = tempSelectedFiles;
         updatePreviews();
-    });
+    } else {
+        if (tempSelectedFiles.length > maxFiles) {
+            alert("사진은 5개를 초과할 수 없습니다.");
+        } else {
+            alert("사진은 총 5개 선택해야 합니다.");
+            resetPreviews();  // 프리뷰 초기화
+            resetFileInput();  // 파일 선택 초기화
+        }
+    }
 });
 
-// 선택된 파일들을 프리뷰로 표시하는 함수
 function updatePreviews() {
     var previewElems = document.querySelectorAll('.preview');
-
     // 모든 프리뷰 초기화
     previewElems.forEach(function(preview) {
         preview.src = "";
     });
-
     // 선택된 파일을 프리뷰로 표시
     selectedFiles.forEach(function(file, index) {
         var reader = new FileReader();
@@ -44,12 +41,18 @@ function updatePreviews() {
     });
 }
 
-document.getElementById('roomUpFrm').addEventListener('submit', function(event) {
-    if (selectedFiles.length !== 5) {
-        alert("사진은 5장 모두 올려주세요");
-        event.preventDefault(); // 폼 제출 중단
-    }
-});
+function resetPreviews() {
+    var previewElems = document.querySelectorAll('.preview');
+    // 모든 프리뷰 초기화
+    previewElems.forEach(function(preview) {
+        preview.src = "";
+    });
+}
+
+function resetFileInput() {
+    var fileInput = document.getElementById('fileInput');
+    fileInput.value = "";  // input type="file" 초기화
+}
 
 function validateDate() {
     var dateInput = document.getElementById("enterDateText");
@@ -81,7 +84,7 @@ function toggleInputVisibility() {
         selectedRadio.value = dateInput.value;
     } else {
         dateInput.style.display = "none";  // 즉시 입주를 클릭하면 인풋창이 안 보이게 함
-        selectedRadio.value = null;
+        selectedRadio.value = 'Y';
     }
 }
 
@@ -91,23 +94,57 @@ function updateRadioValue() {
 
     if (selectedRadio && selectedRadio.id === "dateSelection") {
         selectedRadio.value = textValue;
+    } else if (selectedRadio.id === "immediateMoveIn") {
+        selectedRadio.value = null;
     }
+}
+
+
+document.getElementById('roomUpFrm').addEventListener('submit', function(event) {
+       if (document.getElementById('regtstration-checkbox').value == null) {
+    	alert("매물 관리 규정을 확인해 주세요");
+    	event.preventDefault();
+    }
+});
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+var mapContainer = document.getElementById('mapbox'), // 지도를 표시할 div 
+    mapOption = {
+    	
+	    	center: new kakao.maps.LatLng(33.450701, 126.570667),
+	    	level: 3 // 지도의 중심좌표
+	    
+	    		};
+	    		
+var map;
+if (centerAddress == null) {
+    map = new kakao.maps.Map(mapContainer, mapOption);
+} else {
+    var geocoder = new kakao.maps.services.Geocoder();
+    geocoder.addressSearch(centerAddress, function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+            var options = {
+                center: new kakao.maps.LatLng(result[0].y, result[0].x),
+                level: 3
+            };
+            map = new kakao.maps.Map(mapContainer, options);
+        }
+    });
 }
 
 
 
 
-var mapContainer = document.getElementById('mapbox'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
+
+
+
+    	
 
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
 
 var previousMarker = null;
 var previousInfowindow = null;

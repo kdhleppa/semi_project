@@ -45,19 +45,33 @@
 	
 	</resultMap>
 	
+	
 	<!-- 물건 삽입 -->
 	<insert id="roomUp" parameterType="Product" useGeneratedKeys="true">
   	 	<selectKey order="BEFORE" resultType="_int" keyProperty="productNo">
-  	 		SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+  	 		SELECT SEQ_PRODUCT_NO.NEXTVAL FROM DUAL
   	 	</selectKey>
-  	 	INSERT INTO BOARD
-  	 	VALUES( #{boardNo},
-  	 			#{boardTitle},
-  	 			#{boardContent},
-  	 			DEFAULT, DEFAULT, DEFAULT, DEFAULT,
-  	 			#{memberNo},
-  	 			#{boardCode})
-  	 </insert>
+  	 	INSERT INTO "PRODUCT" 
+		VALUES (SEQ_PRODUCT_NO.NEXTVAL, #{memberNo},
+		#{productAddress},#{productAddressHo},
+		#{productTitle}, #{productContent},
+		#{roomType}, #{roomSize},
+		#{productDeposit},#{productMonthlyRent},#{productRentType},#{productMaintenace},
+		<choose>
+			<when test='enterDate != "Y"'>
+				TO_DATE(#{enterDate}, 'YYYYMMDD'),			
+			</when>
+			<when test='enterDate == "Y"'>
+				DEFAULT,
+			</when>
+		</choose>
+		#{enterDateNego},
+		#{heatType}, #{parking}, #{airCon},#{fridge}, #{washer},
+		#{cctv}, #{doorlock}, #{stove}, #{microwave}, #{elevator},
+		DEFAULT, DEFAULT)
+  	</insert>
+  	 
+  	 
 	<!-- 이미지 리스트(여러개)삽입 -->
   	  <insert id ="insertImageList" parameterType="list">
   	  	INSERT INTO "ROOM_IMG"
