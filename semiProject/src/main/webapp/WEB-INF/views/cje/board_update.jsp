@@ -51,21 +51,40 @@
                 <div class="main-content">
                     <div class="main-content-left"></div>
                     
-                    <form action="/board2/insert" method="POST" id="boardWriteFrm" enctype="multipart/form-data">
+                    <form action="update" method="POST" 
+                    	id="boardWriteFrm" class="boardUpdateFrm" enctype="multipart/form-data">
 	                    <div class="main-content-main">
-	                        <input id="content-title" placeholder="제목을 입력해주세요." name="boardTitle"></input>
+	                        <input id="content-title" value="${board.boardTitle}" name="boardTitle"></input>
 	                        
-	                        <div class="boardImg">
-			                    <button type="button" id="imageButton">이미지</button>
-								<input type="file" id="imageInput" name="boardImage" style="display:none;" accept="image/*">
+                        	<%--<c:when test="${img.imageOrder == 0}">
+		                        <c:set var="img0" value="${img.imagePath}${img.imageReName}"/>
+		                    </c:when>--%>
+	                        
+	                        <%--<div class="boardImg" items="${board.imageList}" var="img">
+	                        	<button type="button" id="imageButton">이미지</button>
+								<input type="file" id="imageInput" name="boardImage" style="display:none;" id="img0" src="${img[0].imagePath}${img[0].imageReName}" accept="image/*">
 								<div id="selectedImageName"></div>
-	                        </div>
+	                        </div>--%>
+	                        
+	                        <div class="boardImg" items="${board.imageList}" var="img">
+			                    <label>
+			                        <img class="preview" src="${img.imagePath}${img.imageReName}">
+			                    </label>
+			                    <input type="file" class="inputImage" id="imageInput" name="boardImage" style="display:none;" accept="image/*">
+			                    <span class="delete-image">&times;</span>
+			                </div>
 
-	                        <input id="content-text" placeholder="내용을 입력해주세요." name="boardContent"></input>                        
+	                        <input id="content-text" name="boardContent" value="${board.boardContent}"></input>                        
 	                        <div id="content-modifybutton">
-	                            <button type="submit" id="registerButton">등록하기</button>
+	                        	<button type="submit" id="registerButton">등록하기</button>
 	                            <button type="button" id="cancelButton" onClick="history.back(); return false;">취소</button>
 	                        </div>
+	                        
+	                        <!-- 기존 이미지가 있다가 삭제된 이미지의 순서를 기록-->
+				            <input type="hidden" name="deleteImage" value="">
+				
+				            <%-- 수정 성공 시 주소(쿼리스트링) 유지용도 --%>
+				            <input type="hidden" name="cp" value="${param.cp}">	                        
 	                    </div>
 	                </form>        
                     
@@ -74,15 +93,11 @@
             </div>
 
             <div class="right">
-                <button id="bottom-nav-top">
-                	<a href="#">위로</a>
-                </button>
                 <button id="bottom-nav-list">
                 	<a href="/link/boardList">목록</a>
                 </button>
                 <img src="/resources/images/chat_icon.png" id="chat-icon">
             </div>
-
         </main>
     </div>
     
@@ -92,6 +107,6 @@
 		</script>
 	</c:if>
     
-    <script src="/resources/js/boardWrite.js"></script>
+    <script src="/resources/js/boardUpdate.js"></script>
 </body>
 </html>

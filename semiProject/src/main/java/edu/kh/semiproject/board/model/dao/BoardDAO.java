@@ -65,6 +65,15 @@ public class BoardDAO {
 	
 		return sqlSession.selectList("boardMapper.selectPrevNextBoardNo", boardNo);
 	}
+	
+	/** 수정을 위해 게시글 단순 상세 조회
+	 * @param map
+	 * @return
+	 */
+	public Board selectBoard(Map<String, Object> map) {
+		
+		return sqlSession.selectOne("boardMapper.selectBoardDetail", map);
+	}
 
 	/** 조회수 증가 처리 DAO
 	 * @param boardNo
@@ -116,6 +125,8 @@ public class BoardDAO {
 		
 		return sqlSession.selectList("boardMapper.selectImageListAll");
 	}
+
+
 
 	
 }
