@@ -107,7 +107,7 @@ main {
     width: 16%;
 }
 
-#btnbox {
+#btn1, #btnbox {
     color: white;
     background-color: #AC47FC;
     width: 140px;

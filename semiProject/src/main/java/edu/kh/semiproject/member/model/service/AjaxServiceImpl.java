@@ -1,5 +1,7 @@
 package edu.kh.semiproject.member.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,7 @@ public class AjaxServiceImpl implements AjaxService {
 	@Autowired
 	private AjaxDAO dao;
 	
-	// 이메일 중복검사
+		// 이메일 중복검사
 		@Override
 		public int checkEmail(String email) {
 			
@@ -30,6 +32,10 @@ public class AjaxServiceImpl implements AjaxService {
 			
 			return dao.checkId(id);
 		}
-	
+		
+		@Override
+		public String selectMemberId(Map<String, Object> map) {
+			return dao.selectMemberId(map);
+		}
 	
 }
