@@ -17,4 +17,9 @@ public interface NoticeService {
 	// 게시글 목록 조회 (검색)
 	Map<String, Object> selectNoticeList(Map<String, Object> paramMap, int cp);
 
+	/** db 이미지 목록 조회
+	 * @return
+	 */
+	List<String> selectImageList();
+
 }

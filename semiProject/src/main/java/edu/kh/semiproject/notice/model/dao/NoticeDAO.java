@@ -108,5 +108,13 @@ public class NoticeDAO {
 		
 	}
 
+	/** db 이미지 목록 조회
+	 * @return
+	 */
+	public List<String> selectImageList() {
+		
+		return sqlSession.selectList("noticeMapper.selectImageListAll");
+	}
+
 	
 }
