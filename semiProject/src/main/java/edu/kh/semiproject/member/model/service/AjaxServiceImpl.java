@@ -33,6 +33,7 @@ public class AjaxServiceImpl implements AjaxService {
 			return dao.checkId(id);
 		}
 		
+		// 이름으로 아이디 조회
 		@Override
 		public String selectMemberId(Map<String, Object> map) {
 			return dao.selectMemberId(map);

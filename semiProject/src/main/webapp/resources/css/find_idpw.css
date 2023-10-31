@@ -180,3 +180,13 @@ main {
 .signUp-input-area:focus-within{
     border-bottom-color: #ff80ff;
 }
+
+/* 입력 관련 메세지 */
+.signUp-message{
+    font-size: 14px;
+    letter-spacing: -1px;
+}
+
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }

@@ -22,6 +22,8 @@ public class MyInfoServiceImpl implements MyInfoService{
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	
+
+	// 비밀번호 암호화
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int updateInfo(Member updateMember) {
@@ -89,6 +91,7 @@ public class MyInfoServiceImpl implements MyInfoService{
 		
 	}
 
+	// 회원 탈퇴
 	@Override
 	public int withdrawal(String memberPw, int memberNo) {
 		
@@ -105,10 +108,28 @@ public class MyInfoServiceImpl implements MyInfoService{
 		return 0;
 	}
 
+	
+	// 매칭되지 않는 서버 파일 제거
 	@Override
 	public List<String> selectImageList() {
 		return dao.selectImageList();
 	}
+
+	
+	// 비밀번호 이메일 인증
+		@Override
+		public int selectPwEmail(String memberEmail) {
+			return dao.selectPwEmail(memberEmail);
+		}
+	
+		
+	// 새 비밀번호
+	@Override
+	public int newPassword(String newPw, int memberNo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 		
 }

@@ -15,11 +15,14 @@ public class MyInfoDAO {
 	private SqlSessionTemplate sqlSession;
 
 	
+	// 회원 정보 수정
 	public int updateInfo(Member updateMember) {
 		
 		return sqlSession.update("myInfoMapper.updateInfo", updateMember);
 	}
 	
+	
+	// 프로필 이미지 수정 서비스
 	public int updateProfile(Member loginMember) {
 
 		int result = sqlSession.update("myInfoMapper.updateProfile", loginMember);
@@ -28,16 +31,28 @@ public class MyInfoDAO {
 		return result;
 	}
 
+	
+	// 비밀번호 암호화
 	public String selectEncPw(int memberNo) {
 		return sqlSession.selectOne("myInfoMapper.selectEncPw", memberNo);
 	}
 
+	
+	// 회원 탈퇴
 	public int withdrawal(int memberNo) {
 		return sqlSession.update("myInfoMapper.withdrawal", memberNo );
 	}
 
+	
+	// 매칭되지 않는 서버 파일 제거
 	public List<String> selectImageList() {
 		return sqlSession.selectList("myInfoMapper.selectImageList");
 	}
+
+	// 비밀번호 이메일 인증
+	public int selectPwEmail(String memberEmail) {
+		return sqlSession.selectOne("myInfoMapper.selectPwEmail", memberEmail);
+	}
+
 
 }

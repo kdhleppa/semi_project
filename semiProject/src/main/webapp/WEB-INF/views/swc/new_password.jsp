@@ -33,7 +33,7 @@
                 
             </div>
             
-            <form class="content">  
+            <form class="content" action="newPassword" method="POST" name="newPwFrm" id="newPwFrm"> 
 
                 <div class="title" style="font-weight: 500; margin-bottom: 40px;">
                     <div id="findId">
@@ -60,9 +60,10 @@
 
                 <span class="signUp-message" id="pwMessage">영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</span>
 
-                <button id="btnbox"> <a href="/link/login" style="color:white; text-decoration:none;">확인</a> </button>
+                <button id="btnbox" style="color:white; text-decoration:none;">확인</a> </button>
 
                 </form>
+                
             <div class="rightmenu">
                 
             </div>
@@ -80,7 +81,7 @@
 	</c:if>
 	
 	
-	<script src="/resources/js/signUp.js"></script>
+	<script src="/resources/js/newPassword.js"></script>
 	
 </body>
 </html>
