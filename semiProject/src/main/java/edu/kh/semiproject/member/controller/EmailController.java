@@ -20,12 +20,16 @@ public class EmailController {
 	@Autowired
 	private EmailService service;
 	
+	
+	// 이메일로 인증번호 전송
 	@GetMapping("/signUpNum")
 	@ResponseBody
 	public int signUp(String email) {
 		return service.signUpNum(email, "회원 가입");
 	}
 	
+	
+	// 인증번호 확인
 	@GetMapping("/checkAuthKey")
 	@ResponseBody
 	public int checkAuthKey(@RequestParam Map<String, Object> paramMap){

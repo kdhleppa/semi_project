@@ -21,12 +21,8 @@
            
             <section class="menu">
 
-               <div id="map">
+               		<div id="map">
                         <a href="/link/mapMainLogin">지도</a>
-                    </div>
-
-                    <div id="favorites">
-                           <a href="/link/likeList">관심목록</a>
                     </div>
 
                     <div id="roomup">

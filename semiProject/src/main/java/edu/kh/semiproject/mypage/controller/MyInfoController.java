@@ -33,7 +33,13 @@ public class MyInfoController {
 	}
 	
 	
-	// 회원 정보 수정
+	/** 회원 정보 수정
+	 * @param loginMember
+	 * @param updateMember
+	 * @param memberAddress
+	 * @param ra
+	 * @return
+	 */
 	@PostMapping("/link/myInfoUpdate")
 	public String updateInfo(@SessionAttribute("loginMember") Member loginMember,
 							Member updateMember,
@@ -88,7 +94,14 @@ public class MyInfoController {
 			}
 	
 	
-	// 프로필 이미지 수정
+	/** 프로필 사진 수정
+	 * @param profileImage
+	 * @param session
+	 * @param loginMember
+	 * @param ra
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/link/myInfo")
 	public String updateProfile(
 			@RequestParam("profileImage") MultipartFile profileImage // 업로드 파일
@@ -120,66 +133,113 @@ public class MyInfoController {
 	}
 	
 	
-	// 회원 탈퇴
-		@PostMapping("/link/withdrawal")
-		public String withdrawal(String memberPw
-				,@SessionAttribute("loginMember") Member loginMember
-				,SessionStatus status
-				,HttpServletResponse resp
-				,RedirectAttributes ra) {
+	/** 회원 탈퇴
+	 * @param memberPw
+	 * @param loginMember
+	 * @param status
+	 * @param resp
+	 * @param ra
+	 * @return
+	 */
+	@PostMapping("/link/withdrawal")
+	public String withdrawal(String memberPw
+			,@SessionAttribute("loginMember") Member loginMember
+			,SessionStatus status
+			,HttpServletResponse resp
+			,RedirectAttributes ra) {
+		
+		// String memberPw : 입력한 비밀번호
+		// SessionStatus status : 세션 관리 객체
+		// HttpServletResponse resp : 서버 -> 클라이언트 응답하는 방법 제공 객체
+		// RedirectAttributes ra : 리다이렉트 시 request로 값 전달하는 객체
+		
+		// 1. 로그인한 회원의 회원 번호 얻어오기
+		// @SessionAttribute("loginMember") Member loginMember
+		int memberNo = loginMember.getMemberNo();
+		
+		// 2. 회원 탈퇴 서비스 호출
+		//	- 비밀번호가 일치하면 MEMBER_DEL_FL -> 'Y'로 바꾸고 1 반환
+		//  - 비밀번호가 일치하지 않으면 -> 0 반환
+		int result = service.withdrawal(memberPw, memberNo);
+		
+		String path = "redirect:";
+		String message = null;
+		
+		// 3. 탈퇴 성공 시
+		if(result > 0) {
+			// - message : 탈퇴 되었습니다
+			message = "탈퇴 되었습니다";
 			
-			// String memberPw : 입력한 비밀번호
-			// SessionStatus status : 세션 관리 객체
-			// HttpServletResponse resp : 서버 -> 클라이언트 응답하는 방법 제공 객체
-			// RedirectAttributes ra : 리다이렉트 시 request로 값 전달하는 객체
+			// - 메인 페이지로 리다이렉트
+			path += "/";
 			
-			// 1. 로그인한 회원의 회원 번호 얻어오기
-			// @SessionAttribute("loginMember") Member loginMember
-			int memberNo = loginMember.getMemberNo();
+			// - 로그아웃 
+			status.setComplete();
 			
-			// 2. 회원 탈퇴 서비스 호출
-			//	- 비밀번호가 일치하면 MEMBER_DEL_FL -> 'Y'로 바꾸고 1 반환
-			//  - 비밀번호가 일치하지 않으면 -> 0 반환
-			int result = service.withdrawal(memberPw, memberNo);
+			// + 쿠키 삭제
+			Cookie cookie = new Cookie("saveId", ""); 
+			// 같은 쿠기가 이미 존재하면 덮어쓰기된다
 			
-			String path = "redirect:";
-			String message = null;
+			cookie.setMaxAge(0); // 0초 생존 -> 삭제
+			cookie.setPath("/"); // 요청 시 쿠기가 첨부되는 경로
+			resp.addCookie(cookie); // 요청 객체를 통해서 클라이언트에게 전달
+									// -> 클라이언트 컴퓨터에 파일로 생성
 			
-			// 3. 탈퇴 성공 시
-			if(result > 0) {
-				// - message : 탈퇴 되었습니다
-				message = "탈퇴 되었습니다";
-				
-				// - 메인 페이지로 리다이렉트
-				path += "/";
-				
-				// - 로그아웃 
-				status.setComplete();
-				
-				// + 쿠키 삭제
-				Cookie cookie = new Cookie("saveId", ""); 
-				// 같은 쿠기가 이미 존재하면 덮어쓰기된다
-				
-				cookie.setMaxAge(0); // 0초 생존 -> 삭제
-				cookie.setPath("/"); // 요청 시 쿠기가 첨부되는 경로
-				resp.addCookie(cookie); // 요청 객체를 통해서 클라이언트에게 전달
-										// -> 클라이언트 컴퓨터에 파일로 생성
-				
-			}
-			
-			// 4. 탈퇴 실패 시
-			else {
-				// - message : 현재 비밀번호가 일치하지 않습니다
-				message = "현재 비밀번호가 일치하지 않습니다";
-				
-				// - 회원 탈퇴 페이지로 리다이렉트
-				path += "withdrawal";
-			}
-			
-			ra.addFlashAttribute("message",message);
-			
-			return path;
 		}
+		
+		// 4. 탈퇴 실패 시
+		else {
+			// - message : 현재 비밀번호가 일치하지 않습니다
+			message = "현재 비밀번호가 일치하지 않습니다";
+			
+			// - 회원 탈퇴 페이지로 리다이렉트
+			path += "withdrawal";
+		}
+		
+		ra.addFlashAttribute("message",message);
+		
+		return path;
+	}
+	
+	
+	// 비밀번호 찾기 이메일 인증
+	@GetMapping("/findPassword")
+	public String findPassword(String memberEmail
+			,Member member
+			,SessionStatus status
+			,HttpServletResponse resp
+			,RedirectAttributes ra
+			) {
+		
+		int result = service.selectPwEmail(memberEmail);
+		
+		if( result > 0 ) {
+			
+			return "redirect:newPassword";
+		}
+		
+			return null;
+		
+	}
+	
+	
+	// 새 비밀번호
+	@PostMapping("/link/newPassword")
+	public String newPassword(String newPw
+			,Member member
+			,String memberEmail
+			,RedirectAttributes ra) {
+		
+		
+		
+		int memberNo = member.getMemberNo();
+		
+		int result = service.newPassword(newPw, memberNo);
+		
+		
+		return "redirect:login";
+	}
+	
 	
 	
 }

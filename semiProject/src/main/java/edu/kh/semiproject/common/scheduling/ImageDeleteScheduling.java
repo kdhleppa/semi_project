@@ -103,8 +103,8 @@ public class ImageDeleteScheduling {
 		}		
 	}
 	
-	//@Scheduled(cron = "0,30 * * * * *") // 매분 0초, 30초 마다 수행
-	@Scheduled(cron = "0 0 * * * *") // 매 정시(*시 0분 0초)
+	@Scheduled(cron = "0,30 * * * * *") // 매분 0초, 30초 마다 수행
+	//@Scheduled(cron = "0 0 * * * *") // 매 정시(*시 0분 0초)
 	public void noticeDbImageList() {
 		// System.out.println("스케줄러가 일정 시간마다 자동으로 출력");
 		

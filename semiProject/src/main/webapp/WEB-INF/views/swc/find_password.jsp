@@ -34,7 +34,9 @@
                 
             </div>
 
-            <form class="content" action="/sendEmail" method="POST" name="findPwFrm">
+          
+				<form class="content" action="/link/newPassword" method="GET" name="findPwFrm" id="findPwFrm">
+
 
                 <div class="title" style="font-weight: 500; margin-bottom: 40px;">
                     <div id="findId">
@@ -56,6 +58,7 @@
                     <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
                 </div>
                 
+                <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요</span>
                 
                 <!-- 인증번호 입력 -->
 
@@ -68,7 +71,8 @@
                                 <!-- 인증번호가 일치하지 않습니다 -->
                     
                 
-                <button id="btnbox"> <a href="/link/newPassword" style="color:white; text-decoration:none;">다음</a> </button>
+                <button id="btnbox" style="color:white; text-decoration:none;">다음</button>
+                
 
 				<div class="signUpFind">
                     <div>

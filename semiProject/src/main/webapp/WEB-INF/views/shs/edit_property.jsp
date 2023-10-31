@@ -28,10 +28,6 @@
                         <a href="/link/mapMainLogin">지도</a>
                     </div>
 
-                    <div id="favorites">
-                           <a href="/link/likeList">관심목록</a>
-                    </div>
-
                     <div id="roomup">
                          <a href="/link/roomUpFront">방내놓기</a> 
                     </div>

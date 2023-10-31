@@ -27,6 +27,8 @@ public class EmailServiceImpl implements EmailService{
 	private String fromEmail = "songt1107@gmail.com";
 	private String fromUsername = "수업용프로젝트";
 	
+	
+	// 난수 생성
 	public String createAuthKey() {
         String key = "";
         for(int i=0 ; i< 6 ; i++) {
@@ -55,6 +57,8 @@ public class EmailServiceImpl implements EmailService{
         return key;
     }
 
+	
+	// 이메일로 인증번호 전송
 	@Transactional
 	@Override
 	public int signUpNum(String email, String title) {
@@ -116,6 +120,8 @@ public class EmailServiceImpl implements EmailService{
 	
 	}
 	
+	
+	// 인증번호 확인
 	@Override
 	public int checkAuthKey(Map<String, Object> paramMap) {
 		return dao.checkAuthKey(paramMap);
