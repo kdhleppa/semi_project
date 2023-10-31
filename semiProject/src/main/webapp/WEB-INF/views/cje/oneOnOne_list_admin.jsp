@@ -23,11 +23,8 @@
                 <div id="map">
                     <a href="/link/mapMainNotLogin">지도</a>
                 </div>
-                <div id="favorites">
-                    <a href="/link/likeList">관심목록</a>
-                </div>
                 <div id="roomup">
-                    <a href="/link/roomUpFront">방내놓기</a>
+                    <a href="/link/roomUp">방내놓기</a>
                 </div>
                 <div id="board">
                     <a href="/link/communityList">게시판</a>
@@ -42,9 +39,6 @@
             <div class="leftmenu">
                 <div>
                 	<a href="/link/myInfoUpdate">정보수정</a>
-                </div>
-                <div>
-                	<a href="/">채팅함</a>
                 </div>
                 <div>
                 	<a href="/link/oneOnOneListUser">1:1 문의 내역</a>

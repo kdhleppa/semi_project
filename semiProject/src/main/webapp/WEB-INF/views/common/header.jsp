@@ -19,7 +19,7 @@
         </div>
 
         <div id="roomup">
-            <a href="/link/roomUpFront">방내놓기</a>
+            <a href="/link/roomUp">방내놓기</a>
         </div>
 
         <div id="board">

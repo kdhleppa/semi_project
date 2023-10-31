@@ -27,7 +27,7 @@
                     <a href="/link/mapMainNotLogin">지도</a>
                 </div>
                 <div id="roomup">
-                    <a href="/link/roomUpFront">방내놓기</a>
+                    <a href="/link/roomUp">방내놓기</a>
                 </div>
                 <div id="board">
                     <a href="/link/boardList">게시판</a>
@@ -140,7 +140,7 @@
     </div>    
    
 
-	<c:if test="${not empty message}">
+	<%--<c:if test="${not empty message}">
     	<script>
     		// EL/JSTL 구문이 먼저 해석
     		// 문자열의 경우 따옴표가 없는 상태이니 옆에 붙여줘야함.
@@ -149,15 +149,15 @@
     	
     	
     	</script>
-    	<%--
+    	
     		session에 message를 추가하면
     		브라우저 종료 또는 만료 전까지 계속 메시지가 출력된다
     		
     		-> 1회 출력 후 session에서 message 삭제	
     	 
     	 <c:remove var="message" scope="session"/>
-    	 --%>
-    </c:if>
+    	 
+    </c:if>--%>
     
 </body>
 </html>

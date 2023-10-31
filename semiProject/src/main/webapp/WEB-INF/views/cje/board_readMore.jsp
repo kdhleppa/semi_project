@@ -11,26 +11,33 @@
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
 	<link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
 	<link rel="stylesheet" href="/resources/css/board_readMore.css">
+	<link rel="stylesheet" href="/resources/css/comment-style.css">
 	<title>커뮤니티 글 자세히보기(본인이 쓴 글)</title>
 </head>
 <body>
 	<div class="container">
         <nav>
             <section class="logo">
-                <a href="/link/mainLogin">
-                    <img src="/resources/images/logo.png">
-                </a>
+            	<c:choose>
+            		<c:when test="${loginMember != null}">
+            			<a href="/link/mainLogin">
+                    		<img src="/resources/images/logo.png">
+               			</a>
+            		</c:when>
+            		<c:when test="${loginMember == null}">
+            			<a href="/">
+                    		<img src="/resources/images/logo.png">
+               			</a>
+            		</c:when>
+            	</c:choose>                
             </section>
 
 			<section class="menu">
                 <div id="map">
                     <a href="/link/mapMainNotLogin">지도</a>
                 </div>
-                <div id="favorites">
-                    <a href="/link/likeList">관심목록</a>
-                </div>
                 <div id="roomup">
-                    <a href="/link/roomUpFront">방내놓기</a>
+                    <a href="/link/roomUp">방내놓기</a>
                 </div>
                 <div id="board">
                     <a href="/link/boardList">게시판</a>
@@ -74,7 +81,10 @@
                         	</c:if>
                         </div>
                         
-                        <div id="content-comments"></div>
+                        <div id="content-comments">
+                        	<jsp:include page="board_comment.jsp"/>
+                        </div>
+                        
                         <div id="content-listbutton">
                         
                         	<c:if test="${not empty prev}">
@@ -122,8 +132,23 @@
 		</script>
 	</c:if>
     
+    <script>
+		// JSP에서 작성가능한 언어/라이브러리
+		// -> html, css, js, java, EL, JSTL
+		
+		// JSP 해석 우선 순위 : Java/EL/JSTL > HTML, CSS, JS
+		
+		const boardNo = "${current.boardNo}"
+		
+		const loginMemberNo = "${loginMember.memberNo}"
+		
+		console.log(boardNo);
+		console.log(loginMemberNo);
+	
+	</script>
     
     <script src="/resources/js/board_readMore.js"></script>
+    <script src="/resources/js/board_comment.js"></script>
 
 </body>
 </html>

@@ -43,8 +43,8 @@ public class ImageDeleteScheduling {
 	// 대기(10초)
 	
 	//cron="초 분 시 일 월 요일 [년도]" - 요일 : 1(SUN) ~ 7(SAT) 
-	@Scheduled(cron = "0,30 * * * * *") // 매분 0초, 30초 마다 수행
-	//@Scheduled(cron = "0 0 * * * *") // 매 정시(*시 0분 0초)
+	//@Scheduled(cron = "0,30 * * * * *") // 매분 0초, 30초 마다 수행
+	@Scheduled(cron = "0 0 * * * *") // 매 정시(*시 0분 0초)
 	public void boardDbImageList() {
 		// System.out.println("스케줄러가 일정 시간마다 자동으로 출력");
 		
@@ -164,8 +164,8 @@ public class ImageDeleteScheduling {
 	
 	
 	// cron="초 분 시 일 월 요일 [년도]" - 요일 : 1(SUN) ~ 7(SAT)
-		@Scheduled(cron = "0,30 * * * * *") // 매 분 0초, 30초마다 수행
-		//@Scheduled(cron = "0 0 * * * *")// 매 정시 (*시 0분 0초)
+	//@Scheduled(cron = "0,30 * * * * *") // 매 분 0초, 30초마다 수행
+		@Scheduled(cron = "0 0 * * * *")// 매 정시 (*시 0분 0초)
 		public void memberDbImageList() {
 //			System.out.println("스케줄러가 일정 시간마다 자동으로 출력");
 			
