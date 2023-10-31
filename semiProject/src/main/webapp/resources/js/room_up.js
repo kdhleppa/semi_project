@@ -104,7 +104,33 @@ document.getElementById('roomUpFrm').addEventListener('submit', function(event) 
        if (document.getElementById('regtstration-checkbox').value == null) {
     	alert("매물 관리 규정을 확인해 주세요");
     	event.preventDefault();
-    }
+    	}
+	   	 // 라디오 버튼 선택 확인
+	    var radios = document.getElementsByName('roomType');
+	    var radioChecked = false;
+	
+	    for (var i = 0; i < radios.length; i++) {
+	        if (radios[i].checked) {
+	            radioChecked = true;
+	            break;
+	        }
+	    }
+	
+	    if (!radioChecked) {
+	        alert("원룸 또는 투룸을 선택해 주세요");
+	        event.preventDefault();
+	    }
+	    
+	    // roomSize 입력 확인
+	    var roomSizeValue = document.getElementById('roomSize').value;
+	    if (!roomSizeValue || roomSizeValue.trim() === "") {
+	        alert("방 크기를 입력해주세요!");
+	        event.preventDefault();
+	    } else if (isNaN(roomSizeValue)) { // 숫자가 아닌 경우
+	        alert("숫자로 입력해 주세요");
+	        event.preventDefault();
+	    }
+	    
 });
 
 // 주소-좌표 변환 객체를 생성합니다

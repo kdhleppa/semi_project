@@ -31,14 +31,15 @@
     <result property="elevator" column="ELEVATOR" />
     <result property="registrastionDate" column="REGISTRASTION_DATE" />
     <result property="productHide" column="PRODUCT_HIDE" />
-     
+    <result property="thumbnail" column="THUMBNAIL"/>
+     <!-- 
     <collection property="imageList"
 					select="selectImageList"
 					column="PRODUCT_NO"
 					javaType="java.util.ArrayList"
 					ofType="RoomImg"
 		 />
-		  
+		   -->
 </resultMap>
 <!-- 
 <select id="selectAllProduct" resultMap="product_rm">
@@ -49,11 +50,13 @@
  -->
  
 <select id="selectAllProduct" resultMap="product_rm">
-	SELECT P.*, R.IMG_PATH
+	SELECT P.*, 
+	(SELECT IMG_PATH || IMG_RENAME FROM ROOM_IMG I
+			WHERE I.PRODUCT_NO = P.PRODUCT_NO
+			AND IMG_ORDER = 0) THUMBNAIL
     FROM PRODUCT P
-    LEFT JOIN ROOM_IMG R ON P.PRODUCT_NO = R.PRODUCT_NO
     WHERE P.PRODUCT_HIDE = 'N'
-    ORDER BY IMG_ORDER
+    ORDER BY P.PRODUCT_NO
 </select>
 
 
