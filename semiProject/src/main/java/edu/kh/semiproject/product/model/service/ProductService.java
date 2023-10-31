@@ -22,4 +22,8 @@ public interface ProductService {
 	 */
 	int roomUp(Product product, List<MultipartFile> images, String webPath, String filePath) throws FileUploadException, IllegalStateException, IOException;
 
+	List<String> membersProduct(int memberNo);
+
+	Product selectProduct(int productNo);
+
 }

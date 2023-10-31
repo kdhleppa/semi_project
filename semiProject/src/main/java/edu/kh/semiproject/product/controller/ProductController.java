@@ -1,14 +1,21 @@
 package edu.kh.semiproject.product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -27,7 +34,7 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 	
-	
+	// 물건 올리기
 	@PostMapping("/product/roomUp")
 	public String productUpload (@SessionAttribute("loginMember") Member loginMember,
 							Model model,
@@ -62,6 +69,37 @@ public class ProductController {
 		return path;
 		
 
+	}
+	
+	
+	// 내가올린물건 리스트
+	@GetMapping("/link/myList")
+	public String LikeList(@SessionAttribute("loginMember")Member loginMember,
+						Model model
+						) {
+		int memberNo= loginMember.getMemberNo();
+		List<String> membersProduct = new ArrayList<>();
+		membersProduct = service.membersProduct(memberNo);
+		System.out.println(membersProduct);
+		model.addAttribute("membersProduct", membersProduct);
+		
+		
+		return "kdh/my_list";
+	}
+	
+	
+	// 물건 상세 조회
+	@GetMapping("/productDetail/{productNo}")
+	public String productDetail(@PathVariable("productNo") int productNo,
+								Model model,
+								@SessionAttribute(value="loginMember", required = false)Member loginMember) {
+		
+		Product sProduct = service.selectProduct(productNo);
+		
+		
+		
+		model.addAttribute("sProduct", sProduct);		
+		return "kdh/room_detail_view";
 	}
 
 }

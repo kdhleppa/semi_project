@@ -15,9 +15,18 @@
     <div class="container">
         <nav>
             <section class="logo">
-                <a href="/">
-                    <img src="/resources/images/logo.png">
-                </a>
+               <c:choose>
+                  <c:when test="${loginMember != null}">
+                     <a href="/link/mainLogin">
+                          <img src="/resources/images/logo.png">
+                        </a>
+                  </c:when>
+                  <c:when test="${loginMember == null}">
+                     <a href="/">
+                          <img src="/resources/images/logo.png">
+                        </a>
+                  </c:when>
+               </c:choose>                
             </section>
 
             <section class="menu">
@@ -53,7 +62,7 @@
                 </div>
                 
                 <div>
-                   <a href="/link/roomDetailView">내가 올린 매물</a>
+                   <a href="/link/myList">내가 올린 매물</a>
                 </div>
                 
                 <div>

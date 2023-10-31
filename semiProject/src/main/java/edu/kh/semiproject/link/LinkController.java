@@ -1,9 +1,7 @@
 package edu.kh.semiproject.link;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.kh.semiproject.map.model.service.MapService;
 import edu.kh.semiproject.member.model.dto.Member;
-import edu.kh.semiproject.product.model.dto.Product;
 
 @Controller
 @RequestMapping("/link")
@@ -25,10 +21,7 @@ public class LinkController {
 	
 	
 	// kdh 쪽으로 연결하는 링크모음
-	@GetMapping("/likeList")
-	public String LikeList() {
-		return "/kdh/like_list";
-	}
+	
 	
 	@GetMapping("/mapMainLogin")
 	public String MapMainLogin() {
@@ -156,18 +149,17 @@ public class LinkController {
 	
 	
 	@GetMapping("/roomUp")
-	public String RoomUp(@SessionAttribute("loginMember") Member loginMember,
-			RedirectAttributes ra) {
-		String message = null;
-		
-		
-		if(loginMember == null) {
-			message = "로그인이 필요합니다.";
-			return "/link/login";
-			
-		} else {
-			return "/kdh/room_up";
-		}
+	public String RoomUp(HttpSession session, RedirectAttributes ra) {
+	    String message = null;
+	    Member loginMember = (Member) session.getAttribute("loginMember");
+	    
+	    if (loginMember != null && loginMember.getMemberNo() > 0) {
+	        return "/kdh/room_up";
+	    } else {
+	        message = "로그인이 필요합니다.";
+	        ra.addFlashAttribute("message", message); // 리다이렉트 시 메시지 전달
+	        return "redirect:/link/login";
+	    }
 	}
 	
 	

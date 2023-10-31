@@ -34,4 +34,20 @@ public class ProductDAO {
 		return sqlSession.insert("productMapper.insertImageList", uploadList);
 	}
 
+	/** 내가올린 리스트
+	 * @param memberNo
+	 * @return
+	 */
+	public List<String> membersProduct(int memberNo) {
+		return sqlSession.selectList("productMapper.membersProduct", memberNo);
+	}
+
+	/** 매물 상세 조회
+	 * @param productNo
+	 * @return
+	 */
+	public Product selectProduct(int productNo) {
+		return sqlSession.selectOne("productMapper.selectProduct", productNo);
+	}
+
 }

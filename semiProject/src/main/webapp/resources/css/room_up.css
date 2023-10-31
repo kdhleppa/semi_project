@@ -5,9 +5,7 @@
     /*border: 1px solid black;*/
 }
 
-div {
-	border: 1px solid red;
-}
+
 
 
 
@@ -221,9 +219,9 @@ nav {
     padding-left: 10px;
 }
 
-#adress-btn {
+.address-btn {
     height: 30px;
-    width: 50px;
+    width: 100px;
     cursor : pointer;
     border-left: 1px solid grey;
     border-top: 1px solid gray;

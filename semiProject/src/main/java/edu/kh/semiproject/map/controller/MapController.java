@@ -60,6 +60,8 @@ public class MapController {
 		} else {
 			products = service.selectAllProduct();
 			model.addAttribute("products", products);
+			
+			System.out.println(products);
 		}
 		return products;
 	}

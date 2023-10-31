@@ -87,9 +87,13 @@ function displayMarkersWithinBounds(products) {
                     productContainer.className = "preview-container";
                     
                     var productImgElem = document.createElement("div");
-                    productImgElem.className = "preview-img";
-                    productImgElem.textContent = "방 대표사진자리";
-                    productContainer.appendChild(productImgElem);
+					productImgElem.className = "preview-img";
+					// 이미지 요소를 생성합니다.
+					var imgElem = document.createElement("img");
+					imgElem.src = product.thumbnail; // 이미지 주소 설정
+					productImgElem.appendChild(imgElem); // div 요소에 이미지 요소를 추가
+					
+					productContainer.appendChild(productImgElem);
 
                     var productTextContainer = document.createElement("div");
                     productTextContainer.className = "preview-text-container";
