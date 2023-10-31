@@ -21,13 +21,13 @@ public class ProductServiceImpl implements ProductService{
 
 	@Autowired
 	private ProductDAO dao;
+	
 	/** 방 내놓기
 	 * @throws FileUploadException 
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 *
 	 */
-	
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int roomUp(Product product, List<MultipartFile> images, String webPath, String filePath) throws FileUploadException, IllegalStateException, IOException {
@@ -84,6 +84,17 @@ public class ProductServiceImpl implements ProductService{
 		}
 		
 		return productNo;
+	}
+	
+	@Override
+	public List<String> membersProduct(int memberNo) {
+		
+		return dao.membersProduct(memberNo);
+	}
+
+	@Override
+	public Product selectProduct(int productNo) {
+		return dao.selectProduct(productNo);
 	}
 
 }

@@ -18,19 +18,10 @@
         <div class="container">
             <nav>
                 <section class="logo">
-               <c:choose>
-                  <c:when test="${loginMember != null}">
-                     <a href="/link/mainLogin">
-                          <img src="/resources/images/logo.png">
-                        </a>
-                  </c:when>
-                  <c:when test="${loginMember == null}">
-                     <a href="/">
-                          <img src="/resources/images/logo.png">
-                        </a>
-                  </c:when>
-               </c:choose>                
-            </section>
+                    <a href="/link/mainLogin">
+                        <img src="/resources/images/logo.png">
+                    </a>
+                </section>
                
                 <section class="menu">
 

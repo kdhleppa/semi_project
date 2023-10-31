@@ -39,9 +39,9 @@ public class Product {
 	private String elevator;
 	private String registrastionDate;
 	private String productHide;
-	/*
-	private List<RoomImg> uploadList;
-	*/
+	
+	private String thumbnail;
 	
 	private List<RoomImg> imageList;
+	
 }
