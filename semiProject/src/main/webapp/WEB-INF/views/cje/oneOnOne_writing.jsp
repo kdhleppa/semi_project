@@ -14,27 +14,18 @@
 	<div class="container">
         <nav>
             <section class="logo">
-                <a href="/link/mainLogin">
-                    <img src="/resources/images/logo.png">
-                </a>
-            </section>
-
-            <section class="menu">
-                <div id="map">
-                    <a href="/link/mapMainNotLogin">지도</a>
-                </div>
-                <div id="favorites">
-                    <a href="/link/likeList">관심목록</a>
-                </div>
-                <div id="roomup">
-                    <a href="/link/roomUpFront">방내놓기</a>
-                </div>
-                <div id="board">
-                    <a href="/link/communityList">게시판</a>
-                </div>
-                <div id="mypage">
-                    <a href="/link/myInfo">내정보</a>
-                </div>
+            	<c:choose>
+            		<c:when test="${loginMember != null}">
+            			<a href="/link/mainLogin">
+                    		<img src="/resources/images/logo.png">
+               			</a>
+            		</c:when>
+            		<c:when test="${loginMember == null}">
+            			<a href="/">
+                    		<img src="/resources/images/logo.png">
+               			</a>
+            		</c:when>
+            	</c:choose>                
             </section>
         </nav>
 
@@ -42,9 +33,6 @@
             <div class="leftmenu">
                 <div>
                 	<a href="/link/myInfoUpdate">정보수정</a>
-                </div>
-                <div>
-                	<a href="/">채팅함</a>
                 </div>
                 <div>
                 	<a href="/link/oneOnOneListUser">1:1 문의 내역</a>

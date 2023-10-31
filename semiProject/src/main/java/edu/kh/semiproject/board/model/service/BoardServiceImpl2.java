@@ -165,6 +165,8 @@ public class BoardServiceImpl2 implements BoardService2{
 				}				
 			}
 			
+			
+			// 질문!~!! 이걸 못해서.. 서버에 변경된 이미지가 저장이 안되는듯함
 			// 5. img에 있는 이미지만 서버에 저장(transferTo())
 			if(img != null) {
 				

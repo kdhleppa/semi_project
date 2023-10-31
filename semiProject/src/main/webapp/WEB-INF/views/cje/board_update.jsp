@@ -14,20 +14,26 @@
 	<div class="container">
         <nav>
             <section class="logo">
-                <a href="/link/mainLogin">
-                    <img src="/resources/images/logo.png">
-                </a>
+            	<c:choose>
+            		<c:when test="${loginMember != null}">
+            			<a href="/link/mainLogin">
+                    		<img src="/resources/images/logo.png">
+               			</a>
+            		</c:when>
+            		<c:when test="${loginMember == null}">
+            			<a href="/">
+                    		<img src="/resources/images/logo.png">
+               			</a>
+            		</c:when>
+            	</c:choose>                
             </section>
 
             <section class="menu">
                 <div id="map">
                     <a href="/link/mapMainNotLogin">지도</a>
                 </div>
-                <div id="favorites">
-                    <a href="/link/likeList">관심목록</a>
-                </div>
                 <div id="roomup">
-                    <a href="/link/roomUpFront">방내놓기</a>
+                    <a href="/link/roomUp">방내놓기</a>
                 </div>
                 <div id="board">
                     <a href="/link/boardList">게시판</a>
@@ -68,13 +74,15 @@
 	                        
 	                        <div class="boardImg" items="${board.imageList}" var="img">
 			                    <label>
-			                        <img class="preview" src="${img.imagePath}${img.imageReName}">
+			                        <img class="preview" src="${board.imageList[0].imagePath}${board.imageList[0].imageReName}" style="max-width: 300px; max-height: 300px;">
 			                    </label>
 			                    <input type="file" class="inputImage" id="imageInput" name="boardImage" style="display:none;" accept="image/*">
 			                    <span class="delete-image">&times;</span>
+		                    	<button type="button" id="imageButton">이미지</button>
 			                </div>
-
+			                
 	                        <input id="content-text" name="boardContent" value="${board.boardContent}"></input>                        
+	                        
 	                        <div id="content-modifybutton">
 	                        	<button type="submit" id="registerButton">등록하기</button>
 	                            <button type="button" id="cancelButton" onClick="history.back(); return false;">취소</button>

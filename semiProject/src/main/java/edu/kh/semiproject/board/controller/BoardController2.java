@@ -129,6 +129,8 @@ public class BoardController2 { // 삽입, 수정, 삭제 구현
 			@RequestParam(value="deleteImage", required= false) String deleteImage, // 삭제할 이미지 순서 번호
 			HttpSession session,
 			RedirectAttributes ra) throws IllegalStateException, IOException {
+
+		System.out.println("boardImage::" + boardImage);
 		
 		// 1) boardNo를 커멘드 객체(board)에 셋팅
 		board.setBoardNo(boardNo);

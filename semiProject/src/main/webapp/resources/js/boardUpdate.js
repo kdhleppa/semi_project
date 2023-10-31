@@ -107,3 +107,34 @@ boardUpdateFrm.addEventListener('submit', e => {
 
     //e.preventDefault(); // 확인만하고 지울 예정
 });
+
+
+// 이미지 버튼 클릭 시
+document.getElementById('imageButton').addEventListener('click', function() {
+    document.getElementById('imageInput').click();
+});
+
+
+// x버튼 클릭 시
+document.addEventListener('DOMContentLoaded', function() {
+    // 모든 삭제 아이콘들을 가져옵니다.
+    var deleteIcons = document.querySelectorAll('.delete-image');
+
+    // 각 삭제 아이콘에 대해 이벤트 리스너를 추가합니다.
+    deleteIcons.forEach(function(deleteIcon) {
+        deleteIcon.addEventListener('click', function() {
+            // 해당 삭제 아이콘을 클릭했을 때 실행될 동작을 여기에 추가합니다.
+            // 예를 들어, 이미지를 숨기는 코드를 추가할 수 있습니다.
+            this.style.display = 'none'; // 삭제 아이콘 숨기기
+            // 추가적으로 필요한 작업을 진행하세요.
+        });
+    });
+
+	var imageInput = document.querySelector('.inputImage');
+
+    imageInput.addEventListener('change', function() {
+        // 이미지가 선택되면 삭제 아이콘을 다시 보이도록 설정합니다.
+        var deleteIcon = this.parentElement.querySelector('.delete-image');
+        deleteIcon.style.display = 'block';
+    });
+});
