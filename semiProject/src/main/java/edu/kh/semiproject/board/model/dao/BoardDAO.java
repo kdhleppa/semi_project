@@ -126,6 +126,22 @@ public class BoardDAO {
 		return sqlSession.selectList("boardMapper.selectImageListAll");
 	}
 
+	/** 내가 쓴 글 목록 조회
+	 * @param board
+	 * @return
+	 */
+	public List<Board> selectBoardListMine(Board board) {
+		
+		return sqlSession.selectList("boardMapper.selectBoardListMine", board);
+	}
+
+	public int deleteListMine(int boardNo) {
+		
+		return sqlSession.update("boardMapper.deleteListMine", boardNo);
+		
+	}
+
+
 
 
 	

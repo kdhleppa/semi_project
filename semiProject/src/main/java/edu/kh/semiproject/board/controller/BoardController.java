@@ -1,6 +1,7 @@
 package edu.kh.semiproject.board.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -207,6 +208,50 @@ public class BoardController {
 		return path;		
 		
 	}
+	
+	
+	// 내가 쓴 글 목록 조회
+	@GetMapping("/link/boardListMine")
+	public String BoardListMine(
+			Model model,
+			Board board,
+			@SessionAttribute("loginMember") Member loginMember) {		
+
+		board.setMemberNo(loginMember.getMemberNo());
+		
+		List<Board> boardList = service.selectBoardListMine(board);
+		model.addAttribute("boardList", boardList);		
+		
+		return "/cje/board_list_mine";
+	}
+	
+	// 내가 쓴 글 목록 삭제(action : doDeleteBoards)
+	@RequestMapping("/link/doDeleteBoards")
+	public String deleteListMine(
+			Board board,
+			Model model,
+			@RequestParam(defaultValue = "") String numbers,
+			@SessionAttribute("loginMember") Member loginMember) {
+		
+		board.setMemberNo(loginMember.getMemberNo());
+		
+		
+		List<Integer> boardNumbers = new ArrayList<>();
+		
+		for(String numStr : numbers.split(",")) {
+			
+			boardNumbers.add(Integer.parseInt(numStr));	
+		}
+
+		service.deleteListMine(boardNumbers);
+		
+		List<Board> boardList = service.selectBoardListMine(board);
+		model.addAttribute("boardList", boardList);		
+		
+		return "/cje/board_list_mine";
+	}
+	
+	
 	
 
 	

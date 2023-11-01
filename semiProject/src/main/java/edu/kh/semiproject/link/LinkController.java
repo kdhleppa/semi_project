@@ -45,10 +45,11 @@ public class LinkController {
 	
 	// cje 쪽으로 연결하는 링크모음
 	
-	@GetMapping("/boardListMine")
-	public String BoardListMine() {
-		return "/cje/board_list_mine";
-	}
+// 	BoardController 에서 사용
+//	@GetMapping("/boardListMine")
+//	public String BoardListMine() {
+//		return "/cje/board_list_mine";
+//	}
 	
 // 	BoardController 에서 사용
 //	@GetMapping("/boardReadMoreMine")
