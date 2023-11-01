@@ -33,7 +33,7 @@
                 
             </div>
             
-            <form class="content" action="newPassword" method="POST" name="newPwFrm" id="newPwFrm"> 
+            <form class="content" action="/link/newPassword" method="POST" name="newPwFrm" id="newPwFrm"> 
 
                 <div class="title" style="font-weight: 500; margin-bottom: 40px;">
                     <div id="findId">
@@ -49,19 +49,21 @@
                 <!-- 새 비밀번호/비밀번호 확인 입력 -->
                 
                 <div class="signUp-input-area">
-                    <input type="password" name="memberPw" id="memberPw" 
+                    <input type="password" name="newMemberPw" id="newMemberPw" 
                     placeholder="새 비밀번호" maxlength="20" >
                 </div>
                 
                 <div class="signUp-input-area">
-                    <input type="password" name="memberPwConfirm" id="memberPwConfirm" 
+                    <input type="password" name="newMemberPwConfirm" id="newMemberPwConfirm" 
                     placeholder="새 비밀번호 확인" maxlength="20" >
                 </div>
 
                 <span class="signUp-message" id="pwMessage">영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</span>
 
-                <button id="btnbox" style="color:white; text-decoration:none;">확인</a> </button>
+				<input type="hidden" name="memberEmail" value="${member.memberEmail}">
 
+                <button id="btnbox" style="color:white; text-decoration:none;">확인</a> </button>
+                
                 </form>
                 
             <div class="rightmenu">

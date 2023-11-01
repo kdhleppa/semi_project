@@ -37,6 +37,8 @@ public class MemberController {
 						HttpServletResponse resp
 						) {
 		
+		String message = null;
+		
 		Member loginMember = service.login(inputMember);
 		
 		String path = "redirect:";
@@ -56,6 +58,8 @@ public class MemberController {
 			
 			
 		}
+		
+		message = "로그인 성공";
 		
 		return path;
 		

@@ -2,6 +2,7 @@ package edu.kh.semiproject.mypage.model.service;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.semiproject.member.model.dto.Member;
@@ -21,11 +22,10 @@ public interface MyInfoService {
 	// 매칭되지 않는 서버 파일 제거
 	List<String> selectImageList();
 
-	// 비밀번호 이메일인증
-	int selectPwEmail(String memberEmail);	
-	
-	// 새 비밀번호
-	int newPassword(String newPw, int memberNo);
+	// 비밀번호 이메일 인증 회원 조회
+	int selectMember(Member member);
 
-
+	// 새 비밀번호 설정
+	int newPassword(Member member);
+	;
 }

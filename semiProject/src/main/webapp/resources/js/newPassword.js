@@ -1,26 +1,25 @@
 
 const checkObj = {
-    "memberPw" : false,
-    "memberPwConfirm" : false
+    "newMemberPw" : false,
+    "newMemberPwConfirm" : false
 };
 
 
 // 비밀번호/비밀번호 확인 유효성 검사
-const memberPw = document.getElementById("memberPw");
-const memberPwConfirm = document.getElementById("memberPwConfirm");
+const newMemberPw = document.getElementById("newMemberPw");
+const newMemberPwConfirm = document.getElementById("newMemberPwConfirm");
 const pwMessage = document.getElementById("pwMessage");
 
 // 비밀번호 입력 시 유효성 검사
-memberPw.addEventListener("input", () => {
+newMemberPw.addEventListener("input", () => {
 
     // 비밀번호가 입력되지 않은 경우
-    if(memberPw.value.trim().length == 0){
-        memberPw.value = ""; // 띄어쓰지 못넣게 하기
-
+    if(newMemberPw.value.trim().length == 0){
+        newMemberPw.value = ""; // 띄어쓰지 못넣게 하기
         pwMessage.innerText = "영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요";
         pwMessage.classList.remove("confirm", "error"); // 검정 글씨
 
-        checkObj.memberPw = false; // 빈칸 == 유효 X
+        checkObj.newMemberPw = false; // 빈칸 == 유효 X
         return;
     }
 
@@ -31,12 +30,12 @@ memberPw.addEventListener("input", () => {
     const regEx = /^[a-zA-Z0-9\!\@\#\-\_]{6,20}$/;
 
     // 입력한 비밀번호가 유효한 경우
-    if(regEx.test(memberPw.value)){
-        checkObj.memberPw = true; 
+    if(regEx.test(newMemberPw.value)){
+        checkObj.newMemberPw = true; 
         
         // 비밀번호가 유효하게 작성된 상태에서
         // 비밀번호 확인이 입력되지 않았을 때
-        if(memberPwConfirm.value.trim().length == 0){
+        if(newMemberPwConfirm.value.trim().length == 0){
 
             pwMessage.innerText = "유효한 비밀번호 형식입니다";
             pwMessage.classList.add("confirm");
@@ -47,17 +46,17 @@ memberPw.addEventListener("input", () => {
             // 비밀번호 확인이 입력되어 있을 때
 
             // 비밀번호 == 비밀번호 확인  (같을 경우)
-            if(memberPw.value == memberPwConfirm.value){
+            if(newMemberPw.value == newMemberPwConfirm.value){
                 pwMessage.innerText = "비밀번호가 일치합니다";
                 pwMessage.classList.add("confirm");
                 pwMessage.classList.remove("error");
-                checkObj.memberPwConfirm = true;
+                checkObj.newMemberPwConfirm = true;
                 
             } else{ // 다를 경우
                 pwMessage.innerText = "비밀번호가 일치하지 않습니다";
                 pwMessage.classList.add("error");
                 pwMessage.classList.remove("confirm");
-                checkObj.memberPwConfirm = false;
+                checkObj.newMemberPwConfirm = false;
             }
         }
 
@@ -67,49 +66,49 @@ memberPw.addEventListener("input", () => {
         pwMessage.innerText = "비밀번호 형식이 유효하지 않습니다";
         pwMessage.classList.add("error");
         pwMessage.classList.remove("confirm");
-        checkObj.memberPw = false; 
+        checkObj.newMemberPw = false; 
     }
 });
 
 
 // 비밀번호 확인 유효성 검사
-memberPwConfirm.addEventListener('input', ()=>{
+newMemberPwConfirm.addEventListener('input', ()=>{
 
-    if(checkObj.memberPw){ // 비밀번호가 유효하게 작성된 경우에
+    if(checkObj.newMemberPw){ // 비밀번호가 유효하게 작성된 경우에
 
         // 비밀번호 == 비밀번호 확인  (같을 경우)
-        if(memberPw.value == memberPwConfirm.value){
+        if(newMemberPw.value == newMemberPwConfirm.value){
             pwMessage.innerText = "비밀번호가 일치합니다";
             pwMessage.classList.add("confirm");
             pwMessage.classList.remove("error");
-            checkObj.memberPwConfirm = true;
+            checkObj.newMemberPwConfirm = true;
             
         } else{ // 다를 경우
             pwMessage.innerText = "비밀번호가 일치하지 않습니다";
             pwMessage.classList.add("error");
             pwMessage.classList.remove("confirm");
-            checkObj.memberPwConfirm = false;
+            checkObj.newMemberPwConfirm = false;
         }
 
     } else { // 비밀번호가 유효하지 않은 경우
-        checkObj.memberPwConfirm = false;
+        checkObj.newMemberPwConfirm = false;
     }
 });
 
 
 // 새 비밀번호 form태그가 제출 되었을 때
-document.getElementById("newPasswordFrm").addEventListener("submit", e=>{
+document.getElementById("newPwFrm").addEventListener("submit", e=>{
 
     let isValid = true;
 
     for (let key in checkObj) {
         if (!checkObj[key]) {
             switch (key) {
-                case "memberPw":
+                case "newMemberPw":
                     alert("비밀번호가 유효하지 않습니다");
                     isValid = false;
                     break;
-                case "mamberPwConfirm":
+                case "newMemberPwConfirm":
                     alert("비밀번호가 일치하지 않습니다");
                     isValid = false;
                     break;
@@ -122,8 +121,9 @@ document.getElementById("newPasswordFrm").addEventListener("submit", e=>{
     }
 
     if (isValid) {
-        // 모든 유효성 검사가 통과한 경우에만 새 비밀번호 설정 페이지로 이동
-        window.location.href = "/link/newPassword";
+        // 모든 유효성 검사가 통과한 경우에만 로그인 페이지로 이동
+        console.log("새비번성공");
+        window.location.href = "/link/login";
     } else {
         e.preventDefault(); // form 태그 기본 이벤트 제거
     }

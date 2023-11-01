@@ -104,7 +104,7 @@
                 <!-- 닉네임 입력 -->
                 
                 <div class="myInfoUpdate-input-area">
-                    <input type="text" name="memberNickname" id="memberNickname" placeholder="닉네임" maxlength="10" 
+                    <input type="text" name="memberNickname" id="memberNickname" placeholder="기존과 다른 닉네임만 가능" maxlength="10" 
                     value="${loginMember.memberNickname}"
                     >
                 </div>

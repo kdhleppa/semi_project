@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.semiproject.common.utility.Util;
@@ -23,13 +24,15 @@ public class MyInfoServiceImpl implements MyInfoService{
 	private BCryptPasswordEncoder bcrypt;
 	
 
-	// 비밀번호 암호화
+	// 회원정보 수정에서 비밀번호 암호화
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int updateInfo(Member updateMember) {
 		
 		String encPw = bcrypt.encode(updateMember.getMemberPw());
 		updateMember.setMemberPw(encPw);
+		
+		System.out.println("회원정보수정에서 비번암호화 dao 호출");
 		
 		return dao.updateInfo(updateMember);
 	}
@@ -53,10 +56,13 @@ public class MyInfoServiceImpl implements MyInfoService{
 			loginMember.setProfileImage(webPath + rename);
 			
 			System.out.println("loginMember::"  + loginMember);
+			System.out.println("바뀐 이름 loginMember에 세팅");
 			
 		} else { // 업로드된 이미지가 없는 경우 (x버튼) 
 			
 			loginMember.setProfileImage(null);
+			
+			System.out.println("업로드된 이미지 없음");
 			
 		}
 		
@@ -73,6 +79,8 @@ public class MyInfoServiceImpl implements MyInfoService{
 				
 				// 메모리에 임시 저장되어있는 파일을 서버에 진짜로 저장하는 것
 				profileImage.transferTo(new File(filePath + rename));
+				System.out.println("서버에 프로필이미지 파일 저장");
+				
 			}
 			
 			
@@ -80,10 +88,9 @@ public class MyInfoServiceImpl implements MyInfoService{
 			
 			// 이전 이미지로 프로필 다시 세팅
 			loginMember.setProfileImage(temp);
-			
+			System.out.println("이전 이미지 다시 세팅");
 			
 		}
-		
 		
 		//System.out.println("result::" + result);
 		return result; 
@@ -100,11 +107,14 @@ public class MyInfoServiceImpl implements MyInfoService{
 		
 		// 2.비밀번호가 일치하면 
 		if(bcrypt.matches(memberPw, encPw)) {
-			// MEMBER_DEL_FL -> 'Y'로 바꾸고 1 반환
+			// MEMBER_SECESSION -> 'Y'로 바꾸고 1 반환
+			System.out.println("회원탈퇴 dao 호출");
 			return dao.withdrawal(memberNo);
+			
 		}
 		
 		//  3. 비밀번호가 일치하지 않으면 -> 0 반환
+		System.out.println("탈퇴 비번 불일치");
 		return 0;
 	}
 
@@ -116,20 +126,29 @@ public class MyInfoServiceImpl implements MyInfoService{
 	}
 
 	
-	// 비밀번호 이메일 인증
-		@Override
-		public int selectPwEmail(String memberEmail) {
-			return dao.selectPwEmail(memberEmail);
-		}
-	
-		
-	// 새 비밀번호
+	// 비밀번호 이메일 인증 회원 조회
 	@Override
-	public int newPassword(String newPw, int memberNo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectMember(Member member) {
+		System.out.println("이메일 인증 회원 dao 호출");
+		return dao.selectMember(member);
 	}
 
 	
+	// 새 비밀번호 설정
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int newPassword(Member member) {
+		
+		String newEncPw = bcrypt.encode(member.getMemberPw());
+		member.setMemberPw(newEncPw);
+		
+		System.out.println("새 비번 dao 호출");
+		
+		return dao.newPassword(member);
+	}
+
+	
+	
+
 		
 }
