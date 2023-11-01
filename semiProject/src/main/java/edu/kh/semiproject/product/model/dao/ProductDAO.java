@@ -50,4 +50,8 @@ public class ProductDAO {
 		return sqlSession.selectOne("productMapper.selectProduct", productNo);
 	}
 
+	public int productDelete(int productNo) {
+		return sqlSession.update("productMapper.productDelete", productNo);
+	}
+
 }

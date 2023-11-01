@@ -584,10 +584,24 @@ textarea {
 }
 
 .delete-image {
-    position: absolute;
-    top: 5px;
-    right: 5px;
+	position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #d8bffd; /* 연보라색 */
     cursor: pointer;
+    width: 30px; /* 너비와 높이를 동일하게 설정 */
+    height: 30px; /* 너비와 높이를 동일하게 설정 */
+    line-height: 30px; /* "X" 문자를 수직으로 중앙에 배치 */
+    text-align: center; /* "X" 문자를 수평으로 중앙에 배치 */
+    border-radius: 50%; /* 완전한 원으로 만듭니다. */
+    transition: color 0.3s, border-color 0.3s; /* 색상 전환 효과 */
+    
+}
+
+.delete-image:hover {
+    color: #b394d8; /* 마우스 오버 시 약간 더 어두운 보라색 */
+    border-color: #b394d8; /* 마우스 오버 시 테두리 색상도 변경 */
 }
 .img-box {
     display: flex;

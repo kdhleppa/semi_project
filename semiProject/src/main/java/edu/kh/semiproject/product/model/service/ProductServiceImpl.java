@@ -97,4 +97,9 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectProduct(productNo);
 	}
 
+	@Override
+	public int productDelete(int productNo) {
+		return dao.productDelete(productNo);
+	}
+
 }

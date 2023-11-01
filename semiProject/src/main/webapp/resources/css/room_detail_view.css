@@ -87,13 +87,19 @@ nav {
 
 .img {
     overflow: hidden;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    
 }
 
 .img img {
-    max-width: 100%; /* div의 최대 너비에 맞춤 */
-    height: auto; /* 이미지 비율 유지 */
-    display: block; /* 이미지를 블록 요소로 표시하여 여백을 조절할 수 있습니다. */
-    margin: 0 auto; /* 가로 중앙 정렬 */
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
 }
 
 .img {
@@ -117,7 +123,7 @@ table {
     margin: 20px;
 }
 
-#icon img {
+.iconimg {
     height: 80px;
     margin-right: 10px;
 }
@@ -189,7 +195,8 @@ tr:hover {
 }
 
 /* 맵 크기 */
-#map {
+#mapin {
+	margin-top: 43px;
     width: 600px;
     height: 400px;
     border: 1px solid black;
@@ -299,3 +306,24 @@ tr:hover {
     margin-top: 20px;
     font-size: 20px;
 }
+
+
+#nowLogin {
+    text-align: center; /* Center the text */
+  }
+  #nowLogin button {
+    font-size: 1em; /* Set font size */
+    padding: 10px 20px; /* Set padding */
+    margin: 5px; /* Set margin */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+  }
+  #modifyBtn {
+    background-color: #008CBA; /* Set background color */
+    color: white; /* Set text color */
+  }
+  #deleteBtn {
+    background-color: #f44336; /* Set background color */
+    color: white; /* Set text color */
+  }
