@@ -35,7 +35,7 @@
             </div>
 
           
-				<form class="content" action="/link/newPassword" method="GET" name="findPwFrm" id="findPwFrm">
+				<form class="content" action="/link/findPassword" method="POST" name="findPwFrm" id="findPwFrm">
 
 
                 <div class="title" style="font-weight: 500; margin-bottom: 40px;">

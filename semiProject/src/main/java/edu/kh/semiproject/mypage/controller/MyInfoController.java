@@ -7,8 +7,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -23,14 +26,9 @@ import edu.kh.semiproject.mypage.model.service.MyInfoService;
 @Controller
 public class MyInfoController {
 	
+	
 	@Autowired
 	private MyInfoService service;
-	
-	// 탈퇴 페이지 이동
-	@GetMapping("/withdrawal")
-	public String withdrawal() {
-		return "my_Info/withdrawal";
-	}
 	
 	
 	/** 회원 정보 수정
@@ -64,6 +62,7 @@ public class MyInfoController {
 				// DB 회원 정보 수정 (update) 서비스 호출
 				int result = service.updateInfo(updateMember);
 				
+				
 				String message = null;
 				
 				// 결과값으로 성공
@@ -80,7 +79,6 @@ public class MyInfoController {
 					
 					message = "회원 정보 수정 성공";
 					
-					
 				} else {
 					// 실패에 따른 처리 
 
@@ -89,6 +87,8 @@ public class MyInfoController {
 				}
 				
 				ra.addFlashAttribute("message", message);
+				
+				System.out.println("회원 정보 수정 성공");
 				
 				return "redirect:myInfo";
 			}
@@ -129,6 +129,8 @@ public class MyInfoController {
 		
 		ra.addFlashAttribute("message", message);
 		
+		System.out.println("프로필 수정 완료");
+		
 		return "redirect:myInfo";
 	}
 	
@@ -157,6 +159,8 @@ public class MyInfoController {
 		// @SessionAttribute("loginMember") Member loginMember
 		int memberNo = loginMember.getMemberNo();
 		
+		
+		System.out.println("회원 탈퇴 서비스 호출");
 		// 2. 회원 탈퇴 서비스 호출
 		//	- 비밀번호가 일치하면 MEMBER_DEL_FL -> 'Y'로 바꾸고 1 반환
 		//  - 비밀번호가 일치하지 않으면 -> 0 반환
@@ -164,6 +168,7 @@ public class MyInfoController {
 		
 		String path = "redirect:";
 		String message = null;
+		
 		
 		// 3. 탈퇴 성공 시
 		if(result > 0) {
@@ -198,46 +203,87 @@ public class MyInfoController {
 		
 		ra.addFlashAttribute("message",message);
 		
+		System.out.println("회원 탈퇴 완료");
+		
 		return path;
 	}
 	
 	
-	// 비밀번호 찾기 이메일 인증
-	@GetMapping("/findPassword")
+	// 비밀번호 이메일 인증 회원 조회
+	@PostMapping("/link/findPassword")
 	public String findPassword(String memberEmail
-			,Member member
-			,SessionStatus status
-			,HttpServletResponse resp
 			,RedirectAttributes ra
+			,Model model
+			,@RequestHeader(value = "referer") String referer
 			) {
 		
-		int result = service.selectPwEmail(memberEmail);
+		Member member = new Member();
+		
+		member.setMemberEmail(memberEmail);
+		
+		String path = "redirect:";
+		String message = "";
+		
+		int result = service.selectMember(member);
+		
+		model.addAttribute(memberEmail);
 		
 		if( result > 0 ) {
 			
-			return "redirect:newPassword";
+			model.addAttribute("member", member);
+			path = "/swc/new_password";
+			
+		}else {
+			message = "일치하는 회원 정보가 없습니다.";
+			path = "redirect:" + referer;
 		}
 		
-			return null;
+		ra.addFlashAttribute("message",message);
+		
+		System.out.println("비밀번호찾기 이메일 인증 완료");
+		
+		return path;
 		
 	}
 	
 	
-	// 새 비밀번호
+	// 새 비밀번호 설정
 	@PostMapping("/link/newPassword")
-	public String newPassword(String newPw
-			,Member member
-			,String memberEmail
+	public String newPassword(String memberEmail
+			,String newMemberPw
+			,@RequestHeader(value = "referer") String referer
 			,RedirectAttributes ra) {
 		
+		System.out.println("new비번");
 		
+		Member member = new Member();
 		
-		int memberNo = member.getMemberNo();
+		String path = "redirect:";
+		String message = null;
 		
-		int result = service.newPassword(newPw, memberNo);
+		member.setMemberEmail(memberEmail);
+		member.setMemberPw(newMemberPw);
 		
+		System.out.println(newMemberPw);
 		
-		return "redirect:login";
+		int result = service.newPassword(member);
+		
+		System.out.println(result);
+		
+		if(result > 0) { // 변경 성공
+			message = "비밀번호가 변경 되었습니다.";
+			path += "/";
+			
+		}else { // 변경 실패
+			message = "현재 비밀번호가 일치하지 않습니다.";
+			path += referer;
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		System.out.println("새 비밀번호 설정 완료");
+		
+		return path;
 	}
 	
 	

@@ -83,6 +83,14 @@
 
     </div>
     
+    <c:if test="${not empty message}">
+	
+	<script>
+		
+		alert('${message}') // ${message}
+	</script>
+	</c:if>
+    
     <script src="/resources/js/findId.js"></script>
     
 </body>

@@ -62,7 +62,7 @@
 
             </div>
 
-            <form class="content" action="withdrawal" method="POST" name="withdrawalFrm">
+            <form class="content" action="/link/withdrawal" method="POST" name="withdrawalFrm">
                  
                 <div class="title">
                     회원탈퇴
@@ -138,6 +138,9 @@
         	</a>
        	</div>
    	</c:if>
+   	
+   	
+   	<script src="/resources/js/chatting/withdrawal.js"></script>
     
 </body>
 </html>

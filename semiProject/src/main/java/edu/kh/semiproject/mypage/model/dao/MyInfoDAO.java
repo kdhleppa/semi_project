@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import edu.kh.semiproject.member.model.dto.Member;
 
@@ -49,10 +50,19 @@ public class MyInfoDAO {
 		return sqlSession.selectList("myInfoMapper.selectImageList");
 	}
 
-	// 비밀번호 이메일 인증
-	public int selectPwEmail(String memberEmail) {
-		return sqlSession.selectOne("myInfoMapper.selectPwEmail", memberEmail);
+	// 비밀번호 이메일 인증 회원 조회
+	public int selectMember(Member member) {
+		return sqlSession.selectOne("myInfoMapper.selectMember", member);
 	}
+
+	// 새 비밀번호 설정
+	public int newPassword(Member member) {
+		return sqlSession.update("myInfoMapper.newPassword", member);
+	}
+
+
+	
+	
 
 
 }
