@@ -53,7 +53,7 @@
 
         <main>              
             <div class="leftmenu">
-            	<a href="/link/boardList">내가 쓴 글</a>
+            	<a href="/link/boardListMine">내가 쓴 글</a>
             </div>
             
             <div class="content">
@@ -89,9 +89,12 @@
 						            			<a href="/link/boardReadMore/${board.boardNo}" id="content-title">${board.boardTitle}</a>
 						            		</c:when>
 						            		<c:when test="${loginMember == null}">
-						            			<script>
-											        alert("로그인이 필요합니다.");
-											    </script>
+						            			<a href="/link/link/login">
+							            			<script>
+												        alert("로그인이 필요합니다.");
+												    	location.href="login";
+												    </script>
+												</a>
 						            		</c:when>
 						            	</c:choose>  
 										<div id="content-date">${board.boardDate}</div>

@@ -224,6 +224,7 @@
 	<select id="selectImageListAll" resultType="string">
 		SELECT IMG_RENAME FROM BOARD_IMG
 	</select>
+	
 
 	<!-- 게시글 수정 -->
 	<update id="boardUpdate">
@@ -256,8 +257,7 @@
 		VALUES(SEQ_IMG_NO.NEXTVAL, #{imagePath}, #{imageReName},
 			#{imageOriginal}, #{imageOrder}, #{boardNo}
 		)
-	</insert>
-	
+	</insert>	
 	
 	
 	<!-- 게시글 삭제 -->
@@ -265,6 +265,21 @@
 		UPDATE "BOARD" SET
 		BOARD_HIDE = 'Y'
 		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 내가 쓴 글 목록 조회 -->
+	<select id="selectBoardListMine" resultMap="board_rm">
+		SELECT BOARD_NO, BOARD_TITLE, 
+		TO_CHAR(BOARD_DATE, 'YYYY-MM-DD') AS "BOARD_DATE"
+		FROM BOARD
+		WHERE MEMBER_NO = #{memberNo}
+		AND BOARD_HIDE = 'N'
+	</select>
+	
+	<update id="deleteListMine">
+		UPDATE "BOARD" SET
+		BOARD_HIDE = 'Y'
+		WHERE BOARD_NO = #{boardNo}		
 	</update>
 	
 </mapper>

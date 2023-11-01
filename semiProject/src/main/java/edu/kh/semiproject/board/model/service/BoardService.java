@@ -46,4 +46,15 @@ public interface BoardService {
 	 */
 	Board selectBoard(Map<String, Object> map);
 
+
+	/** 내가 쓴 글 목록 조회
+	 * @param board
+	 * @return
+	 */
+	List<Board> selectBoardListMine(Board board);
+
+
+	int deleteListMine(List<Integer> boardNumbers);
+
+
 }

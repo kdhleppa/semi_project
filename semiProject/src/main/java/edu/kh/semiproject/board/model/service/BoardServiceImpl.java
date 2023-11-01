@@ -46,7 +46,7 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
-	/** 게시글 상세 조회(내가 쓴 글)
+	/** 게시글 상세 조회
  	 * 
 	 */
 	@Override
@@ -127,5 +127,40 @@ public class BoardServiceImpl implements BoardService{
 		
 		return dao.selectImageList();
 	}
+
+	/** 내가 쓴 글 목록 조회
+	 *
+	 */
+	@Override
+	public List<Board> selectBoardListMine(Board board) {
+		
+		return dao.selectBoardListMine(board);
+	}
+
+//	@Override
+//	public void deleteListMine(List<Integer> boardNumbers) {
+//
+//	}
+
+	@Override
+	public int deleteListMine(List<Integer> boardNumbers) {
+		
+		int result = 0;
+		
+		for(int boardNo : boardNumbers) {
+	
+			Board board = new Board();
+			
+			board.setBoardNo(boardNo);
+			
+			if(boardNo != 0) {
+				
+				result = dao.deleteListMine(boardNo);				
+			}
+		}
+		
+		return result;
+	}
+
 
 }

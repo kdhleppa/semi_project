@@ -116,35 +116,56 @@ main {
     height: 80%;
 
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
 
     margin: 50px 150px;
 }
 
-.main-content > div{
+.main-content-title{
+    font-size: 18px;
+    font-weight: bold;
+    
+    width: 100%;
+    height: 10%;
+
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 
-.main-content div{
+.main-content-content{
+    width: 100%;
+    height: 90%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content-content > div{
     font-size: 16px;
     margin-bottom: 10px;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: start;
 }
 
-#content-number :first-child, #content-title :first-child,
-#content-date :first-child{
-    font-size: 18px;
-    font-weight: bold;
-}
+/* 타이틀 지정 */
 
-#checkbox{
+#checkbox-all-div{
     width: 5%;
 }
 
-#content-number{
+#checkbox-all{
+    width: 15px;
+    height: 15px;
+
+    margin: 5px 0px 10px 13px;
+}
+
+#content-number-title{
     width: 10%;
     margin-right: 10px;
     display: flex;
@@ -152,7 +173,7 @@ main {
     justify-content: center;
 }
 
-#content-title{
+#content-title-title{
     width: 73%;
     margin-right: 10px;
     display: flex;
@@ -160,35 +181,43 @@ main {
     justify-content: center;
 }
 
-#content-date{
+#content-date-title{
     width: 12%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#content-number > div:not(#content-number-title),
-#content-title > div:not(#content-title-title),
-#content-date > div:not(#content-date-title){
+#content-number-title,
+#content-title-title,
+#content-date-title{
+    margin: 0 5px 10px 5px;
+}
+
+/* 본문 지정 */
+
+#content-number,
+#content-title,
+#content-date{
     border: 0.5px solid black;
     border-radius: 5px;
     height: 35px;
     margin: 0 5px 10px 5px;
 }
 
-#checkbox div:first-child{
-    height: 32px;
+#checkbox-title-div{
+    width: 5%;
 }
 
-#checkbox input{
+#checkbox-title{
     width: 20px;
     height: 20px;
 
-    margin: 0 10px 15px 0;
+    margin: 10px 0px 10px 10px;
 }
 
-#content-number > div:not(#content-number-title){
-    width: 100%;
+#content-number{
+    width: 10%;
     background-color: rgba(217, 217, 217, 0.44);
 
     display: flex;
@@ -196,25 +225,31 @@ main {
     justify-content: center;
 }
 
-#content-title > div:not(#content-title-title){
-    width: 100%;
+#content-date{
+    width: 12%;
+    background-color: rgba(217, 217, 217, 0.44);
 
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+#content-title{
+    width: 73%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     padding-left: 10px;
+
+    text-decoration: none;
+    color: black;
 }
 
-#content-date > div:not(#content-date-title){
-    width: 100%;
-    background-color: rgba(217, 217, 217, 0.44);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 /* main-content-bottom */
+
 .main-content-bottom{
     display: flex;
     align-self: center;
