@@ -56,7 +56,9 @@
                
              <c:choose>
              	<c:when test="${empty membersProduct}">
-             		<h3>등록하신 물건이 없습니다.</h3>
+             		<div id="center-text">
+				        <h3>등록하신 물건이 없습니다.</h3>
+				    </div>
              	</c:when>
              	<c:otherwise>
              		<c:forEach items="${membersProduct}" var="mp">

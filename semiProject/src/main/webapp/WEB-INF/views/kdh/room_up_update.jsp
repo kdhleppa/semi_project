@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<fmt:formatDate var="currentDate" value="${now}" pattern="yyyy-MM-dd" />
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>매물 등록(방내놓기)</title>
+    <title>매물 등록(수정)</title>
     <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
     <link rel="stylesheet" href="/resources/css/room_up.css">
     <script src="https://kit.fontawesome.com/75b9a966ac.js" crossorigin="anonymous"></script>
@@ -57,7 +59,7 @@
 
                 <div id="top-title">
 
-                방내놓기
+                방내놓기(수정)
 
                 </div>
 
@@ -79,7 +81,7 @@
 
             </div>
 
-		<form action="/product/roomUp" method="POST" name="roomUpFrm" id= "roomUpFrm" enctype="multipart/form-data">    
+		<form action="/product/roomUp/update" method="POST" name="roomUpFrm" id= "roomUpFrm" enctype="multipart/form-data">    
 
             <div class="main">
             
@@ -102,11 +104,11 @@
 
                         주소 검색 <br>
 						<div class="serchDiv">                       
-                        <input type="text" name="productAddress" id="productAddress" placeholder="주소검색창을 눌러주세요" readonly>
+                        <input type="text" name="productAddress" id="productAddress" placeholder="예) 번동 10-1, 강북구 번동" value="${product.productAddress}">
                         <button type="button" onclick="sample6_execDaumPostcode()" class="address-btn">주소검색</button>
                         <button type="button" id="adress-btn" class="address-btn">위치확인</button>
                         </div>
-                        <input type="text" name="productAddressHo" id="productAddressHo" placeholder="예) 101호">
+                        <input type="text" name="productAddressHo" id="productAddressHo" placeholder="예) 101호" value="${product.productAddressHo}">
 						
 						
                       </th>
@@ -117,10 +119,19 @@
                     <tr>
                       <td class="tg1-0lax">방 타입</td>
                       <td class="tg1-0lax">
-
-                        <input type="radio"  name="roomType" value="원룸"> 원룸
-
-                        <input type="radio"  name="roomType" value="투룸"> 투룸
+						<c:choose>
+							<c:when test="${product.roomType == '원룸'}">
+		                        <input type="radio"  name="roomType" value="원룸" checked> 원룸
+		
+		                        <input type="radio"  name="roomType" value="투룸"> 투룸
+							
+							</c:when>
+							<c:otherwise>
+		                        <input type="radio"  name="roomType" value="원룸"> 원룸
+		
+		                        <input type="radio"  name="roomType" value="투룸" checked> 투룸
+							</c:otherwise>
+						</c:choose>
 
                       </td>
                     </tr>
@@ -128,7 +139,7 @@
                       <td class="tg1-0lax">매물 크기</td>
                       <td class="tg1-0lax">
 
-                        <input type="text" name="roomSize" id="roomSize">㎡
+                        <input type="text" name="roomSize" id="roomSize" value="${product.roomSize}">㎡
 
                       </td>
                     </tr>
@@ -136,7 +147,7 @@
                   </table>
 
             </div>
-    		<div id="mapbox">123</div>
+    		<div id="mapbox"></div>
     		
             <div id="transaction-information">
 
@@ -152,9 +163,16 @@
                     <tr>
                       <th class="tg2-0lax">거래 종류</th>
                       <th class="tg2-0lax">
-
-                        <input type="radio" name="productRentType" value="전세" onclick="showFields('전세')"> 전세
-						<input type="radio" name="productRentType" value="월세" onclick="showFields('월세')"> 월세
+						<c:choose>
+							<c:when test="${product.productRentType == '전세'}">
+		                        <input type="radio" name="productRentType" value="전세" onclick="showFields('전세')" checked> 전세
+								<input type="radio" name="productRentType" value="월세" onclick="showFields('월세')"> 월세
+							</c:when>
+							<c:otherwise>
+								<input type="radio" name="productRentType" value="전세" onclick="showFields('전세')"> 전세
+								<input type="radio" name="productRentType" value="월세" onclick="showFields('월세')" checked> 월세
+							</c:otherwise>
+						</c:choose>
 						
 						
                       </th>
@@ -166,13 +184,20 @@
                       <td class="tg2-0lax">
 						<p id="rentTypeMessage">전세 또는 월세를 클릭해 주세요.</p>
                         <span style="display: flex;">
-						<label for="productDeposit" id="depositLabel">보증금&nbsp</label>
-					    <input type="text" name="productDeposit" id="productDeposit" /><span id="depositWon">&nbsp만원</span>
+						<label for="productDeposit" id="depositLabel" >보증금&nbsp</label>
+					    <input type="text" name="productDeposit" id="productDeposit" value="${product.productDeposit}"/><span id="depositWon">&nbsp만원</span>
 					    </span>
 					    <br>
 						<span style="display: flex;">			    
 					    <label for="productMonthlyRent" id="monthlyRentLabel">월세&nbsp&nbsp&nbsp&nbsp</label>
-					    <input type="text" name="productMonthlyRent" id="productMonthlyRent" value="0"/><span id="rentWon">만원</span>
+					    <c:choose>
+					    	<c:when test="${product.productMonthlyRent > 0}">
+					    		<input type="text" name="productMonthlyRent" id="productMonthlyRent" value="${product.productMonthlyRent}"/><span id="rentWon">만원</span>
+					    	</c:when>
+					    	<c:otherwise>
+							    <input type="text" name="productMonthlyRent" id="productMonthlyRent" value="0"/><span id="rentWon">만원</span>
+					    	</c:otherwise>
+					    </c:choose>
 					    </span>        
 					     
                       </td>
@@ -185,7 +210,7 @@
 
                             <p>관리비</p>
 
-                            <input type="int" name="productMaintenace">만원
+                            <input type="int" name="productMaintenace" value="${product.productMaintenace}">만원
 
                       </td>
                     </tr>
@@ -193,14 +218,32 @@
                         <td class="tg2-0lax">입주 가능 일자</td>
                         <td class="tg2-0lax">
 
+							<c:choose>
+								<c:when test="${product.enterDate <= currentDate}">
+									<input type="radio" name="enterDate" id="immediateMoveIn" onclick="toggleInputVisibility()" checked> 즉시 입주
 
-                            <input type="radio" name="enterDate" id="immediateMoveIn" onclick="toggleInputVisibility()"> 즉시 입주
+		                            <input type="radio" name="enterDate" id="dateSelection" onclick="toggleInputVisibility()"> 일자 선택
+		
+		                            <input type="text" name="enterDateText" id="enterDateText" placeholder="예) 20210721" onchange="validateDate()" oninput="updateRadioValue()" style="display: none;">
+								</c:when>
+								<c:otherwise>
+									<input type="radio" name="enterDate" id="immediateMoveIn" onclick="toggleInputVisibility()"> 즉시 입주
 
-                            <input type="radio" name="enterDate" id="dateSelection" onclick="toggleInputVisibility()"> 일자 선택
-
-                            <input type="text" name="enterDateText" id="enterDateText" placeholder="예) 20210721" onchange="validateDate()" oninput="updateRadioValue()" style="display: none;">
-
-                            <input type="checkbox" name="enterDateNego" value="Y"> 협의 가능할 경우
+		                            <input type="radio" name="enterDate" id="dateSelection" onclick="toggleInputVisibility()" checked> 일자 선택
+		
+		                            <input type="text" name="enterDateText" id="enterDateText" placeholder="예) 20210721" onchange="validateDate()" oninput="updateRadioValue()" style="display: none;" value=""${product.enterDate}">
+		
+								
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${product.enterDateNego == 'Y'}">
+		                            <input type="checkbox" name="enterDateNego" value="Y" checked> 협의 가능할 경우
+								</c:when>
+								<c:otherwise>
+								    <input type="checkbox" name="enterDateNego" value="Y"> 협의 가능할 경우
+								</c:otherwise>
+							</c:choose>
 
 
 
@@ -227,10 +270,19 @@
                         <td class="tg3-0lax">난방 시설</td>
                         <td class="tg3-0lax">
 
-                            
-                        <input type="radio" name="heatType" value="중앙난방"> 중앙 난방
+                        <c:choose>
+                        	<c:when test="${product.heatType == '중앙난방'}">
+								<input type="radio" name="heatType" value="중앙난방" checked> 중앙 난방
 
-                        <input type="radio" name="heatType" value="개별난방"> 개별 난방
+		                        <input type="radio" name="heatType" value="개별난방"> 개별 난방                        	
+                        	</c:when>
+                        	<c:otherwise>
+		                        <input type="radio" name="heatType" value="중앙난방"> 중앙 난방
+
+		                        <input type="radio" name="heatType" value="개별난방" checked> 개별 난방                        	
+                        	</c:otherwise>
+                        </c:choose>    
+
                         
 
                         </td>
@@ -241,28 +293,74 @@
                      <th class="tg3-0lax">에어컨</th>
                       <th class="tg3-0lax">
 
-                        
-                        <input type="radio" name="airCon" value="N"> 없음
-
-                        <input type="radio" name="airCon" value="Y"> 있음
+                        <c:choose>
+                        	<c:when test="${product.airCon == 'Y'}">
+		                        <input type="radio" name="airCon" value="N"> 없음
+	
+		                        <input type="radio" name="airCon" value="Y" checked> 있음
+                        	</c:when>
+                        	<c:otherwise>
+    	                        <input type="radio" name="airCon" value="N" checked> 없음
+	
+		                        <input type="radio" name="airCon" value="Y"> 있음
+                        	</c:otherwise>
+                        </c:choose>
                         
                       </th>
                     </tr>
                     <tr>
                       <td class="tg3-0lax">생활 시설</td>
                       <td class="tg3-0lax">
-
-                        <input type="checkbox" name="fridge" value="Y"> 냉장고
-
-                        <input type="checkbox" name="washer" value="Y"> 세탁기
-
-                        <input type="checkbox" name="cctv" value="Y"> CCTV
-
-                        <input type="checkbox" name="doorlock" value="Y"> 도어락 <br>
-
-                        <input type="checkbox" name="stove" value="Y"> 가스레인지
-
-                        <input type="checkbox" name="microwave" value="Y"> 전자레인지
+						
+						
+						<c:choose>
+							<c:when test="${product.fridge == 'Y'}">
+	                        <input type="checkbox" name="fridge" value="Y" checked> 냉장고
+							</c:when>
+							<c:otherwise>
+							<input type="checkbox" name="fridge" value="Y"> 냉장고
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${product.washer == 'Y'}">
+						        <input type="checkbox" name="washer" value="Y" checked> 세탁기
+						    </c:when>
+						    <c:otherwise>
+						        <input type="checkbox" name="washer" value="Y"> 세탁기
+						    </c:otherwise>
+						</c:choose>
+                        <c:choose>
+						    <c:when test="${product.cctv == 'Y'}">
+						        <input type="checkbox" name="cctv" value="Y" checked> CCTV
+						    </c:when>
+						    <c:otherwise>
+						        <input type="checkbox" name="cctv" value="Y"> CCTV
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${product.doorlock == 'Y'}">
+						        <input type="checkbox" name="doorlock" value="Y" checked> 도어락 <br>
+						    </c:when>
+						    <c:otherwise>
+						        <input type="checkbox" name="doorlock" value="Y"> 도어락 <br>
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${product.stove == 'Y'}">
+								<input type="checkbox" name="stove" value="Y" checked> 가스레인지
+							</c:when>
+							<c:otherwise>
+								<input type="checkbox" name="stove" value="Y"> 가스레인지
+							</c:otherwise>
+						</c:choose>						                        
+						<c:choose>
+							<c:when test="${product.microwave == 'Y'}">
+								<input type="checkbox" name="microwave" value="Y" checked> 전자레인지
+							</c:when>
+							<c:otherwise>
+								<input type="checkbox" name="microwave" value="Y"> 전자레인지
+							</c:otherwise>
+						</c:choose>
 
                       </td>
                     </tr>
@@ -286,42 +384,66 @@
                     <tr>
                       <th class="tg4-0lax">방 사진(5장 모두 올려주세요)</th>
                       <th class="tg4-0lax">
+														
+							<c:forEach items="${product.imageList}" var="img">
+				                <c:choose>
+				                    <c:when test="${img.imgOrder == 0}">
+				                        <c:set var="img0" value="${img.imgPath}${img.imgRename}"/>
+				                    </c:when>
+				
+				                    <c:when test="${img.imageOrder == 1}">
+				                        <c:set var="img1" value="${img.imgPath}${img.imgRename}"/>
+				                    </c:when>
+				
+				                    <c:when test="${img.imageOrder == 2}">
+				                        <c:set var="img2" value="${img.imgPath}${img.imgRename}"/>
+				                    </c:when>
+				
+				                    <c:when test="${img.imageOrder == 3}">
+				                        <c:set var="img3" value="${img.imgPath}${img.imgRename}"/>
+				                    </c:when>
+				
+				                    <c:when test="${img.imageOrder == 4}">
+				                        <c:set var="img4" value="${img.imgPath}${img.imgRename}"/>
+				                    </c:when>
+				                </c:choose>
+				            </c:forEach>
 							
 
 				            <div class="img-box">
 				
 				                <div class="boardImg">
 				                    
-				                    <img class="preview" src="">
-				                    
+				                    <img class="preview" src="${img0}">
+				                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
 				                    <span class="delete-image">&times;</span>
 				                </div>
 				                <div class="boardImg">
 				                    
-				                    <img class="preview" src="">
-				                    
+				                    <img class="preview" src="${img1}">
+				                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
 				                    <span class="delete-image">&times;</span>
 				                </div>
 				                <div class="boardImg">
 				                    
-				                    <img class="preview" src="">
-				                    
+				                    <img class="preview" src="${img2}">
+				                    <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
 				                    <span class="delete-image">&times;</span>
 				                </div>
 				                <div class="boardImg">
 				                    
-				                    <img class="preview" src="">
-				                    
+				                    <img class="preview" src="${img3}">
+				                    <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
 				                    <span class="delete-image">&times;</span>
 				                </div>
 				                <div class="boardImg">
 				                    
-				                    <img class="preview" src="">
-				                    
+				                    <img class="preview" src="${img4}">
+				                    <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
 				                    <span class="delete-image">&times;</span>
 				                </div>
 				               
-							 <input type="file" id="fileInput" name="images" accept="image/*" multiple style="display: block;">
+							 
 				
 				               
 				            </div>
@@ -351,10 +473,19 @@
                       <th class="tg5-0lax">엘리베이터</th>
                       <th class="tg5-0lax">
 
+						<c:choose>
+							<c:when test="${product.elevator == 'Y'}">
+								<input type="radio" name="elevator" value="N"> 없음
 
-                        <input type="radio" name="elevator" value="N"> 없음
+	                        	<input type="radio" name="elevator" value="Y" checked> 있음
+							</c:when>
+							<c:otherwise>
+								<input type="radio" name="elevator" value="N" checked> 없음
 
-                        <input type="radio" name="elevator" value="Y"> 있음
+                        		<input type="radio" name="elevator" value="Y"> 있음
+							</c:otherwise>
+						</c:choose>
+                        
                         
 
                       </th>
@@ -365,10 +496,18 @@
                       <td class="tg5-0lax">주차 가능 여부</td>
                       <td class="tg5-0lax">
 
+						<c:choose>
+							<c:when test="${product.parking == 'Y'}">
+                        		<input type="radio" name="parking" value="N"> 불가능
 
-                        <input type="radio" name="parking" value="N"> 불가능
+		                        <input type="radio" name="parking" value="Y" checked> 가능
+		                    </c:when>
+		                    <c:otherwise>
+                          		<input type="radio" name="parking" value="N" checked> 불가능
 
-                        <input type="radio" name="parking" value="Y"> 가능
+		                        <input type="radio" name="parking" value="Y"> 가능
+		                    </c:otherwise>
+		                </c:choose>
 
          
 
@@ -400,7 +539,7 @@
                       <th class="tg6-0lax">제목</th>
                       <th class="tg6-0lax">
 
-                        <input id="Description-title" name = "productTitle" type="text" placeholder="리스트에 노출되는 문구입니다. 40자 이내로 작성해주세요."> <br>
+                        <input id="Description-title" name = "productTitle" type="text" placeholder="리스트에 노출되는 문구입니다. 40자 이내로 작성해주세요." value="${product.productTitle}"> <br>
 
                       
 
@@ -417,7 +556,7 @@
 
                       <td class="tg6-0lax">
                         
-						<textarea name="productContent" rows="20" cols="80" placeholder="매물 상세 페이지에 노출되는 문구입니다. 1000자 이내로 작성해 주세요."></textarea>
+						<textarea name="productContent" rows="20" cols="80" placeholder="매물 상세 페이지에 노출되는 문구입니다. 1000자 이내로 작성해 주세요." value="${product.productContent}"></textarea>
 						<br>
 
                         - 매물 정보와 관련없는 홍보성 정보는 입력할 수 없습니다. <br>
@@ -511,11 +650,14 @@
 	    }
 	</script>
      <script>
-		const centerAddress = "${centerAddress}";
-		console.log(centerAddress);
+     
+	//	const centerAddress = "${centerAddress}";
+	//	console.log(centerAddress);
+	
+	
 		
 	</script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb9b63d71a5408fd96cba9a1674b9d43&libraries=services,clusterer"></script>
-	<script src="/resources/js/room_up.js"></script>
+	<script src="/resources/js/room_up_update.js"></script>
 </body>
 </html>

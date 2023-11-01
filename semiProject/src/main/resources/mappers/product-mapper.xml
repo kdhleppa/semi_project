@@ -30,7 +30,7 @@
 	    <result property="stove" column="STOVE" />
 	    <result property="microwave" column="MICROWAVE" />
 	    <result property="elevator" column="ELEVATOR" />
-	    <result property="registrastionDate" column="REGISTRASTION_DATE" />
+	    <result property="registrastionDate" column="REGISTRATION_DATE" />
 	    <result property="productHide" column="PRODUCT_HIDE" />
 	    
 	    <collection property="imageList"
@@ -111,12 +111,47 @@
 		</select>
 		
 		<!-- 상세보기 -->
+		<!--  
 		<select id="selectProduct" resultMap="product_rm">
 		 	SELECT *
 		 	FROM PRODUCT
 		 	WHERE PRODUCT_NO = #{productNo}
 		</select>
-		
+		 -->
+		  
+		 <select id="selectProduct" resultMap="product_rm">
+		    SELECT 
+		        PRODUCT_NO,
+		        MEMBER_NO,
+		        PRODUCT_ADDRESS,
+		        PRODUCT_ADDRESS_HO,
+		        PRODUCT_TITLE,
+		        PRODUCT_CONTENT,
+		        ROOM_TYPE,
+		        ROOM_SIZE,
+		        PRODUCT_DEPOSIT,
+		        PRODUCT_MONTHLY_RENT,
+		        PRODUCT_RENTTYPE,
+		        PRODUCT_MAINTENACE,
+		        TO_CHAR(ENTER_DATE, 'YYYY-MM-DD') AS ENTER_DATE,
+		        ENTER_DATE_NEGO,
+		        HEAT_TYPE,
+		        PARKING,
+		        AIR_CON,
+		        FRIDGE,
+		        WASHER,
+		        CCTV,
+		        DOORLOCK,
+		        STOVE,
+		        MICROWAVE,
+		        ELEVATOR,
+		        TO_CHAR(REGISTRATION_DATE, 'YYYY-MM-DD') AS REGISTRATION_DATE,
+		        PRODUCT_HIDE
+		    FROM PRODUCT
+		    WHERE PRODUCT_NO = #{productNo}
+		</select>
+		  
+		 
 		<!-- 상세보기 사진선택 -->
 		<select id="selectImageList" resultMap="roomImg_rm">
 			SELECT * 
@@ -124,4 +159,11 @@
 		 	WHERE PRODUCT_NO = #{productNo}
 		 	ORDER BY IMG_ORDER
 		</select>
+		
+		<update id="productDelete">
+			UPDATE "PRODUCT" SET
+			PRODUCT_HIDE = 'Y'
+			WHERE PRODUCT_NO = #{productNo}
+		</update>
+		
 </mapper>

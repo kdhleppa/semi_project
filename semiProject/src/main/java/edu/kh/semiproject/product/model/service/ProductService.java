@@ -26,4 +26,6 @@ public interface ProductService {
 
 	Product selectProduct(int productNo);
 
+	int productDelete(int productNo);
+
 }

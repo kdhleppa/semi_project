@@ -58,6 +58,7 @@ public class ProductController {
 		if(productNo>0) {
 			message = "등록되었습니다.";
 			path += "/link/mapMainLogin";
+			List<Product> products = new ArrayList<Product>();
 			model.addAttribute("centerAddress", product.getProductAddress());
 		} else {
 			message = "등록 실패....";
@@ -101,5 +102,47 @@ public class ProductController {
 		model.addAttribute("sProduct", sProduct);		
 		return "kdh/room_detail_view";
 	}
+	
+	// 물건 삭제
+	@GetMapping("/productDetail/{productNo}/delete")
+	public String productDelete(@PathVariable("productNo") int productNo,
+								RedirectAttributes ra
+			) {
+		
+		int result = service.productDelete(productNo);
+		
+		String path ="redirect:" ;
+		String message = null;
+		
+		if (result > 0) {
+			
+			message = "등록하신 물건이 삭제되었습니다";
+			path += "/link/myList";
+			
+		} else {
+			
+			message = "삭제 실패";
+			path += "/productDetail/" + productNo;
+		}
+		ra.addFlashAttribute("message", message);
+		
+		return path;
+	}
+	
+	// 물건 수정
+	@GetMapping("/productDetail/{productNo}/update")
+	public String productUpdate( @PathVariable("productNo") int productNo,
+								Model model
+			) {
+		
+		Product product = service.selectProduct(productNo);
+		
+		model.addAttribute("product",product);
+		
+		
+		return "kdh/room_up_update";
+	}
 
+	
+	
 }

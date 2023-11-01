@@ -1,4 +1,4 @@
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+var mapContainer = document.getElementById('mapin'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 5 // 지도의 확대 레벨
@@ -11,7 +11,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울 관악구 봉천동 673-136', function(result, status) {
+geocoder.addressSearch(nowAddress, function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
@@ -94,7 +94,33 @@ geocoder.addressSearch('서울특별시 관악구 행운1마길 20 2층201호', 
 });
 
 
+document.getElementById("modifyBtn").addEventListener("click", () => {
    
+  location.href
+    = location.pathname.replace("link", "board2")
+		+ "/update"
+		+ location.search
+    
+//http://localhost:8080/link/boardReadMore/70
+    //				   /board2/boardReadMore/70/update (GET 요청)
+
+});
+
+
+
+// 게시글 삭제 버튼이 클릭되었을 때
+
+document.getElementById("deleteBtn").addEventListener("click", () => {
+   
+  location.href
+    = location.pathname.replace("link", "board2")
+		+ "/delete"
+		+ location.search
+    
+//http://localhost:8080/link/boardReadMore/70
+    //				   /board2/boardReadMore/70/delete (GET 요청)
+
+});
 
 
 

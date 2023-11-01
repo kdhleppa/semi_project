@@ -47,8 +47,9 @@
     FROM PRODUCT
     WHERE PRODUCT_HIDE = 'N'
 </select>
+
  -->
- 
+  
 <select id="selectAllProduct" resultMap="product_rm">
 	SELECT P.*, 
 	(SELECT IMG_PATH || IMG_RENAME FROM ROOM_IMG I
