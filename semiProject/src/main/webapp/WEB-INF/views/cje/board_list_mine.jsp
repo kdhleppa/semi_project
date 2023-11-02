@@ -137,7 +137,7 @@
                 	<a href="#">위로</a>
                 </button>
                 <button id="bottom-nav-list">
-                	<a href="/link/communityList">목록</a>
+                	<a href="/link/boardList">목록</a>
                 </button>
                 <img src="/resources/images/chat_icon.png" id="chat-icon">
             </div>
