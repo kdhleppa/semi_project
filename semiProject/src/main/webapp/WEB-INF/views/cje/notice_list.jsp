@@ -61,9 +61,6 @@
                 	<a href="/link/roomDetailView">내가 올린 매물 목록</a>
                 </div>
                 <div>
-                	<a href="/link/declarationList">허위매물 신고내역</a>
-                </div>
-                <div>
                 	<a href="/link/noticeList">공지사항</a>
                 </div>
             </div>

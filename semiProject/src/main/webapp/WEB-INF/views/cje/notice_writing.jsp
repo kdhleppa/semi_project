@@ -36,7 +36,7 @@
                     <a href="/link/roomUp">방내놓기</a>
                 </div>
                 <div id="board">
-                    <a href="/link/communityList">게시판</a>
+                    <a href="/link/boardList">게시판</a>
                 </div>
                 <div id="mypage">
                     <a href="/link/myInfo">내정보</a>
@@ -54,9 +54,6 @@
                 </div>
                 <div>
                 	<a href="/link/roomDetailView">내가 올린 매물 목록</a>
-                </div>
-                <div>
-                	<a href="/link/declarationList">허위매물 신고내역</a>
                 </div>
                 <div>
                 	<a href="/link/noticeListUser">공지사항</a>
