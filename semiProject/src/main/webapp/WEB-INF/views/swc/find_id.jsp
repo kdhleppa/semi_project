@@ -79,9 +79,7 @@
                     </div>
                 </div>
                     
-                <br><br>
-                <p>아이디 : </p> <h1 id="result1"></h1>
-
+                	
             </div>
 
             <div class="rightmenu">

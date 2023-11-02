@@ -52,12 +52,12 @@ memberId.addEventListener("input", ()=>{
         })
         .catch(err => console.log(err));
 
-    } else{ // 무효
-        idMessage.innerText = "아이디 형식이 유효하지 않습니다";
-        idMessage.classList.add("error");
-        idMessage.classList.remove("confirm");
-        checkObj.memberId = false;
-    }
+	    } else{ // 무효
+	        idMessage.innerText = "아이디 형식이 유효하지 않습니다";
+	        idMessage.classList.add("error");
+	        idMessage.classList.remove("confirm");
+	        checkObj.memberId = false;
+	    }
 
 });
 
@@ -261,13 +261,13 @@ const nickMessage = document.getElementById('nickMessage');
 
 // 닉네임이 입력이 되었을 때
 memberNickname.addEventListener("input", ()=>{
-
+	
     // 닉네임 입력이 되지 않은 경우
     if(memberNickname.value.trim() == ''){
         nickMessage.innerText = "한글,영어,숫자로만 2~10글자";
         nickMessage.classList.remove("confirm", "error");
         checkObj.memberNickname = false;
-        memberNickname.value = ""; 
+        memberNickname.value = "";
         return;
     }
 
@@ -285,8 +285,8 @@ memberNickname.addEventListener("input", ()=>{
                 nickMessage.classList.add("confirm");
                 nickMessage.classList.remove("error");
                 checkObj.memberNickname = true;
-                
-            }else{ // 중복인 경우
+            
+            } else { // 중복인 경우
                 nickMessage.innerText = "이미 사용중인 닉네임 입니다";
                 nickMessage.classList.add("error");
                 nickMessage.classList.remove("confirm");
@@ -294,17 +294,14 @@ memberNickname.addEventListener("input", ()=>{
             }
         })
         .catch(err => console.log(err));
-
-        
-
-
-    } else{ // 무효
+	
+	    } else{ // 무효
         nickMessage.innerText = "닉네임 형식이 유효하지 않습니다";
         nickMessage.classList.add("error");
         nickMessage.classList.remove("confirm");
         checkObj.memberNickname = false;
-    }
-
+    	}
+    
 });
 
 
@@ -490,9 +487,10 @@ document.getElementById("signUpFrm").addEventListener("submit", e=>{
             e.preventDefault(); // form 태그 기본 이벤트 제거
             return; // 함수 종료
             
+        } else {
+        	alert (memberName.value + " 님 회원가입을 축하합니다");
         }
         
-    }	
+    }
     
-    	
 });

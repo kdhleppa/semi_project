@@ -1,8 +1,6 @@
 const checkObj = {
-
     "memberEmail" : false,
     "authKey" : false
-    
 };
 
 
