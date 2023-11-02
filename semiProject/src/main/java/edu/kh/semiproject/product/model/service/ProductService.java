@@ -32,4 +32,6 @@ public interface ProductService {
 
 	List<String> selectImageList();
 
+	String selectProductsNickName(int memberNo);
+
 }

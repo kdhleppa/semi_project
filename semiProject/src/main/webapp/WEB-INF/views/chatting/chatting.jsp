@@ -10,7 +10,7 @@
 	
     <title>채팅방</title>
 
-    <link rel="stylesheet" href="/resources/css/main-style.css">
+    
     <link rel="stylesheet" href="/resources/css/boardlist-style.css">
 	<link rel="stylesheet" href="/resources/css/chatting-style.css">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">

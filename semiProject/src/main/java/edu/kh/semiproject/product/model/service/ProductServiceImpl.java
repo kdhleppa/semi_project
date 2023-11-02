@@ -197,4 +197,9 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selecctImageList();
 	}
 
+	@Override
+	public String selectProductsNickName(int memberNo) {
+		return dao.selectProductsNickName(memberNo);
+	}
+
 }

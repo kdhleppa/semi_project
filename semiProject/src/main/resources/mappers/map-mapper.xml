@@ -62,47 +62,50 @@
 
 
 <select id="conditionSearch" resultMap="product_rm">
-	SELECT *
-	FROM PRODUCT
-	WHERE PRODUCT_HIDE = 'N'
+	SELECT P.*, 
+	(SELECT IMG_PATH || IMG_RENAME FROM ROOM_IMG I
+			WHERE I.PRODUCT_NO = P.PRODUCT_NO
+			AND IMG_ORDER = 0) THUMBNAIL
+	FROM PRODUCT P
+	WHERE P.PRODUCT_HIDE = 'N'
 	<choose>
 		<when test="roomType == '원룸'">
-		AND ROOM_TYPE = #{roomType}
+		AND P.ROOM_TYPE = #{roomType}
 		</when>
 		<when test="roomType == '투룸'">
-		AND ROOM_TYPE = #{roomType}
+		AND P.ROOM_TYPE = #{roomType}
 		</when>
 		<otherwise>
-		AND (ROOM_TYPE = '원룸' OR ROOM_TYPE= '투룸')
+		AND (P.ROOM_TYPE = '원룸' OR P.ROOM_TYPE= '투룸')
 		</otherwise>
 	</choose>
 	<choose>
 		<when test="productRentType == '전세'">
-			AND PRODUCT_RENTTYPE = #{productRentType}
-			
+			AND P.PRODUCT_RENTTYPE = #{productRentType}
 			<if test="productDeposit !=null">
 				<![CDATA[
-					AND PRODUCT_DEPOSIT <= #{productDeposit}
+					AND P.PRODUCT_DEPOSIT <= #{productDeposit}
 				]]>
 			</if>
 		</when>
 		<when test="productRentType == '월세'">
-			AND PRODUCT_RENTTYPE = #{productRentType}
+			AND P.PRODUCT_RENTTYPE = #{productRentType}
 			<if test="productDeposit !=null">
 				<![CDATA[
-				AND PRODUCT_DEPOSIT <= #{productDeposit}
+				AND P.PRODUCT_DEPOSIT <= #{productDeposit}
 				]]>
 			</if>
 			<if test="productMonthlyRent != null">
 				<![CDATA[
-	        	AND PRODUCT_MONTHLY_RENT <= #{productMonthlyRent}
+	        	AND P.PRODUCT_MONTHLY_RENT <= #{productMonthlyRent}
 	        	]]>
     		</if>
 		</when>
 		<otherwise>
-		AND (PRODUCT_RENTTYPE = '전세' OR PRODUCT_RENTTYPE = '월세')
+		AND (P.PRODUCT_RENTTYPE = '전세' OR P.PRODUCT_RENTTYPE = '월세')
 		</otherwise>
 	</choose>
+	ORDER BY P.PRODUCT_NO
 </select>
 
 

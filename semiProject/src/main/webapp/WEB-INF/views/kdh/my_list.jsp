@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>나의 매물 목록</title>
     <link rel="stylesheet" href="/resources/css/my_list.css">
-    <link rel="stylesheet" href="/resources/css/topbar_atag_black_style.css">
+    <link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
 </head>
 <body>
     <div class="container">
