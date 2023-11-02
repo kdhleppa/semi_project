@@ -36,7 +36,7 @@
                     <a href="/link/roomUp">방내놓기</a>
                 </div>
                 <div id="board">
-                    <a href="/link/communityList">게시판</a>
+                    <a href="/link/boardList">게시판</a>
                 </div>
                 <div id="mypage">
                     <a href="/link/myInfo">내정보</a>
