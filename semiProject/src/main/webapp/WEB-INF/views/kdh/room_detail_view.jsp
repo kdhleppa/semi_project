@@ -48,18 +48,28 @@
                      </div>
                   </c:when>
                </c:choose> 
-				                
-                <div id="roomup">
-                    <a href="/link/roomUp">방내놓기</a>
-                </div>
-
-                <div id="board">
-                    <a href="/link/boardList">게시판</a>
-                </div>
-                <div id="mypage">
-                    <a href="/link/myInfo">내정보</a>
-                </div>
-
+				<c:choose>
+					<c:when test="${loginMember != null}">                
+	                <div id="roomup">
+	                    <a href="/link/roomUp">방내놓기</a>
+	                </div>
+	
+	                <div id="board">
+	                    <a href="/link/boardList">게시판</a>
+	                </div>
+	                <div id="mypage">
+	                    <a href="/link/myInfo">내정보</a>
+	                </div>
+	                </c:when>
+	                <c:otherwise>
+		                <div id="board">
+		                    <a href="/link/login">로그인</a>
+		                </div>
+		                <div id="mypage">
+		                    <a href="/link/signUp">회원가입</a>
+		                </div>
+	                </c:otherwise>
+				</c:choose>
             </section>
         </nav>
 
@@ -201,13 +211,28 @@
 	                <button id="modifyBtn">수정</button>
 	                <button id="deleteBtn">삭제</button>
                 </c:if>
+                <c:if test="${loginMember == null}">
+                	<br><br><br><br>
+                </c:if>
                 </div>
                 
             </div>
             <div id="main-right">
                 <div class="right-btn-container">
-                    <button class="right-btn rb1"><img src="/resources/images/chat.png" class="right-icon">쪽지로 문의하기</button>
-                    <button class="right-btn"><img src="/resources/images/warning.png" class="right-icon">허위매물 신고하기</button>
+                    <c:choose>
+                    	<c:when test="${loginMember != null}">
+		                    <a href="/chatting">
+		                    	<div class="right-btn rb1"><img src="/resources/images/chat.png" class="right-icon">채팅으로 문의하기</div>
+		                    </a>
+		                    <div class="right-btn">닉네임 : ${productsNickName}</div>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<a href="/link/login" onclick="confirmLink()">
+		                    	<div class="right-btn rb1"><img src="/resources/images/chat.png" class="right-icon">채팅으로 문의하기</div>
+		                    </a>
+		                    <div class="right-btn">닉네임 : ${productsNickName}</div>
+                    	</c:otherwise>
+                    </c:choose>
                 </div>
                 <p id="linkname">매물근처 제휴 중개사보기</p>
                 <div class="right-link-container">
@@ -233,7 +258,7 @@
                         </div>
                         <div id="map3"></div>
                     </div>
-                    <div class="right-link">3</div>
+                    
                     
                 </div>
             </div>

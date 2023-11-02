@@ -103,7 +103,7 @@ function displayMarkersWithinBounds(products) {
                     productTextContainer.className = "preview-text-container";
 
                     var rentTypeElem = document.createElement("p");
-                    rentTypeElem.textContent = product.productRentType;
+                    rentTypeElem.textContent = product.roomType + " " + product.productRentType;
                     productTextContainer.appendChild(rentTypeElem);
 
                     var depositElem = document.createElement("p");

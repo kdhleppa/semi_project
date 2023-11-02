@@ -151,7 +151,9 @@
 		    WHERE PRODUCT_NO = #{productNo}
 		    AND PRODUCT_HIDE = 'N'
 		</select>
-		  
+		 
+		 
+		
 		 
 		<!-- 상세보기 사진선택 -->
 		<select id="selectImageList" resultMap="roomImg_rm">

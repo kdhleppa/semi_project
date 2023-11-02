@@ -18,7 +18,7 @@
     <div class="container">
         <nav>
             <section class="logo">
-                <a href="http://192.168.120.16:5500/SemiDesign/main.html">
+                <a href="/">
                     <img src="/resources/images/logo.png">
                 </a>
             </section>
@@ -125,7 +125,7 @@
             <div class="bottom-center">
                 <div>
                     <a>회사소개</a> |
-                    <a>이용 약관</a> |
+                    <a href="/link/terms">이용 약관</a> |
                     <a>개인정보 처리방침</a> |
                     <a>매물관리규정</a>
                 </div>

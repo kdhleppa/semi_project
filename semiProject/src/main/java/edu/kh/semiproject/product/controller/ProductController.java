@@ -98,9 +98,10 @@ public class ProductController {
 								@SessionAttribute(value="loginMember", required = false)Member loginMember) {
 		
 		Product sProduct = service.selectProduct(productNo);
+		int memberNo = sProduct.getMemberNo();
+		String productsNickName = service.selectProductsNickName(memberNo);
 		
-		
-		
+		model.addAttribute("productsNickName", productsNickName);
 		model.addAttribute("sProduct", sProduct);		
 		return "kdh/room_detail_view";
 	}

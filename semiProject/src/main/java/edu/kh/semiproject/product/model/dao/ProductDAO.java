@@ -76,4 +76,8 @@ public class ProductDAO {
 		return sqlSession.selectList("productMapper.selectImageListAll");
 	}
 
+	public String selectProductsNickName(int memberNo) {
+		return sqlSession.selectOne("memberMapper.selectProductsNickName", memberNo);
+	}
+
 }

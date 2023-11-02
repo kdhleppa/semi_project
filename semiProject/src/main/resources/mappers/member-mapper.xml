@@ -47,6 +47,11 @@
 			, DEFAULT)
 	</insert>
 	
+	<select id="selectProductsNickName" resultType="string">
+		 	SELECT MEMBER_NICKNAME
+		 	FROM "MEMBER"
+		 	WHERE MEMBER_NO = #{memberNo} 
+	</select> 
 	
 	
 </mapper>

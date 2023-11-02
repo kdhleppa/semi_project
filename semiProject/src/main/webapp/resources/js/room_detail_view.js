@@ -1,3 +1,12 @@
+function confirmLink(event) {
+  event.preventDefault();
+
+  if (confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")) {
+    window.location.href = event.target.href;
+  }
+}
+
+
 var mapContainer = document.getElementById('mapin'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표

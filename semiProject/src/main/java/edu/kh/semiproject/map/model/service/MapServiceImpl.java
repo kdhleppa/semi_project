@@ -29,7 +29,6 @@ public class MapServiceImpl implements MapService{
 
 	@Override
 	public List<Product> conditionSearch(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return dao.conditionSearch(map);
 	}
 

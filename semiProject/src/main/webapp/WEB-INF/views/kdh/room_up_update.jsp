@@ -102,7 +102,7 @@
 
                         주소 검색 <br>
 						<div class="serchDiv">                       
-                        <input type="text" name="productAddress" id="productAddress" placeholder="예) 번동 10-1, 강북구 번동" value="${product.productAddress}">
+                        <input type="text" name="productAddress" id="productAddress" placeholder="예) 번동 10-1, 강북구 번동" value="${product.productAddress}" readonly>
                         <button type="button" onclick="sample6_execDaumPostcode()" class="address-btn">주소검색</button>
                         <button type="button" id="adress-btn" class="address-btn">위치확인</button>
                         </div>
@@ -213,7 +213,7 @@
                     </tr>
                     <tr>
                         <td class="tg2-0lax">입주 가능 일자</td>
-                        <td class="tg2-0lax"> "${currentDate}"
+                        <td class="tg2-0lax"> 
 
 							<c:choose>
 								<c:when test="${product.enterDate <= currentDate}">
