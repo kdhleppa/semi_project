@@ -31,10 +31,6 @@
             <%-- 각 글씨에 링크 걸것 --%>
             <section class="menu">
 
-                <div id="favorites">
-                    <a href="/link/likeList">관심목록</a>
-                </div>
-
                 <div id="roomup">
                     <a href="/link/roomUp">방내놓기</a>
                 </div>
@@ -88,8 +84,13 @@
               
             </div>
             <div id="main-right">
-                
-                
+                <c:if test="${not empty loginMember}" >
+		           <div id="chattingicon">
+		               <a href="/chatting">
+		                  <img src="/resources/images/chat_icon.png" id="chat-icon">
+		              </a>
+		           </div>
+		        </c:if>
             </div>
 
 

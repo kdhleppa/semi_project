@@ -97,7 +97,13 @@
             
         </div>
 
-        
+        <c:if test="${not empty loginMember}" >
+           <div id="chattingicon">
+               <a href="/chatting">
+                  <img src="/resources/images/chat_icon.png" id="chat-icon">
+              </a>
+           </div>
+        </c:if>
         
 
         

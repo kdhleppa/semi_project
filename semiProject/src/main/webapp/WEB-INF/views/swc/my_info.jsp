@@ -36,7 +36,7 @@
                 </div>
 
                 <div id="roomup">
-                    <a href="/link/roomUpFront">방내놓기</a>
+                    <a href="/link/roomUp">방내놓기</a>
                 </div>
 
                 <div id="myInfo">
@@ -54,15 +54,7 @@
                 </div>
                 
                 <div>
-                   <a href="/link/oneOnOneListUser">1:1 문의 내역</a>
-                </div>
-                
-                <div>
                    <a href="/link/myList">내가 올린 매물</a>
-                </div>
-                
-                <div>
-                   <a href="/link/declarationList">허위매물 신고내역</a>
                 </div>
                 
                 <div>
@@ -132,7 +124,14 @@
             </form>
 
             <div class="rightmenu">
-                
+                <%-- 로그인 했을 때 채팅 보여짐 --%>
+				<c:if test="${not empty loginMember}" >
+				   <div id="chattingicon">
+				       <a href="/chatting">
+				          <img src="/resources/images/chat_icon.png" id="chat-icon">
+				      </a>
+				   </div>
+				</c:if>
             </div>
                     
         </div>
@@ -147,14 +146,7 @@
 	</script>
 	</c:if>
     	
-   	<%-- 로그인 했을 때 채팅 보여짐 --%>
-    <c:if test="${not empty loginMember}" >
-       	<div id="chattingicon">
-            <a href="/chatting">
-            	<img src="/resources/images/채팅아이콘.png">
-        	</a>
-       	</div>
-   	</c:if>
+
    	
     <script src="/resources/js/myInfo.js"></script>
     

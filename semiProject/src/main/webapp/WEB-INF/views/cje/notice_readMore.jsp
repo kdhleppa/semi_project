@@ -51,9 +51,6 @@
                 	<a href="/link/myInfoUpdate">정보수정</a>
                 </div>
                 <div>
-                	<a href="/link/oneOnOneListUser">1:1 문의 내역</a>
-                </div>
-                <div>
                 	<a href="/link/roomDetailView">내가 올린 매물 목록</a>
                 </div>
                 <div>
@@ -124,7 +121,13 @@
                 <button id="bottom-nav-list">
                 	<a href="/link/noticeList">목록</a>
                 </button>
-                <img src="/resources/images/chat_icon.png" id="chat-icon">
+                <c:if test="${not empty loginMember}" >
+		           <div id="chattingicon">
+		               <a href="/chatting">
+		                  <img src="/resources/images/chat_icon.png" id="chat-icon">
+		              </a>
+		           </div>
+		        </c:if>
             </div>
         </main>
     </div>
