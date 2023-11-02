@@ -59,7 +59,7 @@ public class MemberController {
 			
 		}
 		
-		message = "로그인 성공";
+		System.out.println("로그인 성공");
 		
 		return path;
 		
