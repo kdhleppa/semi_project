@@ -83,6 +83,10 @@ function displayMarkersWithinBounds(products) {
                 mainLeftElem.appendChild(emptyMsgElem);
             } else {
                 moveProducts.forEach(product => {
+                	
+                	var linkElem = document.createElement("a");
+                	linkElem.href = "/productDetail/" + product.productNo;
+                	
                     var productContainer = document.createElement("div");
                     productContainer.className = "preview-container";
                     
@@ -118,8 +122,10 @@ function displayMarkersWithinBounds(products) {
                         productTextContainer.appendChild(maintenanceElem);
                     }
 
+					
                     productContainer.appendChild(productTextContainer);
-                    mainLeftElem.appendChild(productContainer);
+                    linkElem.appendChild(productContainer);
+                    mainLeftElem.appendChild(linkElem);
                 });
             }
         });

@@ -97,8 +97,7 @@ geocoder.addressSearch('서울특별시 관악구 행운1마길 20 2층201호', 
 document.getElementById("modifyBtn").addEventListener("click", () => {
    
   location.href
-    = location.pathname.replace("link", "board2")
-		+ "/update"
+    += "/update"
 		+ location.search
     
 //http://localhost:8080/link/boardReadMore/70
@@ -113,8 +112,7 @@ document.getElementById("modifyBtn").addEventListener("click", () => {
 document.getElementById("deleteBtn").addEventListener("click", () => {
    
   location.href
-    = location.pathname.replace("link", "board2")
-		+ "/delete"
+    += "/delete"
 		+ location.search
     
 //http://localhost:8080/link/boardReadMore/70

@@ -69,11 +69,10 @@
 
                 <div id="bottom-title">
 
-                    전/ 월세 매물만 등록할 수 있습니다.<br>
-                        1. 1개의 매물만 등록 가능하며, 부둥이에서 직거래로 표시됩니다.<br>
+                    원룸 투룸 전/ 월세 매물만 등록할 수 있습니다.<br>
+                        1. 1개의 매물만 등록만 추천드리며, 꼬집에서 직거래로 표시됩니다.<br>
                         2. 주소를 다르게 입력할 경우 허위매물로 신고될 수 있으니 꼭 동일하게 입력 바랍니다. <br>
                         3. 등록한 매물은 30일 간 노출됩니다. <br>
-                        4. 하나 이상의 물건등록을 원하는 임대인은 별도 인증이 필요합니다. <br>
 
                 </div>
 
@@ -185,7 +184,7 @@
 
                             <p>관리비</p>
 
-                            <input type="int" name="productMaintenace">만원
+                            <input type="int" name="productMaintenace" id="productMaintenace">만원
 
                       </td>
                     </tr>
@@ -198,7 +197,7 @@
 
                             <input type="radio" name="enterDate" id="dateSelection" onclick="toggleInputVisibility()"> 일자 선택
 
-                            <input type="text" name="enterDateText" id="enterDateText" placeholder="예) 20210721" onchange="validateDate()" oninput="updateRadioValue()" style="display: none;">
+                            <input type="date" name="enterDateText" id="enterDateText" onchange="validateDate()" oninput="updateRadioValue()" style="display: none;">
 
                             <input type="checkbox" name="enterDateNego" value="Y"> 협의 가능할 경우
 
