@@ -37,7 +37,7 @@
 
 			<section class="menu">
                 <div id="map">
-                    <a href="/link/mapMainNotLogin">지도</a>
+                    <a href="/link/mapMainLogin">지도</a>
                 </div>
                 <div id="roomup">
                     <a href="/link/roomUp">방내놓기</a>
@@ -166,7 +166,13 @@
                 
             </div>
             <div class="right">
-                <img src="/resources/images/chat_icon.png" id="chat-icon">
+                <c:if test="${not empty loginMember}" >
+		           <div id="chattingicon">
+		               <a href="/chatting">
+		                  <img src="/resources/images/chat_icon.png" id="chat-icon">
+		              </a>
+		           </div>
+		        </c:if>
             </div>
         </main>
     </div>

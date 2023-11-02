@@ -23,10 +23,6 @@
 
     <section class="menu">
 
-        <div id="favorites">
-            <a href="/link/likeList">관심목록</a>
-        </div>
-
         <div id="roomup">
             <a href="/link/roomUp">방내놓기</a>
         </div>
