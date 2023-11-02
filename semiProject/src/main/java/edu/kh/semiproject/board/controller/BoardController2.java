@@ -133,7 +133,7 @@ public class BoardController2 { // 삽입, 수정, 삭제 구현
 		System.out.println("boardImage::" + boardImage);
 		
 		// 1) boardNo를 커멘드 객체(board)에 셋팅
-		board.setBoardNo(boardNo);
+		board.setBoardNo(boardNo); // 지워도 될까? 확인필요
 		// board에 (boardNo, boardTitle, boardContent) 담겨져 있음
 		
 		// 2) 이미지 서버 저장경로, 웹 접근 경로

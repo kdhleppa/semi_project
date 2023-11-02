@@ -3,6 +3,8 @@ package edu.kh.semiproject.notice.model.service;
 import java.util.List;
 import java.util.Map;
 
+import edu.kh.semiproject.notice.model.dto.Notice;
+
 public interface NoticeService {
 
 	// 게시글 목록 조회 service
@@ -21,5 +23,7 @@ public interface NoticeService {
 	 * @return
 	 */
 	List<String> selectImageList();
+
+	Notice selectBoard(Map<String, Object> map);
 
 }

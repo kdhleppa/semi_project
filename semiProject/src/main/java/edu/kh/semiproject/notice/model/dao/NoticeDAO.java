@@ -8,8 +8,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import edu.kh.semiproject.board.model.dto.Board;
-import edu.kh.semiproject.board.model.dto.Pagination;
 import edu.kh.semiproject.notice.model.dto.Notice;
 
 @Repository
@@ -61,6 +59,15 @@ public class NoticeDAO {
 	public List<Map<String, Object>> selectPrevNextBoardNo(int noticeNo) {
 		
 		return sqlSession.selectList("noticeMapper.selectPrevNextBoardNo", noticeNo);
+	}
+	
+	/** 수정을 위해 게시글 단순 상세 조회
+	 * @param map
+	 * @return
+	 */
+	public Notice selectBoard(Map<String, Object> map) {
+
+		return sqlSession.selectOne("noticeMapper.selectBoardDetail", map);
 	}
 
 	/** 조회수 증가 처리
@@ -115,6 +122,8 @@ public class NoticeDAO {
 		
 		return sqlSession.selectList("noticeMapper.selectImageListAll");
 	}
+
+
 
 	
 }

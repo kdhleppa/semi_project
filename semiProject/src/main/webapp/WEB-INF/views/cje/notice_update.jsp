@@ -7,8 +7,8 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/resources/css/topbar_atag_white_style.css">
 	<link rel="stylesheet" href="/resources/css/sidebar_atag_black_style.css">
-	<link rel="stylesheet" href="/resources/css/board_writing.css">
-    <title>자유게시판 글쓰기</title>
+	<link rel="stylesheet" href="/resources/css/notice_writing.css">
+    <title>공지사항 등록 (관리자 페이지)</title>
 </head>
 <body>
 	<div class="container">
@@ -45,14 +45,20 @@
         </nav>
 
         <main>
-        
             <div class="leftmenu">
-            	<a href="/link/boardListMine">내가 쓴 글</a>
+                <div>
+                	<a href="/link/myInfoUpdate">정보수정</a>
+                </div>
+                <div>
+                	<a href="/link/roomDetailView">내가 올린 매물 목록</a>
+                </div>
+                <div>
+                	<a href="/link/noticeListUser">공지사항</a>
+                </div>
             </div>
-            
             <div class="content">
                 <div class="menutitle">
-                    자유 게시판
+                    공지사항 수정
                 </div>
                 <div class="main-content">
                     <div class="main-content-left"></div>
@@ -60,20 +66,18 @@
                     <form action="update" method="POST" 
                     	id="boardWriteFrm" class="boardUpdateFrm" enctype="multipart/form-data">
 	                    <div class="main-content-main">
-	                        <input id="content-title" value="${board.boardTitle}" name="boardTitle"></input>
+	                        <input id="content-title" value="${notice.noticeTitle}" name="noticeTitle"></input>
 	                        
-	                        <div class="boardImg" items="${board.imageList}" var="img">
+	                        <div class="boardImg" items="${notice.imageList}" var="img">
 			                    <label>
-			                        <img class="preview" src="${board.imageList[0].imagePath}${board.imageList[0].imageReName}" style="max-width: 300px; max-height: 300px;">
+			                        <img class="preview" src="${notice.imageList[0].imagePath}${notice.imageList[0].imageReName}" style="max-width: 300px; max-height: 300px;">
 			                    </label>
-			                    <input type="file" class="inputImage" id="imageInput" name="boardImage" style="display:none;" accept="image/*">
+			                    <input type="file" class="inputImage" id="imageInput" name="noticeImage" style="display:none;" accept="image/*">
 			                    <span class="delete-image">&times;</span>
 		                    	<button type="button" id="imageButton">이미지</button>
 			                </div>
 			                
-			                <textarea id="content-text" name="boardContent" rows="20" cols="40">${board.boardContent}</textarea>
-	                        <%--<input id="content-text" name="boardContent" value="${board.boardContent}"></input>  --%>
-  
+	                        <input id="content-text" name="noticeContent" value="${notice.noticeContent}"></input>                        
 	                        
 	                        <div id="content-modifybutton">
 	                        	<button type="submit" id="registerButton">등록하기</button>
@@ -91,10 +95,9 @@
                     <div class="main-content-right"></div> 
                 </div>
             </div>
-
             <div class="right">
                 <button id="bottom-nav-list">
-                	<a href="/link/boardList">목록</a>
+                	<a href="/link/noticeList">목록</a>
                 </button>
                 <img src="/resources/images/chat_icon.png" id="chat-icon">
             </div>
@@ -107,6 +110,6 @@
 		</script>
 	</c:if>
     
-    <script src="/resources/js/boardUpdate.js"></script>
+    <script src="/resources/js/noticeUpdate.js"></script>
 </body>
 </html>

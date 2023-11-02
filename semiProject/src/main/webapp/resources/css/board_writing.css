@@ -178,6 +178,11 @@ main {
     justify-content: center;
 }
 
+textarea {
+	resize : none;
+	
+}
+
 /* main - content - main-content - boardImg */
 
 .boardImg{

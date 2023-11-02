@@ -69,6 +69,16 @@ public class NoticeServiceImpl implements NoticeService{
 
 		
 	}
+	
+	/** 수정을 위해 게시글 단순 상세 조회
+	 *
+	 */
+	@Override
+	public Notice selectBoard(Map<String, Object> map) {
+
+		return dao.selectBoard(map);
+	}
+	
 
 	/** 조회수 증가 처리
 	 *
@@ -115,5 +125,7 @@ public class NoticeServiceImpl implements NoticeService{
 		
 		return dao.selectImageList();
 	}
+
+
 
 }

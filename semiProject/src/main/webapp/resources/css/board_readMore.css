@@ -211,6 +211,11 @@ main {
     justify-content: center;
 }
 
+textarea {
+	resize : none;
+	
+}
+
 /* main - content - main-content - content-text */
 #content-text{
     font-size: 15px;

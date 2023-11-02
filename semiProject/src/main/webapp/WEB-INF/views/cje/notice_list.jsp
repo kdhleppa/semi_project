@@ -104,7 +104,7 @@
 					</c:choose>
 					
 					<div class="main-content-bottom">
-						<form action="/link/boardList" method="get" id="boardSearch">
+						<form action="/link/noticeList" method="get" id="boardSearch">
 							<div class="search">
 			                    <select name="key" id="search-type">
 			                        <option value="t">제목</option>
