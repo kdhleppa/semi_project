@@ -68,7 +68,7 @@
 						
 						<c:otherwise>
 							<div class="main-content-title">
-								<div id="checkbox-all-div"><input type="checkbox" id="checkbox-all"></div>
+								<div id="checkbox-all-div"><input type="checkbox" id="checkbox-all" class="checkbox-all"></div>
 								<div id="content-number-title">번호</div>
 								<div id="content-title-title">제목</div>
 								<div id="content-date-title">등록일</div>
@@ -77,7 +77,7 @@
 							<div class="main-content-content">
 								<c:forEach items="${boardList}" var="board" >
 									<div class="main-content-real">
-										<div id="checkbox-title-div"><input type="checkbox" id="checkbox-title" value="${board.boardNo}"></div>
+										<div id="checkbox-title-div"><input type="checkbox" id="checkbox-title" class="checkbox-title" value="${board.boardNo}"></div>
 										<div id="content-number">${board.boardNo}</div>
 				            			<a href="/link/boardReadMore/${board.boardNo}" id="content-title">${board.boardTitle}</a>
 				            			<div id="content-date">${board.boardDate}</div>
@@ -89,19 +89,19 @@
 					</c:choose>
 					
 					<script>
-						$('#checkbox-all').change(function(){
+						$('.checkbox-all').change(function(){
 							const allCheck = $(this);
 							const allChecked = allCheck.prop('checked');
 
-							$('#checkbox-title').prop('checked', allChecked);
+							$('.checkbox-title').prop('checked', allChecked);
 						})
 
-						$('#checkbox-title').change(function(){
-							const checkboxCount = $('#checkbox-title').length;
-							const checkboxCheckedCount = $('#checkbox-title:checked').length;
+						$('.checkbox-title').change(function(){
+							const checkboxCount = $('.checkbox-title').length;
+							const checkboxCheckedCount = $('.checkbox-title:checked').length;
 							const allChecked = checkboxCount == checkboxCheckedCount;
 
-							$('#checkbox-all').prop('checked', allChecked);
+							$('.checkbox-all').prop('checked', allChecked);
 						})
 					</script>
 					

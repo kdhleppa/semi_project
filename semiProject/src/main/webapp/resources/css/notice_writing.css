@@ -198,6 +198,9 @@ main {
     text-align: center;
 }
 
+#selectedImageName {
+    line-height: 32px;
+}
 
 /* main - content - main-content - content-text */
 #content-text{

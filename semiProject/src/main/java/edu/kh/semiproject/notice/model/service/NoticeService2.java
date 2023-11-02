@@ -19,6 +19,19 @@ public interface NoticeService2 {
 	 */
 	int noticeInsert(Notice notice, MultipartFile noticeImage, String webPath, String filePath)
 			 throws IllegalStateException, IOException, FileUploadException ;
+	
+	/** 게시글 수정 서비스
+	 * @param notice
+	 * @param noticeImage
+	 * @param webPath
+	 * @param filePath
+	 * @param deleteImage
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
+	int boardUpdate(Notice notice, MultipartFile noticeImage, String webPath, String filePath, String deleteImage)
+			throws IllegalStateException, IOException;
 
 	/** 게시글 삭제 서비스
 	 * @param map

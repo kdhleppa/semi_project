@@ -15,7 +15,6 @@ import edu.kh.semiproject.board.model.dao.BoardDAO2;
 import edu.kh.semiproject.board.model.dto.Board;
 import edu.kh.semiproject.board.model.dto.BoardImage;
 import edu.kh.semiproject.board.model.exception.ImageDeleteException;
-import edu.kh.semiproject.common.scheduling.ImageDeleteScheduling;
 import edu.kh.semiproject.common.utility.Util;
 
 @Service
@@ -48,8 +47,8 @@ public class BoardServiceImpl2 implements BoardService2{
 		int boardNo = dao.boardInsert(board);
 		
 		System.out.println("board::" + board);
-		System.out.println("boardNo DAO::" + boardNo);
-		System.out.println("0 ::" + boardImage);
+		System.out.println("boardNo::" + boardNo);
+		System.out.println("boardImage::" + boardImage);
 		
 		// 2. 게시글 삽입 성공 시
 		// 업로드된 이미지가 있다면 BOARD_IMG 테이블에 삽입하는 dao호출
@@ -57,7 +56,7 @@ public class BoardServiceImpl2 implements BoardService2{
 			
 			BoardImage img = new BoardImage(); // 실제업로드된 파일정보 기록할 곳
 
-			if(boardImage != null) { // 업로드된 파일이 있다면	
+			if(!boardImage.isEmpty()) { // 업로드된 파일이 있다면	
 				
 				// img에 파일 정보를 담는다
 				img.setImagePath(webPath); // 웹 접근 경로
@@ -73,8 +72,10 @@ public class BoardServiceImpl2 implements BoardService2{
 				img.setImageReName( Util.fileRename(fileName) ); // 변경명
 			}
 			
+			System.out.println("img:" + img);
 			if(img != null) {
 								
+				// BOARD_IMG 테이블에 insert 하는 dao 호출
 				int result = dao.insertImage(img);
 				
 				if(result == 1) { // insert 성공했다면
@@ -144,7 +145,9 @@ public class BoardServiceImpl2 implements BoardService2{
 			
 			BoardImage img = new BoardImage(); // 실제업로드된 파일정보 기록할 곳
 
-			if(boardImage != null) { // 업로드된 파일이 있다면	
+			System.out.println("boardImage::" + boardImage);
+			
+			if(!boardImage.isEmpty()) { // 업로드된 파일이 있다면	
 				
 				// img에 파일 정보를 담는다
 				img.setImagePath(webPath); // 웹 접근 경로
@@ -162,11 +165,11 @@ public class BoardServiceImpl2 implements BoardService2{
 				if(rowCount == 0 ) {
 					// 수정실패 -> db에 이미지가 없었다는 뜻 -> 이미지 삽입해주면됨
 					rowCount = dao.imageInsert(img);
-				}				
+				}
 			}
 			
+			System.out.println("img::"+ img);
 			
-			// 질문!~!! 이걸 못해서.. 서버에 변경된 이미지가 저장이 안되는듯함
 			// 5. img에 있는 이미지만 서버에 저장(transferTo())
 			if(img != null) {
 				

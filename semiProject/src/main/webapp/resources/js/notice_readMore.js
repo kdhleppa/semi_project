@@ -2,11 +2,12 @@
 document.getElementById("modifyButton").addEventListener("click", () => {
 	
 	location.href 
-		= location.pathname.replace("board", "board2")
+		= location.pathname.replace("link", "notice2")
 			+ "/update"
 			+ location.search
 			
-		// /board2/2/2006/update?cd=1 (GET)	
+//http://localhost:8080/link/boardReadMore/70
+    //				   /notice2/boardReadMore/70/update (GET 요청)
 	
 
 });

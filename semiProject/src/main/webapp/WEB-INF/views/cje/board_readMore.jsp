@@ -72,7 +72,7 @@
                         <div id="content-text">${current.boardContent}
                         	<c:if test="${not empty current.imageList}">
                         		<br>
-                        		<div class="img-box">                        		
+                        		<div class="img-box">
                         			<c:set var="path"
 					            	 	value="${current.imageList[0].imagePath}${current.imageList[0].imageReName}" />
 				                    <img src="${path}" style="max-width: 300px; max-height: 300px;">   
