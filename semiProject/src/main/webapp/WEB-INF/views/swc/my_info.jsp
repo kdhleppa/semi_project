@@ -94,7 +94,7 @@
                         <label for="imageInput"></label>
                         <input style="margin-left: 10px; background-color: white;" type="file" name="profileImage" id="imageInput" accept="image/*">
                         <button>변경하기</button>
-                    </div>
+                </div>
                 
                 <div class="myInfo-row">
                         <label>이메일 : </label>

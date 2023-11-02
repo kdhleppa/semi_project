@@ -8,6 +8,8 @@ const checkObj = {
     "authKey" : true
 };
 
+var debounceTimer;
+
 // 내 정보(수정) 페이지
 const updateInfo = document.getElementById("updateInfo");
 
@@ -17,6 +19,13 @@ const nameMessage = document.getElementById('nameMessage');
 
 // 이름이 입력이 되었을 때
 memberName.addEventListener("input", () => {
+    
+    if (debounceTimer) {
+        clearTimeout(debounceTimer);
+    }
+
+    debounceTimer = setTimeout(() => {
+    
         
     // 이름 입력이 되지 않은 경우
     if(memberName.value.trim() == ''){
@@ -42,7 +51,9 @@ memberName.addEventListener("input", () => {
         nameMessage.classList.remove("confirm");
         checkObj.memberName = false;
     }
-    
+  
+   }, 300)
+     
 });
 
 	
@@ -54,6 +65,12 @@ initNickname = memberNickname.value;
 
 // 닉네임이 입력이 되었을 때
 memberNickname.addEventListener("input", ()=>{
+	
+	if (debounceTimer) {
+        clearTimeout(debounceTimer);
+    }
+
+    debounceTimer = setTimeout(() => {
 	
     // 닉네임 입력이 되지 않은 경우
     if(memberNickname.value.trim() == ''){
@@ -87,14 +104,15 @@ memberNickname.addEventListener("input", ()=>{
             }
         })
         .catch(err => console.log(err));
-
-    } else{ // 무효
+	
+	    } else{ // 무효
         nickMessage.innerText = "닉네임 형식이 유효하지 않습니다";
         nickMessage.classList.add("error");
         nickMessage.classList.remove("confirm");
         checkObj.memberNickname = false;
-    }
+    	}
     
+    }, 300)
     
 });
 
@@ -107,6 +125,12 @@ initEmail = memberEmail.value;
 
 // 이메일이 입력될 때 마다
 memberEmail.addEventListener("input", () => {
+
+	if (debounceTimer) {
+        clearTimeout(debounceTimer);
+    }
+
+    debounceTimer = setTimeout(() => {
 
 	if(memberEmail.value == initEmail){
 		emailMessage.innerText = "기존 이메일입니다";
@@ -167,6 +191,8 @@ memberEmail.addEventListener("input", () => {
 
         checkObj.memberEmail = false; // 유효 X
     }
+   
+   }, 300)
     
 });
 
