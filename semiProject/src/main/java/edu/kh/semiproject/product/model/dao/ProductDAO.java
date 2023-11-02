@@ -1,6 +1,7 @@
 package edu.kh.semiproject.product.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,27 @@ public class ProductDAO {
 
 	public int productDelete(int productNo) {
 		return sqlSession.update("productMapper.productDelete", productNo);
+	}
+
+	public int productUpdate(Product product) {
+		return sqlSession.update("productMapper.productUpdate", product);
+	}
+
+	public int imageDelete(Map<String, Object> deleteMap) {
+		return sqlSession.delete("productMapper.imageDelete", deleteMap);
+	}
+
+	public int imageUpdate(RoomImg img) {
+		return sqlSession.delete("productMapper.imageUpdate", img);
+	}
+
+	public int imageInsert(RoomImg img) {
+		return sqlSession.delete("productMapper.imageInsert", img);
+	}
+
+	public List<String> selecctImageList() {
+		
+		return sqlSession.selectList("productMapper.selectImageListAll");
 	}
 
 }

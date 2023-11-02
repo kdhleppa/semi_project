@@ -59,14 +59,14 @@ function validateDate() {
     var enteredDate = dateInput.value;
     var currentDate = new Date();
     var enteredDateObject = new Date(enteredDate.slice(0, 4), enteredDate.slice(4, 6) - 1, enteredDate.slice(6, 8));
-
+/*
     // 날짜 형식 검사
     if (!/^\d{4}\d{2}\d{2}$/.test(enteredDate)) {
         alert("날짜 형식에 맞지 않습니다.");
         dateInput.value = "";
         return;
     }
-
+*/
     // 오늘 이후 날짜인지 검사
     if (enteredDateObject <= currentDate) {
         alert("오늘 이후로 작성해주세요.");
@@ -125,6 +125,16 @@ document.getElementById('roomUpFrm').addEventListener('submit', function(event) 
 	    var roomSizeValue = document.getElementById('roomSize').value;
 	    if (!roomSizeValue || roomSizeValue.trim() === "") {
 	        alert("방 크기를 입력해주세요!");
+	        event.preventDefault();
+	    } else if (isNaN(roomSizeValue)) { // 숫자가 아닌 경우
+	        alert("숫자로 입력해 주세요");
+	        event.preventDefault();
+	    }
+	    
+	    // 관리비 입력 확인
+	    var roomSizeValue = document.getElementById('productMaintenace').value;
+	    if (!roomSizeValue || roomSizeValue.trim() === "") {
+	        alert("관리비를 입력해주세요 없으면 0을 입력해주세요");
 	        event.preventDefault();
 	    } else if (isNaN(roomSizeValue)) { // 숫자가 아닌 경우
 	        alert("숫자로 입력해 주세요");

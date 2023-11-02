@@ -34,6 +34,8 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 	
+	
+	
 	// 물건 올리기
 	@PostMapping("/product/roomUp")
 	public String productUpload (@SessionAttribute("loginMember") Member loginMember,
@@ -129,7 +131,7 @@ public class ProductController {
 		return path;
 	}
 	
-	// 물건 수정
+	// 물건 수정 페이지 전환
 	@GetMapping("/productDetail/{productNo}/update")
 	public String productUpdate( @PathVariable("productNo") int productNo,
 								Model model
@@ -138,11 +140,40 @@ public class ProductController {
 		Product product = service.selectProduct(productNo);
 		
 		model.addAttribute("product",product);
-		
+		System.out.println("수정전환: " + product);
 		
 		return "kdh/room_up_update";
 	}
 
-	
-	
+	// 물건 수정
+	@PostMapping("/productDetail/{productNo}/update")
+	public String productUpdate(@PathVariable("productNo") int productNo,
+							Model model,
+							Product product,
+							@RequestParam(value="images", required = false) List<MultipartFile> images,
+							@RequestParam(value="deleteList", required = false) String deleteList,
+							HttpSession session,
+							RedirectAttributes ra
+							) throws Exception, Exception {
+		product.setProductNo(productNo);
+		System.out.println("프로덕트수"+product);
+		String webPath = "/resources/images/product/";
+		String filePath = session.getServletContext().getRealPath(webPath);
+		
+		int rowCount = service.productUpdate(product, images, webPath, filePath, deleteList);
+		
+		String message = null;
+		String path = "redirect:";
+		
+		if(rowCount > 0 ) {
+			message = "등록물건이 수정되었습니다";
+			
+			path += "/productDetail/"+productNo;
+		} else {
+			message = "수정 실패하였습니다";
+			path += "update";
+		}
+		ra.addFlashAttribute("message", message);
+	return path;
+	}
 }

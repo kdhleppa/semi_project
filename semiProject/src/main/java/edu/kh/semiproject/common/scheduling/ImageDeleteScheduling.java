@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import edu.kh.semiproject.board.model.service.BoardService;
 import edu.kh.semiproject.mypage.model.service.MyInfoService;
 import edu.kh.semiproject.notice.model.service.NoticeService;
+import edu.kh.semiproject.product.model.service.ProductService;
 
 // 스프링이 일정 시간마다 해당 객체를 이용해서 코드를 수행
 // -> 스프링이 해당 클래스를 객체로 만들어서 관리를 해야함
@@ -34,6 +35,9 @@ public class ImageDeleteScheduling {
 	
 	@Autowired
 	private MyInfoService myInfoService;
+	
+	@Autowired
+	private ProductService Pservice;
 
 	// @Scheduled(fixedDelay = 10000) // ms단위
 	// 일(1초) -> 대기(10초) -> 일(1초) -> 대기(10초)
@@ -102,7 +106,61 @@ public class ImageDeleteScheduling {
 			}			
 		}		
 	}
-	
+	@Scheduled(cron = "0 0 * * * *") // 매 정시(*시 0분 0초)
+	public void RoomImgList() {
+		// System.out.println("스케줄러가 일정 시간마다 자동으로 출력");
+		
+		System.out.println("-----------ROOM_IMG DB, 서버 불일치 파일 제거-----------");
+		
+		// 서버에 저장된 파일 목록을 조회해서
+		// DB에 저장된 파일 목록과 비교하여
+		// 매칭되지 않는 서버 파일 제거
+		
+		// 1) 서버에 저장된 파일 목록 조회
+		// -> application 객체를 이용해서
+		// /resources/images/board의 실제 서버 경로를 얻어옴
+		String filePath = servletContext.getRealPath("/resources/images/product");
+		
+		// 2) filePath에 저장된 모든 파일 목록 읽어오기
+		File path = new File(filePath);
+		File[] imageArr = path.listFiles();
+		
+		// 배열 기능이 얼마없고 불편해서 -> List로 변환
+		List<File> serverImageList = Arrays.asList(imageArr);
+		
+		
+		
+		// 3) DB파일 목록 조회
+		List<String> dbImageList = Pservice.selectImageList();
+		
+//		for(String s : dbImageList) {
+//			System.out.println(s);
+//		}
+		
+		// 4) 서버에 파일 목록이 있을 경우에 비교를 시작
+		if( !serverImageList.isEmpty() ) {
+			
+			// 5) 서버 파일 목록을 순차 접근
+			for(File server : serverImageList) {
+				
+				// 6) 서버에 존재하는 파일이
+				// DB(dbImageList)에 없다면 삭제
+				
+				//server.toString();
+				// 서버 주소 full로 가져옴
+				
+				// List.indexOf(객체) : 객체가 List에 있으면 해당 인덱스 반환, 없으면 -1 반환
+				if(dbImageList.indexOf(server.getName()) == -1) { // 서버이미지명 != db저장된 이미지명
+					// db파일목록			서버파일이름
+					// server.getName() -> 이미지명만 가져와지는 메서드
+					
+					System.out.println(server.getName() + " 삭제");
+					server.delete(); // File.delete() : 파일삭제하는 메서드
+				}
+				
+			}			
+		}		
+	}
 	//@Scheduled(cron = "0,30 * * * * *") // 매분 0초, 30초 마다 수행
 	@Scheduled(cron = "0 0 * * * *") // 매 정시(*시 0분 0초)
 	public void noticeDbImageList() {

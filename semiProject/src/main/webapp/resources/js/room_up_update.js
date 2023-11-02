@@ -1,7 +1,7 @@
 // 미리보기 관련 요소 모두 얻어오기
 
 // img 5개
-const preview = document.getElementsByClassName("preview"); 
+const preview = document.getElementsByClassName("preview");
 
 // file 5개
 const inputImage = document.getElementsByClassName("inputImage"); 
@@ -68,19 +68,21 @@ for(let i=0 ; i< inputImage.length ; i++){
     });
 }
 
+
+
 function validateDate() {
     var dateInput = document.getElementById("enterDateText");
     var enteredDate = dateInput.value;
     var currentDate = new Date();
     var enteredDateObject = new Date(enteredDate.slice(0, 4), enteredDate.slice(4, 6) - 1, enteredDate.slice(6, 8));
-
+/*
     // 날짜 형식 검사
     if (!/^\d{4}\d{2}\d{2}$/.test(enteredDate)) {
         alert("날짜 형식에 맞지 않습니다.");
         dateInput.value = "";
         return;
     }
-
+*/
     // 오늘 이후 날짜인지 검사
     if (enteredDateObject <= currentDate) {
         alert("오늘 이후로 작성해주세요.");
@@ -113,7 +115,7 @@ function updateRadioValue() {
     }
 }
 
-
+// 각종 입력창 널값 에러 띄우기
 document.getElementById('roomUpFrm').addEventListener('submit', function(event) {
        if (document.getElementById('regtstration-checkbox').value == null) {
     	alert("매물 관리 규정을 확인해 주세요");
@@ -144,7 +146,8 @@ document.getElementById('roomUpFrm').addEventListener('submit', function(event) 
 	        alert("숫자로 입력해 주세요");
 	        event.preventDefault();
 	    }
-	    
+	    document.querySelector("[name='deleteList']").value 
+        =  Array.from(deleteSet);
 });
 
 // 주소-좌표 변환 객체를 생성합니다

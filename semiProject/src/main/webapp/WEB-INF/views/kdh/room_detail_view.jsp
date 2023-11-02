@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<fmt:formatDate var="currentDate" value="${now}" pattern="yyyy-MM-dd" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -193,7 +193,8 @@
                 </div>
                 <div class="detail-container">
                     <div class="detail-header">${sProduct.productTitle}</div>
-                    ${sProduct.productContent}
+                    <textarea rows="20" cols="157" readonly>${sProduct.productContent}</textarea>
+                    
                 </div>
                 <div id= "nowLogin">
                 <c:if test="${loginMember.memberNo == sProduct.memberNo}">
@@ -243,6 +244,14 @@
 
 
         </main>
+        
+        	 <c:if test="${not empty message}">
+    			<script>
+    		    	
+    			alert('${message}') // ${message}
+    	
+    	</script>
+    		</c:if>
         <script>
         const nowAddress = "${sProduct.productAddress}";
 		

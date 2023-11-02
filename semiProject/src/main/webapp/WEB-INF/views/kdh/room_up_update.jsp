@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<fmt:formatDate var="currentDate" value="${now}" pattern="yyyy-MM-dd" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,17 +69,17 @@
 
                 <div id="bottom-title">
 
-                    전/ 월세 매물만 등록할 수 있습니다.<br>
-                        1. 1개의 매물만 등록 가능하며, 부둥이에서 직거래로 표시됩니다.<br>
+                    원룸 투룸 전/ 월세 매물만 등록할 수 있습니다.<br>
+                        1. 1개의 매물만 등록만 추천드리며, 꼬집에서 직거래로 표시됩니다.<br>
                         2. 주소를 다르게 입력할 경우 허위매물로 신고될 수 있으니 꼭 동일하게 입력 바랍니다. <br>
                         3. 등록한 매물은 30일 간 노출됩니다. <br>
-                        4. 하나 이상의 물건등록을 원하는 임대인은 별도 인증이 필요합니다. <br>
+                       
 
                 </div>
 
             </div>
 
-		<form action="/product/roomUp/update" method="POST" name="roomUpFrm" id= "roomUpFrm" enctype="multipart/form-data">    
+		<form action="update" method="POST" name="roomUpFrm" id= "roomUpFrm" enctype="multipart/form-data">    
 
             <div class="main">
             
@@ -147,7 +145,7 @@
                   </table>
 
             </div>
-    		<div id="mapbox"></div>
+    		<div id="mapbox">123</div>
     		
             <div id="transaction-information">
 
@@ -206,7 +204,6 @@
                       <td class="tg2-0lax">공용관리비</td>
                       <td class="tg2-0lax">
 
-                          
 
                             <p>관리비</p>
 
@@ -216,22 +213,22 @@
                     </tr>
                     <tr>
                         <td class="tg2-0lax">입주 가능 일자</td>
-                        <td class="tg2-0lax">
+                        <td class="tg2-0lax"> "${currentDate}"
 
 							<c:choose>
 								<c:when test="${product.enterDate <= currentDate}">
-									<input type="radio" name="enterDate" id="immediateMoveIn" onclick="toggleInputVisibility()" checked> 즉시 입주
+									<input type="radio" name="enterDate" id="immediateMoveIn" onclick="toggleInputVisibility()" checked value="Y"> 즉시 입주
 
 		                            <input type="radio" name="enterDate" id="dateSelection" onclick="toggleInputVisibility()"> 일자 선택
 		
-		                            <input type="text" name="enterDateText" id="enterDateText" placeholder="예) 20210721" onchange="validateDate()" oninput="updateRadioValue()" style="display: none;">
+		                            <input type="date" name="enterDateText" id="enterDateText" placeholder="예) 20210721" onchange="validateDate()" oninput="updateRadioValue()" style="display: none;">
 								</c:when>
 								<c:otherwise>
 									<input type="radio" name="enterDate" id="immediateMoveIn" onclick="toggleInputVisibility()"> 즉시 입주
 
-		                            <input type="radio" name="enterDate" id="dateSelection" onclick="toggleInputVisibility()" checked> 일자 선택
+		                            <input type="radio" name="enterDate" id="dateSelection" onclick="toggleInputVisibility()" checked value="${product.enterDate}"> 일자 선택
 		
-		                            <input type="text" name="enterDateText" id="enterDateText" placeholder="예) 20210721" onchange="validateDate()" oninput="updateRadioValue()" style="display: none;" value=""${product.enterDate}">
+		                            <input type="date" name="enterDateText" id="enterDateText" placeholder="예) 20210721" onchange="validateDate()" oninput="updateRadioValue()" style="display: none;" value="${product.enterDate}">
 		
 								
 								</c:otherwise>
@@ -391,19 +388,19 @@
 				                        <c:set var="img0" value="${img.imgPath}${img.imgRename}"/>
 				                    </c:when>
 				
-				                    <c:when test="${img.imageOrder == 1}">
+				                    <c:when test="${img.imgOrder == 1}">
 				                        <c:set var="img1" value="${img.imgPath}${img.imgRename}"/>
 				                    </c:when>
 				
-				                    <c:when test="${img.imageOrder == 2}">
+				                    <c:when test="${img.imgOrder == 2}">
 				                        <c:set var="img2" value="${img.imgPath}${img.imgRename}"/>
 				                    </c:when>
 				
-				                    <c:when test="${img.imageOrder == 3}">
+				                    <c:when test="${img.imgOrder == 3}">
 				                        <c:set var="img3" value="${img.imgPath}${img.imgRename}"/>
 				                    </c:when>
 				
-				                    <c:when test="${img.imageOrder == 4}">
+				                    <c:when test="${img.imgOrder == 4}">
 				                        <c:set var="img4" value="${img.imgPath}${img.imgRename}"/>
 				                    </c:when>
 				                </c:choose>
@@ -556,7 +553,7 @@
 
                       <td class="tg6-0lax">
                         
-						<textarea name="productContent" rows="20" cols="80" placeholder="매물 상세 페이지에 노출되는 문구입니다. 1000자 이내로 작성해 주세요." value="${product.productContent}"></textarea>
+						<textarea name="productContent" rows="20" cols="80" placeholder="매물 상세 페이지에 노출되는 문구입니다. 1000자 이내로 작성해 주세요.">${product.productContent}</textarea>
 						<br>
 
                         - 매물 정보와 관련없는 홍보성 정보는 입력할 수 없습니다. <br>
@@ -598,13 +595,14 @@
                 </div>
 
             </div>
-            
+        <input type="hidden" name="deleteList" value="">     
 		</form>
 
 
             
         </div>
             
+           
     <c:if test="${not empty message}">
     	<script>
     		// EL/JSTL 구문이 먼저 해석
@@ -614,14 +612,7 @@
     	
     	
     	</script>
-    	<%--
-    		session에 message를 추가하면
-    		브라우저 종료 또는 만료 전까지 계속 메시지가 출력된다
-    		
-    		-> 1회 출력 후 session에서 message 삭제	
-    	 
-    	 <c:remove var="message" scope="session"/>
-    	 --%>
+    	
     </c:if>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
@@ -651,8 +642,8 @@
 	</script>
      <script>
      
-	//	const centerAddress = "${centerAddress}";
-	//	console.log(centerAddress);
+		const centerAddress = "${centerAddress}";
+		console.log(centerAddress);
 	
 	
 		

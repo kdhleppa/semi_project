@@ -28,4 +28,8 @@ public interface ProductService {
 
 	int productDelete(int productNo);
 
+	int productUpdate(Product product, List<MultipartFile> images, String webPath, String filePath, String deleteList) throws IllegalStateException, Exception;
+
+	List<String> selectImageList();
+
 }
