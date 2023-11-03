@@ -93,6 +93,7 @@
                 
             
             <%-- 지도에 연결된 기능 이것저것 추가해야함 --%>
+
             <div id="main-right">       
               <div id="chattingicon">
                <a href="/chatting">
@@ -107,6 +108,7 @@
        
           
        
+
         
 
         

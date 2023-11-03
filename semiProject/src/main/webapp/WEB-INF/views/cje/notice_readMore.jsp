@@ -51,7 +51,7 @@
                 	<a href="/link/myInfoUpdate">정보수정</a>
                 </div>
                 <div>
-                	<a href="/link/roomDetailView">내가 올린 매물 목록</a>
+                	<a href="/link/myList">내가 올린 매물 목록</a>
                 </div>
                 <div>
                 	<a href="/link/noticeList">공지사항</a>
