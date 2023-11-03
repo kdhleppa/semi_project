@@ -54,7 +54,7 @@
                 </div>
                 
                 <div>
-                   <a href="/link/myList">내가 올린 매물</a>
+                   <a href="/link/myList">내가 올린 매물 목록</a>
                 </div>
                 
                 <div>
