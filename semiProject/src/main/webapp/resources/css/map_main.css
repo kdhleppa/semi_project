@@ -71,7 +71,7 @@ nav {
 /*여기까지 탑바 공통*/
 
 .mid-top {
-    height: 100px;
+    height: 50px;
     display: flex;
     align-items: center;
 }
@@ -154,10 +154,8 @@ nav {
     align-items: center;
     display: flex;
     flex-direction: column;
-    height : 80vh;
+    height : 87vh;
     overflow: auto;
-
-    
     
 }
 
@@ -173,14 +171,6 @@ nav {
     
 }
 
-
-/*실거래가 조회버튼 위치*/
-#realbtn {
-    height: 30px;
-    width: 150px;
-    position: absolute; right: 50px; top: 50px; z-index: 2;
-
-}
 
 /* 왼쪽에 룸 프리뷰 */
 .preview-container {
@@ -241,5 +231,23 @@ html, body {
     height: 100vh;
 }
 */
+/*
+#chat-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    right: 0px;
+    bottom: 12px;
+    position: fixed;
+}
+*/
 
-
+#chat-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    right: 0px;
+    bottom: 12px;
+    position: fixed;
+    z-index: 2;
+}

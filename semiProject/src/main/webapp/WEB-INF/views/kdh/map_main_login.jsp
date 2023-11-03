@@ -93,17 +93,20 @@
                 
             
             <%-- 지도에 연결된 기능 이것저것 추가해야함 --%>
-            <div id="main-right"></div>
-            
-        </div>
-
-        <c:if test="${not empty loginMember}" >
-           <div id="chattingicon">
+            <div id="main-right">       
+              <div id="chattingicon">
                <a href="/chatting">
                   <img src="/resources/images/chat_icon.png" id="chat-icon">
               </a>
            </div>
-        </c:if>
+           </div>
+            </div>
+            
+        </div>
+
+       
+          
+       
         
 
         
