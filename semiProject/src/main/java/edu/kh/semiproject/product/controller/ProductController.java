@@ -2,12 +2,8 @@ package edu.kh.semiproject.product.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileUploadException;
@@ -15,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,9 +42,8 @@ public class ProductController {
 							HttpSession session,
 							RedirectAttributes ra
 			) throws IllegalStateException, FileUploadException, IOException {
-		System.out.println("product loginmember : " + loginMember.getMemberNo());
 		product.setMemberNo(loginMember.getMemberNo());
-		System.out.println(product);
+		System.out.println("물건올리기 가지고왔나 프로덕트 : " + product);
 		String webPath="/resources/images/product/";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
