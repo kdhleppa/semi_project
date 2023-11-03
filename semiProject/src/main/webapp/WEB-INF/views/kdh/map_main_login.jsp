@@ -93,10 +93,21 @@
                 
             
             <%-- 지도에 연결된 기능 이것저것 추가해야함 --%>
-            <div id="main-right"></div>
+
+            <div id="main-right">       
+              <div id="chattingicon">
+               <a href="/chatting">
+                  <img src="/resources/images/chat_icon.png" id="chat-icon">
+              </a>
+           </div>
+           </div>
+            </div>
             
         </div>
 
+       
+          
+       
 
         
 
