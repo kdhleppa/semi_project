@@ -488,9 +488,10 @@ document.getElementById("signUpFrm").addEventListener("submit", e=>{
             return; // 함수 종료
             
         } else {
-        	alert (memberName.value + " 님 회원가입을 축하합니다");
+        	alert (memberName.value + " 님 회원가입을 축하합니다2");
         }
         
     }
     
 });
+

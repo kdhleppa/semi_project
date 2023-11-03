@@ -90,7 +90,7 @@ public class MemberController {
 		String message = null;
 		
 		if(result > 0) {
-			path += "/";
+			path += "/link/login ";
 			
 			message = inputMember.getMemberNickname() + "님의 가입을 환영합니다.";
 			

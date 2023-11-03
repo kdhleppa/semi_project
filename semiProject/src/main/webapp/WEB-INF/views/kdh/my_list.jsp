@@ -100,6 +100,6 @@
 
         </main>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb9b63d71a5408fd96cba9a1674b9d43&libraries=services,clusterer"></script>
-        <script src="/resources/js/like_list.js"></script>
+        <script src="/resources/js/myList.js"></script>
 </body>
 </html>
