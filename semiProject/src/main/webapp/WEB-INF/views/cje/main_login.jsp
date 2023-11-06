@@ -58,8 +58,8 @@
                 어떤 집을 찾으세요?
             </p>
             <section class="search-section">
-                <form action="#" class="search-form">
-                    <button class="fa-solid fa-magnifying-glass"></button> 
+                <form action="/link/mapMainLogin" method="get" class="search-form">
+                    <button type="submit" class="fa-solid fa-magnifying-glass"></button> 
                     <input class="searchbox" type="search" placeholder="지역 또는 단지명을 입력하세요.">
                 </form>
             </section>

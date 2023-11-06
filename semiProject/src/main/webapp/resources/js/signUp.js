@@ -487,9 +487,7 @@ document.getElementById("signUpFrm").addEventListener("submit", e=>{
             e.preventDefault(); // form 태그 기본 이벤트 제거
             return; // 함수 종료
             
-        } else {
-        	alert (memberName.value + " 님 회원가입을 축하합니다2");
-        }
+        } 
         
     }
     
